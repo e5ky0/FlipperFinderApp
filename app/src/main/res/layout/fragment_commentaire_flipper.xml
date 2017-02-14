@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical"
+	    android:id="@+id/layoutOldComm">
+
+		<LinearLayout
+	        android:id="@+id/layoutComm"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:layout_marginTop="1dip"
+	        android:orientation="horizontal" >
+	
+	        <Button
+	            android:id="@+id/boutonCommentaire"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/boutonCommentaire" />
+	    </LinearLayout>
+	
+	    <View
+	        android:id="@+id/separatorComm1"
+	        style="@style/itemDivider"
+	        android:layout_below="@id/layoutComm" />
+	
+	    <ListView
+	        android:id="@+id/listeCommentaires"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/separatorComm1" />
+	
+	    <View
+	        style="@style/itemDivider"
+	        android:layout_below="@id/listeCommentaires" />
+	
+	    <LinearLayout
+	        android:layout_width="0px"
+	        android:layout_height="0px"
+	        android:focusable="true"
+	        android:focusableInTouchMode="true" >
+	
+	        <requestFocus />
+	    </LinearLayout>
+	
+	    <TextView
+	        android:id="@+id/textPasCommentaire"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:layout_marginLeft="20sp"
+	        android:layout_marginRight="20sp"
+	        android:layout_centerInParent="true"
+	        android:text="@string/pasEncoreCommentaire"
+	        android:textSize="20sp"
+	        android:textStyle="bold">
+	    </TextView>
+	</RelativeLayout>
+    
+    <ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:id="@+id/layoutNewComm"
+		android:background="#fff3f3f3">
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical">
+		
+		    <LinearLayout
+		        android:id="@+id/boutonsNewCommentaire"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="5dp"
+		        android:layout_marginRight="5dp"
+		        android:layout_marginTop="1dip"
+		        android:orientation="horizontal">
+		
+		        <Button
+		            android:id="@+id/boutonCancelNewCommentaire"
+		            android:layout_width="fill_parent"
+		            android:layout_height="fill_parent"
+		            android:layout_gravity="center_vertical"
+		            android:text="@string/boutonCancel"
+		            android:layout_weight="50"/>
+		        
+		        <Button
+		            android:id="@+id/boutonNewCommentaire"
+		            android:layout_width="fill_parent"
+		            android:layout_height="fill_parent"
+		            android:layout_gravity="center_vertical"
+		            android:text="@string/boutonNewCommentaire"
+		            android:layout_weight="50"/>
+		    </LinearLayout>
+		
+		    <EditText
+			    android:id="@+id/champPseudo"
+			    android:layout_below="@id/boutonsNewCommentaire"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+				android:layout_marginLeft="5dp"
+				android:layout_marginRight="5dp"
+				android:layout_marginTop="15dip"
+			    android:hint="@string/hintPseudo"
+			    android:imeOptions="actionDone"
+			    android:inputType="textFilter|textCapCharacters"/>
+		    
+		    <EditText 	android:id="@+id/texteCommentaire"
+		        		android:layout_below="@id/champPseudo"
+		        		android:layout_width="fill_parent"
+		        		android:layout_height="wrap_content"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="5dp"
+		        		android:inputType="textMultiLine"
+		        		android:hint="@string/hintCommentaire"
+		        		android:focusable="true"
+		        		android:focusableInTouchMode="true"
+		        		android:imeOptions="actionDone|normal"
+		        		android:lines="2"/>
+		
+		</RelativeLayout>
+	</ScrollView>
+
+</RelativeLayout>

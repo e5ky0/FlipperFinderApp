@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WizardPageContainer">
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/champNomEnseigne"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+                android:layout_marginTop="15dip"
+                android:hint="@string/SectionNomEnseigne"
+                android:inputType="textCapSentences|textAutoCorrect"
+                />
+
+            <EditText
+                android:id="@+id/champAdresse"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+                android:layout_marginTop="15dip"
+                android:inputType="textCapSentences|textAutoCorrect"
+                android:hint="@string/SectionAdresse" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                <EditText
+                    android:id="@+id/champCodePostal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_marginTop="15dip"
+                    android:hint="@string/SectionCodePostal"
+                    android:layout_weight="60" />
+                <EditText
+                    android:id="@+id/champVille"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_marginTop="15dip"
+                    android:hint="@string/SectionVille"
+                    android:inputType="textCapSentences|textAutoCorrect"
+                    android:layout_weight="40"/>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/champPays"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+                android:layout_marginTop="15dip"
+                android:hint="@string/SectionPays"
+                android:inputType="textCapSentences|textAutoCorrect"
+                android:text="France"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

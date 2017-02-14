@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WizardPageContainer">
+
+    <Button
+        android:id="@+id/geolocaliseSignalement"
+        android:background="@drawable/selectable_item_background"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/SignalementRefreshMap" />
+
+    <View style="@style/itemDivider" />
+
+    <fragment
+        android:id="@+id/mapSignalementFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="20dp"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:apiKey="@string/googleMapsApiKey" />
+
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/boutonValidation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="24dp"
+            android:minWidth="250dp"
+            android:text="@string/boutonValidation" />
+
+        <Button
+            android:id="@+id/boutonChangement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/boutonValidation"
+            android:layout_marginTop="24dp"
+            android:minWidth="250dp"
+            android:text="@string/boutonChangement" />
+
+        <Button
+            android:id="@+id/boutonDisparition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/boutonChangement"
+            android:layout_marginTop="24dp"
+            android:minWidth="250dp"
+            android:text="@string/boutonDisparition" />
+
+        <Button
+            android:id="@+id/boutonNavigation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/boutonDisparition"
+            android:layout_marginTop="24dp"
+            android:minWidth="250dp"
+            android:text="@string/boutonNavigation" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/layoutChangeModele"
+        android:background="#fff3f3f3">
+        <include layout="@layout/fragment_change_modele_flipper"/>
+    </ScrollView>
+
+</RelativeLayout>

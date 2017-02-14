@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeight">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="2dip"
+        android:paddingTop="2dip"
+        android:orientation="horizontal"
+        android:layout_margin="15dp"
+        android:background="@drawable/card_tournoi">
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dip"
+            android:layout_marginRight="25dip"
+            android:layout_marginTop="6dip"
+            android:orientation="vertical"
+            android:layout_weight="90">
+            <TextView
+                android:id="@+id/textModeleFlipper"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Nom Tournoi"/>
+
+            <TextView
+                android:id="@+id/textAdresseFlipper"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/textModeleFlipper"
+                android:layout_below="@id/textModeleFlipper"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Adresse"/>
+
+            <TextView
+                android:id="@+id/dateMaj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#04B404"
+                android:text="Date du tournoi"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:layout_marginRight="10dp"
+            android:layout_weight="10"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            >
+            <LinearLayout
+                android:id="@+id/navigationLayout"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/textNavigation"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="12dp"
+                    android:text="Y aller!"/>
+                <ImageView
+                    android:id="@+id/imageNavigation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_navigation"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/distance"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="distance"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

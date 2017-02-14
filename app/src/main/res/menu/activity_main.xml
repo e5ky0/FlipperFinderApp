@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:fafsapp="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_update"
+          android:icon="@drawable/ic_tab_maj_db"
+          android:title="Mise à jour de la base de flipper"
+          fafsapp:showAsAction="always"  />
+    <item android:id="@+id/action_viewComment"
+          android:title="Liste des derniers commentaires"
+          fafsapp:showAsAction="never"  />
+</menu>

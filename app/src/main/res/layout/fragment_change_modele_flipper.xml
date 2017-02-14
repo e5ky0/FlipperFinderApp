@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/boutonsValidationChangementModele"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="1dip"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/boutonCancelChangeModele"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/boutonCancel"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="50"/>
+        
+        <Button
+            android:id="@+id/boutonValideChangementModele"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/boutonValideChangementModele"
+            android:layout_gravity="center_vertical"
+		    android:layout_weight="50"/>
+    </LinearLayout>
+
+    <AutoCompleteTextView
+	        android:id="@+id/autocompletionNouveauModeleFlipper"
+	        android:layout_below="@id/boutonsValidationChangementModele"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dip"
+	        android:layout_marginRight="5dip"
+	        android:layout_marginTop="5dip"
+	        android:imeOptions="actionDone"
+	        android:inputType="textFilter|textNoSuggestions"
+	        android:singleLine="true"
+	        android:hint="@string/hintNouveauModele"
+	        />
+    
+    <EditText
+	    android:id="@+id/champPseudo"
+		android:layout_below="@id/autocompletionNouveauModeleFlipper"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+		android:layout_marginLeft="5dp"
+		android:layout_marginRight="5dp"
+		android:layout_marginTop="1dip"
+	    android:hint="@string/hintPseudo"
+	    android:imeOptions="actionDone"
+	    android:inputType="textFilter|textCapCharacters"/>
+	
+    <EditText 	android:id="@+id/texteCommentaire"
+        		android:layout_below="@id/champPseudo"
+        		android:layout_width="fill_parent"
+        		android:layout_height="wrap_content"
+				android:layout_marginLeft="5dp"
+				android:layout_marginRight="5dp"
+        		android:inputType="textMultiLine"
+        		android:hint="@string/hintCommentaire"
+        		android:focusable="true"
+        		android:focusableInTouchMode="true"
+        		android:imeOptions="actionDone|normal"
+        		android:lines="2"/>
+
+</RelativeLayout>

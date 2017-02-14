@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:paddingBottom="2dip"
+    android:paddingTop="2dip" >
+
+    <TextView
+        android:id="@+id/textePseudo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dip"
+        android:layout_marginTop="6dip"
+        android:text="@string/pseudoCommentaireAnonyme"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textePseudo"
+        android:layout_alignLeft="@id/textePseudo"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="01/01/2013"/>
+
+    <TextView
+        android:id="@+id/texteCommentaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textDate"
+        android:layout_marginLeft="20dip"
+        android:text="Trop de la bombe ce flip"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>
