@@ -43,7 +43,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_wizard_modele, container, false);
 
         super.onCreate(savedInstanceState);
@@ -106,8 +106,8 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
         boolean isError = false;
         if (champModeleFlipper.getText().length() == 0) {
             new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!")
-                    .setMessage("Vous devez renseigner au moins un modèle du flipper.").setNeutralButton("Fermer", null)
-                    .setIcon(R.drawable.ic_delete).show();
+                .setMessage("Vous devez renseigner au moins un modèle du flipper.").setNeutralButton("Fermer", null)
+                .setIcon(R.drawable.ic_delete).show();
             isError = true;
         }
         return !isError;

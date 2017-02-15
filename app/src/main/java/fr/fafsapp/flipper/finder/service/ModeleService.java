@@ -8,7 +8,7 @@ import fr.fafsapp.flipper.finder.service.base.BaseModeleService;
 import fr.fafsapp.flipper.finder.service.parse.ParseModeleService;
 
 public class ModeleService {
-	
+
 	public boolean remplaceToutModele(Context pContext){
 		boolean retour = true;
 		BaseModeleService baseModeleService = new BaseModeleService();

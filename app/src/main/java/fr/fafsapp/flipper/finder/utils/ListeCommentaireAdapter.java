@@ -47,7 +47,7 @@ public class ListeCommentaireAdapter extends ArrayAdapter<Commentaire> {
 			vi = LayoutInflater.from(getContext());
 			v = vi.inflate(R.layout.simple_list_item_commentaire, null);
 		}
-		
+
 		// On set les tags pour pouvoir retrouver sur quelle ligne on a cliqu�.
 		v.setTag(position);
 		v.setOnClickListener(CommentaireClickListener);
@@ -85,7 +85,7 @@ public class ListeCommentaireAdapter extends ArrayAdapter<Commentaire> {
 		}
 		return v;
 	}
-	
+
 	private OnClickListener CommentaireClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
@@ -100,17 +100,17 @@ public class ListeCommentaireAdapter extends ArrayAdapter<Commentaire> {
 			}
 		}
 	};
-	
+
 	public static CharSequence trim(CharSequence s, int start, int end) {
-	    while (start < end && Character.isWhitespace(s.charAt(start))) {
-	        start++;
-	    }
+		while (start < end && Character.isWhitespace(s.charAt(start))) {
+			start++;
+		}
 
-	    while (end > start && Character.isWhitespace(s.charAt(end - 1))) {
-	        end--;
-	    }
+		while (end > start && Character.isWhitespace(s.charAt(end - 1))) {
+			end--;
+		}
 
-	    return s.subSequence(start, end);
+		return s.subSequence(start, end);
 	}
 
 }

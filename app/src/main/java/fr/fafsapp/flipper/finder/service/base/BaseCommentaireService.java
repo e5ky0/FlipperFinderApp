@@ -10,7 +10,7 @@ import fr.fafsapp.flipper.finder.database.dao.CommentaireDAO;
 import fr.fafsapp.flipper.finder.metier.Commentaire;
 
 public class BaseCommentaireService {
-	
+
 	public ArrayList<Commentaire> getCommentaireByFlipperId(Context pContext, long idFlipper){
 		ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
 		CommentaireDAO commentaireDao = new CommentaireDAO(pContext);
@@ -19,7 +19,7 @@ public class BaseCommentaireService {
 		commentaireDao.close();
 		return listeRetour;
 	}
-	
+
 	public ArrayList<Commentaire> getLastCommentaire(Context pContext, int nbMaxCommentaire){
 		ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
 		CommentaireDAO commentaireDao = new CommentaireDAO(pContext);
@@ -28,7 +28,7 @@ public class BaseCommentaireService {
 		commentaireDao.close();
 		return listeRetour;
 	}
-	
+
 	public boolean addCommentaire(Commentaire commentaire, Context pContext){
 		CommentaireDAO commentaireDao = new CommentaireDAO(pContext);
 		commentaireDao.open();
@@ -64,5 +64,5 @@ public class BaseCommentaireService {
 		commentaireDao.close();
 		return true;
 	}
-	
+
 }

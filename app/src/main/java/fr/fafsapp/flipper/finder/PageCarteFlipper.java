@@ -29,15 +29,15 @@ import fr.fafsapp.flipper.finder.metier.Flipper;
 import fr.fafsapp.flipper.finder.utils.LocationUtil;
 
 public class PageCarteFlipper extends FragmentActivity implements
-		LocationListener, LocationSource {
+LocationListener, LocationSource {
 
 	public final static String INTENT_FLIPPER_POUR_INFO = "fr.fafsapp.flipper.finder.PageCarteFlipper.INTENT_FLIPPER_POUR_INFO";
 
 	private OnLocationChangedListener mListener;
-	
+
 	private GoogleMap gMap = null;
 	LatLngBounds.Builder builder = null;
-	
+
 	private ArrayList<Flipper> listeFlipper = new ArrayList<Flipper>();
 
 	private LocationManager locationManager;
@@ -54,26 +54,26 @@ public class PageCarteFlipper extends FragmentActivity implements
 
 		gMap.setMyLocationEnabled(true);
 		gMap.clear();
-		
+
 		Intent i = getIntent();
 		listeFlipper = (ArrayList<Flipper>) i.getSerializableExtra(PageListeResultat.INTENT_FLIPPER_LIST_POUR_MAP);
-		
+
 		builder = new LatLngBounds.Builder();
-		
+
 		final Map<String, Flipper> markerObjMap = new HashMap<String, Flipper>();
-		
-		
+
+
 		// On parcourt la liste des flippers pour les afficher avec la magnifique icone
 		Marker marker = null;
 		for (Flipper flipper : listeFlipper) {
 			String nom = flipper.getModele().getNom();
 			String snippet = flipper.getEnseigne().getNom() + " " + flipper.getEnseigne().getAdresse();
 			LatLng pos = new LatLng(Double.valueOf(flipper.getEnseigne().getLatitude()), Double.valueOf(flipper.getEnseigne().getLongitude()));
-			
+
 			// On set l'icone que l'on va utiliser en fonction de l'ant�riorit� de la m�j du flipper
 			int iconeFlipper = R.drawable.ic_flipper;
 
-			int nbJours = LocationUtil.getDaysSinceMajFlip(flipper); 
+			int nbJours = LocationUtil.getDaysSinceMajFlip(flipper);
 			if (nbJours == -1){
 				// Date nulle on mal formatt�e : on laisse l'icone noire
 			}else if (nbJours > 50){
@@ -87,7 +87,7 @@ public class PageCarteFlipper extends FragmentActivity implements
 			MarkerOptions markerOpt = new MarkerOptions().position(pos).title(nom).snippet(snippet).icon(BitmapDescriptorFactory.fromResource(iconeFlipper));
 			marker = gMap.addMarker(markerOpt);
 			markerObjMap.put(marker.getId(), flipper);
-			
+
 			builder.include(pos);
 		}
 
@@ -104,11 +104,11 @@ public class PageCarteFlipper extends FragmentActivity implements
 		} else {
 			int padding = 100; // offset from edges of the map in pixels
 			// On r�cup�re la taille de l'�cran, et on met un padding assez fort pour �viter la barre d'�tat du haut.
-			Display display = getWindowManager().getDefaultDisplay(); 
+			Display display = getWindowManager().getDefaultDisplay();
 			CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, display.getWidth(), display.getHeight(), padding);
 			gMap.moveCamera(cu);
 		}
-		
+
 		gMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
@@ -116,15 +116,15 @@ public class PageCarteFlipper extends FragmentActivity implements
 				if(flipper == null) {
 					return;
 				}
-      		   Intent infoActivite = new Intent(PageCarteFlipper.this, PageInfoFlipperPager.class);
-      		   // On va sur l'onglet des actions
-      		   infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 1);
-      		   infoActivite.putExtra(INTENT_FLIPPER_POUR_INFO, flipper);
-     		   startActivity(infoActivite);
+				Intent infoActivite = new Intent(PageCarteFlipper.this, PageInfoFlipperPager.class);
+				// On va sur l'onglet des actions
+				infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 1);
+				infoActivite.putExtra(INTENT_FLIPPER_POUR_INFO, flipper);
+				startActivity(infoActivite);
 			}
 		});
 
-		
+
 	}
 
 	@Override
@@ -177,6 +177,6 @@ public class PageCarteFlipper extends FragmentActivity implements
 	}
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-	    //remove super() call
+		//remove super() call
 	}
 }

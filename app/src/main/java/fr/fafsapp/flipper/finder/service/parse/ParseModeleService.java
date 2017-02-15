@@ -14,7 +14,7 @@ public class ParseModeleService {
 
 	/**
 	 * Retourne tous les modèles de flipper à partir du cloud
-	 * 
+	 *
 	 * @return int
 	 */
 	public List<ModeleFlipper> getAllModeleFlipper() {
@@ -38,7 +38,7 @@ public class ParseModeleService {
 
 		return listeModele;
 	}
-	
+
 	/**
 	 * Retourne la liste des modèles de flippers à mettre à jour à partir d'un id
 	 * @return
@@ -47,24 +47,24 @@ public class ParseModeleService {
 		List<ModeleFlipper> listeModele = new ArrayList<ModeleFlipper>();
 
 		List<ParseObject> listePo = new ArrayList<ParseObject>();
-    	ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);
-    	try {
-    		query.setLimit(2000);
-    		query.whereGreaterThan(FlipperDatabaseHandler.MODELE_FLIPPER_ID, id);
-    		listePo = query.find();
+		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);
+		try {
+			query.setLimit(2000);
+			query.whereGreaterThan(FlipperDatabaseHandler.MODELE_FLIPPER_ID, id);
+			listePo = query.find();
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 			return null;
 		}
-    	for (ParseObject po : listePo){
-    		ModeleFlipper modele = new ModeleFlipper(po.getLong(FlipperDatabaseHandler.MODELE_FLIPPER_ID),
+		for (ParseObject po : listePo){
+			ModeleFlipper modele = new ModeleFlipper(po.getLong(FlipperDatabaseHandler.MODELE_FLIPPER_ID),
 					po.getString(FlipperDatabaseHandler.MODELE_FLIPPER_NOM),
 					po.getString(FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE),
 					po.getLong(FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT));
-    		listeModele.add(modele);
-    	}
+			listeModele.add(modele);
+		}
 		return listeModele;
 	}
-	
-	
+
+
 }

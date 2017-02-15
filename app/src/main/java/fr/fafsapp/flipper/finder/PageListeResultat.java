@@ -145,10 +145,10 @@ public class PageListeResultat extends Activity {
                 }
             } else {
                 new AlertDialog.Builder(PageListeResultat.this)
-                        .setTitle("Argh!")
-                        .setMessage(
-                                "Votre adresse n'a pas pu être trouvée! Rappuyez sur le bouton de localisation, ou entrez votre adresse manuellement. Si le problème persiste, contactez moi :)")
-                        .setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
+                    .setTitle("Argh!")
+                    .setMessage(
+                            "Votre adresse n'a pas pu être trouvée! Rappuyez sur le bouton de localisation, ou entrez votre adresse manuellement. Si le problème persiste, contactez moi :)")
+                    .setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
             }
         }
     }
@@ -172,15 +172,15 @@ public class PageListeResultat extends Activity {
         if (listeFlipper.size() == 0) {
             if (champModeleFlipper.getText() == null || champModeleFlipper.getText().length() == 0) {
                 new AlertDialog.Builder(this).setTitle("Argh!")
-                        .setMessage("Pas un seul flipper à " + String.valueOf(DISTANCE_MAX) + "km à la ronde!")
-                        .setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
+                    .setMessage("Pas un seul flipper à " + String.valueOf(DISTANCE_MAX) + "km à la ronde!")
+                    .setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
             } else {
                 new AlertDialog.Builder(this)
-                        .setTitle("Argh!")
-                        .setMessage(
-                                "Le flipper recherché n'a pas été trouvé à " + String.valueOf(DISTANCE_MAX)
-                                        + "km à la ronde!").setNeutralButton("Fermer", null)
-                        .setIcon(R.drawable.tete_martiens).show();
+                    .setTitle("Argh!")
+                    .setMessage(
+                            "Le flipper recherché n'a pas été trouvé à " + String.valueOf(DISTANCE_MAX)
+                            + "km à la ronde!").setNeutralButton("Fermer", null)
+                    .setIcon(R.drawable.tete_martiens).show();
             }
             boutonAfficheCarte.setVisibility(View.INVISIBLE);
         } else {
@@ -204,7 +204,7 @@ public class PageListeResultat extends Activity {
                 // TODO Trouver une fa�on propre d'afficher un choix quand il y
                 // a plusieurs adresses trouv�es
                 adresseUtilisateurTV.setText(LocationUtil.getAdresseFromCoordGPS(getApplicationContext(), latitude,
-                        longitude));
+                            longitude));
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 rafraichitListeFlipper();
@@ -217,10 +217,10 @@ public class PageListeResultat extends Activity {
                     }
                 } else {
                     new AlertDialog.Builder(PageListeResultat.this)
-                            .setTitle("Argh!")
-                            .setMessage(
-                                    "Votre adresse n'a pas pu être trouvée! Veuillez activer le GPS et la connexion Wifi sur votre téléphone. Si le problème persiste, contactez moi :)")
-                            .setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
+                        .setTitle("Argh!")
+                        .setMessage(
+                                "Votre adresse n'a pas pu être trouvée! Veuillez activer le GPS et la connexion Wifi sur votre téléphone. Si le problème persiste, contactez moi :)")
+                        .setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
                 }
             }
             return false;

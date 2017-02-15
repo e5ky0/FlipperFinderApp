@@ -16,9 +16,9 @@ public class PagePreferences extends ActionBarActivity {
 	public static final String KEY_PSEUDO_FULL = "fullPseudo";
 	public static final String KEY_PREFERENCES_DATE_LAST_UPDATE = "dateLastUpdate";
 	public static final String PREFERENCES_FILENAME = "FlipperLocPrefs.txt";
-	
 
-	
+
+
 	public static final int DEFAULT_VALUE_RAYON = 100;
 	public static final int DEFAULT_VALUE_NB_MAX_LISTE = 50;
 
@@ -27,10 +27,10 @@ public class PagePreferences extends ActionBarActivity {
 
 	TextView tvRayon;
 	TextView tvNbMaxListe;
-	
-    ActionBar mActionbar;
-    SharedPreferences settings;
-	
+
+	ActionBar mActionbar;
+	SharedPreferences settings;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,11 +38,11 @@ public class PagePreferences extends ActionBarActivity {
 		setContentView(R.layout.activity_preferences);
 
 		// Affichage du header
-        mActionbar = getSupportActionBar();
- 
-        mActionbar.setTitle(R.string.headerPreferences);
+		mActionbar = getSupportActionBar();
 
-        seekBarRayon = (SeekBar) findViewById(R.id.seekBarRayon);
+		mActionbar.setTitle(R.string.headerPreferences);
+
+		seekBarRayon = (SeekBar) findViewById(R.id.seekBarRayon);
 		seekBarNbMaxListe = (SeekBar) findViewById(R.id.seekBarNbMax);
 
 		tvRayon = (TextView) findViewById(R.id.TVRayon);
@@ -50,8 +50,8 @@ public class PagePreferences extends ActionBarActivity {
 
 		settings = getSharedPreferences(PREFERENCES_FILENAME, 0);
 
-		
-		
+
+
 		int rayon = settings.getInt(KEY_PREFERENCES_RAYON, DEFAULT_VALUE_RAYON);
 		seekBarRayon.setProgress(rayon);
 		tvRayon.setText(String.valueOf(rayon) + " km");
@@ -107,7 +107,7 @@ public class PagePreferences extends ActionBarActivity {
 	};
 
 
-	
+
 	@Override
 	public void onStart() {
 		super.onStart();

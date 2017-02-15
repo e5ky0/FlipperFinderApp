@@ -25,19 +25,19 @@ public class TournoiDAO extends DAOBase{
 		ArrayList<Tournoi> listeRetour = new ArrayList<Tournoi>();
 
 		Cursor cursor = mDb.query(FlipperDatabaseHandler.TOURNOI_TABLE_NAME,
-				  				  new String[]{FlipperDatabaseHandler.TOUR_ID,
-	 			   FlipperDatabaseHandler.TOUR_NOM,
-	 			   FlipperDatabaseHandler.TOUR_COMMENTAIRE,
-	 			   FlipperDatabaseHandler.TOUR_DATE,
-	 			   FlipperDatabaseHandler.TOUR_LATITUDE,
-	 			   FlipperDatabaseHandler.TOUR_LONGITUDE,
-	 			   FlipperDatabaseHandler.TOUR_ADRESSE,
-	 			   FlipperDatabaseHandler.TOUR_CODE_POSTAL,
-	 			   FlipperDatabaseHandler.TOUR_VILLE,
-	 			   FlipperDatabaseHandler.TOUR_PAYS,
-	 			   FlipperDatabaseHandler.TOUR_URL},
-	 			   null,null, null, null, null);
-				
+				new String[]{FlipperDatabaseHandler.TOUR_ID,
+					FlipperDatabaseHandler.TOUR_NOM,
+					FlipperDatabaseHandler.TOUR_COMMENTAIRE,
+					FlipperDatabaseHandler.TOUR_DATE,
+					FlipperDatabaseHandler.TOUR_LATITUDE,
+					FlipperDatabaseHandler.TOUR_LONGITUDE,
+					FlipperDatabaseHandler.TOUR_ADRESSE,
+					FlipperDatabaseHandler.TOUR_CODE_POSTAL,
+					FlipperDatabaseHandler.TOUR_VILLE,
+					FlipperDatabaseHandler.TOUR_PAYS,
+					FlipperDatabaseHandler.TOUR_URL},
+					null,null, null, null, null);
+
 		while (cursor.moveToNext()) {
 			listeRetour.add(convertCursorToModeleFlipper(cursor));
 		}
@@ -45,7 +45,7 @@ public class TournoiDAO extends DAOBase{
 
 		return listeRetour;
 	}
-	
+
 	private Tournoi convertCursorToModeleFlipper(Cursor c){
 		Tournoi tournoi = new Tournoi(c.getLong(0), c.getString(1), c.getString(2), c.getString(3),
 				c.getString(4), c.getString(5), c.getString(6), c.getString(7),
@@ -70,7 +70,7 @@ public class TournoiDAO extends DAOBase{
 		mDb.delete(FlipperDatabaseHandler.TOURNOI_TABLE_NAME, FlipperDatabaseHandler.TOUR_ID + "=?", new String[] { String.valueOf(tournoi.getId())});
 		mDb.insert(FlipperDatabaseHandler.TOURNOI_TABLE_NAME, null, contentValues);
 	}
-	
+
 	public void truncate(){
 		mDb.delete(FlipperDatabaseHandler.TOURNOI_TABLE_NAME, null, null);
 	}

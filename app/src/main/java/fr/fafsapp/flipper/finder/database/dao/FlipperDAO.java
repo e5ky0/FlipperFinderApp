@@ -35,13 +35,13 @@ public class FlipperDAO extends DAOBase {
 		Cursor cursor = mDb.query(FlipperDatabaseHandler.FLIPPER_TABLE_NAME + " INNER JOIN "
 				+ FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME + " ON " + FlipperDatabaseHandler.FLIPPER_MODELE
 				+ " = " + FlipperDatabaseHandler.MODELE_FLIPPER_ID, new String[] { FlipperDatabaseHandler.FLIPPER_ID,
-				FlipperDatabaseHandler.FLIPPER_MODELE, FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E,
-				FlipperDatabaseHandler.FLIPPER_ENSEIGNE, FlipperDatabaseHandler.FLIPPER_DATMAJ,
-				FlipperDatabaseHandler.FLIPPER_ACTIF, FlipperDatabaseHandler.MODELE_FLIPPER_ID,
-				FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE, FlipperDatabaseHandler.MODELE_FLIPPER_NOM,
-				FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT },
-				FlipperDatabaseHandler.FLIPPER_ENSEIGNE + "=?", new String[] { String.valueOf(enseigne.getId()) },
-				null, null, null);
+					FlipperDatabaseHandler.FLIPPER_MODELE, FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E,
+					FlipperDatabaseHandler.FLIPPER_ENSEIGNE, FlipperDatabaseHandler.FLIPPER_DATMAJ,
+					FlipperDatabaseHandler.FLIPPER_ACTIF, FlipperDatabaseHandler.MODELE_FLIPPER_ID,
+					FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE, FlipperDatabaseHandler.MODELE_FLIPPER_NOM,
+					FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT },
+					FlipperDatabaseHandler.FLIPPER_ENSEIGNE + "=?", new String[] { String.valueOf(enseigne.getId()) },
+					null, null, null);
 
 		while (cursor.moveToNext()) {
 			listeRetour.add(convertCursorToFlipper(cursor, enseigne));
@@ -50,41 +50,41 @@ public class FlipperDAO extends DAOBase {
 
 		return listeRetour;
 	}
-	
+
 	public Flipper getFlipperById(long idFlipper){
-	Flipper flipperRetour = null;	
-	String strWhereFlipper = " Where " + FlipperDatabaseHandler.FLIPPER_ID  + "=" + idFlipper;
-	
-	Cursor cursor = mDb.rawQuery("SELECT " + FlipperDatabaseHandler.FLIPPER_ID + " , "
-			+ FlipperDatabaseHandler.FLIPPER_MODELE + " , " + FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E + " , "
-			+ FlipperDatabaseHandler.FLIPPER_ENSEIGNE + " , " + FlipperDatabaseHandler.FLIPPER_DATMAJ + " , "
-			+ FlipperDatabaseHandler.FLIPPER_ACTIF + " , " + FlipperDatabaseHandler.MODELE_FLIPPER_ID + " , "
-			+ FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE + " , " + FlipperDatabaseHandler.MODELE_FLIPPER_NOM
-			+ " , " + FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT + " , "
-			+ FlipperDatabaseHandler.ENSEIGNE_ID + " , " + FlipperDatabaseHandler.ENSEIGNE_TYPE + " , "
-			+ FlipperDatabaseHandler.ENSEIGNE_NOM + " , " + FlipperDatabaseHandler.ENSEIGNE_HORAIRE + " , "
-			+ FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " , " + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " , "
-			+ FlipperDatabaseHandler.ENSEIGNE_ADRESSE + " , " + FlipperDatabaseHandler.ENSEIGNE_CODE_POSTAL + " , "
-			+ FlipperDatabaseHandler.ENSEIGNE_VILLE + " , " + FlipperDatabaseHandler.ENSEIGNE_PAYS + " , "
-			+ FlipperDatabaseHandler.ENSEIGNE_DATMAJ + " FROM "
-			+ FlipperDatabaseHandler.FLIPPER_TABLE_NAME + " INNER JOIN "
-			+ FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME + " ON " + FlipperDatabaseHandler.FLIPPER_MODELE
-			+ " = " + FlipperDatabaseHandler.MODELE_FLIPPER_ID + " INNER JOIN "
-			+ FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME + " ON " + FlipperDatabaseHandler.ENSEIGNE_ID + " = "
-			+ FlipperDatabaseHandler.FLIPPER_ENSEIGNE + strWhereFlipper, null);
-	
-	if (cursor.moveToNext()) {
-		flipperRetour = convertBigCursorToFlipper(cursor);
-	}
-	cursor.close();
-	
-	return flipperRetour;
+		Flipper flipperRetour = null;
+		String strWhereFlipper = " Where " + FlipperDatabaseHandler.FLIPPER_ID  + "=" + idFlipper;
+
+		Cursor cursor = mDb.rawQuery("SELECT " + FlipperDatabaseHandler.FLIPPER_ID + " , "
+				+ FlipperDatabaseHandler.FLIPPER_MODELE + " , " + FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E + " , "
+				+ FlipperDatabaseHandler.FLIPPER_ENSEIGNE + " , " + FlipperDatabaseHandler.FLIPPER_DATMAJ + " , "
+				+ FlipperDatabaseHandler.FLIPPER_ACTIF + " , " + FlipperDatabaseHandler.MODELE_FLIPPER_ID + " , "
+				+ FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE + " , " + FlipperDatabaseHandler.MODELE_FLIPPER_NOM
+				+ " , " + FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT + " , "
+				+ FlipperDatabaseHandler.ENSEIGNE_ID + " , " + FlipperDatabaseHandler.ENSEIGNE_TYPE + " , "
+				+ FlipperDatabaseHandler.ENSEIGNE_NOM + " , " + FlipperDatabaseHandler.ENSEIGNE_HORAIRE + " , "
+				+ FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " , " + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " , "
+				+ FlipperDatabaseHandler.ENSEIGNE_ADRESSE + " , " + FlipperDatabaseHandler.ENSEIGNE_CODE_POSTAL + " , "
+				+ FlipperDatabaseHandler.ENSEIGNE_VILLE + " , " + FlipperDatabaseHandler.ENSEIGNE_PAYS + " , "
+				+ FlipperDatabaseHandler.ENSEIGNE_DATMAJ + " FROM "
+				+ FlipperDatabaseHandler.FLIPPER_TABLE_NAME + " INNER JOIN "
+				+ FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME + " ON " + FlipperDatabaseHandler.FLIPPER_MODELE
+				+ " = " + FlipperDatabaseHandler.MODELE_FLIPPER_ID + " INNER JOIN "
+				+ FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME + " ON " + FlipperDatabaseHandler.ENSEIGNE_ID + " = "
+				+ FlipperDatabaseHandler.FLIPPER_ENSEIGNE + strWhereFlipper, null);
+
+		if (cursor.moveToNext()) {
+			flipperRetour = convertBigCursorToFlipper(cursor);
+		}
+		cursor.close();
+
+		return flipperRetour;
 	}
 
 	/**
 	 * Requ�te de la mort qui ram�ne les enseignes les flippers et les mod�les �
 	 * partir d'un point et d'une distance
-	 * 
+	 *
 	 * @param center
 	 * @param distance
 	 * @param modele
@@ -103,20 +103,20 @@ public class FlipperDAO extends DAOBase {
 
 		double fudge = Math.pow(Math.cos(Math.toRadians(center.x)), 2);
 		String strWhereEnseigne = " Where " + "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)" + " > "
-				+ String.valueOf(p3.x) + " And " + "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)"
-				+ " < " + String.valueOf(p1.x) + " And " + "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE
-				+ " AS REAL)" + " < " + String.valueOf(p2.y) + " And " + "CAST("
-				+ FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " AS REAL)" + " > " + String.valueOf(p4.y);
+			+ String.valueOf(p3.x) + " And " + "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)"
+			+ " < " + String.valueOf(p1.x) + " And " + "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE
+			+ " AS REAL)" + " < " + String.valueOf(p2.y) + " And " + "CAST("
+			+ FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " AS REAL)" + " > " + String.valueOf(p4.y);
 
 		String strAndModele = "";
 		if (modele != null && modele.length() > 0) {
 			modele = modele.replace("'", "''");
 			strAndModele = " AND UPPER(" + FlipperDatabaseHandler.MODELE_FLIPPER_NOM + ") = '" + modele.toUpperCase()
-					+ "' ";
+				+ "' ";
 		}
 		// On ordonne par distance
 		String strOrder = " ORDER BY ((" + center.x + " - ENS_LATITUDE) * (" + center.x + " - ENS_LATITUDE)" + " + (" + center.y
-				+ " - ENS_LONGITUDE) * (" + center.y + " - ENS_LONGITUDE) * " + fudge + ")";
+			+ " - ENS_LONGITUDE) * (" + center.y + " - ENS_LONGITUDE) * " + fudge + ")";
 
 		// On ne prend que les flippers actifs
 		String strActif = " AND "+ FlipperDatabaseHandler.FLIPPER_ACTIF+" = 1 ";

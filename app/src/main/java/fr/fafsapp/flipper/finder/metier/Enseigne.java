@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Enseigne  implements Serializable{
-	
+
 	private static final long serialVersionUID = 4803600387182980034L;
 	@SerializedName("ENS_ID")
 	private long id;

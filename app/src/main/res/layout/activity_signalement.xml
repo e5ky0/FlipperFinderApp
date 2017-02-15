@@ -8,9 +8,9 @@ android:layout_height="wrap_content">
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
-	
+
 	    <include layout="@layout/localisation" />
-	    
+
 	    <AutoCompleteTextView
 	        android:id="@+id/autocompletionModeleFlipper"
 	        android:layout_width="fill_parent"
@@ -22,7 +22,7 @@ android:layout_height="wrap_content">
 	        android:inputType="textFilter|textNoSuggestions"
 	        android:singleLine="true"
 	        android:hint="@string/SectionFlipper"/>
-	
+
 	    <EditText
 	        android:id="@+id/champNomEnseigne"
 	        android:layout_width="fill_parent"
@@ -42,6 +42,6 @@ android:layout_height="wrap_content">
 	        android:minHeight="50dp"
 	        android:minWidth="250dp"
 	        android:text="@string/BoutonEnvoiInfosFlipper" />
-	
+
 	</LinearLayout>
 </ScrollView>

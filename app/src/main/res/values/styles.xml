@@ -9,13 +9,13 @@
 	    <item name="android:layout_height">2dp</item>
 	    <item name="android:background">@color/divider_section</item>
 	</style>
-    
+
 	    <style name="itemDivider">
 	    <item name="android:layout_width">match_parent</item>
 	    <item name="android:layout_height">1dp</item>
 	    <item name="android:background">@color/divider</item>
 	</style>
-	
+
   <style name="Theme.AppCompat.Light.NoActionBar" parent="@style/Theme.AppCompat.Light">
         <item name="android:windowNoTitle">true</item>
   </style>
@@ -29,5 +29,5 @@
 		<item name="android:layout_height">match_parent</item>
 		<item name="android:orientation">vertical</item>
 	</style>
-	    
-</resources> 
+
+</resources>

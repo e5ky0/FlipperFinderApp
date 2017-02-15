@@ -51,64 +51,64 @@ public class FragmentActionsFlipper extends Fragment {
 	EditText pseudo = null;
 	EditText commentaire = null;
 	AutoCompleteTextView champNouveauModeleFlipper = null;
-	
+
 	String pseudoText = "";
 	SharedPreferences settings;
-	
+
 	Flipper flipper;
-	
+
 	ScrollView changeModeleLayout = null;
-	
+
 	BaseModeleService modeleFlipperService = null;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-        Bundle savedInstanceState) {
-    	View rootView = inflater.inflate(R.layout.fragment_action_flipper, container, false);
-	    super.onCreate(savedInstanceState);
-	    
-	    settings = getActivity().getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
-	    pseudoText = settings.getString(PagePreferences.KEY_PSEUDO_FULL, "");
-	    
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_action_flipper, container, false);
+		super.onCreate(savedInstanceState);
+
+		settings = getActivity().getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
+		pseudoText = settings.getString(PagePreferences.KEY_PSEUDO_FULL, "");
+
 		Intent i = getActivity().getIntent();
 		flipper = (Flipper) i.getSerializableExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO);
 
-	
+
 		boutonChangement = (Button) rootView.findViewById(R.id.boutonChangement);
 		boutonDisparition = (Button) rootView.findViewById(R.id.boutonDisparition);
 		boutonValisation = (Button) rootView.findViewById(R.id.boutonValidation);
 		boutonNavigation = (Button) rootView.findViewById(R.id.boutonNavigation);
 		boutonValideChangement = (Button) rootView.findViewById(R.id.boutonValideChangementModele);
 		boutonAnnuleChangement = (Button) rootView.findViewById(R.id.boutonCancelChangeModele);
-    	champNouveauModeleFlipper = (AutoCompleteTextView)rootView.findViewById(R.id.autocompletionNouveauModeleFlipper);
-    	pseudo = (EditText) rootView.findViewById(R.id.champPseudo);
-    	commentaire = (EditText) rootView.findViewById(R.id.texteCommentaire);
-    	changeModeleLayout = (ScrollView) rootView.findViewById(R.id.layoutChangeModele);
-    	
-    	boutonChangement.setOnClickListener(ChangerModeleListener);
+		champNouveauModeleFlipper = (AutoCompleteTextView)rootView.findViewById(R.id.autocompletionNouveauModeleFlipper);
+		pseudo = (EditText) rootView.findViewById(R.id.champPseudo);
+		commentaire = (EditText) rootView.findViewById(R.id.texteCommentaire);
+		changeModeleLayout = (ScrollView) rootView.findViewById(R.id.layoutChangeModele);
+
+		boutonChangement.setOnClickListener(ChangerModeleListener);
 		boutonDisparition.setOnClickListener(DisparitionListener);
 		boutonValisation.setOnClickListener(ValidationListener);
 		boutonNavigation.setOnClickListener(NavigationListener);
-		
+
 		boutonAnnuleChangement.setOnClickListener(AnnuleChangementModeleListener);
 		boutonValideChangement.setOnClickListener(ValideChangementListener);
 
-    	// Pr�pare la liste d'autocompl�tion pour les mod�le de flipper
+		// Pr�pare la liste d'autocompl�tion pour les mod�le de flipper
 		modeleFlipperService = new BaseModeleService();
-    	ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, modeleFlipperService.getAllNomModeleFlipper(getActivity().getApplicationContext()));    	
-    	champNouveauModeleFlipper.setAdapter(adapter);
-    	champNouveauModeleFlipper.setImeOptions(EditorInfo.IME_ACTION_DONE);
-    	
-    	champNouveauModeleFlipper.setOnItemClickListener(itemSelectionneNouveauModeleListener);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, modeleFlipperService.getAllNomModeleFlipper(getActivity().getApplicationContext()));
+		champNouveauModeleFlipper.setAdapter(adapter);
+		champNouveauModeleFlipper.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+		champNouveauModeleFlipper.setOnItemClickListener(itemSelectionneNouveauModeleListener);
 
 		//R�cup�re le pseudo et pr�remplit le champ si besoin
 		settings = getActivity().getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
 		pseudoText = settings.getString(PagePreferences.KEY_PSEUDO_FULL, "");
 		pseudo.setText(pseudoText);
-		
+
 		// On cache le layout qui va servir � renseigner un nouveau mod�le
 		changeModeleLayout.setVisibility(View.GONE);
-		
+
 		return rootView;
 
 	}
@@ -119,23 +119,23 @@ public class FragmentActionsFlipper extends Fragment {
 			InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 			imm.hideSoftInputFromWindow(champNouveauModeleFlipper.getWindowToken(), 0);
 		}
-     };
+	};
 
- 	private OnClickListener ValideChangementListener = new OnClickListener() {
- 		public void onClick(View v) {
- 			
+	private OnClickListener ValideChangementListener = new OnClickListener() {
+		public void onClick(View v) {
+
 			if (champNouveauModeleFlipper.getText().length() != 0){
 				ModeleFlipper modeleChoisi = modeleFlipperService.getModeleFlipperByName(getActivity().getApplicationContext(),champNouveauModeleFlipper.getText().toString());
 				if (modeleChoisi != null){
 					if (modeleChoisi.getId() != flipper.getModele().getId()){
 						if (NetworkUtil.isConnected(getActivity().getApplicationContext())){
 							FlipperService flipperService = new FlipperService(new FragmentActionCallback() {
-					            @Override
-					            public void onTaskDone() {
-					            	((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
-					            	getActivity().finish();
-					            }
-					        });
+								@Override
+								public void onTaskDone() {
+									((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
+									getActivity().finish();
+								}
+							});
 							String commentaireString = null;
 							String pseudoCommentaire = null;
 							if (commentaire.getText().length() > 0){
@@ -164,27 +164,27 @@ public class FragmentActionsFlipper extends Fragment {
 			}else{
 				new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!").setMessage("Vous n'avez pas rempli de nouveau mod�le !").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
 			}
- 		}
- 	};
+		}
+	};
 
- 	private DialogInterface.OnClickListener ChangerModeleParMailListener = new DialogInterface.OnClickListener() {
+	private DialogInterface.OnClickListener ChangerModeleParMailListener = new DialogInterface.OnClickListener() {
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
- 			String message = "ID : " + flipper.getId() + "\nEnseigne : " + flipper.getEnseigne().getId()
- 					+ "\nAncien Mod�le :" + flipper.getModele().getNom() + "\nNouveau Mod�le : " + champNouveauModeleFlipper.getText().toString();
- 			envoiMail("Changement du flipper " + flipper.getId(), message);
+			String message = "ID : " + flipper.getId() + "\nEnseigne : " + flipper.getEnseigne().getId()
+				+ "\nAncien Mod�le :" + flipper.getModele().getNom() + "\nNouveau Mod�le : " + champNouveauModeleFlipper.getText().toString();
+			envoiMail("Changement du flipper " + flipper.getId(), message);
 		}
 	};
 
 	public interface FragmentActionCallback {
-        public void onTaskDone();
-    }
+		public void onTaskDone();
+	}
 
- 	private OnClickListener ChangerModeleListener = new OnClickListener() {
+	private OnClickListener ChangerModeleListener = new OnClickListener() {
 		public void onClick(View v) {
-				Animation slide = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.slide_up);
-				changeModeleLayout.setVisibility(View.VISIBLE);
-				changeModeleLayout.startAnimation(slide);
+			Animation slide = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.slide_up);
+			changeModeleLayout.setVisibility(View.VISIBLE);
+			changeModeleLayout.startAnimation(slide);
 		}
 	};
 
@@ -199,7 +199,7 @@ public class FragmentActionsFlipper extends Fragment {
 	private OnClickListener DisparitionListener = new OnClickListener() {
 		public void onClick(View v) {
 			String message = "ID : " + flipper.getId() + "\nEnseigne : " + flipper.getEnseigne().getId()
-					+ "\nCe flipper n'existe plus!";
+				+ "\nCe flipper n'existe plus!";
 			envoiMail("Retrait du flipper " + flipper.getId(), message);
 		}
 	};
@@ -208,11 +208,11 @@ public class FragmentActionsFlipper extends Fragment {
 			if (NetworkUtil.isConnected(getActivity().getApplicationContext())){
 				//EasyTracker.getTracker().sendEvent("ui_action", "button_press", "validation_button", 0L);
 				FlipperService flipperService = new FlipperService(new FragmentActionCallback() {
-		            @Override
-		            public void onTaskDone() {
-		            	((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
-		            }
-		        });
+					@Override
+					public void onTaskDone() {
+						((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
+					}
+				});
 				((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 				flipperService.valideFlipper(getActivity().getApplicationContext(), flipper);
 			}else{
@@ -225,10 +225,10 @@ public class FragmentActionsFlipper extends Fragment {
 	private OnClickListener NavigationListener = new OnClickListener() {
 		public void onClick(View v) {
 			Intent navIntentGoogleNav = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="
-					+ flipper.getEnseigne().getAdresseCompleteSansPays()));
+						+ flipper.getEnseigne().getAdresseCompleteSansPays()));
 
 			Intent navIntentWaze = new Intent(Intent.ACTION_VIEW, Uri.parse("waze://?q="
-					+ flipper.getEnseigne().getAdresseCompleteSansPays()));
+						+ flipper.getEnseigne().getAdresseCompleteSansPays()));
 
 			if (LocationUtil.canHandleIntent(getActivity().getApplicationContext(), navIntentGoogleNav)) {
 				navIntentGoogleNav.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -256,12 +256,12 @@ public class FragmentActionsFlipper extends Fragment {
 			startActivity(Intent.createChooser(i, "Envoi du mail"));
 		} catch (android.content.ActivityNotFoundException ex) {
 			new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!")
-					.setMessage("Vous n'avez pas de mail configur� sur votre t�l�phone.")
-					.setNeutralButton("Fermer", null).setIcon(R.drawable.ic_tristesse).show();
+				.setMessage("Vous n'avez pas de mail configur� sur votre t�l�phone.")
+				.setNeutralButton("Fermer", null).setIcon(R.drawable.ic_tristesse).show();
 		}
 	}
 
-	
+
 	@Override
 	public void onStart() {
 		super.onStart();

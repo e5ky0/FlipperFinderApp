@@ -53,7 +53,7 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 			vi = LayoutInflater.from(getContext());
 			v = vi.inflate(R.layout.simple_list_item_flipper, null);
 		}
-		
+
 		// On set les tags pour pouvoir retrouver sur quelle ligne on a cliqu�.
 		v.setTag(position);
 		v.setOnClickListener(InfoFlipperClickListener);
@@ -66,7 +66,7 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 			TextView adresseTV = (TextView) v.findViewById(R.id.textAdresseFlipper);
 			TextView distanceTV = (TextView) v.findViewById(R.id.distance);
 			TextView dateMajTV = (TextView) v.findViewById(R.id.dateMaj);
-			
+
 			if (modeleTV != null) {
 				modeleTV.setText(p.getModele().getNom());
 			}
@@ -80,9 +80,9 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 				Float distanceFloat = resultDistance[0];
 				distanceTV.setText(LocationUtil.formatDist(distanceFloat));
 			}
-			
+
 			// Affichage de la date de mise � jour
-			int nbJours = LocationUtil.getDaysSinceMajFlip(p); 
+			int nbJours = LocationUtil.getDaysSinceMajFlip(p);
 			if (nbJours == -1){
 				// Date nulle on mal formatt�e : Rouge!
 				dateMajTV.setTextColor(Color.parseColor("#FE2E2E"));
@@ -121,5 +121,5 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 			getContext().startActivity(infoActivite);
 		}
 	};
-	
+
 }

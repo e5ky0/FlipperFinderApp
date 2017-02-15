@@ -38,16 +38,16 @@ public class FragmentCarteFlipper extends SupportMapFragment implements Location
 	LatLngBounds.Builder builder = null;
 
 	private Flipper flipperToDisplay = new Flipper();
-	
+
 	public void setFlipperToDisplay(Flipper flip){
 		flipperToDisplay = flip;
 	}
 
 	private LocationManager locationManager;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-        Bundle savedInstanceState) {
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 
 		View rootView = super.onCreateView(inflater, container, savedInstanceState);
 
@@ -91,8 +91,8 @@ public class FragmentCarteFlipper extends SupportMapFragment implements Location
 			}
 		}
 
-        return rootView;
-    }
+		return rootView;
+	}
 
 	@Override
 	public void onPause() {
@@ -140,5 +140,5 @@ public class FragmentCarteFlipper extends SupportMapFragment implements Location
 	@Override
 	public void onProviderDisabled(String provider) {
 	}
-	
+
 }

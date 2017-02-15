@@ -43,7 +43,7 @@ public class PageListeResultatTournois extends ActionBarActivity {
 	ImageButton boutonClearAdresse = null;
 	ImageButton boutonLocalisation = null;
 	ListView listeFlipperView = null;
-	
+
 	ActionBar mActionBar;
 
 	@Override
@@ -51,11 +51,11 @@ public class PageListeResultatTournois extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_liste_resultat_tournoi);
-		
+
 		mActionBar = getSupportActionBar();
 		mActionBar.setTitle(R.string.headerTournoi);
 		mActionBar.setIcon(R.drawable.header_icon_tournoi);
-    	adresseUtilisateurTV = (EditText) findViewById(R.id.champAdresseLocalisation);
+		adresseUtilisateurTV = (EditText) findViewById(R.id.champAdresseLocalisation);
 		adresseUtilisateurTV.setHint(R.string.hintRechercheAdresse);
 		adresseUtilisateurTV.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
 		boutonClearAdresse = (ImageButton) findViewById(R.id.boutonClearAdresse);
@@ -103,10 +103,10 @@ public class PageListeResultatTournois extends ActionBarActivity {
 			adresseUtilisateurTV.setText(addressText);
 		} else {
 			new AlertDialog.Builder(PageListeResultatTournois.this)
-					.setTitle("Argh!")
-					.setMessage(
-							"Votre adresse n'a pas pu être trouvée! Rappuyez sur le bouton de localisation, ou entrez votre adresse manuellement. Si le problème persiste, contactez moi :)")
-					.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
+				.setTitle("Argh!")
+				.setMessage(
+						"Votre adresse n'a pas pu être trouvée! Rappuyez sur le bouton de localisation, ou entrez votre adresse manuellement. Si le problème persiste, contactez moi :)")
+				.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
 		}
 	}
 
@@ -124,9 +124,9 @@ public class PageListeResultatTournois extends ActionBarActivity {
 		listeFlipperView.setAdapter(customAdapter);
 
 		if (listeTournoi.size() == 0) {
-				new AlertDialog.Builder(this).setTitle("Argh!")
-						.setMessage("Aucun tournoi à venir...")
-						.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
+			new AlertDialog.Builder(this).setTitle("Argh!")
+				.setMessage("Aucun tournoi à venir...")
+				.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
 		}
 	}
 
@@ -145,16 +145,16 @@ public class PageListeResultatTournois extends ActionBarActivity {
 				// TODO Trouver une fa�on propre d'afficher un choix quand il y
 				// a plusieurs adresses trouv�es
 				adresseUtilisateurTV.setText(LocationUtil.getAdresseFromCoordGPS(getApplicationContext(), latitude,
-						longitude));
+							longitude));
 				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 				rafraichitListeTournoi();
 			} else {
 				new AlertDialog.Builder(PageListeResultatTournois.this)
-						.setTitle("Argh!")
-						.setMessage(
-								"Votre adresse n'a pas pu être trouvée! Veuillez activer le GPS et la connexion Wifi sur votre téléphone. Si le problème persiste, contactez moi :)")
-						.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
+					.setTitle("Argh!")
+					.setMessage(
+							"Votre adresse n'a pas pu être trouvée! Veuillez activer le GPS et la connexion Wifi sur votre téléphone. Si le problème persiste, contactez moi :)")
+					.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
 			}
 			return false;
 		}

@@ -46,34 +46,34 @@ public class FragmentCommentaireFlipper extends Fragment {
 	TextView tvPasCommentaire = null;
 
 	SharedPreferences settings;
-	
+
 	ListView listeCommentaireView = null;
-	
+
 	ScrollView newCommentaireLayout = null;
-	
+
 	Button boutonAnnulerNouveauCommentaire = null;
 	Button boutonEnvoiCommentaire = null;
-	
+
 	Flipper flipper;
 	ArrayList<Commentaire> listeCommentaires = null;
-	
+
 	CommentaireService commentaireService;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-        Bundle savedInstanceState) {
-    	View rootView = inflater.inflate(R.layout.fragment_commentaire_flipper, container, false);
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_commentaire_flipper, container, false);
 
 		Intent i = getActivity().getIntent();
 		flipper = (Flipper) i.getSerializableExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO);
 
 		commentaireService = new CommentaireService(new FragmentCallback() {
-            @Override
-            public void onTaskDone() {
-                rafraichitListeCommentaire();
-            	((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
-            }
-        });
+			@Override
+			public void onTaskDone() {
+				rafraichitListeCommentaire();
+				((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
+			}
+		});
 
 		listeCommentaireView = (ListView) rootView.findViewById(R.id.listeCommentaires);
 		newCommentaireLayout = (ScrollView) rootView.findViewById(R.id.layoutNewComm);
@@ -91,14 +91,14 @@ public class FragmentCommentaireFlipper extends Fragment {
 		//Récupère le pseudo et préremplit le champ si besoin
 		settings = getActivity().getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
 		pseudoText = settings.getString(PagePreferences.KEY_PSEUDO_FULL, "");
-		
+
 		pseudo.setText(pseudoText);
-		
+
 		boutonLaisserCommentaireFlipper.setOnClickListener(LaisserCommentaireListener);
 
 		boutonEnvoiCommentaire.setOnClickListener(EnvoiCommentaireListener);
 		boutonAnnulerNouveauCommentaire.setOnClickListener(AnnuleNouveauCommentaireListener);
-		
+
 		return rootView;
 	}
 
@@ -121,10 +121,10 @@ public class FragmentCommentaireFlipper extends Fragment {
 			Editor editor = settings.edit();
 			editor.putString(PagePreferences.KEY_PSEUDO_FULL, pseudo.getText().toString());
 			editor.commit();
-			
+
 			// Si un commentaire a �t� �crit, l'envoyer!
 			if (commentaire.getText().length() == 0){
-  				new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!").setMessage("Vous n'avez pas rempli le champ commentaire!").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
+				new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!").setMessage("Vous n'avez pas rempli le champ commentaire!").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
 			}else{
 				//EasyTracker.getTracker().sendEvent("ui_action", "button_press", "add_commentaire_button", 0L);
 				String htmlString = Html.toHtml(commentaire.getText());
@@ -135,11 +135,11 @@ public class FragmentCommentaireFlipper extends Fragment {
 					pseudoCommentaire = pseudo.getText().toString();
 				}
 				Commentaire commentaireToAdd = new Commentaire(	dateDuJour.getTime(),
-																flipper.getId(),
-																htmlString,
-																new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour),
-																pseudoCommentaire,
-																1);
+						flipper.getId(),
+						htmlString,
+						new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour),
+						pseudoCommentaire,
+						1);
 				((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 				commentaireService.ajouteCommentaire(getActivity(), commentaireToAdd);
 				// Rafraichir la liste des commentaires
@@ -171,11 +171,11 @@ public class FragmentCommentaireFlipper extends Fragment {
 	};
 
 
-    public interface FragmentCallback {
-        public void onTaskDone();
-    }
+	public interface FragmentCallback {
+		public void onTaskDone();
+	}
 
-    @Override
+	@Override
 	public void onStart() {
 		super.onStart();
 		//EasyTracker.getInstance().activityStart(getActivity());
