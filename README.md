@@ -1,8 +1,8 @@
 # FlipperFinderApp
-Source code of Android app Flipper FInder
-The app is no longer functional since Parse closed in January 2017
+Source code of Android app Flipper Finder
+The app database is no longer updated since Parse.com closed in January 2017
 
-In the files, you can find the Flippers & Etablissments lists dated January 2017.
+The database was last extracted on 27-01-2017, available in the json files in /database 28-01-2017.
 
 ## Website
 Use bower to install libs:
