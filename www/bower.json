@@ -23,6 +23,7 @@
     "bootstrap": "^3.3.6",
     "moment": "^2.14.1",
     "backbone.localStorage": "backbone.localstorage#^1.1.16",
-    "requirejs-plugins": "^1.0.3"
+    "requirejs-plugins": "^1.0.3",
+    "i18n": "https://github.com/requirejs/i18n.git#^2.0.6"
   }
 }
