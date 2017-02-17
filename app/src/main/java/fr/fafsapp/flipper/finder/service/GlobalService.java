@@ -94,14 +94,14 @@ public class GlobalService {
 		// On met à jour la table des modèles de flipper
 		if (nvlleListeModele != null && nvlleListeModele.size() > 0){
 			maj = true;
-			textPopup += pContext.getResources().getString(R.string.toastMajModele, nvlleListeModele.size())+ "\n";;
+			textPopup += pContext.getResources().getString(R.string.toastMajModele, nvlleListeModele.size())+ "\n";
 			baseModeleService.majListeModele(nvlleListeModele, pContext);
 		}
 
 		// On met à jour la table des flippers
 		if (nvlleListeFlipper != null && nvlleListeFlipper.size() > 0){
 			maj = true;
-			textPopup += pContext.getResources().getString(R.string.toastMajFlipper, nvlleListeFlipper.size())+ "\n";;
+			textPopup += pContext.getResources().getString(R.string.toastMajFlipper, nvlleListeFlipper.size())+ "\n";
 			baseFlipperService.majListeFlipper(nvlleListeFlipper, pContext);
 		}
 

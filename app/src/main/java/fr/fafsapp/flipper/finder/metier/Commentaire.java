@@ -102,10 +102,7 @@ public class Commentaire  implements Serializable{
 	}
 
 	public void setActif(long actif) {
-		if (actif == 1)
-			this.actif = true;
-		else
-			this.actif = false;
+		this.actif = actif == 1;
 	}
 
 	public Flipper getFlipper() {

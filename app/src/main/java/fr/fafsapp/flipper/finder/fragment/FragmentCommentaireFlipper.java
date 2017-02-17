@@ -172,7 +172,7 @@ public class FragmentCommentaireFlipper extends Fragment {
 
 
 	public interface FragmentCallback {
-		public void onTaskDone();
+		void onTaskDone();
 	}
 
 	@Override

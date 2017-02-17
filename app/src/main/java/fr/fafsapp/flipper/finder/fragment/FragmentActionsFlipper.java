@@ -177,7 +177,7 @@ public class FragmentActionsFlipper extends Fragment {
 	};
 
 	public interface FragmentActionCallback {
-		public void onTaskDone();
+		void onTaskDone();
 	}
 
 	private OnClickListener ChangerModeleListener = new OnClickListener() {

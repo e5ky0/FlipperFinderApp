@@ -193,10 +193,10 @@ public class LocationUtil {
 			float[] resultDistance=new float[5];
 			// On va ressortir l'adresse la plus proche parmi toute celle retournées
 			Address adresseARetourner = listeAdresseRetour.get(0);
-			Location.distanceBetween(latitude, longitude, adresseARetourner.getLatitude(), adresseARetourner.getLongitude(), resultDistance);;
+			Location.distanceBetween(latitude, longitude, adresseARetourner.getLatitude(), adresseARetourner.getLongitude(), resultDistance);
 			Float distanceRetour =  resultDistance[0];
 			for (Address adresseEnCours : listeAdresseRetour){
-				Location.distanceBetween(latitude, longitude, adresseEnCours.getLatitude(), adresseEnCours.getLongitude(), resultDistance);;
+				Location.distanceBetween(latitude, longitude, adresseEnCours.getLatitude(), adresseEnCours.getLongitude(), resultDistance);
 				Float distanceFloat = resultDistance[0];
 				if (distanceFloat < distanceRetour){
 					adresseARetourner = adresseEnCours;
