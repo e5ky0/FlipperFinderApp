@@ -27,6 +27,7 @@ import java.util.Map;
 
 import fr.fafsapp.flipper.finder.metier.Flipper;
 import fr.fafsapp.flipper.finder.utils.LocationUtil;
+import fr.fafsapp.flipper.finder.utils.MyLocation;
 
 public class PageCarteFlipper extends FragmentActivity implements
 LocationListener, LocationSource {
@@ -134,7 +135,7 @@ LocationListener, LocationSource {
 
 	@Override
 	public void onPause() {
-		if (locationManager != null) {
+		if (!MyLocation.checkLocationPermission(this) && locationManager != null) {
 			locationManager.removeUpdates(this);
 		}
 		super.onPause();

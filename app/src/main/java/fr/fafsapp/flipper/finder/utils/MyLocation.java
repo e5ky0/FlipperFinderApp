@@ -3,11 +3,15 @@ package fr.fafsapp.flipper.finder.utils;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 
 public class MyLocation {
     Timer timer1;
@@ -16,8 +20,18 @@ public class MyLocation {
     boolean gps_enabled=false;
     boolean network_enabled=false;
 
+    static public boolean checkLocationPermission(Activity callingActivity)
+    {
+        int res = ContextCompat.checkSelfPermission(callingActivity,
+                "android.permission.ACCESS_FINE_LOCATION");
+        if (res != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(callingActivity,
+                    new String[]{"android.permission.ACCESS_FINE_LOCATION"}, 1);
+        }
+        return (res == PackageManager.PERMISSION_GRANTED);
+    }
 
-    public void cancelTimer() {
+    public void cancelTimer() throws SecurityException {
         if (timer1 != null){
             timer1.cancel();
         }
@@ -27,7 +41,7 @@ public class MyLocation {
         }
     }
 
-    public boolean getLocation(Context context, LocationResult result) {
+    public boolean getLocation(Context context, LocationResult result) throws SecurityException {
         // I use LocationResult callback class to pass location value from MyLocation to user code.
         locationResult=result;
         if(lm==null)
@@ -51,7 +65,7 @@ public class MyLocation {
     }
 
     LocationListener locationListenerGps = new LocationListener() {
-        public void onLocationChanged(Location location) {
+        public void onLocationChanged(Location location) throws SecurityException {
             timer1.cancel();
             locationResult.gotLocation(location);
             lm.removeUpdates(this);
@@ -63,7 +77,7 @@ public class MyLocation {
     };
 
     LocationListener locationListenerNetwork = new LocationListener() {
-        public void onLocationChanged(Location location) {
+        public void onLocationChanged(Location location) throws SecurityException {
             timer1.cancel();
             locationResult.gotLocation(location);
             lm.removeUpdates(this);
@@ -76,7 +90,7 @@ public class MyLocation {
 
     class GetLastLocation extends TimerTask {
         @Override
-        public void run() {
+        public void run() throws SecurityException {
             lm.removeUpdates(locationListenerGps);
             lm.removeUpdates(locationListenerNetwork);
 

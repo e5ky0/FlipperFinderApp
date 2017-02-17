@@ -121,6 +121,10 @@ public class PageListeResultat extends Activity {
             }
         };
 
+        if (!myLocation.checkLocationPermission(this)) {
+            return;
+        }
+
         myLocation.getLocation(this, locationResult);
 
         // On commence par récupèrer la dernière location connue du téléphone,

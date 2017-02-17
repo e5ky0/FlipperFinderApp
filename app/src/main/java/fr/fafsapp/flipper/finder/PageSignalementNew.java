@@ -41,8 +41,6 @@ import fr.fafsapp.flipper.finder.utils.MyLocation.LocationResult;
 
 public class PageSignalementNew extends ActionBarActivity {
 
-    MyLocation myLocation = new MyLocation();
-
     LatLng currentLocation = null;
 
     LatLng newLocation = null;

@@ -4,9 +4,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -66,17 +68,26 @@ public class MainActivity extends AppCompatActivity {
 		settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
 		checkIfMajNeeded();
 
-		MyLocation myLocation = new MyLocation();
-		LocationResult locationResult = new LocationResult(){
-			@Override
-			public void gotLocation(Location location){
-				if (location != null){
-					// Méthode appelée lorsque la localisation a fonctionné
-				}
-			}
-		};
-		myLocation.getLocation(this, locationResult);
+		 ActivityCompat.requestPermissions(this, new String[]{"android.permission.ACCESS_FINE_LOCATION"}, 1);
 	}
+
+	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        // If request is cancelled, the result arrays are empty.
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            MyLocation myLocation = new MyLocation();
+            LocationResult locationResult = new LocationResult(){
+                @Override
+                public void gotLocation(Location location){
+                    if (location != null){
+                        // Méthode appelée lorsque la localisation a fonctionné
+                    }
+                }
+            };
+            myLocation.getLocation(this, locationResult);
+        }
+    }
 
 	private void checkIfMajNeeded(){
 		String dateDerniereMajString = settings.getString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);

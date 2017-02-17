@@ -148,6 +148,10 @@ public class PageSignalement extends ActionBarActivity {
 			}
 		};
 
+		if (!myLocation.checkLocationPermission(this)) {
+			return;
+		}
+
 		myLocation.getLocation(this, locationResult);
 
 		// On commence par récupèrer la dernière location connue du téléphone, et on remplit le champ
