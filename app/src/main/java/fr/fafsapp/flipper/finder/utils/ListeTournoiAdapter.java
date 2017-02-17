@@ -22,7 +22,7 @@ import fr.fafsapp.flipper.finder.R;
 import fr.fafsapp.flipper.finder.metier.Tournoi;
 
 /**
- * Classe pour un item de la liste de flipper de l'activit�
+ * Classe pour un item de la liste de flipper de l'activité
  * PageListeResultat
  * @author Fafouche
  *
@@ -59,7 +59,7 @@ public class ListeTournoiAdapter extends ArrayAdapter<Tournoi> {
 			v = vi.inflate(R.layout.simple_list_item_tournoi, null);
 		}
 
-		// On set les tags pour pouvoir retrouver sur quelle ligne on a cliqu�.
+		// On set les tags pour pouvoir retrouver sur quelle ligne on a cliqué.
 		v.setTag(position);
 		v.setOnClickListener(InfoTournoiClickListener);
 

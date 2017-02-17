@@ -70,17 +70,17 @@ LocationListener, LocationSource {
 			String snippet = flipper.getEnseigne().getNom() + " " + flipper.getEnseigne().getAdresse();
 			LatLng pos = new LatLng(Double.valueOf(flipper.getEnseigne().getLatitude()), Double.valueOf(flipper.getEnseigne().getLongitude()));
 
-			// On set l'icone que l'on va utiliser en fonction de l'ant�riorit� de la m�j du flipper
+			// On set l'icone que l'on va utiliser en fonction de l'antériorité de la màj du flipper
 			int iconeFlipper = R.drawable.ic_flipper;
 
 			int nbJours = LocationUtil.getDaysSinceMajFlip(flipper);
 			if (nbJours == -1){
-				// Date nulle on mal formatt�e : on laisse l'icone noire
+				// Date nulle on mal formattée : on laisse l'icone noire
 			}else if (nbJours > 50){
-				// Mis � jour il y a plus de 50 jours, on met en Orange
+				// Mis à jour il y a plus de 50 jours, on met en Orange
 				iconeFlipper = R.drawable.ic_flipper_orange;
 			}else{
-				// Mis � jour r�cemment, on met en vert
+				// Mis à jour récemment, on met en vert
 				iconeFlipper = R.drawable.ic_flipper_vert;
 			}
 
@@ -91,7 +91,7 @@ LocationListener, LocationSource {
 			builder.include(pos);
 		}
 
-		// Dans le cas o� il n'y a qu'un flip, on montre le title tout de suite.
+		// Dans le cas où il n'y a qu'un flip, on montre le title tout de suite.
 		if (listeFlipper != null && listeFlipper.size() == 1 && marker != null){
 			marker.showInfoWindow();
 		}
@@ -103,7 +103,7 @@ LocationListener, LocationSource {
 			gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bounds.northeast, 15));
 		} else {
 			int padding = 100; // offset from edges of the map in pixels
-			// On r�cup�re la taille de l'�cran, et on met un padding assez fort pour �viter la barre d'�tat du haut.
+			// On récupère la taille de l'écran, et on met un padding assez fort pour éviter la barre d'état du haut.
 			Display display = getWindowManager().getDefaultDisplay();
 			CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, display.getWidth(), display.getHeight(), padding);
 			gMap.moveCamera(cu);

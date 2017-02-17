@@ -79,7 +79,7 @@ public class PageListeResultatTournois extends ActionBarActivity {
 			@Override
 			public void gotLocation(Location location) {
 				if (location != null) {
-					// M�thode appel�e lorsque la localisation a fonctionn�
+					// Méthode appelée lorsque la localisation a fonctionné
 					latitude = location.getLatitude();
 					longitude = location.getLongitude();
 				}
@@ -88,7 +88,7 @@ public class PageListeResultatTournois extends ActionBarActivity {
 
 		myLocation.getLocation(this, locationResult);
 
-		// On commence par r�cup�rer la derni�re location connue du t�l�phone,
+		// On commence par récupèrer la dernière location connue du téléphone,
 		// et on remplit le champ
 		// Adresse avec.
 		Location locationCourante = LocationUtil.getLastKnownLocation(this);
@@ -114,7 +114,7 @@ public class PageListeResultatTournois extends ActionBarActivity {
 		if (latitude == 0 && longitude == 0) {
 			return;
 		}
-		// R�cup�re la liste des flippers les plus proches
+		// Récupère la liste des flippers les plus proches
 		BaseTournoiService rechercheService = new BaseTournoiService();
 
 		listeTournoi = rechercheService.getAllTournoi(getApplicationContext());
@@ -142,8 +142,8 @@ public class PageListeResultatTournois extends ActionBarActivity {
 				latitude = adresseRecherchee.latitude;
 				longitude = adresseRecherchee.longitude;
 
-				// TODO Trouver une fa�on propre d'afficher un choix quand il y
-				// a plusieurs adresses trouv�es
+				// TODO Trouver une façon propre d'afficher un choix quand il y
+				// a plusieurs adresses trouvées
 				adresseUtilisateurTV.setText(LocationUtil.getAdresseFromCoordGPS(getApplicationContext(), latitude,
 							longitude));
 				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -180,9 +180,9 @@ public class PageListeResultatTournois extends ActionBarActivity {
 	@Override
 	public void onPause() {
 		super.onPause();
-		// Pour �viter que �a crash si l'utiisateur quitte l'appli alors que la
+		// Pour éviter que ça crash si l'utiisateur quitte l'appli alors que la
 		// localisation n'est pas
-		// termin�e
+		// terminée
 		myLocation.cancelTimer();
 	}
 

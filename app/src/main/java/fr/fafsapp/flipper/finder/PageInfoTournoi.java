@@ -56,7 +56,7 @@ public class PageInfoTournoi extends AppCompatActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// On r�cup�re le tournoi concern�
+		// On récupère le tournoi concerné
 		Intent i = getIntent();
 		tournoi = (Tournoi) i.getSerializableExtra(PageListeResultatTournois.INTENT_TOURNOI_POUR_INFO);
 

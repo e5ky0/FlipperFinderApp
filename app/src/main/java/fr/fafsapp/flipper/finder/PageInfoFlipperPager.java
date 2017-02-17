@@ -32,11 +32,11 @@ public class PageInfoFlipperPager extends ActionBarActivity  {
 	public void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		super.onCreate(savedInstanceState);
-		// On r�cup�re le flipper concern�
+		// On récupère le flipper concerné
 		Intent i = getIntent();
 		flipper = (Flipper) i.getSerializableExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO);
 
-		// On r�cup�re l'onglet par d�faut.
+		// On récupère l'onglet par défaut.
 		int ongletDefaut = i.getIntExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 0);
 
 		setContentView(R.layout.activity_info_flipper);
@@ -134,7 +134,7 @@ public class PageInfoFlipperPager extends ActionBarActivity  {
 		   mActionbar.addTab(tab);
 		   */
 
-		// On �crit les trois infos Adresse / Nom de l'enseigne / Date de mise � jour.
+		// On écrit les trois infos Adresse / Nom de l'enseigne / Date de mise à jour.
 
 
 		TextView adresseEnseigne = (TextView) findViewById(R.id.adresseEnseigne);
@@ -143,7 +143,7 @@ public class PageInfoFlipperPager extends ActionBarActivity  {
 		nomEnseigne.setText(flipper.getEnseigne().getNom());
 		adresseEnseigne.setText(flipper.getEnseigne().getAdresseCompleteSansPays());
 
-		// Si la date de mise � jour est nulle, on affiche la valeur par d�faut.
+		// Si la date de mise à jour est nulle, on affiche la valeur par défaut.
 		if (flipper.getDateMaj() != null && flipper.getDateMaj().length() != 0) {
 			dateMajFlip.setText(getResources().getString(R.string.dateMaj) + " " + flipper.getDateMaj());
 		} else {

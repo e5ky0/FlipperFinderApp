@@ -28,8 +28,8 @@ import fr.fafsapp.flipper.finder.utils.MyLocation.LocationResult;
 public class PageSignalement extends ActionBarActivity {
 
 	MyLocation myLocation = new MyLocation();
-	double latitude = 48.862731; // bar � c�t� du cirque d'hiver
-	double longitude = 2.367354; // bar � c�t� du cirque d'hiver
+	double latitude = 48.862731; // bar à côté du cirque d'hiver
+	double longitude = 2.367354; // bar à côté du cirque d'hiver
 
 	EditText adresseUtilisateurTV = null;
 	EditText champNomEnseigne = null;
@@ -92,7 +92,7 @@ public class PageSignalement extends ActionBarActivity {
 
 	private OnClickListener EnvoyerClickListener = new OnClickListener() {
 		public void onClick(View v) {
-			// On regarde d'abord si les champs sont renseign�s
+			// On regarde d'abord si les champs sont renseignés
 			boolean isError = false;
 			if (adresseUtilisateurTV.getText().length() == 0){
 				new AlertDialog.Builder(PageSignalement.this).setTitle("Envoi impossible!").setMessage("Vous devez renseigner l'adresse du flipper.").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
@@ -142,7 +142,7 @@ public class PageSignalement extends ActionBarActivity {
 		LocationResult locationResult = new LocationResult(){
 			@Override
 			public void gotLocation(Location location){
-				// M�thode appel�e lorsque la localisation a fonctionn�
+				// Méthode appelée lorsque la localisation a fonctionné
 				latitude = location.getLatitude();
 				longitude = location.getLongitude();
 			}
@@ -150,7 +150,7 @@ public class PageSignalement extends ActionBarActivity {
 
 		myLocation.getLocation(this, locationResult);
 
-		// On commence par r�cup�rer la derni�re location connue du t�l�phone, et on remplit le champ
+		// On commence par récupèrer la dernière location connue du téléphone, et on remplit le champ
 		// Adresse avec.
 		Location locationCourante =  LocationUtil.getLastKnownLocation(this);
 		adresseUtilisateurTV.setText("");

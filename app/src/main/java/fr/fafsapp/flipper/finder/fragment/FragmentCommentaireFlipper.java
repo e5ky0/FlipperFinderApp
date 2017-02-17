@@ -104,7 +104,7 @@ public class FragmentCommentaireFlipper extends Fragment {
 
 
 	private void rafraichitListeCommentaire(){
-		// R�cup�re la liste des commentaires et les affiche
+		// Récupère la liste des commentaires et les affiche
 		listeCommentaires = commentaireService.getCommentaireByFlipperId(getActivity().getApplicationContext(), flipper.getId());
 		if (listeCommentaires != null && listeCommentaires.size()>0){
 			tvPasCommentaire.setVisibility(View.INVISIBLE);
@@ -122,7 +122,7 @@ public class FragmentCommentaireFlipper extends Fragment {
 			editor.putString(PagePreferences.KEY_PSEUDO_FULL, pseudo.getText().toString());
 			editor.commit();
 
-			// Si un commentaire a �t� �crit, l'envoyer!
+			// Si un commentaire a été écrit, l'envoyer!
 			if (commentaire.getText().length() == 0){
 				new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!").setMessage("Vous n'avez pas rempli le champ commentaire!").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
 			}else{

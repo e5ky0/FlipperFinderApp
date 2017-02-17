@@ -79,7 +79,7 @@ public class PagePreferences extends ActionBarActivity {
 
 		@Override
 		public void onStopTrackingTouch(SeekBar seekBar) {
-			// Mettre � jour la valeur dans le fichier
+			// Mettre à jour la valeur dans le fichier
 			Editor editor = settings.edit();
 			editor.putInt(KEY_PREFERENCES_RAYON, seekBar.getProgress());
 			editor.commit();
@@ -99,7 +99,7 @@ public class PagePreferences extends ActionBarActivity {
 
 		@Override
 		public void onStopTrackingTouch(SeekBar seekBar) {
-			// Mettre � jour la valeur dans le fichier
+			// Mettre à jour la valeur dans le fichier
 			Editor editor = settings.edit();
 			editor.putInt(KEY_PREFERENCES_MAX_RESULT, seekBar.getProgress());
 			editor.commit();

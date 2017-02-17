@@ -26,14 +26,14 @@ import fr.fafsapp.flipper.finder.metier.Flipper;
 public class LocationUtil {
 
 	/**
-	 * M�thode utilis�e pour renvoyer sous forme de String l'adresse en fonction des
-	 * coordonn�es GPS.
+	 * Méthode utilisée pour renvoyer sous forme de String l'adresse en fonction des
+	 * coordonnées GPS.
 	 * @param latitude
 	 * @param longitude
 	 * @return
 	 */
 	public static String getAdresseFromCoordGPS(Context context, double latitude, double longitude){
-		// On devrait pouvoir utiliser GeoCoder, mais �a ne foncitonne pas avec l'�mulateur, donc
+		// On devrait pouvoir utiliser GeoCoder, mais ça ne foncitonne pas avec l'émulateur, donc
 		// j'utilise le service en ligne de google.
 		/*String adresseCourante = "";
 
@@ -52,7 +52,7 @@ public class LocationUtil {
 		  for (int i = 2; i < addressInfo.length; i++) {
 		  adresseCourante = adresseCourante + addressInfo[i];
 		  }
-		// On enl�ve les useless guillemets
+		// On enlève les useless guillemets
 		if (adresseCourante.length() > 1){
 		adresseCourante = adresseCourante.substring(1, adresseCourante.length() - 1);
 		}
@@ -127,7 +127,7 @@ public class LocationUtil {
 
 
 	/**
-	 *  Retourne la derni�re position connue du t�l�phone
+	 *  Retourne la dernière position connue du téléphone
 	 *  Attention, peut retourner null
 	 * @param context
 	 * @return
@@ -172,9 +172,9 @@ public class LocationUtil {
 	}
 
 	/**
-	 * Retourne l'objet Addresse correspondant � l'adresse pass�e en param�tre
+	 * Retourne l'objet Addresse correspondant à l'adresse passée en paramètre
 	 * sous forme de String
-	 * Renvoie null si pas d'adresse trouv�e
+	 * Renvoie null si pas d'adresse trouvée
 	 * @param context
 	 * @param adresse
 	 * @return
@@ -191,7 +191,7 @@ public class LocationUtil {
 
 		if (listeAdresseRetour != null && !listeAdresseRetour.isEmpty()){
 			float[] resultDistance=new float[5];
-			// On va ressortir l'adresse la plus proche parmi toute celle retourn�es
+			// On va ressortir l'adresse la plus proche parmi toute celle retournées
 			Address adresseARetourner = listeAdresseRetour.get(0);
 			Location.distanceBetween(latitude, longitude, adresseARetourner.getLatitude(), adresseARetourner.getLongitude(), resultDistance);;
 			Float distanceRetour =  resultDistance[0];
@@ -218,8 +218,8 @@ public class LocationUtil {
 	}
 
 	/**
-	 * Retourne le nombre de jour depuis la derni�re maj du flipper.
-	 * Retourne -1 si la date de m�j est nulle
+	 * Retourne le nombre de jour depuis la dernière maj du flipper.
+	 * Retourne -1 si la date de màj est nulle
 	 * @param flipper
 	 * @return
 	 */
@@ -230,10 +230,10 @@ public class LocationUtil {
 				Date dateMajFlip = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH).parse(flipper.getDateMaj());
 				nbJours = Days.daysBetween(new DateTime(dateMajFlip), new DateTime(new Date())).getDays();
 			} catch (ParseException e) {
-				// Date mal formatt�e, on fait comme si la date est nulle
+				// Date mal formattée, on fait comme si la date est nulle
 				return -1;
 			}
-			// La date n'est pas nulle et bien formatt�e.
+			// La date n'est pas nulle et bien formattée.
 			return nbJours;
 		}else{
 			// La date est nulle, on retourne -1

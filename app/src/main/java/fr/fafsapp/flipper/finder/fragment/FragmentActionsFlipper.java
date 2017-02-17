@@ -93,7 +93,7 @@ public class FragmentActionsFlipper extends Fragment {
 		boutonAnnuleChangement.setOnClickListener(AnnuleChangementModeleListener);
 		boutonValideChangement.setOnClickListener(ValideChangementListener);
 
-		// Pr�pare la liste d'autocompl�tion pour les mod�le de flipper
+		// Prépare la liste d'autocomplétion pour les modèle de flipper
 		modeleFlipperService = new BaseModeleService();
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, modeleFlipperService.getAllNomModeleFlipper(getActivity().getApplicationContext()));
 		champNouveauModeleFlipper.setAdapter(adapter);
@@ -101,12 +101,12 @@ public class FragmentActionsFlipper extends Fragment {
 
 		champNouveauModeleFlipper.setOnItemClickListener(itemSelectionneNouveauModeleListener);
 
-		//R�cup�re le pseudo et pr�remplit le champ si besoin
+		//Récupère le pseudo et préremplit le champ si besoin
 		settings = getActivity().getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
 		pseudoText = settings.getString(PagePreferences.KEY_PSEUDO_FULL, "");
 		pseudo.setText(pseudoText);
 
-		// On cache le layout qui va servir � renseigner un nouveau mod�le
+		// On cache le layout qui va servir à renseigner un nouveau modèle
 		changeModeleLayout.setVisibility(View.GONE);
 
 		return rootView;
@@ -156,13 +156,13 @@ public class FragmentActionsFlipper extends Fragment {
 							toast.show();
 						}
 					}else{
-						new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!").setMessage("Le mod�le est identique, pas la peine de le changer !").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
+						new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!").setMessage("Le modèle est identique, pas la peine de le changer !").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
 					}
 				}else{
-					new AlertDialog.Builder(getActivity()).setTitle("Envoi par mail").setMessage("Le mod�le que vous avez renseign� est inconnu. Votre notification sera trait�e manuellement par mail.").setNeutralButton("OK", ChangerModeleParMailListener).show();
+					new AlertDialog.Builder(getActivity()).setTitle("Envoi par mail").setMessage("Le modèle que vous avez renseigné est inconnu. Votre notification sera traitée manuellement par mail.").setNeutralButton("OK", ChangerModeleParMailListener).show();
 				}
 			}else{
-				new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!").setMessage("Vous n'avez pas rempli de nouveau mod�le !").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
+				new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!").setMessage("Vous n'avez pas rempli de nouveau modèle !").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
 			}
 		}
 	};
@@ -171,7 +171,7 @@ public class FragmentActionsFlipper extends Fragment {
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
 			String message = "ID : " + flipper.getId() + "\nEnseigne : " + flipper.getEnseigne().getId()
-				+ "\nAncien Mod�le :" + flipper.getModele().getNom() + "\nNouveau Mod�le : " + champNouveauModeleFlipper.getText().toString();
+				+ "\nAncien Modèle :" + flipper.getModele().getNom() + "\nNouveau Modèle : " + champNouveauModeleFlipper.getText().toString();
 			envoiMail("Changement du flipper " + flipper.getId(), message);
 		}
 	};
@@ -256,7 +256,7 @@ public class FragmentActionsFlipper extends Fragment {
 			startActivity(Intent.createChooser(i, "Envoi du mail"));
 		} catch (android.content.ActivityNotFoundException ex) {
 			new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!")
-				.setMessage("Vous n'avez pas de mail configur� sur votre t�l�phone.")
+				.setMessage("Vous n'avez pas de mail configuré sur votre téléphone.")
 				.setNeutralButton("Fermer", null).setIcon(R.drawable.ic_tristesse).show();
 		}
 	}

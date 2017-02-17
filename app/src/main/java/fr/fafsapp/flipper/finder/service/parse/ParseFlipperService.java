@@ -30,7 +30,7 @@ public class ParseFlipperService {
 	}
 
 	/**
-	 * Retourne tous les flipper � partir du cloud
+	 * Retourne tous les flipper à partir du cloud
 	 *
 	 * @return List<ModeleFlipper>
 	 */
@@ -58,7 +58,7 @@ public class ParseFlipperService {
 	}
 
 	/**
-	 * Retourne la liste des flippers � mettre � jour � partir d'une date donn�e.
+	 * Retourne la liste des flippers à mettre à jour à partir d'une date donnée.
 	 * @param dateDerniereMaj
 	 * @return
 	 */
@@ -126,16 +126,16 @@ public class ParseFlipperService {
 			@Override
 			public void done(List<ParseObject> objects, ParseException e) {
 				if (objects != null && objects.size() > 0){
-					// On v�rifie d'abord que le flipper n'�tait pas d�j� d�sactiv�, pour ne pas cr�er de doublons
+					// On vérifie d'abord que le flipper n'était pas déjà désactivé, pour ne pas créer de doublons
 					if (objects.get(0).getInt(FlipperDatabaseHandler.FLIPPER_ACTIF) == 0){
-						new AlertDialog.Builder(pContext).setTitle("Envoi impossible!").setMessage("Le mod�le a d�j� �t� modifi� par un autre utilisateur. Mettez � jour votre base de flipper pour voir les derni�res modifications.").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
+						new AlertDialog.Builder(pContext).setTitle("Envoi impossible!").setMessage("Le modèle a déjà été modifié par un autre utilisateur. Mettez à jour votre base de flipper pour voir les dernières modifications.").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
 					}else{
 
-						// On met � jour l'ancien flipper avec l'�tat et la date de m�j
+						// On met à jour l'ancien flipper avec l'état et la date de màj
 						objects.get(0).put(FlipperDatabaseHandler.FLIPPER_DATMAJ, ancienflipper.getDateMaj());
 						objects.get(0).put(FlipperDatabaseHandler.FLIPPER_ACTIF, 0);
 
-						// On cr�� l'objet du nouveau flipper
+						// On créé l'objet du nouveau flipper
 						ParseObject parseNouveauFlipper = new ParseObject(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
 						parseNouveauFlipper.put(FlipperDatabaseHandler.FLIPPER_ACTIF, 1);
 						parseNouveauFlipper.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, nouveauFlipper.getDateMaj());
@@ -149,7 +149,7 @@ public class ParseFlipperService {
 						listParseToSave.add(parseNouveauFlipper);
 						listParseToSave.add(objects.get(0));
 
-						// On met �ventuellement le nouveau commentaire
+						// On met éventuellement le nouveau commentaire
 						if (commentaire != null){
 							ParseObject parseNouveauCommentaire = new ParseObject(FlipperDatabaseHandler.COMMENTAIRE_TABLE_NAME);
 							parseNouveauCommentaire.put(FlipperDatabaseHandler.COMM_ACTIF, 1);
@@ -169,7 +169,7 @@ public class ParseFlipperService {
 							public void done(ParseException e) {
 								if (e == null){
 
-									// Ca s'est bien pass�, on sauvegarde les flippers
+									// Ca s'est bien passé, on sauvegarde les flippers
 									List<Flipper> listBaseToSave = new ArrayList<Flipper>();
 									listBaseToSave.add(nouveauFlipper);
 									listBaseToSave.add(ancienflipper);
@@ -177,7 +177,7 @@ public class ParseFlipperService {
 									BaseFlipperService baseFlipperService = new BaseFlipperService();
 									baseFlipperService.majListeFlipper(listBaseToSave, pContext);
 
-									// Et �ventuellement le commentaire
+									// Et éventuellement le commentaire
 									if(commentaire != null){
 										BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
 										baseCommentaireService.addCommentaire(commentaire, pContext);

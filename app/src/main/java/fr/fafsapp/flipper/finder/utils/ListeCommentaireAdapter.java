@@ -48,7 +48,7 @@ public class ListeCommentaireAdapter extends ArrayAdapter<Commentaire> {
 			v = vi.inflate(R.layout.simple_list_item_commentaire, null);
 		}
 
-		// On set les tags pour pouvoir retrouver sur quelle ligne on a cliqu�.
+		// On set les tags pour pouvoir retrouver sur quelle ligne on a cliqué.
 		v.setTag(position);
 		v.setOnClickListener(CommentaireClickListener);
 

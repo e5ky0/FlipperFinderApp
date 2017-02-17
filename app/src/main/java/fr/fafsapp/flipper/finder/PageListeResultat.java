@@ -44,8 +44,8 @@ public class PageListeResultat extends Activity {
 
     double latitude = 0;
     double longitude = 0;
-    int DISTANCE_MAX = 25; // On cherche les flippers � 10km � la ronde
-    int ENSEIGNE_LIST_MAX_SIZE = 50; // On cherche les flippers � 5km � la ronde
+    int DISTANCE_MAX = 25; // On cherche les flippers à 10km à la ronde
+    int ENSEIGNE_LIST_MAX_SIZE = 50; // On cherche les flippers à 5km à la ronde
 
     ArrayList<Flipper> listeFlipper = new ArrayList<Flipper>();
 
@@ -94,7 +94,7 @@ public class PageListeResultat extends Activity {
 
         adresseUtilisateurTV.setOnEditorActionListener(ClickNewSearch);
 
-        // Initialisation de l'autocompl�tion
+        // Initialisation de l'autocomplétion
         BaseModeleService modeleFlipperService = new BaseModeleService();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 modeleFlipperService.getAllNomModeleFlipper(getApplicationContext()));
@@ -114,7 +114,7 @@ public class PageListeResultat extends Activity {
             @Override
             public void gotLocation(Location location) {
                 if (location != null) {
-                    // M�thode appel�e lorsque la localisation a fonctionn�
+                    // Méthode appelée lorsque la localisation a fonctionné
                     latitude = location.getLatitude();
                     longitude = location.getLongitude();
                 }
@@ -123,7 +123,7 @@ public class PageListeResultat extends Activity {
 
         myLocation.getLocation(this, locationResult);
 
-        // On commence par r�cup�rer la derni�re location connue du t�l�phone,
+        // On commence par récupèrer la dernière location connue du téléphone,
         // et on remplit le champ
         // Adresse avec.
         Location locationCourante = LocationUtil.getLastKnownLocation(this);
@@ -158,7 +158,7 @@ public class PageListeResultat extends Activity {
             boutonAfficheCarte.setVisibility(View.INVISIBLE);
             return;
         }
-        // R�cup�re la liste des flippers les plus proches
+        // Récupère la liste des flippers les plus proches
         BaseFlipperService rechercheService = new BaseFlipperService();
 
         listeFlipper = rechercheService.rechercheFlipper(getApplicationContext(), latitude, longitude,
@@ -201,8 +201,8 @@ public class PageListeResultat extends Activity {
                 latitude = adresseRecherchee.latitude;
                 longitude = adresseRecherchee.longitude;
 
-                // TODO Trouver une fa�on propre d'afficher un choix quand il y
-                // a plusieurs adresses trouv�es
+                // TODO Trouver une façon propre d'afficher un choix quand il y
+                // a plusieurs adresses trouvées
                 adresseUtilisateurTV.setText(LocationUtil.getAdresseFromCoordGPS(getApplicationContext(), latitude,
                             longitude));
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -282,9 +282,9 @@ public class PageListeResultat extends Activity {
     @Override
     public void onPause() {
         super.onPause();
-        // Pour �viter que �a crash si l'utiisateur quitte l'appli alors que la
+        // Pour éviter que ça crash si l'utiisateur quitte l'appli alors que la
         // localisation n'est pas
-        // termin�e
+        // terminée
         myLocation.cancelTimer();
     }
 

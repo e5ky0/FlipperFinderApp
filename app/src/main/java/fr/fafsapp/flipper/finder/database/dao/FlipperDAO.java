@@ -82,13 +82,13 @@ public class FlipperDAO extends DAOBase {
 	}
 
 	/**
-	 * Requ�te de la mort qui ram�ne les enseignes les flippers et les mod�les �
+	 * Requête de la mort qui ramène les enseignes les flippers et les modèles à
 	 * partir d'un point et d'une distance
 	 *
 	 * @param center
 	 * @param distance
 	 * @param modele
-	 *            un �ventuel filtre sur le modele
+	 *            un éventuel filtre sur le modele
 	 * @return
 	 */
 	public ArrayList<Flipper> getFlipperByDistance(PointF center, long distance, String modele) {
@@ -121,7 +121,7 @@ public class FlipperDAO extends DAOBase {
 		// On ne prend que les flippers actifs
 		String strActif = " AND "+ FlipperDatabaseHandler.FLIPPER_ACTIF+" = 1 ";
 
-		// Et on balance la pur�e
+		// Et on balance la purée
 		Cursor cursor = mDb.rawQuery("SELECT " + FlipperDatabaseHandler.FLIPPER_ID + " , "
 				+ FlipperDatabaseHandler.FLIPPER_MODELE + " , " + FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E + " , "
 				+ FlipperDatabaseHandler.FLIPPER_ENSEIGNE + " , " + FlipperDatabaseHandler.FLIPPER_DATMAJ + " , "
