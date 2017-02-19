@@ -80,7 +80,7 @@ public class ParseFlipperService {
 					po.getLong(FlipperDatabaseHandler.FLIPPER_MODELE),
 					po.getLong(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E),
 					po.getLong(FlipperDatabaseHandler.FLIPPER_ENSEIGNE),
-					po.getLong(FlipperDatabaseHandler.FLIPPER_ACTIF),
+					po.getBoolean(FlipperDatabaseHandler.FLIPPER_ACTIF),
 					po.getString(FlipperDatabaseHandler.FLIPPER_DATMAJ));
 			listeFlipper.add(flipper);
 		}

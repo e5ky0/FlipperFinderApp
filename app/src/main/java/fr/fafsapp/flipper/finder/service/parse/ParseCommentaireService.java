@@ -47,7 +47,7 @@ public class ParseCommentaireService {
 					po.getString(FlipperDatabaseHandler.COMM_TEXTE),
 					po.getString(FlipperDatabaseHandler.COMM_DATE),
 					po.getString(FlipperDatabaseHandler.COMM_PSEUDO),
-					po.getLong(FlipperDatabaseHandler.COMM_ACTIF));
+					po.getBoolean(FlipperDatabaseHandler.COMM_ACTIF));
 			listeCommentaire.add(commentaire);
 		}
 		return listeCommentaire;

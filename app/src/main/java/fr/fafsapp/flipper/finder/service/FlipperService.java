@@ -46,12 +46,12 @@ public class FlipperService {
 		flipper.setDateMaj(dateMaj);
 		flipper.setActif(0);
 
-		Flipper nouveauFlipper = new Flipper(dateDuJour.getTime(), idNouveauModele, 0, flipper.getIdEnseigne(), 1,
+		Flipper nouveauFlipper = new Flipper(dateDuJour.getTime(), idNouveauModele, 0, flipper.getIdEnseigne(), true,
 				dateMaj);
 		Commentaire commentaireToAdd = null;
 		if (commentaire != null && commentaire.length() > 0){
 			commentaireToAdd = new Commentaire(dateDuJour.getTime(), dateDuJour.getTime(), commentaire, dateMaj,
-					pseudo, 1);
+					pseudo, true);
 		}
 
 		ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);

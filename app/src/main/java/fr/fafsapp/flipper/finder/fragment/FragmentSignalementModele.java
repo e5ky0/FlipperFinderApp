@@ -79,7 +79,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
                     htmlString,
                     new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour),
                     pseudoCommentaire,
-                    1);
+                    true);
         }
         return commentaireToAdd;
     }

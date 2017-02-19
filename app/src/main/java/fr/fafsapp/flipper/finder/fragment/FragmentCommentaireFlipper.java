@@ -139,7 +139,7 @@ public class FragmentCommentaireFlipper extends Fragment {
 						htmlString,
 						new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour),
 						pseudoCommentaire,
-						1);
+						true);
 				((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 				commentaireService.ajouteCommentaire(getActivity(), commentaireToAdd);
 				// Rafraichir la liste des commentaires
