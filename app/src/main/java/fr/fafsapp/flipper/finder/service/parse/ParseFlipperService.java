@@ -127,17 +127,17 @@ public class ParseFlipperService {
 			public void done(List<ParseObject> objects, ParseException e) {
 				if (objects != null && objects.size() > 0){
 					// On vérifie d'abord que le flipper n'était pas déjà désactivé, pour ne pas créer de doublons
-					if (objects.get(0).getInt(FlipperDatabaseHandler.FLIPPER_ACTIF) == 0){
+					if (!objects.get(0).getBoolean(FlipperDatabaseHandler.FLIPPER_ACTIF)){
 						new AlertDialog.Builder(pContext).setTitle("Envoi impossible!").setMessage("Le modèle a déjà été modifié par un autre utilisateur. Mettez à jour votre base de flipper pour voir les dernières modifications.").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
 					}else{
 
 						// On met à jour l'ancien flipper avec l'état et la date de màj
 						objects.get(0).put(FlipperDatabaseHandler.FLIPPER_DATMAJ, ancienflipper.getDateMaj());
-						objects.get(0).put(FlipperDatabaseHandler.FLIPPER_ACTIF, 0);
+						objects.get(0).put(FlipperDatabaseHandler.FLIPPER_ACTIF, false);
 
 						// On créé l'objet du nouveau flipper
 						ParseObject parseNouveauFlipper = new ParseObject(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
-						parseNouveauFlipper.put(FlipperDatabaseHandler.FLIPPER_ACTIF, 1);
+						parseNouveauFlipper.put(FlipperDatabaseHandler.FLIPPER_ACTIF, true);
 						parseNouveauFlipper.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, nouveauFlipper.getDateMaj());
 						parseNouveauFlipper.put(FlipperDatabaseHandler.FLIPPER_ENSEIGNE, nouveauFlipper.getIdEnseigne());
 						parseNouveauFlipper.put(FlipperDatabaseHandler.FLIPPER_ID, nouveauFlipper.getId());
@@ -152,7 +152,7 @@ public class ParseFlipperService {
 						// On met éventuellement le nouveau commentaire
 						if (commentaire != null){
 							ParseObject parseNouveauCommentaire = new ParseObject(FlipperDatabaseHandler.COMMENTAIRE_TABLE_NAME);
-							parseNouveauCommentaire.put(FlipperDatabaseHandler.COMM_ACTIF, 1);
+							parseNouveauCommentaire.put(FlipperDatabaseHandler.COMM_ACTIF, true);
 							parseNouveauCommentaire.put(FlipperDatabaseHandler.COMM_DATE, commentaire.getDate());
 							parseNouveauCommentaire.put(FlipperDatabaseHandler.COMM_FLIPPER_ID, commentaire.getFlipperId());
 							parseNouveauCommentaire.put(FlipperDatabaseHandler.COMM_ID, commentaire.getId());
