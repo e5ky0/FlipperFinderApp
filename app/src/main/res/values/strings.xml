@@ -68,7 +68,7 @@
     <string name="headerPreferences">Réglages</string>
     <string name="headerSignalement">Signaler un flipper</string>
 
-    <string name="mailContact">flipperfinder@gmail.com</string>
+    <string name="mailContact">flipper.finder2@gmail.com</string>
 
     <string name="pseudoCommentaireAnonyme">Anonyme</string>
     <string name="fulltextCommentaireAnonyme"><Data><![CDATA[<b>Anonyme</b> à propos d\'un %2$s à %3$s]]> </Data></string>
