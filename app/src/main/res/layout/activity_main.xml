@@ -3,11 +3,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    
-    <!-- 
+
+    <!--
     <include layout="@layout/header_main"/>
-    
-    
+
+
     <ImageView
         android:id="@+id/boutonMenuRechercher"
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         android:src="@drawable/signaler_ombre"
         android:layout_below="@id/boutonMenuRechercher"/>
  -->
- 
+
      <Button
         android:id="@+id/boutonMenuRechercher"
         android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
         android:minHeight="50dp"
         android:text="@string/BoutonAccueilRechercher"
         android:layout_centerHorizontal="true"/>
-    
+
     <Button
         android:id="@+id/boutonMenuSignaler"
         android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/boutonMenuSignaler"
         android:text="@string/BoutonAccueilTournoi"/>
-    
+
     <ImageView
         android:id="@+id/imageEnveloppe"
         android:layout_width="wrap_content"
@@ -83,5 +83,5 @@
         android:layout_marginRight="20dp"
         android:contentDescription="Préférences"
         android:src="@drawable/custom_settings" />
-    
+
 </RelativeLayout>

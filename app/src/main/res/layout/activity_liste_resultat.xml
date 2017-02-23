@@ -24,7 +24,7 @@
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="bottom">
-		    
+
 	        <AutoCompleteTextView
 	            android:id="@+id/autocompletionModeleFlipper"
 	            android:layout_width="fill_parent"
@@ -35,15 +35,15 @@
 	            android:inputType="textFilter|textNoSuggestions"
 	            android:singleLine="true"
 	            android:textSize="15sp" />
-	
+
 			<ImageButton
-		        android:id="@+id/boutonClearModeleFlipper"      
+		        android:id="@+id/boutonClearModeleFlipper"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:layout_gravity="right|center_vertical"
 		        android:layout_marginRight="7dp"
 		        android:background="@drawable/ic_content_remove" />
-	        
+
         </FrameLayout>
     </LinearLayout>
 

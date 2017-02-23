@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Tournoi  implements Serializable{
-	
+
 	private static final long serialVersionUID = 4803600387182980034L;
 	@SerializedName("TOUR_ID")
 	private long id;
@@ -132,5 +132,5 @@ public class Tournoi  implements Serializable{
 		this.url = url;
 	}
 
-	
+
 }

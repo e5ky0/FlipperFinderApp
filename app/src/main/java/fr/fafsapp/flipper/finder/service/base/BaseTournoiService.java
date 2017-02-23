@@ -10,7 +10,7 @@ import fr.fafsapp.flipper.finder.database.dao.TournoiDAO;
 import fr.fafsapp.flipper.finder.metier.Tournoi;
 
 public class BaseTournoiService {
-	
+
 	public ArrayList<Tournoi> getAllTournoi(Context pContext){
 		ArrayList<Tournoi> listeRetour = new ArrayList<Tournoi>();
 		TournoiDAO tournoiDao = new TournoiDAO(pContext);

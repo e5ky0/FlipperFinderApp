@@ -25,12 +25,12 @@ public class ModeleDAO extends DAOBase{
 		ArrayList<ModeleFlipper> listeRetour = new ArrayList<ModeleFlipper>();
 
 		Cursor cursor = mDb.query(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME,
-				  				  new String[]{FlipperDatabaseHandler.MODELE_FLIPPER_ID,
-								 			   FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE,
-								 			   FlipperDatabaseHandler.MODELE_FLIPPER_NOM,
-								 			   FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT},
-								  null,null, null, null, null);
-		
+				new String[]{FlipperDatabaseHandler.MODELE_FLIPPER_ID,
+					FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE,
+					FlipperDatabaseHandler.MODELE_FLIPPER_NOM,
+					FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT},
+					null,null, null, null, null);
+
 		while (cursor.moveToNext()) {
 			listeRetour.add(convertCursorToModeleFlipper(cursor));
 		}
@@ -41,19 +41,19 @@ public class ModeleDAO extends DAOBase{
 	public ModeleFlipper getModeleFlipperByName(String nameFlipper){
 		ModeleFlipper modeleRetour = null;
 		Cursor cursor = mDb.query(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME,
-				  				  new String[]{FlipperDatabaseHandler.MODELE_FLIPPER_ID,
-								 			   FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE,
-								 			   FlipperDatabaseHandler.MODELE_FLIPPER_NOM,
-								 			   FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT},
-								 			   FlipperDatabaseHandler.MODELE_FLIPPER_NOM + "=?",
-								 			   new String[] { nameFlipper }, null, null, null);
+				new String[]{FlipperDatabaseHandler.MODELE_FLIPPER_ID,
+					FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE,
+					FlipperDatabaseHandler.MODELE_FLIPPER_NOM,
+					FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT},
+					FlipperDatabaseHandler.MODELE_FLIPPER_NOM + "=?",
+					new String[] { nameFlipper }, null, null, null);
 		if (cursor.moveToNext()) {
 			modeleRetour = convertCursorToModeleFlipper(cursor);
 		}
 		cursor.close();
 		return modeleRetour;
 	}
-	
+
 	public void save(ModeleFlipper modele){
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(FlipperDatabaseHandler.MODELE_FLIPPER_ID, modele.getId());

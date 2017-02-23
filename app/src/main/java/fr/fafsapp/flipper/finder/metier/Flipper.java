@@ -33,15 +33,12 @@ public class Flipper implements Serializable {
 	}
 
 	public Flipper(long id, long idModele, long nbCreditsDeuxEruros,
-			long idEnseigne, long actif, String dateMaj) {
+			long idEnseigne, boolean actif, String dateMaj) {
 		this.id = id;
 		this.idModele = idModele;
 		this.nbCreditsDeuxEruros = nbCreditsDeuxEruros;
 		this.idEnseigne = idEnseigne;
-		if (actif == 1)
-			this.actif = true;
-		else
-			this.actif = false;
+		this.actif = actif;
 		this.dateMaj = dateMaj;
 	}
 
@@ -112,10 +109,7 @@ public class Flipper implements Serializable {
 	}
 
 	public void setActif(long actif) {
-		if (actif == 1)
-			this.actif = true;
-		else
-			this.actif = false;
+		this.actif = actif == 1;
 	}
 
 }

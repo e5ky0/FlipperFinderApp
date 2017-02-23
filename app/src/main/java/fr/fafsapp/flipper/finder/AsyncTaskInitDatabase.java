@@ -16,17 +16,17 @@ public class AsyncTaskInitDatabase extends AsyncTask<Object, Void, Boolean> {
 	ProgressDialog mDialog = null;
 
 	public AsyncTaskInitDatabase(ActionBarActivity context, SharedPreferences settings){
-        mContext = context;
-        mSettings = settings;
-    }
-    
-    @Override
-    protected void onPreExecute() 
-    {
+		mContext = context;
+		mSettings = settings;
+	}
+
+	@Override
+	protected void onPreExecute()
+	{
 		mDialog = ProgressDialog.show(mContext, "Initialisation", "Initialisation de l'appli. Merci de patienter :-)", true);
 		super.onPreExecute();
-    }
-    
+	}
+
 	@Override
 	protected Boolean doInBackground(Object... params) {
 		GlobalService globalService = new GlobalService(mContext);
@@ -36,7 +36,7 @@ public class AsyncTaskInitDatabase extends AsyncTask<Object, Void, Boolean> {
 		editor.commit();
 		return true;
 	}
-	
+
 	@Override
 	protected void onPostExecute(Boolean result) {
 		mDialog.dismiss();

@@ -10,7 +10,7 @@ import fr.fafsapp.flipper.finder.database.dao.ModeleDAO;
 import fr.fafsapp.flipper.finder.metier.ModeleFlipper;
 
 public class BaseModeleService {
-	
+
 	public ArrayList<ModeleFlipper> getAllModeleFlipper(Context pContext){
 		ArrayList<ModeleFlipper> listeRetour = new ArrayList<ModeleFlipper>();
 		ModeleDAO modeleDao = new ModeleDAO(pContext);
@@ -19,7 +19,7 @@ public class BaseModeleService {
 		modeleDao.close();
 		return listeRetour;
 	}
-	
+
 	public long getIdMaxModele(Context pContext){
 		long idRetour = 0;
 		ArrayList<ModeleFlipper> listeModele = getAllModeleFlipper(pContext);

@@ -17,9 +17,9 @@ public class FlipperService {
 	private FragmentActionCallback mFragmentCallback;
 
 	public FlipperService(FragmentActionCallback fragmentCallback) {
-        mFragmentCallback = fragmentCallback;
-    }
-	
+		mFragmentCallback = fragmentCallback;
+	}
+
 	public boolean remplaceToutFlipper(Context pContext){
 		boolean retour = true;
 		BaseFlipperService baseFlipperService = new BaseFlipperService();
@@ -29,36 +29,36 @@ public class FlipperService {
 		return retour;
 	}
 
-	
+
 	public boolean valideFlipper(Context pContext, Flipper flipper){
 		ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
 		final String dateToSave = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(new Date());
 		parseFlipperService.updateDateFlipper(pContext, flipper, dateToSave);
-		
+
 		return true;
 	}
-	
+
 	public boolean remplaceFlipper(Context pContext, Flipper flipper, long idNouveauModele, String commentaire, String pseudo){
 		Date dateDuJour = new Date();
 
 		String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
-	
+
 		flipper.setDateMaj(dateMaj);
 		flipper.setActif(0);
 
-		Flipper nouveauFlipper = new Flipper(dateDuJour.getTime(), idNouveauModele, 0, flipper.getIdEnseigne(), 1,
+		Flipper nouveauFlipper = new Flipper(dateDuJour.getTime(), idNouveauModele, 0, flipper.getIdEnseigne(), true,
 				dateMaj);
 		Commentaire commentaireToAdd = null;
 		if (commentaire != null && commentaire.length() > 0){
 			commentaireToAdd = new Commentaire(dateDuJour.getTime(), dateDuJour.getTime(), commentaire, dateMaj,
-					pseudo, 1);
+					pseudo, true);
 		}
-				
+
 		ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
-		
+
 		parseFlipperService.remplaceModeleFlipper(pContext, flipper, nouveauFlipper, commentaireToAdd);
-		
+
 		return true;
 	}
-	
+
 }

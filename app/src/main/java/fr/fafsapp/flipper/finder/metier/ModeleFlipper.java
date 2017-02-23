@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class ModeleFlipper  implements Serializable{
-	
+
 	private static final long serialVersionUID = -3899550250753290072L;
 	@SerializedName("MOFL_ID")
 	private long id;
@@ -25,7 +25,7 @@ public class ModeleFlipper  implements Serializable{
 		this.marque = marque;
 		this.anneeLancement = anneeLancement;
 	}
-	
+
 	public long getId() {
 		return id;
 	}

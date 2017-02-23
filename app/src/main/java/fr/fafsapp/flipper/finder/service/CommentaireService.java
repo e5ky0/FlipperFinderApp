@@ -10,15 +10,15 @@ import fr.fafsapp.flipper.finder.service.parse.ParseCommentaireService;
 
 public class CommentaireService {
 	private FragmentCallback mFragmentCallback;
-	
-    public CommentaireService(FragmentCallback fragmentCallback) {
-        mFragmentCallback = fragmentCallback;
-    }
-	
+
+	public CommentaireService(FragmentCallback fragmentCallback) {
+		mFragmentCallback = fragmentCallback;
+	}
+
 	public boolean ajouteCommentaire(Context pContext, Commentaire commentaire){
 		ParseCommentaireService parseCommentaireService = new ParseCommentaireService(mFragmentCallback);
 		parseCommentaireService.ajouteCommentaire(pContext, commentaire);
-		
+
 		return true;
 	}
 	public ArrayList<Commentaire> getCommentaireByFlipperId(Context pContext, long idFlipper){

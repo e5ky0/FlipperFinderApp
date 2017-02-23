@@ -26,39 +26,39 @@ import fr.fafsapp.flipper.finder.metier.Flipper;
 public class LocationUtil {
 
 	/**
-	 * M�thode utilis�e pour renvoyer sous forme de String l'adresse en fonction des
-	 * coordonn�es GPS.
+	 * Méthode utilisée pour renvoyer sous forme de String l'adresse en fonction des
+	 * coordonnées GPS.
 	 * @param latitude
 	 * @param longitude
 	 * @return
 	 */
 	public static String getAdresseFromCoordGPS(Context context, double latitude, double longitude){
-		// On devrait pouvoir utiliser GeoCoder, mais �a ne foncitonne pas avec l'�mulateur, donc
+		// On devrait pouvoir utiliser GeoCoder, mais ça ne foncitonne pas avec l'émulateur, donc
 		// j'utilise le service en ligne de google.
 		/*String adresseCourante = "";
-		
-		String url = "http://maps.google.com/maps/geo?q="+latitude+","+longitude+"&output=csv&sensor=false";
-		HttpUriRequest request = new HttpGet(url);
-		HttpClient mClient= new DefaultHttpClient();
-		HttpResponse res;
-		try {
-			res = mClient.execute(request);
-			adresseCourante = EntityUtils.toString(res.getEntity());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		String[] addressInfo = adresseCourante.split(",");
-		adresseCourante ="";
-		for (int i = 2; i < addressInfo.length; i++) {
-			adresseCourante = adresseCourante + addressInfo[i];
-		}
-		// On enl�ve les useless guillemets
+
+		  String url = "http://maps.google.com/maps/geo?q="+latitude+","+longitude+"&output=csv&sensor=false";
+		  HttpUriRequest request = new HttpGet(url);
+		  HttpClient mClient= new DefaultHttpClient();
+		  HttpResponse res;
+		  try {
+		  res = mClient.execute(request);
+		  adresseCourante = EntityUtils.toString(res.getEntity());
+		  } catch (Exception e) {
+		  e.printStackTrace();
+		  }
+		  String[] addressInfo = adresseCourante.split(",");
+		  adresseCourante ="";
+		  for (int i = 2; i < addressInfo.length; i++) {
+		  adresseCourante = adresseCourante + addressInfo[i];
+		  }
+		// On enlève les useless guillemets
 		if (adresseCourante.length() > 1){
-			adresseCourante = adresseCourante.substring(1, adresseCourante.length() - 1);
+		adresseCourante = adresseCourante.substring(1, adresseCourante.length() - 1);
 		}
 
 		return adresseCourante;*/
-		
+
 		String adresseCourante = "";
 		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 		List<Address> addresses = null;
@@ -67,84 +67,84 @@ public class LocationUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		if (addresses != null && addresses.size() > 0) {
-            Address address = addresses.get(0);
-            // Format the first line of address (if available) and city.
-            adresseCourante = String.format("%s %s",
-                    address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
-                    address.getLocality(),
-                    address.getCountryName());
-            
+			Address address = addresses.get(0);
+			// Format the first line of address (if available) and city.
+			adresseCourante = String.format("%s %s",
+					address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
+					address.getLocality(),
+					address.getCountryName());
+
 		}
 
 		return adresseCourante;
-		
+
 	}
-	
+
 	/**
-	* Calculates the end-point from a given source at a given range (meters)
-	* and bearing (degrees). This methods uses simple geometry equations to
-	* calculate the end-point.
-	* 
-	* @param point
-	*            Point of origin
-	* @param range
-	*            Range in meters
-	* @param bearing
-	*            Bearing in degrees
-	* @return End-point from the source given the desired range and bearing.
-	*/
+	 * Calculates the end-point from a given source at a given range (meters)
+	 * and bearing (degrees). This methods uses simple geometry equations to
+	 * calculate the end-point.
+	 *
+	 * @param point
+	 *            Point of origin
+	 * @param range
+	 *            Range in meters
+	 * @param bearing
+	 *            Bearing in degrees
+	 * @return End-point from the source given the desired range and bearing.
+	 */
 	public static PointF calculateDerivedPosition(PointF point,
-	            double range, double bearing)
-	    {
-	        double EarthRadius = 6371000; // m
+			double range, double bearing)
+	{
+		double EarthRadius = 6371000; // m
 
-	        double latA = Math.toRadians(point.x);
-	        double lonA = Math.toRadians(point.y);
-	        double angularDistance = range / EarthRadius;
-	        double trueCourse = Math.toRadians(bearing);
+		double latA = Math.toRadians(point.x);
+		double lonA = Math.toRadians(point.y);
+		double angularDistance = range / EarthRadius;
+		double trueCourse = Math.toRadians(bearing);
 
-	        double lat = Math.asin(
-	                Math.sin(latA) * Math.cos(angularDistance) +
-	                        Math.cos(latA) * Math.sin(angularDistance)
-	                        * Math.cos(trueCourse));
+		double lat = Math.asin(
+				Math.sin(latA) * Math.cos(angularDistance) +
+				Math.cos(latA) * Math.sin(angularDistance)
+				* Math.cos(trueCourse));
 
-	        double dlon = Math.atan2(
-	                Math.sin(trueCourse) * Math.sin(angularDistance)
-	                        * Math.cos(latA),
-	                Math.cos(angularDistance) - Math.sin(latA) * Math.sin(lat));
+		double dlon = Math.atan2(
+				Math.sin(trueCourse) * Math.sin(angularDistance)
+				* Math.cos(latA),
+				Math.cos(angularDistance) - Math.sin(latA) * Math.sin(lat));
 
-	        double lon = ((lonA + dlon + Math.PI) % (Math.PI * 2)) - Math.PI;
+		double lon = ((lonA + dlon + Math.PI) % (Math.PI * 2)) - Math.PI;
 
-	        lat = Math.toDegrees(lat);
-	        lon = Math.toDegrees(lon);
+		lat = Math.toDegrees(lat);
+		lon = Math.toDegrees(lon);
 
-	        PointF newPoint = new PointF((float) lat, (float) lon);
+		PointF newPoint = new PointF((float) lat, (float) lon);
 
-	        return newPoint;
-	    }
-	
-	
+		return newPoint;
+	}
+
+
 	/**
-	 *  Retourne la derni�re position connue du t�l�phone
+	 *  Retourne la dernière position connue du téléphone
 	 *  Attention, peut retourner null
 	 * @param context
 	 * @return
 	 */
 	public static Location getLastKnownLocation(Context context) {
-        LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);  
-        List<String> providers = lm.getProviders(true);
+		LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+		List<String> providers = lm.getProviders(true);
 
-        /* Loop over the array backwards, and if you get an accurate location, then break out the loop*/
-        Location l = null;
-        
-        for (int i=providers.size()-1; i>=0; i--) {
-                l = lm.getLastKnownLocation(providers.get(i));
-                if (l != null) break;
-        }
-        
-        return l;
+		/* Loop over the array backwards, and if you get an accurate location, then break out the loop*/
+		Location l = null;
+
+		for (int i=providers.size()-1; i>=0; i--) {
+			l = lm.getLastKnownLocation(providers.get(i));
+			if (l != null) break;
+		}
+
+		return l;
 	}
 
 	/**
@@ -170,11 +170,11 @@ public class LocationUtil {
 
 		return front + "." + back;
 	}
-	
+
 	/**
-	 * Retourne l'objet Addresse correspondant � l'adresse pass�e en param�tre
+	 * Retourne l'objet Addresse correspondant à l'adresse passée en paramètre
 	 * sous forme de String
-	 * Renvoie null si pas d'adresse trouv�e
+	 * Renvoie null si pas d'adresse trouvée
 	 * @param context
 	 * @param adresse
 	 * @return
@@ -188,15 +188,15 @@ public class LocationUtil {
 			e.printStackTrace();
 			return null;
 		}
-		
+
 		if (listeAdresseRetour != null && !listeAdresseRetour.isEmpty()){
 			float[] resultDistance=new float[5];
-			// On va ressortir l'adresse la plus proche parmi toute celle retourn�es
+			// On va ressortir l'adresse la plus proche parmi toute celle retournées
 			Address adresseARetourner = listeAdresseRetour.get(0);
-			Location.distanceBetween(latitude, longitude, adresseARetourner.getLatitude(), adresseARetourner.getLongitude(), resultDistance);;
+			Location.distanceBetween(latitude, longitude, adresseARetourner.getLatitude(), adresseARetourner.getLongitude(), resultDistance);
 			Float distanceRetour =  resultDistance[0];
 			for (Address adresseEnCours : listeAdresseRetour){
-				Location.distanceBetween(latitude, longitude, adresseEnCours.getLatitude(), adresseEnCours.getLongitude(), resultDistance);;
+				Location.distanceBetween(latitude, longitude, adresseEnCours.getLatitude(), adresseEnCours.getLongitude(), resultDistance);
 				Float distanceFloat = resultDistance[0];
 				if (distanceFloat < distanceRetour){
 					adresseARetourner = adresseEnCours;
@@ -205,21 +205,21 @@ public class LocationUtil {
 			LatLng locationToReturn = new LatLng(adresseARetourner.getLatitude(), adresseARetourner.getLongitude());
 			return locationToReturn;
 		}
-		
+
 		return null;
 	}
-	
+
 	public static boolean canHandleIntent(Context context, Intent intent){
-	    PackageManager packageManager = context.getPackageManager();
-	    List activities = packageManager.queryIntentActivities(
-	        intent, 
-	        PackageManager.MATCH_DEFAULT_ONLY);
-	    return activities.size() > 0;
+		PackageManager packageManager = context.getPackageManager();
+		List activities = packageManager.queryIntentActivities(
+				intent,
+				PackageManager.MATCH_DEFAULT_ONLY);
+		return activities.size() > 0;
 	}
 
 	/**
-	 * Retourne le nombre de jour depuis la derni�re maj du flipper.
-	 * Retourne -1 si la date de m�j est nulle
+	 * Retourne le nombre de jour depuis la dernière maj du flipper.
+	 * Retourne -1 si la date de màj est nulle
 	 * @param flipper
 	 * @return
 	 */
@@ -230,10 +230,10 @@ public class LocationUtil {
 				Date dateMajFlip = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH).parse(flipper.getDateMaj());
 				nbJours = Days.daysBetween(new DateTime(dateMajFlip), new DateTime(new Date())).getDays();
 			} catch (ParseException e) {
-				// Date mal formatt�e, on fait comme si la date est nulle
+				// Date mal formattée, on fait comme si la date est nulle
 				return -1;
 			}
-			// La date n'est pas nulle et bien formatt�e.
+			// La date n'est pas nulle et bien formattée.
 			return nbJours;
 		}else{
 			// La date est nulle, on retourne -1
