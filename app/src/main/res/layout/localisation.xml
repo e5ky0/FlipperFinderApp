@@ -6,20 +6,20 @@
 			  android:layout_marginLeft="5dip"
 			  android:layout_marginRight="5dip"
 			  android:layout_marginTop="5dip">
-       
+
     <ImageButton
         android:id="@+id/boutonLocalisation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/alt_image_localisation"
         android:src="@drawable/ic_action_location_2"/>
-    
+
 	<FrameLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="bottom"
 	    android:layout_marginBottom="3dp">
-    
+
 	    <EditText
 	        android:id="@+id/champAdresseLocalisation"
 	        android:layout_width="fill_parent"
@@ -29,13 +29,13 @@
 		    android:singleLine="true"/>
 
 	    <ImageButton
-	        android:id="@+id/boutonClearAdresse"      
+	        android:id="@+id/boutonClearAdresse"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="right|center_vertical"
 	        android:layout_marginRight="7dp"
 	        android:background="@drawable/ic_content_remove" />
-	
+
 	</FrameLayout>
 
 </LinearLayout>

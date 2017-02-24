@@ -29,7 +29,7 @@ public class FragmentSignalementMap extends SignalementWizardFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         if (rootView != null) {
             ViewGroup parent = (ViewGroup) rootView.getParent();
             if (parent != null){
@@ -85,8 +85,8 @@ public class FragmentSignalementMap extends SignalementWizardFragment {
             chosenPosition = localisationEnseigne;
         }else{
             new AlertDialog.Builder(getActivity()).setTitle("Géolocalisation impossible!")
-                    .setMessage("Impossible de géolocaliser l'adresse, vous devez manuellement cliquer sur la carte pour indiquer la position.").setNeutralButton("Fermer", null)
-                    .setIcon(R.drawable.ic_delete).show();
+                .setMessage("Impossible de géolocaliser l'adresse, vous devez manuellement cliquer sur la carte pour indiquer la position.").setNeutralButton("Fermer", null)
+                .setIcon(R.drawable.ic_delete).show();
         }
     }
 
@@ -116,8 +116,8 @@ public class FragmentSignalementMap extends SignalementWizardFragment {
     public boolean mandatoryFieldsComplete() {
         if (chosenPosition == null){
             new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!")
-                    .setMessage("Cliquer sur la carte pour renseigner la précision précise de l'enseigne.").setNeutralButton("Fermer", null)
-                    .setIcon(R.drawable.ic_delete).show();
+                .setMessage("Cliquer sur la carte pour renseigner la précision précise de l'enseigne.").setNeutralButton("Fermer", null)
+                .setIcon(R.drawable.ic_delete).show();
             return false;
         }else{
             return true;

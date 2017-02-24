@@ -9,11 +9,11 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Page d\'accueil</string>
     <string name="title_activity_pageListeResultat">Page liste résultat</string>
-    
+
     <string name="BoutonAccueilMaj">Mettre à jour la base des flippers</string>
 
     <string name="hintFiltreModele">Filtrer par modèle de flipper</string>
-    
+
     <string name="title_activity_pageCarteFlipper">Localisation des flippers</string>
     <string name="alt_image_localisation">Localisation</string>
     <string name="hintRechercheAdresse">Taper votre adresse</string>
@@ -28,7 +28,7 @@
     <string name="hintSoumettreAdresse">Taper l\'adresse du flipper</string>
     <string name="BoutonEnvoiInfosFlipper">Envoyer</string>
     <string name="SectionFacultatif">(Facultatif)</string>
-    
+
     <string name="SectionPrefRayonRecherche">Rayon de recherche</string>
     <string name="SectionPrefNbResultatVisible">Nombre max de flippers affichés</string>
     <string name="BoutonPrefMaj">Mettre à jour la base</string>
@@ -46,11 +46,11 @@
     <string name="boutonNavigation">Itinéraire vers ce flipper</string>
     <string name="dateMaj">Date de mise à jour : </string>
     <string name="dateMajDefault">Flipper non confirmé depuis juin 2013.</string>
-    
+
 	<string name="SectionPseudo">Votre pseudo</string>
 	<string name="SectionScore">Votre score</string>
 	<string name="boutonSoumettreScore">Soumettre votre Hi-Score</string>
-    
+
     <string name="boutonCommentaire">Laisser un commentaire</string>
     <string name="boutonNewCommentaire">Envoyer</string>
     <string name="boutonCancel">Annuler</string>
@@ -59,22 +59,22 @@
     <string name="hintCommentaire">Tapez votre commentaire…</string>
 
     <string name="boutonValideChangementModele">Valider le nouveau modèle</string>
-    
-    
+
+
     <string name="headerTournoi">Tournois LNJF</string>
-    
+
     <string name="headerCommentaire">Derniers commentaires</string>
-	    
+
     <string name="headerPreferences">Réglages</string>
     <string name="headerSignalement">Signaler un flipper</string>
-    
-    <string name="mailContact">flipperfinder@gmail.com</string>
-    
+
+    <string name="mailContact">flipper.finder2@gmail.com</string>
+
     <string name="pseudoCommentaireAnonyme">Anonyme</string>
     <string name="fulltextCommentaireAnonyme"><Data><![CDATA[<b>Anonyme</b> à propos d\'un %2$s à %3$s]]> </Data></string>
     <string name="fulltextCommentaire"><Data><![CDATA[<b>%1$s</b> à propos d\'un %2$s à %3$s]]> </Data></string>
     <string name="pasEncoreCommentaire">Pas encore de commentaire pour ce flipper.</string>
-    
+
     <string name="toastMajEnseigne">%1$d enseigne(s) mise(s) à jour.</string>
     <string name="toastMajModele">%1$d modèle de flipper mis à jour.</string>
     <string name="toastMajFlipper">%1$d flipper mis à jour.</string>
@@ -84,7 +84,7 @@
     <string name="toastMajPasPossibleTropLent">Mise à jour impossible : Vous devez être en minimum en 3G ou en WIFI !</string>
     <string name="toastMajEchec">La mise à jour a échoué, la base a été réitinialisée.</string>
     <string name="titrePopupRecapMaj">Récap de la mise à jour</string>
-    
+
     <string  name="toastValidationPasPossibleReseau">Impossible d\'envoyer la validation. Vous devez être connecté à Internet !</string>
     <string  name="toastValidationCloudOK">La validation a bien été prise en compte. Merci!</string>
     <string  name="toastValidationCloudKO">La validation a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
@@ -92,7 +92,7 @@
     <string  name="toastAjouteCommentairePasPossibleReseau">Impossible d\'envoyer un commentaire. Vous devez être connecté à Internet !</string>
     <string  name="toastAjouteCommentaireCloudOK">Votre commentaire a bien été reçu. Merci!</string>
     <string  name="toastAjouteCommentaireCloudKO">L\'envoi de commentaire a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
-    
+
     <string  name="popupChangementModeleOK">Le changement de modèle a été pris en compte. Merci!</string>
     <string  name="popupChangementModeleKO">Le changement de modèle a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
     <string  name="popupChangementModeleRetour">Retourner à la liste</string>
@@ -106,15 +106,13 @@
 
 
     <string  name="toastChangeModelePasPossibleReseau">Impossible de modifier le modèle. Vous devez être connecté à Internet !</string>
-    
-    <string name="codeGoogleAnalitycs">CLE_GOOGLE_ANALYTICS</string>
-    <string name="parseApplicationId">CLE_PARSE_APPLICATION_ID</string>
-    <string name="parseClientKey">CLE_PARSE</string>
-    <string name="parseServerUrl">https://flipper-finder.appspot.com/parse/</string>
 
-    <string name="googleMapsApiKey">AIzaSyDvfsMHiOgl0aUjvrXHebOVltrkNsmyF3Y</string>
-    <string name="oldGoogleMapsApiKey">AIzaSyCUTftlWWx1NLsu2j4aMNCDK1RIrBlyYx8</string>
+    <string name="parseApplicationId">wx8ZJI9628FDGq39REy6rMlZjKdP5ERUMXjZpqjE</string>
+    <string name="parseClientKey">8JRUbCxEjJjkSXG00B5csXzAl1E9BWHVIABKvFqy</string>
+    <string name="parseServerUrl">https://parseapi.back4app.com/</string>
 
-    
+    <string name="googleMapsApiKey">AIzaSyDAnbAcnQN_Joy9-fzjmfYwNDqIZOdQLNQ</string>
+
+
 
 </resources>

@@ -45,20 +45,20 @@ public class GlobalService {
 		ArrayList<Commentaire> listeRetour = null;
 		BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
 		BaseFlipperService baseFlipperService = new BaseFlipperService();
-		
+
 		listeRetour = baseCommentaireService.getLastCommentaire(pContext, nbMaxCommentaire);
-		
+
 		for (Commentaire commentaire : listeRetour){
 			Flipper flipper = baseFlipperService.getFlipperById(pContext, commentaire.getFlipperId());
 			commentaire.setFlipper(flipper);
 		}
-		
+
 		return listeRetour;
-		
+
 	}
-	
+
 	public String majBaseAvecNouveaute(Context pContext, String dateDerniereMaj) throws InterruptedException{
-		
+
 		BaseModeleService baseModeleService = new BaseModeleService();
 		ParseModeleService parseModeleService = new ParseModeleService();
 		BaseEnseigneService baseEnseigneService = new BaseEnseigneService();
@@ -68,11 +68,11 @@ public class GlobalService {
 
 		BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
 		ParseCommentaireService parseCommentaireService = new ParseCommentaireService(null);
-		
+
 		BaseTournoiService baseTournoiService = new BaseTournoiService();
 		ParseTournoiService parseTournoiService = new ParseTournoiService();
-		
-		Long idMaxModele = baseModeleService.getIdMaxModele(pContext); 
+
+		Long idMaxModele = baseModeleService.getIdMaxModele(pContext);
 
 		// On récupère les données du cloud
 		List<ModeleFlipper> nvlleListeModele = parseModeleService.getMajModeleById(idMaxModele);
@@ -90,18 +90,18 @@ public class GlobalService {
 			textPopup = pContext.getResources().getString(R.string.toastMajEnseigne, nvlleListeEnseigne.size()) + "\n";
 			baseEnseigneService.majListeEnseigne(nvlleListeEnseigne, pContext);
 		}
-		
+
 		// On met à jour la table des modèles de flipper
 		if (nvlleListeModele != null && nvlleListeModele.size() > 0){
 			maj = true;
-			textPopup += pContext.getResources().getString(R.string.toastMajModele, nvlleListeModele.size())+ "\n";;
+			textPopup += pContext.getResources().getString(R.string.toastMajModele, nvlleListeModele.size())+ "\n";
 			baseModeleService.majListeModele(nvlleListeModele, pContext);
 		}
-		
+
 		// On met à jour la table des flippers
 		if (nvlleListeFlipper != null && nvlleListeFlipper.size() > 0){
 			maj = true;
-			textPopup += pContext.getResources().getString(R.string.toastMajFlipper, nvlleListeFlipper.size())+ "\n";;
+			textPopup += pContext.getResources().getString(R.string.toastMajFlipper, nvlleListeFlipper.size())+ "\n";
 			baseFlipperService.majListeFlipper(nvlleListeFlipper, pContext);
 		}
 
@@ -111,11 +111,11 @@ public class GlobalService {
 			textPopup += pContext.getResources().getString(R.string.toastMajCommentaire, nvlleListeCommentaire.size());
 			baseCommentaireService.majListeCommentaire(nvlleListeCommentaire, pContext);
 		}
-		
+
 		// On met à jour la table des tournois
 		baseTournoiService.remplaceListeTournoi(nvlleListeTournoi, pContext);
-		
-		
+
+
 		// S'il y a eu une mise à jour, on envoie le récap en sortie.
 		if (maj){
 			return textPopup;

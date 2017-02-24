@@ -32,28 +32,28 @@ public class EnseigneDAO extends DAOBase{
 
 		double fudge = Math.pow(Math.cos(Math.toRadians(center.x)),2);
 		String strWhere =  " Where "
-		        + "CAST(" +FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)" + " > " + String.valueOf(p3.x) + " And "
-		        + "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)" + " < " + String.valueOf(p1.x) + " And "
-		        + "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " AS REAL)" + " < " + String.valueOf(p2.y) + " And "
-		        + "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " AS REAL)" + " > " + String.valueOf(p4.y);
+			+ "CAST(" +FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)" + " > " + String.valueOf(p3.x) + " And "
+			+ "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)" + " < " + String.valueOf(p1.x) + " And "
+			+ "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " AS REAL)" + " < " + String.valueOf(p2.y) + " And "
+			+ "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " AS REAL)" + " > " + String.valueOf(p4.y);
 
 		String strOrder =  " ORDER BY (("+center.x+" - ENS_LATITUDE) * ("+center.x+" - ENS_LATITUDE)" +
-				" + ("+center.y+" - ENS_LONGITUDE) * ("+center.y+" - ENS_LONGITUDE) * "+fudge+")";
+			" + ("+center.y+" - ENS_LONGITUDE) * ("+center.y+" - ENS_LONGITUDE) * "+fudge+")";
 
 		Cursor cursor = mDb.rawQuery("select " + FlipperDatabaseHandler.ENSEIGNE_ID +
-									 " , " +  FlipperDatabaseHandler.ENSEIGNE_TYPE +
-									 " , " +  FlipperDatabaseHandler.ENSEIGNE_NOM +
-									 " , " +  FlipperDatabaseHandler.ENSEIGNE_HORAIRE +
-									 " , " +  FlipperDatabaseHandler.ENSEIGNE_LATITUDE +
-									 " , " +  FlipperDatabaseHandler.ENSEIGNE_LONGITUDE +
-									 " , " +  FlipperDatabaseHandler.ENSEIGNE_ADRESSE +
-									 " , " +  FlipperDatabaseHandler.ENSEIGNE_CODE_POSTAL +
-									 " , " +  FlipperDatabaseHandler.ENSEIGNE_VILLE +
-									 " , " +  FlipperDatabaseHandler.ENSEIGNE_PAYS +
-									 " , " +  FlipperDatabaseHandler.ENSEIGNE_DATMAJ +
-									 " from " + FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME +
-									 strWhere + strOrder, null);
-		
+				" , " +  FlipperDatabaseHandler.ENSEIGNE_TYPE +
+				" , " +  FlipperDatabaseHandler.ENSEIGNE_NOM +
+				" , " +  FlipperDatabaseHandler.ENSEIGNE_HORAIRE +
+				" , " +  FlipperDatabaseHandler.ENSEIGNE_LATITUDE +
+				" , " +  FlipperDatabaseHandler.ENSEIGNE_LONGITUDE +
+				" , " +  FlipperDatabaseHandler.ENSEIGNE_ADRESSE +
+				" , " +  FlipperDatabaseHandler.ENSEIGNE_CODE_POSTAL +
+				" , " +  FlipperDatabaseHandler.ENSEIGNE_VILLE +
+				" , " +  FlipperDatabaseHandler.ENSEIGNE_PAYS +
+				" , " +  FlipperDatabaseHandler.ENSEIGNE_DATMAJ +
+				" from " + FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME +
+				strWhere + strOrder, null);
+
 		while (cursor.moveToNext()) {
 			// Faire quelque chose
 			listeRetour.add(convertCursorToEnseigne(cursor));
@@ -61,7 +61,7 @@ public class EnseigneDAO extends DAOBase{
 		cursor.close();
 		return listeRetour;
 	}
-	
+
 	private Enseigne convertCursorToEnseigne(Cursor c){
 		Enseigne enseigne = new Enseigne();
 		enseigne.setId(c.getLong(0));
@@ -77,7 +77,7 @@ public class EnseigneDAO extends DAOBase{
 		enseigne.setDateMaj(c.getString(10));
 		return enseigne;
 	}
-	
+
 	public void save(Enseigne enseigne){
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(FlipperDatabaseHandler.ENSEIGNE_ID, enseigne.getId());

@@ -12,34 +12,34 @@ import fr.fafsapp.flipper.finder.metier.Flipper;
 
 public class BaseFlipperService {
 
-	
+
 	public ArrayList<Flipper> rechercheFlipper(Context pContext, double latitude, double longitude, int rayon, int maxListeSize, String modele){
 		ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
-		
+
 		FlipperDAO flipperDao = new FlipperDAO(pContext);
-		
+
 		flipperDao.open();
 		PointF center = new PointF((float)latitude, (float)longitude);
 
 		ArrayList<Flipper> listeFlipper = flipperDao.getFlipperByDistance(center, rayon, modele);
 		flipperDao.close();
-		
+
 		for (int i = 0 ; i < listeFlipper.size() && i < maxListeSize ;i++){
 			listeRetour.add(listeFlipper.get(i));
 		}
-		
+
 		return listeRetour;
 	}
-	
+
 	public Flipper getFlipperById(Context pContext, long idFlipper){
 		Flipper flipperRetour = null;
-		
+
 		FlipperDAO flipperDao = new FlipperDAO(pContext);
-		
+
 		flipperDao.open();
 		flipperRetour = flipperDao.getFlipperById(idFlipper);
 		flipperDao.close();
-		
+
 		return flipperRetour;
 	}
 
@@ -70,7 +70,7 @@ public class BaseFlipperService {
 		flipperDao.close();
 		return true;
 	}
-	
+
 	public boolean majFlipper(Flipper flipper, Context pContext){
 		FlipperDAO flipperDao = new FlipperDAO(pContext);
 		flipperDao.open();
@@ -78,5 +78,5 @@ public class BaseFlipperService {
 		flipperDao.close();
 		return true;
 	}
-	
+
 }

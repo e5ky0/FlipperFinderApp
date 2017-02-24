@@ -32,17 +32,13 @@ public class Commentaire  implements Serializable{
 	}
 
 	public Commentaire(long id, long flipperId, String texte, String date,
-			String pseudo, long actif) {
+                       String pseudo, boolean actif) {
 		this.setId(id);
 		this.setFlipperId(flipperId);
 		this.setTexte(texte);
 		this.setDate(date);
 		this.setPseudo(pseudo);
-		if (actif == 1)
-			this.setActif(true);
-		else
-			this.setActif(false);
-
+        this.setActif(actif);
 	}
 
 	public long getId() {
@@ -85,16 +81,8 @@ public class Commentaire  implements Serializable{
 		this.pseudo = pseudo;
 	}
 
-	public boolean isActif() {
+	public boolean getActif() {
 		return actif;
-	}
-
-	public long getActif() {
-		if (actif == true){
-			return 1;
-		}else{
-			return 0;
-		}
 	}
 
 	public void setActif(boolean actif) {
@@ -102,10 +90,7 @@ public class Commentaire  implements Serializable{
 	}
 
 	public void setActif(long actif) {
-		if (actif == 1)
-			this.actif = true;
-		else
-			this.actif = false;
+		this.actif = actif != 0;
 	}
 
 	public Flipper getFlipper() {

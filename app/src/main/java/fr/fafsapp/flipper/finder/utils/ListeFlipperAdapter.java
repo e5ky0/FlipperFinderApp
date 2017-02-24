@@ -19,7 +19,7 @@ import fr.fafsapp.flipper.finder.R;
 import fr.fafsapp.flipper.finder.metier.Flipper;
 
 /**
- * Classe pour un item de la liste de flipper de l'activit�
+ * Classe pour un item de la liste de flipper de l'activité
  * PageListeResultat
  * @author Fafouche
  *
@@ -53,8 +53,8 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 			vi = LayoutInflater.from(getContext());
 			v = vi.inflate(R.layout.simple_list_item_flipper, null);
 		}
-		
-		// On set les tags pour pouvoir retrouver sur quelle ligne on a cliqu�.
+
+		// On set les tags pour pouvoir retrouver sur quelle ligne on a cliqué.
 		v.setTag(position);
 		v.setOnClickListener(InfoFlipperClickListener);
 
@@ -66,7 +66,7 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 			TextView adresseTV = (TextView) v.findViewById(R.id.textAdresseFlipper);
 			TextView distanceTV = (TextView) v.findViewById(R.id.distance);
 			TextView dateMajTV = (TextView) v.findViewById(R.id.dateMaj);
-			
+
 			if (modeleTV != null) {
 				modeleTV.setText(p.getModele().getNom());
 			}
@@ -80,27 +80,27 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 				Float distanceFloat = resultDistance[0];
 				distanceTV.setText(LocationUtil.formatDist(distanceFloat));
 			}
-			
-			// Affichage de la date de mise � jour
-			int nbJours = LocationUtil.getDaysSinceMajFlip(p); 
+
+			// Affichage de la date de mise à jour
+			int nbJours = LocationUtil.getDaysSinceMajFlip(p);
 			if (nbJours == -1){
-				// Date nulle on mal formatt�e : Rouge!
+				// Date nulle on mal formattée : Rouge!
 				dateMajTV.setTextColor(Color.parseColor("#FE2E2E"));
 				dateMajTV.setText(getContext().getResources().getString(R.string.dateMajDefault));
 			}else if (nbJours > 50){
-				// Mis � jour il y a plus de 50 jours, on met en Orange
+				// Mis à jour il y a plus de 50 jours, on met en Orange
 				dateMajTV.setTextColor(Color.parseColor("#FFBF00"));
 				dateMajTV.setText("Confirmé il y a " + String.valueOf(nbJours) + " jours.");
 			}else if (nbJours == 0){
-				// Mis � jour aujourd'hui
+				// Mis à jour aujourd'hui
 				dateMajTV.setTextColor(Color.parseColor("#04B404"));
 				dateMajTV.setText("Confirmé aujourd'hui.");
 			}else if (nbJours == 1){
-				// Confirm� hier
+				// Confirmé hier
 				dateMajTV.setTextColor(Color.parseColor("#04B404"));
 				dateMajTV.setText("Confirmé hier.");
 			}else{
-				// Mis � jour r�cemment, on met en vert
+				// Mis à jour récemment, on met en vert
 				dateMajTV.setTextColor(Color.parseColor("#04B404"));
 				dateMajTV.setText("Confirmé il y a " + String.valueOf(nbJours) + " jours.");
 			}
@@ -121,5 +121,5 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 			getContext().startActivity(infoActivite);
 		}
 	};
-	
+
 }

@@ -41,8 +41,6 @@ import fr.fafsapp.flipper.finder.utils.MyLocation.LocationResult;
 
 public class PageSignalementNew extends ActionBarActivity {
 
-    MyLocation myLocation = new MyLocation();
-
     LatLng currentLocation = null;
 
     LatLng newLocation = null;
@@ -191,18 +189,18 @@ public class PageSignalementNew extends ActionBarActivity {
 
             i.putExtra(Intent.EXTRA_EMAIL, new String[] { emailsTo });
             i.putExtra(Intent.EXTRA_SUBJECT, "Nouveau Flipper");
-			/*
-			 * i.putExtra(Intent.EXTRA_TEXT,
-			 * "Adresse : "+adresseUtilisateurTV.getText
-			 * ()+"\nModèle : "+champModeleFlipper.getText()+
-			 * "\nNom de l'enseigne : " + champNomEnseigne.getText());
-			 */
+            /*
+             * i.putExtra(Intent.EXTRA_TEXT,
+             * "Adresse : "+adresseUtilisateurTV.getText
+             * ()+"\nModèle : "+champModeleFlipper.getText()+
+             * "\nNom de l'enseigne : " + champNomEnseigne.getText());
+             */
             try {
                 startActivity(Intent.createChooser(i, "Envoi du mail"));
             } catch (android.content.ActivityNotFoundException ex) {
                 new AlertDialog.Builder(PageSignalementNew.this).setTitle("Envoi impossible!")
-                        .setMessage("Vous n'avez pas de mail configuré sur votre téléphone.")
-                        .setNeutralButton("Fermer", null).setIcon(R.drawable.ic_tristesse).show();
+                    .setMessage("Vous n'avez pas de mail configuré sur votre téléphone.")
+                    .setNeutralButton("Fermer", null).setIcon(R.drawable.ic_tristesse).show();
             }
         }
     };

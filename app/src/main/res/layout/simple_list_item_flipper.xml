@@ -30,7 +30,7 @@
         android:layout_marginRight="7dp"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <!-- TextView 
+    <!-- TextView
         android:id="@+id/dateMaj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#04B404"/ -->
 
-    <TextView 
+    <TextView
         android:id="@+id/dateMaj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,6 +48,6 @@
 		android:layout_alignLeft="@id/textModeleFlipper"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#04B404"/>
-        
+
 
 </RelativeLayout>

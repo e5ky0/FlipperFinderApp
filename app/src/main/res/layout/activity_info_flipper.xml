@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="5sp"
         android:text="Nom Enseigne"
-        android:textSize="16sp" 
+        android:textSize="16sp"
         android:layout_marginLeft="5dp"/>
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/nomEnseigne"
         android:text="Adresse précise de l&apos;Enseigne"
-        android:textSize="16sp" 
+        android:textSize="16sp"
         android:layout_marginLeft="5dp"/>
 
     <TextView
@@ -30,11 +30,11 @@
         android:text="@string/dateMaj"
         android:textSize="16sp"
         android:layout_marginLeft="5dp"/>
-    
-    <View style="@style/itemDivider" 
+
+    <View style="@style/itemDivider"
           android:id="@+id/divider"
           android:layout_below="@id/dateMajFlip"/>
-    
+
         <android.support.v4.view.ViewPager
 	        android:id="@+id/pager"
 	        android:layout_below="@id/divider"

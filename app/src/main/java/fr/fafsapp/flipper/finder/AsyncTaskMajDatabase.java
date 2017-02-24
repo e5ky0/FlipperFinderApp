@@ -26,29 +26,29 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 	ProgressDialog mDialog = null;
 
 	public AsyncTaskMajDatabase (AppCompatActivity context, SharedPreferences settings){
-        mContext = context;
-        mSettings = settings;
-   }
-    
-    @Override
-    protected void onPreExecute() 
-    {
-        mDialog = new ProgressDialog(mContext);
-        mDialog.setMessage(mContext.getResources().getString(R.string.dialogMajDBMEssage));
-        mDialog.setTitle(mContext.getResources().getString(R.string.dialogMajDBTitle));
-        mDialog.setCancelable(false);
-        mDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Annuler", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                cancel(true);
-                dialog.dismiss();
-            }
-        });
+		mContext = context;
+		mSettings = settings;
+	}
+
+	@Override
+	protected void onPreExecute()
+	{
+		mDialog = new ProgressDialog(mContext);
+		mDialog.setMessage(mContext.getResources().getString(R.string.dialogMajDBMEssage));
+		mDialog.setTitle(mContext.getResources().getString(R.string.dialogMajDBTitle));
+		mDialog.setCancelable(false);
+		mDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Annuler", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				cancel(true);
+				dialog.dismiss();
+			}
+		});
 		mDialog.setIndeterminate(true);
-        mDialog.show();
+		mDialog.show();
 		super.onPreExecute();
-    }
-    
+	}
+
 	@Override
 	protected Boolean doInBackground(Object... params) {
 		GlobalService globalService = new GlobalService();
@@ -57,20 +57,20 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 			String dateDerniereMajString;
 			dateDerniereMajString = mSettings.getString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
 			retourMaj = globalService.majBaseAvecNouveaute(mContext, dateDerniereMajString);
-			
+
 			if (retourMaj != null){
 				// La màj s'est bien passée, on mémorise la date de mise à jour.
 				DateFormat df = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE);
-				Date today = Calendar.getInstance().getTime();        
+				Date today = Calendar.getInstance().getTime();
 				String dateDuJour = df.format(today);
 				editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, dateDuJour);
 				editor.commit();
 			}
 		} catch (InterruptedException ie){
-            String a = "a";
-        } catch (RuntimeException re){
-            String a = "a";
-        } catch (Exception e) {
+			String a = "a";
+		} catch (RuntimeException re){
+			String a = "a";
+		} catch (Exception e) {
 			// Erreur trappée. On efface la base, elle sera réinitialisée au prochain appel, et on
 			// set la date de mise à jour à la valeur par défaut.
 			//EasyTracker.getTracker().sendEvent("ui_error", "MAJ_DB_ERROR", "PagePreferences", 0L);
@@ -81,7 +81,7 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 		}
 		return true;
 	}
-	
+
 	@Override
 	protected void onPostExecute(Boolean result) {
 
@@ -93,14 +93,14 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 			toast.show();
 			return;
 		}
-		
+
 		// Sinon on affiche la popup de màj où le message disant que la base est à jour.
 		if (retourMaj != null){
 			new AlertDialog.Builder(mContext).setTitle(mContext.getResources().getString(R.string.titrePopupRecapMaj))
-					.setMessage(retourMaj).setPositiveButton("Cool !", new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int which) {
-						}
-					}).show();
+				.setMessage(retourMaj).setPositiveButton("Cool !", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				}).show();
 		}else{
 			Toast toast = Toast.makeText(mContext, mContext.getResources().getString(R.string.toastMajPasNecessaire), Toast.LENGTH_SHORT);
 			toast.show();

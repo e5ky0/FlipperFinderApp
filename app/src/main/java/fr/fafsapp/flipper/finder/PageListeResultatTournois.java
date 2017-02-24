@@ -43,7 +43,7 @@ public class PageListeResultatTournois extends ActionBarActivity {
 	ImageButton boutonClearAdresse = null;
 	ImageButton boutonLocalisation = null;
 	ListView listeFlipperView = null;
-	
+
 	ActionBar mActionBar;
 
 	@Override
@@ -51,11 +51,11 @@ public class PageListeResultatTournois extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_liste_resultat_tournoi);
-		
+
 		mActionBar = getSupportActionBar();
 		mActionBar.setTitle(R.string.headerTournoi);
 		mActionBar.setIcon(R.drawable.header_icon_tournoi);
-    	adresseUtilisateurTV = (EditText) findViewById(R.id.champAdresseLocalisation);
+		adresseUtilisateurTV = (EditText) findViewById(R.id.champAdresseLocalisation);
 		adresseUtilisateurTV.setHint(R.string.hintRechercheAdresse);
 		adresseUtilisateurTV.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
 		boutonClearAdresse = (ImageButton) findViewById(R.id.boutonClearAdresse);
@@ -79,16 +79,20 @@ public class PageListeResultatTournois extends ActionBarActivity {
 			@Override
 			public void gotLocation(Location location) {
 				if (location != null) {
-					// M�thode appel�e lorsque la localisation a fonctionn�
+					// Méthode appelée lorsque la localisation a fonctionné
 					latitude = location.getLatitude();
 					longitude = location.getLongitude();
 				}
 			}
 		};
 
+        if (!myLocation.checkLocationPermission(this)) {
+            return;
+        }
+
 		myLocation.getLocation(this, locationResult);
 
-		// On commence par r�cup�rer la derni�re location connue du t�l�phone,
+		// On commence par récupèrer la dernière location connue du téléphone,
 		// et on remplit le champ
 		// Adresse avec.
 		Location locationCourante = LocationUtil.getLastKnownLocation(this);
@@ -103,10 +107,10 @@ public class PageListeResultatTournois extends ActionBarActivity {
 			adresseUtilisateurTV.setText(addressText);
 		} else {
 			new AlertDialog.Builder(PageListeResultatTournois.this)
-					.setTitle("Argh!")
-					.setMessage(
-							"Votre adresse n'a pas pu être trouvée! Rappuyez sur le bouton de localisation, ou entrez votre adresse manuellement. Si le problème persiste, contactez moi :)")
-					.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
+				.setTitle("Argh!")
+				.setMessage(
+						"Votre adresse n'a pas pu être trouvée! Rappuyez sur le bouton de localisation, ou entrez votre adresse manuellement. Si le problème persiste, contactez moi :)")
+				.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
 		}
 	}
 
@@ -114,7 +118,7 @@ public class PageListeResultatTournois extends ActionBarActivity {
 		if (latitude == 0 && longitude == 0) {
 			return;
 		}
-		// R�cup�re la liste des flippers les plus proches
+		// Récupère la liste des flippers les plus proches
 		BaseTournoiService rechercheService = new BaseTournoiService();
 
 		listeTournoi = rechercheService.getAllTournoi(getApplicationContext());
@@ -124,9 +128,9 @@ public class PageListeResultatTournois extends ActionBarActivity {
 		listeFlipperView.setAdapter(customAdapter);
 
 		if (listeTournoi.size() == 0) {
-				new AlertDialog.Builder(this).setTitle("Argh!")
-						.setMessage("Aucun tournoi à venir...")
-						.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
+			new AlertDialog.Builder(this).setTitle("Argh!")
+				.setMessage("Aucun tournoi à venir...")
+				.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
 		}
 	}
 
@@ -142,19 +146,19 @@ public class PageListeResultatTournois extends ActionBarActivity {
 				latitude = adresseRecherchee.latitude;
 				longitude = adresseRecherchee.longitude;
 
-				// TODO Trouver une fa�on propre d'afficher un choix quand il y
-				// a plusieurs adresses trouv�es
+				// TODO Trouver une façon propre d'afficher un choix quand il y
+				// a plusieurs adresses trouvées
 				adresseUtilisateurTV.setText(LocationUtil.getAdresseFromCoordGPS(getApplicationContext(), latitude,
-						longitude));
+							longitude));
 				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 				rafraichitListeTournoi();
 			} else {
 				new AlertDialog.Builder(PageListeResultatTournois.this)
-						.setTitle("Argh!")
-						.setMessage(
-								"Votre adresse n'a pas pu être trouvée! Veuillez activer le GPS et la connexion Wifi sur votre téléphone. Si le problème persiste, contactez moi :)")
-						.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
+					.setTitle("Argh!")
+					.setMessage(
+							"Votre adresse n'a pas pu être trouvée! Veuillez activer le GPS et la connexion Wifi sur votre téléphone. Si le problème persiste, contactez moi :)")
+					.setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
 			}
 			return false;
 		}
@@ -180,9 +184,9 @@ public class PageListeResultatTournois extends ActionBarActivity {
 	@Override
 	public void onPause() {
 		super.onPause();
-		// Pour �viter que �a crash si l'utiisateur quitte l'appli alors que la
+		// Pour éviter que ça crash si l'utiisateur quitte l'appli alors que la
 		// localisation n'est pas
-		// termin�e
+		// terminée
 		myLocation.cancelTimer();
 	}
 

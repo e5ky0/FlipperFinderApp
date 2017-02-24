@@ -20,29 +20,29 @@ import fr.fafsapp.flipper.finder.metier.Flipper;
 public class PageInfoFlipperPager extends ActionBarActivity  {
 
 	public final static String INTENT_FLIPPER_ONGLET_DEFAUT = "fr.fafsapp.flipper.finder.PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT";
-	
+
 
 	private ViewPager mPager;
-	 
-    ActionBar mActionbar;
-	
+
+	ActionBar mActionbar;
+
 	Flipper flipper;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		super.onCreate(savedInstanceState);
-		// On r�cup�re le flipper concern�
+		// On récupère le flipper concerné
 		Intent i = getIntent();
 		flipper = (Flipper) i.getSerializableExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO);
 
-		// On r�cup�re l'onglet par d�faut.
+		// On récupère l'onglet par défaut.
 		int ongletDefaut = i.getIntExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 0);
 
 		setContentView(R.layout.activity_info_flipper);
-		
+
 		/** Getting a reference to action bar of this activity */
-        mActionbar = getSupportActionBar();
+		mActionbar = getSupportActionBar();
 
 		Intent actionsIntent = new Intent(this, FragmentActionsFlipper.class);
 		actionsIntent.putExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO,flipper);
@@ -54,87 +54,87 @@ public class PageInfoFlipperPager extends ActionBarActivity  {
 		commentaireIntent.putExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO, flipper);
 
 		/** Getting a reference to action bar of this activity */
-        mActionbar = getSupportActionBar();
- 
-        /** Set tab navigation mode */
-        mActionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        
-        mActionbar.setTitle(flipper.getModele().getNom());
+		mActionbar = getSupportActionBar();
 
-        /** Getting a reference to ViewPager from the layout */
-        mPager = (ViewPager) findViewById(R.id.pager);
- 
-        /** Getting a reference to FragmentManager */
-        FragmentManager fm = getSupportFragmentManager();
- 
-        /** Defining a listener for pageChange */
-        ViewPager.SimpleOnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener(){
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                mActionbar.setSelectedNavigationItem(position);
-            }
-        };
- 
-        /** Setting the pageChange listener to the viewPager */
-        mPager.setOnPageChangeListener(pageChangeListener);
- 
-        /** Creating an instance of FragmentPagerAdapter */
-        InfoFlipperPagerAdapter fragmentPagerAdapter = new InfoFlipperPagerAdapter(fm, flipper);
- 
-        /** Setting the FragmentPagerAdapter object to the viewPager object */
-        mPager.setAdapter(fragmentPagerAdapter);
- 
-        mActionbar.setDisplayShowTitleEnabled(true);
- 
-        /** Defining tab listener */
-        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
- 
-            @Override
-            public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-            }
- 
-            @Override
-            public void onTabSelected(Tab tab, FragmentTransaction ft) {
-                mPager.setCurrentItem(tab.getPosition());
-            }
- 
-            @Override
-            public void onTabReselected(Tab tab, FragmentTransaction ft) {
-            }
-        };
- 
-        /** Creating fragment1 Tab */
-        Tab tab = mActionbar.newTab()
-            .setText("Carte")
-            .setTabListener(tabListener);
- 
-        mActionbar.addTab(tab);
- 
-        /** Creating fragment2 Tab */
-        tab = mActionbar.newTab()
-            .setText("Actions")
-            .setTabListener(tabListener);
- 
-        mActionbar.addTab(tab);
+		/** Set tab navigation mode */
+		mActionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        /** Creating fragment3 Tab */
-        tab = mActionbar.newTab()
-            .setText("Commentaires")
-            .setTabListener(tabListener);
- 
-        mActionbar.addTab(tab);
+		mActionbar.setTitle(flipper.getModele().getNom());
 
-        /** Creating fragment3 Tab */
-        /*
-        tab = mActionbar.newTab()
-            .setText("Hi Scores")
-            .setTabListener(tabListener);
- 
-        mActionbar.addTab(tab);
-*/
-        
-	    // On �crit les trois infos Adresse / Nom de l'enseigne / Date de mise � jour. 
+		/** Getting a reference to ViewPager from the layout */
+		mPager = (ViewPager) findViewById(R.id.pager);
+
+		/** Getting a reference to FragmentManager */
+		FragmentManager fm = getSupportFragmentManager();
+
+		/** Defining a listener for pageChange */
+		ViewPager.SimpleOnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener(){
+			@Override
+			public void onPageSelected(int position) {
+				super.onPageSelected(position);
+				mActionbar.setSelectedNavigationItem(position);
+			}
+		};
+
+		/** Setting the pageChange listener to the viewPager */
+		mPager.setOnPageChangeListener(pageChangeListener);
+
+		/** Creating an instance of FragmentPagerAdapter */
+		InfoFlipperPagerAdapter fragmentPagerAdapter = new InfoFlipperPagerAdapter(fm, flipper);
+
+		/** Setting the FragmentPagerAdapter object to the viewPager object */
+		mPager.setAdapter(fragmentPagerAdapter);
+
+		mActionbar.setDisplayShowTitleEnabled(true);
+
+		/** Defining tab listener */
+		ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+
+			@Override
+			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+			}
+
+			@Override
+			public void onTabSelected(Tab tab, FragmentTransaction ft) {
+				mPager.setCurrentItem(tab.getPosition());
+			}
+
+			@Override
+			public void onTabReselected(Tab tab, FragmentTransaction ft) {
+			}
+		};
+
+		/** Creating fragment1 Tab */
+		Tab tab = mActionbar.newTab()
+			.setText("Carte")
+			.setTabListener(tabListener);
+
+		mActionbar.addTab(tab);
+
+		/** Creating fragment2 Tab */
+		tab = mActionbar.newTab()
+			.setText("Actions")
+			.setTabListener(tabListener);
+
+		mActionbar.addTab(tab);
+
+		/** Creating fragment3 Tab */
+		tab = mActionbar.newTab()
+			.setText("Commentaires")
+			.setTabListener(tabListener);
+
+		mActionbar.addTab(tab);
+
+		/** Creating fragment3 Tab */
+		/*
+		   tab = mActionbar.newTab()
+		   .setText("Hi Scores")
+		   .setTabListener(tabListener);
+
+		   mActionbar.addTab(tab);
+		   */
+
+		// On écrit les trois infos Adresse / Nom de l'enseigne / Date de mise à jour.
 
 
 		TextView adresseEnseigne = (TextView) findViewById(R.id.adresseEnseigne);
@@ -143,7 +143,7 @@ public class PageInfoFlipperPager extends ActionBarActivity  {
 		nomEnseigne.setText(flipper.getEnseigne().getNom());
 		adresseEnseigne.setText(flipper.getEnseigne().getAdresseCompleteSansPays());
 
-		// Si la date de mise � jour est nulle, on affiche la valeur par d�faut.
+		// Si la date de mise à jour est nulle, on affiche la valeur par défaut.
 		if (flipper.getDateMaj() != null && flipper.getDateMaj().length() != 0) {
 			dateMajFlip.setText(getResources().getString(R.string.dateMaj) + " " + flipper.getDateMaj());
 		} else {
