@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.service;
+package com.pinmyballs.service;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,22 +14,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import fr.fafsapp.flipper.finder.R;
-import fr.fafsapp.flipper.finder.metier.Commentaire;
-import fr.fafsapp.flipper.finder.metier.Enseigne;
-import fr.fafsapp.flipper.finder.metier.Flipper;
-import fr.fafsapp.flipper.finder.metier.ModeleFlipper;
-import fr.fafsapp.flipper.finder.metier.Tournoi;
-import fr.fafsapp.flipper.finder.service.base.BaseCommentaireService;
-import fr.fafsapp.flipper.finder.service.base.BaseEnseigneService;
-import fr.fafsapp.flipper.finder.service.base.BaseFlipperService;
-import fr.fafsapp.flipper.finder.service.base.BaseModeleService;
-import fr.fafsapp.flipper.finder.service.base.BaseTournoiService;
-import fr.fafsapp.flipper.finder.service.parse.ParseCommentaireService;
-import fr.fafsapp.flipper.finder.service.parse.ParseEnseigneService;
-import fr.fafsapp.flipper.finder.service.parse.ParseFlipperService;
-import fr.fafsapp.flipper.finder.service.parse.ParseModeleService;
-import fr.fafsapp.flipper.finder.service.parse.ParseTournoiService;
+import com.pinmyballs.R;
+import com.pinmyballs.metier.Commentaire;
+import com.pinmyballs.metier.Enseigne;
+import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.metier.ModeleFlipper;
+import com.pinmyballs.metier.Tournoi;
+import com.pinmyballs.service.base.BaseCommentaireService;
+import com.pinmyballs.service.base.BaseEnseigneService;
+import com.pinmyballs.service.base.BaseFlipperService;
+import com.pinmyballs.service.base.BaseModeleService;
+import com.pinmyballs.service.base.BaseTournoiService;
+import com.pinmyballs.service.parse.ParseCommentaireService;
+import com.pinmyballs.service.parse.ParseEnseigneService;
+import com.pinmyballs.service.parse.ParseFlipperService;
+import com.pinmyballs.service.parse.ParseModeleService;
+import com.pinmyballs.service.parse.ParseTournoiService;
 
 public class GlobalService {
 

@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.metier;
+package com.pinmyballs.metier;
 
 import com.google.gson.annotations.SerializedName;
 

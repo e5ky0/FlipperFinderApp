@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -20,10 +20,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import fr.fafsapp.flipper.finder.service.base.BaseModeleService;
-import fr.fafsapp.flipper.finder.utils.LocationUtil;
-import fr.fafsapp.flipper.finder.utils.MyLocation;
-import fr.fafsapp.flipper.finder.utils.MyLocation.LocationResult;
+import com.pinmyballs.service.base.BaseModeleService;
+import com.pinmyballs.utils.LocationUtil;
+import com.pinmyballs.utils.MyLocation;
+import com.pinmyballs.utils.MyLocation.LocationResult;
 
 public class PageSignalement extends ActionBarActivity {
 

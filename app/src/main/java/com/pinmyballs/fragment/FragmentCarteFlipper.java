@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.fragment;
+package com.pinmyballs.fragment;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -25,12 +25,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.fafsapp.flipper.finder.R;
-import fr.fafsapp.flipper.finder.metier.Flipper;
+import com.pinmyballs.R;
+import com.pinmyballs.metier.Flipper;
 
 public class FragmentCarteFlipper extends SupportMapFragment implements LocationListener, LocationSource  {
 
-	public final static String INTENT_FLIPPER_INFO_TABMAP = "fr.fafsapp.flipper.finder.fragment.FragmentCarteFlipper.INTENT_FLIPPER_INFO_TABMAP";
+	public final static String INTENT_FLIPPER_INFO_TABMAP = "com.pinmyballs.fragment.FragmentCarteFlipper.INTENT_FLIPPER_INFO_TABMAP";
 
 	private OnLocationChangedListener mListener;
 

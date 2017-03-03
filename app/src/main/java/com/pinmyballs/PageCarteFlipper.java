@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.app.Service;
 import android.content.Intent;
@@ -25,14 +25,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.fafsapp.flipper.finder.metier.Flipper;
-import fr.fafsapp.flipper.finder.utils.LocationUtil;
-import fr.fafsapp.flipper.finder.utils.MyLocation;
+import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.utils.LocationUtil;
+import com.pinmyballs.utils.MyLocation;
 
 public class PageCarteFlipper extends FragmentActivity implements
 LocationListener, LocationSource {
 
-	public final static String INTENT_FLIPPER_POUR_INFO = "fr.fafsapp.flipper.finder.PageCarteFlipper.INTENT_FLIPPER_POUR_INFO";
+	public final static String INTENT_FLIPPER_POUR_INFO = "com.pinmyballs.PageCarteFlipper.INTENT_FLIPPER_POUR_INFO";
 
 	private OnLocationChangedListener mListener;
 

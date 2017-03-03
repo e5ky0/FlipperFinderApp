@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -30,14 +30,14 @@ import java.util.Date;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import fr.fafsapp.flipper.finder.fragment.SignalementPagerAdapter;
-import fr.fafsapp.flipper.finder.fragment.SignalementWizardFragment;
-import fr.fafsapp.flipper.finder.metier.Commentaire;
-import fr.fafsapp.flipper.finder.metier.Enseigne;
-import fr.fafsapp.flipper.finder.metier.Flipper;
-import fr.fafsapp.flipper.finder.service.ParseFactory;
-import fr.fafsapp.flipper.finder.utils.MyLocation;
-import fr.fafsapp.flipper.finder.utils.MyLocation.LocationResult;
+import com.pinmyballs.fragment.SignalementPagerAdapter;
+import com.pinmyballs.fragment.SignalementWizardFragment;
+import com.pinmyballs.metier.Commentaire;
+import com.pinmyballs.metier.Enseigne;
+import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.service.ParseFactory;
+import com.pinmyballs.utils.MyLocation;
+import com.pinmyballs.utils.MyLocation.LocationResult;
 
 public class PageSignalementNew extends ActionBarActivity {
 

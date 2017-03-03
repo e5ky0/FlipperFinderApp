@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.database;
+package com.pinmyballs.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

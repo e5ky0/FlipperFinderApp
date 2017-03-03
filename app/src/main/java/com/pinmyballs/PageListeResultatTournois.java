@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -21,12 +21,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
-import fr.fafsapp.flipper.finder.metier.Tournoi;
-import fr.fafsapp.flipper.finder.service.base.BaseTournoiService;
-import fr.fafsapp.flipper.finder.utils.ListeTournoiAdapter;
-import fr.fafsapp.flipper.finder.utils.LocationUtil;
-import fr.fafsapp.flipper.finder.utils.MyLocation;
-import fr.fafsapp.flipper.finder.utils.MyLocation.LocationResult;
+import com.pinmyballs.metier.Tournoi;
+import com.pinmyballs.service.base.BaseTournoiService;
+import com.pinmyballs.utils.ListeTournoiAdapter;
+import com.pinmyballs.utils.LocationUtil;
+import com.pinmyballs.utils.MyLocation;
+import com.pinmyballs.utils.MyLocation.LocationResult;
 
 public class PageListeResultatTournois extends ActionBarActivity {
 
@@ -37,7 +37,7 @@ public class PageListeResultatTournois extends ActionBarActivity {
 
 	ArrayList<Tournoi> listeTournoi = new ArrayList<Tournoi>();
 
-	public final static String INTENT_TOURNOI_POUR_INFO = "fr.fafsapp.flipper.finder.PageListeResultatTournois.INTENT_TOURNOI_POUR_INFO";
+	public final static String INTENT_TOURNOI_POUR_INFO = "com.pinmyballs.PageListeResultatTournois.INTENT_TOURNOI_POUR_INFO";
 
 	EditText adresseUtilisateurTV = null;
 	ImageButton boutonClearAdresse = null;

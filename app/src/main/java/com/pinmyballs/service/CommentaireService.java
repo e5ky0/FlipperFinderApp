@@ -1,12 +1,12 @@
-package fr.fafsapp.flipper.finder.service;
+package com.pinmyballs.service;
 
 import java.util.ArrayList;
 
 import android.content.Context;
-import fr.fafsapp.flipper.finder.fragment.FragmentCommentaireFlipper.FragmentCallback;
-import fr.fafsapp.flipper.finder.metier.Commentaire;
-import fr.fafsapp.flipper.finder.service.base.BaseCommentaireService;
-import fr.fafsapp.flipper.finder.service.parse.ParseCommentaireService;
+import com.pinmyballs.fragment.FragmentCommentaireFlipper.FragmentCallback;
+import com.pinmyballs.metier.Commentaire;
+import com.pinmyballs.service.base.BaseCommentaireService;
+import com.pinmyballs.service.parse.ParseCommentaireService;
 
 public class CommentaireService {
 	private FragmentCallback mFragmentCallback;

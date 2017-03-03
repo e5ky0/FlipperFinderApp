@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.fragment;
+package com.pinmyballs.fragment;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -17,8 +17,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import fr.fafsapp.flipper.finder.R;
-import fr.fafsapp.flipper.finder.utils.LocationUtil;
+import com.pinmyballs.R;
+import com.pinmyballs.utils.LocationUtil;
 
 public class FragmentSignalementMap extends SignalementWizardFragment {
 

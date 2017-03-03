@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.fragment;
+package com.pinmyballs.fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -23,12 +23,12 @@ import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import fr.fafsapp.flipper.finder.PagePreferences;
-import fr.fafsapp.flipper.finder.R;
-import fr.fafsapp.flipper.finder.metier.Commentaire;
-import fr.fafsapp.flipper.finder.metier.Flipper;
-import fr.fafsapp.flipper.finder.metier.ModeleFlipper;
-import fr.fafsapp.flipper.finder.service.base.BaseModeleService;
+import com.pinmyballs.PagePreferences;
+import com.pinmyballs.R;
+import com.pinmyballs.metier.Commentaire;
+import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.metier.ModeleFlipper;
+import com.pinmyballs.service.base.BaseModeleService;
 
 public class FragmentSignalementModele extends SignalementWizardFragment {
 

@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.fragment;
+package com.pinmyballs.fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -29,15 +29,15 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import fr.fafsapp.flipper.finder.PageCarteFlipper;
-import fr.fafsapp.flipper.finder.PagePreferences;
-import fr.fafsapp.flipper.finder.R;
-import fr.fafsapp.flipper.finder.metier.Flipper;
-import fr.fafsapp.flipper.finder.metier.ModeleFlipper;
-import fr.fafsapp.flipper.finder.service.FlipperService;
-import fr.fafsapp.flipper.finder.service.base.BaseModeleService;
-import fr.fafsapp.flipper.finder.utils.LocationUtil;
-import fr.fafsapp.flipper.finder.utils.NetworkUtil;
+import com.pinmyballs.PageCarteFlipper;
+import com.pinmyballs.PagePreferences;
+import com.pinmyballs.R;
+import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.metier.ModeleFlipper;
+import com.pinmyballs.service.FlipperService;
+import com.pinmyballs.service.base.BaseModeleService;
+import com.pinmyballs.utils.LocationUtil;
+import com.pinmyballs.utils.NetworkUtil;
 
 public class FragmentActionsFlipper extends Fragment {
 

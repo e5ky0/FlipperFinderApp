@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -15,8 +15,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import fr.fafsapp.flipper.finder.database.FlipperDatabaseHandler;
-import fr.fafsapp.flipper.finder.service.GlobalService;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.service.GlobalService;
 
 public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 

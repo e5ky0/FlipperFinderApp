@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.fragment;
+package com.pinmyballs.fragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

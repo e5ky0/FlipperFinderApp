@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.fragment;
+package com.pinmyballs.fragment;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import fr.fafsapp.flipper.finder.R;
-import fr.fafsapp.flipper.finder.metier.Enseigne;
+import com.pinmyballs.R;
+import com.pinmyballs.metier.Enseigne;
 
 public class FragmentSignalementAdresse extends SignalementWizardFragment {
 

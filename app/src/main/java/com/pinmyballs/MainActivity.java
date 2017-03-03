@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -28,10 +28,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import fr.fafsapp.flipper.finder.database.FlipperDatabaseHandler;
-import fr.fafsapp.flipper.finder.utils.MyLocation;
-import fr.fafsapp.flipper.finder.utils.MyLocation.LocationResult;
-import fr.fafsapp.flipper.finder.utils.NetworkUtil;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.utils.MyLocation;
+import com.pinmyballs.utils.MyLocation.LocationResult;
+import com.pinmyballs.utils.NetworkUtil;
 
 public class MainActivity extends AppCompatActivity {
 

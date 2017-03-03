@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.database.dao;
+package com.pinmyballs.database.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,12 +8,12 @@ import android.graphics.PointF;
 
 import java.util.ArrayList;
 
-import fr.fafsapp.flipper.finder.database.DAOBase;
-import fr.fafsapp.flipper.finder.database.FlipperDatabaseHandler;
-import fr.fafsapp.flipper.finder.metier.Enseigne;
-import fr.fafsapp.flipper.finder.metier.Flipper;
-import fr.fafsapp.flipper.finder.metier.ModeleFlipper;
-import fr.fafsapp.flipper.finder.utils.LocationUtil;
+import com.pinmyballs.database.DAOBase;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.metier.Enseigne;
+import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.metier.ModeleFlipper;
+import com.pinmyballs.utils.LocationUtil;
 
 public class FlipperDAO extends DAOBase {
 

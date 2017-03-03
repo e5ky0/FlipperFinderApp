@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,7 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import fr.fafsapp.flipper.finder.metier.Tournoi;
+import com.pinmyballs.metier.Tournoi;
 
 public class PageInfoTournoi extends AppCompatActivity {
 

@@ -1,12 +1,12 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 
-import fr.fafsapp.flipper.finder.database.FlipperDatabaseHandler;
-import fr.fafsapp.flipper.finder.service.GlobalService;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.service.GlobalService;
 
 public class AsyncTaskInitDatabase extends AsyncTask<Object, Void, Boolean> {
 

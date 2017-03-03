@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.service.parse;
+package com.pinmyballs.service.parse;
 
 
 public class ParseVersionBaseService {

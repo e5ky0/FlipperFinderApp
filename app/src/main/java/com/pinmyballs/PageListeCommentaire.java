@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -7,9 +7,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import fr.fafsapp.flipper.finder.metier.Commentaire;
-import fr.fafsapp.flipper.finder.service.GlobalService;
-import fr.fafsapp.flipper.finder.utils.ListeCommentaireAdapter;
+import com.pinmyballs.metier.Commentaire;
+import com.pinmyballs.service.GlobalService;
+import com.pinmyballs.utils.ListeCommentaireAdapter;
 
 public class PageListeCommentaire extends ActionBarActivity {
 

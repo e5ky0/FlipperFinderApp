@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.service.parse;
+package com.pinmyballs.service.parse;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -7,8 +7,8 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.fafsapp.flipper.finder.database.FlipperDatabaseHandler;
-import fr.fafsapp.flipper.finder.metier.Tournoi;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.metier.Tournoi;
 
 public class ParseTournoiService {
 

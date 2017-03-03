@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.service.parse;
+package com.pinmyballs.service.parse;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,13 +13,13 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.fafsapp.flipper.finder.R;
-import fr.fafsapp.flipper.finder.database.FlipperDatabaseHandler;
-import fr.fafsapp.flipper.finder.fragment.FragmentActionsFlipper.FragmentActionCallback;
-import fr.fafsapp.flipper.finder.metier.Commentaire;
-import fr.fafsapp.flipper.finder.metier.Flipper;
-import fr.fafsapp.flipper.finder.service.base.BaseCommentaireService;
-import fr.fafsapp.flipper.finder.service.base.BaseFlipperService;
+import com.pinmyballs.R;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.fragment.FragmentActionsFlipper.FragmentActionCallback;
+import com.pinmyballs.metier.Commentaire;
+import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.service.base.BaseCommentaireService;
+import com.pinmyballs.service.base.BaseFlipperService;
 
 public class ParseFlipperService {
 

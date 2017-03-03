@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.service.base;
+package com.pinmyballs.service.base;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,8 +7,8 @@ import android.graphics.PointF;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.fafsapp.flipper.finder.database.dao.FlipperDAO;
-import fr.fafsapp.flipper.finder.metier.Flipper;
+import com.pinmyballs.database.dao.FlipperDAO;
+import com.pinmyballs.metier.Flipper;
 
 public class BaseFlipperService {
 

@@ -1,11 +1,11 @@
-package fr.fafsapp.flipper.finder.service;
+package com.pinmyballs.service;
 
 import com.parse.ParseObject;
 
-import fr.fafsapp.flipper.finder.database.FlipperDatabaseHandler;
-import fr.fafsapp.flipper.finder.metier.Commentaire;
-import fr.fafsapp.flipper.finder.metier.Enseigne;
-import fr.fafsapp.flipper.finder.metier.Flipper;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.metier.Commentaire;
+import com.pinmyballs.metier.Enseigne;
+import com.pinmyballs.metier.Flipper;
 
 public class ParseFactory {
 

@@ -1,11 +1,11 @@
-package fr.fafsapp.flipper.finder.service;
+package com.pinmyballs.service;
 
 import java.util.List;
 
 import android.content.Context;
-import fr.fafsapp.flipper.finder.metier.Enseigne;
-import fr.fafsapp.flipper.finder.service.base.BaseEnseigneService;
-import fr.fafsapp.flipper.finder.service.parse.ParseEnseigneService;
+import com.pinmyballs.metier.Enseigne;
+import com.pinmyballs.service.base.BaseEnseigneService;
+import com.pinmyballs.service.parse.ParseEnseigneService;
 
 public class EnseigneService {
 

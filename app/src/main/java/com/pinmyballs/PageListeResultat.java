@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -30,13 +30,13 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
-import fr.fafsapp.flipper.finder.metier.Flipper;
-import fr.fafsapp.flipper.finder.service.base.BaseFlipperService;
-import fr.fafsapp.flipper.finder.service.base.BaseModeleService;
-import fr.fafsapp.flipper.finder.utils.ListeFlipperAdapter;
-import fr.fafsapp.flipper.finder.utils.LocationUtil;
-import fr.fafsapp.flipper.finder.utils.MyLocation;
-import fr.fafsapp.flipper.finder.utils.MyLocation.LocationResult;
+import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.service.base.BaseFlipperService;
+import com.pinmyballs.service.base.BaseModeleService;
+import com.pinmyballs.utils.ListeFlipperAdapter;
+import com.pinmyballs.utils.LocationUtil;
+import com.pinmyballs.utils.MyLocation;
+import com.pinmyballs.utils.MyLocation.LocationResult;
 
 public class PageListeResultat extends Activity {
 
@@ -49,7 +49,7 @@ public class PageListeResultat extends Activity {
 
     ArrayList<Flipper> listeFlipper = new ArrayList<Flipper>();
 
-    public final static String INTENT_FLIPPER_LIST_POUR_MAP = "fr.fafsapp.flipper.finder.PageListeResultat.INTENT_FLIPPER_LIST_POUR_MAP";
+    public final static String INTENT_FLIPPER_LIST_POUR_MAP = "com.pinmyballs.PageListeResultat.INTENT_FLIPPER_LIST_POUR_MAP";
 
     EditText adresseUtilisateurTV = null;
     ImageButton boutonClearAdresse = null;

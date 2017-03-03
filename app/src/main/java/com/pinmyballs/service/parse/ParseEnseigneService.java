@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.service.parse;
+package com.pinmyballs.service.parse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import fr.fafsapp.flipper.finder.database.FlipperDatabaseHandler;
-import fr.fafsapp.flipper.finder.metier.Enseigne;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.metier.Enseigne;
 
 public class ParseEnseigneService {
 

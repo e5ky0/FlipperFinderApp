@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.service;
+package com.pinmyballs.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Locale;
 
 import android.content.Context;
-import fr.fafsapp.flipper.finder.fragment.FragmentActionsFlipper.FragmentActionCallback;
-import fr.fafsapp.flipper.finder.metier.Commentaire;
-import fr.fafsapp.flipper.finder.metier.Flipper;
-import fr.fafsapp.flipper.finder.service.base.BaseFlipperService;
-import fr.fafsapp.flipper.finder.service.parse.ParseFlipperService;
+import com.pinmyballs.fragment.FragmentActionsFlipper.FragmentActionCallback;
+import com.pinmyballs.metier.Commentaire;
+import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.service.base.BaseFlipperService;
+import com.pinmyballs.service.parse.ParseFlipperService;
 
 public class FlipperService {
 

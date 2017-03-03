@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;

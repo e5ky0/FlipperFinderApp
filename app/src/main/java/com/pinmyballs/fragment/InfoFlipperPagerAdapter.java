@@ -1,10 +1,10 @@
-package fr.fafsapp.flipper.finder.fragment;
+package com.pinmyballs.fragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import fr.fafsapp.flipper.finder.metier.Flipper;
+import com.pinmyballs.metier.Flipper;
 
 public class InfoFlipperPagerAdapter extends FragmentPagerAdapter{
 

@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.utils;
+package com.pinmyballs.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,10 +14,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import fr.fafsapp.flipper.finder.PageCarteFlipper;
-import fr.fafsapp.flipper.finder.PageInfoFlipperPager;
-import fr.fafsapp.flipper.finder.R;
-import fr.fafsapp.flipper.finder.metier.Commentaire;
+import com.pinmyballs.PageCarteFlipper;
+import com.pinmyballs.PageInfoFlipperPager;
+import com.pinmyballs.R;
+import com.pinmyballs.metier.Commentaire;
 
 /**
  * @author Fafouche

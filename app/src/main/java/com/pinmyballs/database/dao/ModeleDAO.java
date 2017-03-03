@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.database.dao;
+package com.pinmyballs.database.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import fr.fafsapp.flipper.finder.database.DAOBase;
-import fr.fafsapp.flipper.finder.database.FlipperDatabaseHandler;
-import fr.fafsapp.flipper.finder.metier.ModeleFlipper;
+import com.pinmyballs.database.DAOBase;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.metier.ModeleFlipper;
 
 public class ModeleDAO extends DAOBase{
 

@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.fragment;
+package com.pinmyballs.fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -28,14 +28,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-import fr.fafsapp.flipper.finder.PageCarteFlipper;
-import fr.fafsapp.flipper.finder.PagePreferences;
-import fr.fafsapp.flipper.finder.R;
-import fr.fafsapp.flipper.finder.metier.Commentaire;
-import fr.fafsapp.flipper.finder.metier.Flipper;
-import fr.fafsapp.flipper.finder.service.CommentaireService;
-import fr.fafsapp.flipper.finder.utils.ListeCommentaireAdapter;
-import fr.fafsapp.flipper.finder.utils.NetworkUtil;
+import com.pinmyballs.PageCarteFlipper;
+import com.pinmyballs.PagePreferences;
+import com.pinmyballs.R;
+import com.pinmyballs.metier.Commentaire;
+import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.service.CommentaireService;
+import com.pinmyballs.utils.ListeCommentaireAdapter;
+import com.pinmyballs.utils.NetworkUtil;
 
 public class FragmentCommentaireFlipper extends Fragment {
 

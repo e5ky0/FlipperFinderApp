@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.service.base;
+package com.pinmyballs.service.base;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.fafsapp.flipper.finder.database.dao.ModeleDAO;
-import fr.fafsapp.flipper.finder.metier.ModeleFlipper;
+import com.pinmyballs.database.dao.ModeleDAO;
+import com.pinmyballs.metier.ModeleFlipper;
 
 public class BaseModeleService {
 

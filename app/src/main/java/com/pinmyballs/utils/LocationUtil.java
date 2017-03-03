@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.utils;
+package com.pinmyballs.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import fr.fafsapp.flipper.finder.metier.Flipper;
+import com.pinmyballs.metier.Flipper;
 
 public class LocationUtil {
 

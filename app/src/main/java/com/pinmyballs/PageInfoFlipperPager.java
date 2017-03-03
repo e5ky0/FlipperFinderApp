@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder;
+package com.pinmyballs;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,15 +11,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Window;
 import android.widget.TextView;
 
-import fr.fafsapp.flipper.finder.fragment.FragmentActionsFlipper;
-import fr.fafsapp.flipper.finder.fragment.FragmentCarteFlipper;
-import fr.fafsapp.flipper.finder.fragment.FragmentCommentaireFlipper;
-import fr.fafsapp.flipper.finder.fragment.InfoFlipperPagerAdapter;
-import fr.fafsapp.flipper.finder.metier.Flipper;
+import com.pinmyballs.fragment.FragmentActionsFlipper;
+import com.pinmyballs.fragment.FragmentCarteFlipper;
+import com.pinmyballs.fragment.FragmentCommentaireFlipper;
+import com.pinmyballs.fragment.InfoFlipperPagerAdapter;
+import com.pinmyballs.metier.Flipper;
 
 public class PageInfoFlipperPager extends ActionBarActivity  {
 
-	public final static String INTENT_FLIPPER_ONGLET_DEFAUT = "fr.fafsapp.flipper.finder.PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT";
+	public final static String INTENT_FLIPPER_ONGLET_DEFAUT = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT";
 
 
 	private ViewPager mPager;

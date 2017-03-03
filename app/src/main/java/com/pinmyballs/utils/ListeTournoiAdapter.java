@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.utils;
+package com.pinmyballs.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,10 +16,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import fr.fafsapp.flipper.finder.PageInfoTournoi;
-import fr.fafsapp.flipper.finder.PageListeResultatTournois;
-import fr.fafsapp.flipper.finder.R;
-import fr.fafsapp.flipper.finder.metier.Tournoi;
+import com.pinmyballs.PageInfoTournoi;
+import com.pinmyballs.PageListeResultatTournois;
+import com.pinmyballs.R;
+import com.pinmyballs.metier.Tournoi;
 
 /**
  * Classe pour un item de la liste de flipper de l'activité

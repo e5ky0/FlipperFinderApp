@@ -1,4 +1,4 @@
-package fr.fafsapp.flipper.finder.fragment;
+package com.pinmyballs.fragment;
 
 import android.support.v4.app.Fragment;
 
@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import fr.fafsapp.flipper.finder.PageSignalementNew;
+import com.pinmyballs.PageSignalementNew;
 
 public abstract class SignalementWizardFragment extends Fragment{
 

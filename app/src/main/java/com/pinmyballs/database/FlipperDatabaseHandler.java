@@ -1,11 +1,11 @@
-package fr.fafsapp.flipper.finder.database;
+package com.pinmyballs.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import fr.fafsapp.flipper.finder.service.GlobalService;
+import com.pinmyballs.service.GlobalService;
 
 public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 
