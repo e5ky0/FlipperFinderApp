@@ -17,7 +17,7 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        applicationId "fr.fafsapp.flipper.finder"
+        applicationId "com.pinmyballs"
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 10
         targetSdkVersion 25
