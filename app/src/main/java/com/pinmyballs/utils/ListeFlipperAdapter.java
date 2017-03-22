@@ -87,8 +87,12 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 				// Date nulle on mal formattée : Rouge!
 				dateMajTV.setTextColor(Color.parseColor("#FE2E2E"));
 				dateMajTV.setText(getContext().getResources().getString(R.string.dateMajDefault));
-			}else if (nbJours > 50){
-				// Mis à jour il y a plus de 50 jours, on met en Orange
+			}else if (nbJours > 365){
+				// Mis à jour il y a plus de 365 jours, on met en Rouge
+				dateMajTV.setTextColor(Color.parseColor("#FE2E2E"));
+				dateMajTV.setText("Confirmé il y a " + String.valueOf(nbJours) + " jours.");
+			}else if (nbJours > 60){
+				// Mis à jour il y a plus de 60 jours, on met en Orange
 				dateMajTV.setTextColor(Color.parseColor("#FFBF00"));
 				dateMajTV.setText("Confirmé il y a " + String.valueOf(nbJours) + " jours.");
 			}else if (nbJours == 0){

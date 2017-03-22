@@ -5,7 +5,7 @@ import android.app.Application;
 import com.parse.Parse;
 
 /**
- * Created by Raphaël on 02/10/2015.
+ * Created by Raphaël on 02/10/2015. Continued by BinetLoisir on 21/02/2017
  */
 public class MyApplication extends Application {
 
