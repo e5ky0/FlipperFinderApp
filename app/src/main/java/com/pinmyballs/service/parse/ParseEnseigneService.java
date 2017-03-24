@@ -57,7 +57,7 @@ public class ParseEnseigneService {
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ENSEIGNE");
 		try {
 			query.setLimit(2000);
-			query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.ENSEIGNE_DATMAJ, dateDerniereMaj);
+			//query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.ENSEIGNE_DATMAJ, dateDerniereMaj);// TODO cette query pose probleme quand la base est vide
 			listePo = query.find();
 		} catch (ParseException e1) {
 			e1.printStackTrace();
