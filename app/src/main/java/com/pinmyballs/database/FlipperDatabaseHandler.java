@@ -11,8 +11,8 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 
 	Context mContext = null;
 	// V41 le 04/10/2015
-	public static final int DATABASE_VERSION = 44;
-	public static final String DATABASE_DATE_MAJ = "2012/01/01";
+	public static final int DATABASE_VERSION = 45;
+	public static final String DATABASE_DATE_MAJ = "2011/03/24";
 
 	public static final String FLIPPER_BASE_NAME = "flipper.db";
 
