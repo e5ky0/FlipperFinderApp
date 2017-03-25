@@ -35,7 +35,7 @@ public class ParseCommentaireService {
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.COMMENTAIRE_TABLE_NAME);
 		try {
 			query.setLimit(2000);
-			//query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.COMM_DATE, dateDerniereMaj);// TODO cette query pose probleme quand la base est vide
+			query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.COMM_DATE, dateDerniereMaj);
 			listePo = query.find();
 		} catch (ParseException e1) {
 			e1.printStackTrace();

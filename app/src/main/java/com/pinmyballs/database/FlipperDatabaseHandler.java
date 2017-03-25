@@ -1,10 +1,12 @@
 package com.pinmyballs.database;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.pinmyballs.PagePreferences;
 import com.pinmyballs.service.GlobalService;
 
 public class FlipperDatabaseHandler extends SQLiteOpenHelper{
@@ -171,6 +173,12 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 			db.execSQL(SCORE_TABLE_DROP);
 			db.execSQL(TOURNOI_TABLE_DROP);
 			db.execSQL(COMMENTAIRE_TABLE_DROP);
+
+			// Reset the last update's date
+			SharedPreferences.Editor editor = mContext.getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0).edit();
+			editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, DATABASE_DATE_MAJ);
+			editor.commit();
+
 			onCreate(db);
 		}
 	}
