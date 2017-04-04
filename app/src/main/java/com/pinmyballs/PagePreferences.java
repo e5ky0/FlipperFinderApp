@@ -5,19 +5,25 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public class PagePreferences extends ActionBarActivity {
+import com.pinmyballs.database.DAOBase;
+import com.pinmyballs.database.dao.FlipperDAO;
+import com.pinmyballs.service.GlobalService;
+import com.pinmyballs.service.base.BaseFlipperService;
+import com.pinmyballs.service.parse.ParseFlipperService;
+
+public class PagePreferences extends AppCompatActivity {
 
 	public static final String KEY_PREFERENCES_RAYON = "rayonRecherche";
 	public static final String KEY_PREFERENCES_MAX_RESULT = "listeMaxResult";
 	public static final String KEY_PSEUDO_FULL = "fullPseudo";
 	public static final String KEY_PREFERENCES_DATE_LAST_UPDATE = "dateLastUpdate";
+	public static final String KEY_PREFERENCES_DATABASE_VERSION = "";
 	public static final String PREFERENCES_FILENAME = "FlipperLocPrefs.txt";
-
-
 
 	public static final int DEFAULT_VALUE_RAYON = 100;
 	public static final int DEFAULT_VALUE_NB_MAX_LISTE = 50;
@@ -28,6 +34,11 @@ public class PagePreferences extends ActionBarActivity {
 	TextView tvRayon;
 	TextView tvNbMaxListe;
 
+	TextView pseudo;
+	TextView datedernieremaj;
+	TextView nbflips;
+
+
 	ActionBar mActionbar;
 	SharedPreferences settings;
 
@@ -37,10 +48,12 @@ public class PagePreferences extends ActionBarActivity {
 
 		setContentView(R.layout.activity_preferences);
 
+
 		// Affichage du header
 		mActionbar = getSupportActionBar();
 
 		mActionbar.setTitle(R.string.headerPreferences);
+        settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
 
 		seekBarRayon = (SeekBar) findViewById(R.id.seekBarRayon);
 		seekBarNbMaxListe = (SeekBar) findViewById(R.id.seekBarNbMax);
@@ -48,8 +61,16 @@ public class PagePreferences extends ActionBarActivity {
 		tvRayon = (TextView) findViewById(R.id.TVRayon);
 		tvNbMaxListe = (TextView) findViewById(R.id.TVMaxResult);
 
-		settings = getSharedPreferences(PREFERENCES_FILENAME, 0);
+		pseudo = (TextView) findViewById(R.id.pseudo);
+		pseudo.setText(settings.getString(PagePreferences.KEY_PSEUDO_FULL, "non défini"));
+		datedernieremaj = (TextView) findViewById(R.id.datedernieremaj);
+        datedernieremaj.setText(settings.getString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, ""));
+		nbflips =(TextView) findViewById(R.id.nbflips);
 
+		GlobalService globalService = new GlobalService();
+		nbflips.setText(globalService.getNbFlips(getApplicationContext()));
+
+		settings = getSharedPreferences(PREFERENCES_FILENAME, 0);
 
 
 		int rayon = settings.getInt(KEY_PREFERENCES_RAYON, DEFAULT_VALUE_RAYON);

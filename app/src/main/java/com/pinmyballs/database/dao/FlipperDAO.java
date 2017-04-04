@@ -51,6 +51,26 @@ public class FlipperDAO extends DAOBase {
 		return listeRetour;
 	}
 
+	public String getNbFlipperActif(){
+		String NbFlip = "";
+
+		//Cursor cursor = mDb.rawQuery("SELECT * FROM " + FlipperDatabaseHandler.FLIPPER_TABLE_NAME
+		//							+ " WHERE " + FlipperDatabaseHandler.FLIPPER_ACTIF  + " = " + "1", null);
+
+		Cursor cursor = mDb.rawQuery("SELECT COUNT(*) FROM " + FlipperDatabaseHandler.FLIPPER_TABLE_NAME
+				+ " WHERE " + FlipperDatabaseHandler.FLIPPER_ACTIF  + " = " + "1", null);
+		cursor.moveToFirst();
+		NbFlip = String.valueOf(cursor.getInt(0));
+
+		cursor.close();
+
+		return NbFlip;
+	}
+
+
+
+
+
 	public Flipper getFlipperById(long idFlipper){
 		Flipper flipperRetour = null;
 		String strWhereFlipper = " Where " + FlipperDatabaseHandler.FLIPPER_ID  + "=" + idFlipper;
