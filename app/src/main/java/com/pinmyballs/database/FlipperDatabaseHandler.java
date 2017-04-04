@@ -5,16 +5,20 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import com.pinmyballs.MainActivity;
 import com.pinmyballs.PagePreferences;
+import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.service.GlobalService;
 
 public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 
 	Context mContext = null;
 	// V41 le 04/10/2015
+
 	public static final int DATABASE_VERSION = 45;
-	public static final String DATABASE_DATE_MAJ = "2011/03/24";
+	public static final String DATABASE_DATE_MAJ = "2011/01/01";
 
 	public static final String FLIPPER_BASE_NAME = "flipper.db";
 
@@ -139,14 +143,6 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 		" FOREIGN KEY ("+FLIPPER_MODELE+") REFERENCES "+MODELE_FLIPPER_TABLE_NAME+" ("+MODELE_FLIPPER_ID+"));";
 
 
-	public static final String HI_SCORE_TABLE_DROP = "DROP TABLE IF EXISTS " + SCORE_TABLE_NAME + ";";
-	public static final String FLIPPER_TABLE_DROP = "DROP TABLE IF EXISTS " + FLIPPER_TABLE_NAME + ";";
-	public static final String ENSEIGNE_TABLE_DROP = "DROP TABLE IF EXISTS " + ENSEIGNE_TABLE_NAME + ";";
-	public static final String MODELE_FLIPPER_TABLE_DROP = "DROP TABLE IF EXISTS " + MODELE_FLIPPER_TABLE_NAME + ";";
-	public static final String SCORE_TABLE_DROP = "DROP TABLE IF EXISTS " + SCORE_TABLE_NAME + ";";
-	public static final String COMMENTAIRE_TABLE_DROP = "DROP TABLE IF EXISTS " + COMMENTAIRE_TABLE_NAME + ";";
-	public static final String TOURNOI_TABLE_DROP = "DROP TABLE IF EXISTS " + TOURNOI_TABLE_NAME + ";";
-
 	public FlipperDatabaseHandler(Context context,  CursorFactory factory) {
 		super(context, FLIPPER_BASE_NAME, factory, DATABASE_VERSION);
 		mContext = context;
@@ -160,27 +156,35 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 		db.execSQL(SCORE_TABLE_CREATE);
 		db.execSQL(TOURNOI_TABLE_CREATE);
 		db.execSQL(COMMENTAIRE_TABLE_CREATE);
-		GlobalService globalService = new GlobalService(mContext);
-		globalService.reinitDatabase(db);
+        Log.w(FlipperDatabaseHandler.class.getName(), "Created new database");
+
+        //Inutile maintenant que les JSON sont vides
+		//GlobalService globalService = new GlobalService(mContext);
+		//globalService.reinitDatabase(db);
+
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		if (newVersion > oldVersion){
-			db.execSQL(FLIPPER_TABLE_DROP);
-			db.execSQL(ENSEIGNE_TABLE_DROP);
-			db.execSQL(MODELE_FLIPPER_TABLE_DROP);
-			db.execSQL(SCORE_TABLE_DROP);
-			db.execSQL(TOURNOI_TABLE_DROP);
-			db.execSQL(COMMENTAIRE_TABLE_DROP);
+		Log.w(FlipperDatabaseHandler.class.getName(),
+				"Upgrading database from version " + oldVersion + " to "
+						+ newVersion + ", which will destroy all old data");
+			db.execSQL("DROP TABLE IF EXISTS " + FLIPPER_TABLE_NAME);
+			db.execSQL("DROP TABLE IF EXISTS " + ENSEIGNE_TABLE_NAME);
+			db.execSQL("DROP TABLE IF EXISTS " + MODELE_FLIPPER_TABLE_NAME);
+			db.execSQL("DROP TABLE IF EXISTS " + SCORE_TABLE_NAME);
+			db.execSQL("DROP TABLE IF EXISTS " + TOURNOI_TABLE_NAME);
+			db.execSQL("DROP TABLE IF EXISTS " + COMMENTAIRE_TABLE_NAME);
 
+            // Relocated
 			// Reset the last update's date
-			SharedPreferences.Editor editor = mContext.getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0).edit();
-			editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, DATABASE_DATE_MAJ);
-			editor.commit();
+			//SharedPreferences.Editor editor = mContext.getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0).edit();
+			//editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, DATABASE_DATE_MAJ);
+            //editor.putString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
+			//editor.commit();
 
 			onCreate(db);
-		}
+
 	}
 
 }
