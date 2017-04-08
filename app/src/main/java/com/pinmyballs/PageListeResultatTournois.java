@@ -86,7 +86,7 @@ public class PageListeResultatTournois extends ActionBarActivity {
 			}
 		};
 
-        if (!myLocation.checkLocationPermission(this)) {
+        if (!MyLocation.checkLocationPermission(this)) {
             return;
         }
 

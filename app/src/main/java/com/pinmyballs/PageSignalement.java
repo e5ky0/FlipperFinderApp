@@ -148,7 +148,7 @@ public class PageSignalement extends ActionBarActivity {
 			}
 		};
 
-		if (!myLocation.checkLocationPermission(this)) {
+		if (!MyLocation.checkLocationPermission(this)) {
 			return;
 		}
 

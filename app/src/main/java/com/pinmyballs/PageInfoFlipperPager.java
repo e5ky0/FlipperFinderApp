@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ import com.pinmyballs.fragment.FragmentCommentaireFlipper;
 import com.pinmyballs.fragment.InfoFlipperPagerAdapter;
 import com.pinmyballs.metier.Flipper;
 
-public class PageInfoFlipperPager extends ActionBarActivity  {
+public class PageInfoFlipperPager extends AppCompatActivity {
 
 	public final static String INTENT_FLIPPER_ONGLET_DEFAUT = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT";
 
@@ -43,6 +44,7 @@ public class PageInfoFlipperPager extends ActionBarActivity  {
 
 		/** Getting a reference to action bar of this activity */
 		mActionbar = getSupportActionBar();
+
 
 		Intent actionsIntent = new Intent(this, FragmentActionsFlipper.class);
 		actionsIntent.putExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO,flipper);
@@ -120,7 +122,7 @@ public class PageInfoFlipperPager extends ActionBarActivity  {
 
 		/** Creating fragment3 Tab */
 		tab = mActionbar.newTab()
-			.setText("Commentaires")
+			.setText("Avis")
 			.setTabListener(tabListener);
 
 		mActionbar.addTab(tab);

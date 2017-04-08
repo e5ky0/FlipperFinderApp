@@ -34,3 +34,10 @@ build/
 
 #NDK
 obj/
+*.swp
+*.class
+
+# Gradle wrapper files on Windows
+gradlew
+gradlew.bat
+gradle/wrapper/gradle-wrapper.jar

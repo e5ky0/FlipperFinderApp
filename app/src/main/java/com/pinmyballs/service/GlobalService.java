@@ -57,6 +57,18 @@ public class GlobalService {
 
 	}
 
+	public String getNbFlips(Context pContext){
+		String N = "";
+		BaseFlipperService baseFlipperService = new BaseFlipperService();
+		N = baseFlipperService.NombreFlipperActifs(pContext);
+		return N;
+
+	}
+
+
+
+
+
 	public String majBaseAvecNouveaute(Context pContext, String dateDerniereMaj) throws InterruptedException{
 
 		BaseModeleService baseModeleService = new BaseModeleService();
@@ -192,6 +204,10 @@ public class GlobalService {
 		returnList = Arrays.asList(gson.fromJson(reader, Tournoi[].class));
 		baseTournoiService.initListeTournoi(returnList, db);
 	}
+
+
+
+
 
 	public void reinitDatabase(SQLiteDatabase db){
 		populateModele(db);

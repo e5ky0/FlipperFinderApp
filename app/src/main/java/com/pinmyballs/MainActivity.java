@@ -10,6 +10,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,13 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
 	ImageView imageEnveloppe;
 	ImageView imagePreferences;
-	ImageView mImageBleue;
-	ImageView mImageGrise;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+		//requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
@@ -58,17 +57,39 @@ public class MainActivity extends AppCompatActivity {
 		boutonRechercherTournoi.setOnClickListener(RechercherTournoiListener);
 		boutonSignaler = (Button) findViewById(R.id.boutonMenuSignaler);
 		boutonSignaler.setOnClickListener(SignalerListener);
-
 		imageEnveloppe = (ImageView) findViewById(R.id.imageEnveloppe);
 		imageEnveloppe.setOnClickListener(ContactPrincipalListener);
-
 		imagePreferences = (ImageView) findViewById(R.id.imagePreferences);
 		imagePreferences.setOnClickListener(PreferencesListener);
 
-		settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
-		checkIfMajNeeded();
+        settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
 
-		 ActivityCompat.requestPermissions(this, new String[]{"android.permission.ACCESS_FINE_LOCATION"}, 1);
+
+        //First we check if PREFERENCES file is set up with values for DATABASE VERSION and DATE_LAST_UPDATE
+		// if not we give it the values from FlipperDataBaseHandler
+        if (settings.getString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION,"0") == "0") {
+            Log.w(MainActivity.class.getName(), "Key Pref Database Version not set => InitDB");
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
+            editor.putString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
+            editor.commit();
+        }
+        //Then we check if a DATABASE VERSION update has been done by the developer (used the reset the SQLite DB)
+		// in which case we reset the DATE_LAST_UPDATE to the default value 2011/01/01
+        else{ if (Integer.parseInt(settings.getString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION,"0"))
+                             < FlipperDatabaseHandler.DATABASE_VERSION) {
+                Log.w(MainActivity.class.getName(), "New Database Version => Reset DATE_LAST_UPDATE");
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
+                editor.putString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
+                editor.commit();
+                }
+              }
+		//Check if Update is needed onCreate of Main_activity
+        checkIfMajNeeded();
+
+
+        ActivityCompat.requestPermissions(this, new String[]{"android.permission.ACCESS_FINE_LOCATION"}, 1);
 	}
 
 	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
@@ -95,18 +116,34 @@ public class MainActivity extends AppCompatActivity {
 		try {
 			Date dateDerniereMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH).parse(dateDerniereMajString);
 			nbJours = Days.daysBetween(new DateTime(dateDerniereMaj), new DateTime(new Date())).getDays();
-			if (nbJours > 5){
+			if (nbJours > 365){
 				new AlertDialog.Builder(this).setTitle(R.string.dialogMajDBNeededTitle)
-					.setMessage(getResources().getString(R.string.dialogMajDBNeeded, nbJours)).setPositiveButton(R.string.dialogMajDBNeededOK, new DialogInterface.OnClickListener() {
+						.setMessage(getResources().getString(R.string.dialogMajDBNeeded2))
+						.setPositiveButton(R.string.dialogMajDBNeededOK, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							updateDB();
 						}
 					}).setNegativeButton(R.string.dialogMajDBLater, new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							dialog.dismiss();
-						}
+							dialog.dismiss();}
 					}).show();			}
+            else if (nbJours > 5){
+                	new AlertDialog.Builder(this).setTitle(R.string.dialogMajDBNeededTitle)
+                        .setMessage(getResources().getString(R.string.dialogMajDBNeeded, nbJours))
+						.setPositiveButton(R.string.dialogMajDBNeededOK, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        updateDB();
+                    }
+              		  }).setNegativeButton(R.string.dialogMajDBLater, new DialogInterface.OnClickListener() {
+              		      @Override
+                    		public void onClick(DialogInterface dialog, int which) {
+                        		dialog.dismiss();
+                    }
+                }).show();
+            }
+
+            else Log.w(MainActivity.class.getName(), "Update of database not required, last update < 5 days");
 		} catch (ParseException e) {
 		}
 	}
@@ -127,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
 			}
 		}
 	};
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -152,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 
-	private void updateDB(){
+	public void updateDB(){
 		////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "maj_database", 0L);
 		if (NetworkUtil.isConnected(getApplicationContext())){
 			if (NetworkUtil.isConnectedFast(getApplicationContext())){

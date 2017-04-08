@@ -1,12 +1,14 @@
 package com.pinmyballs.service.base;
 
 import android.content.Context;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PointF;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.database.dao.FlipperDAO;
 import com.pinmyballs.metier.Flipper;
 
@@ -30,6 +32,18 @@ public class BaseFlipperService {
 
 		return listeRetour;
 	}
+
+	public String NombreFlipperActifs(Context pContext){
+		String nb;
+
+		FlipperDAO flipperDao = new FlipperDAO(pContext);
+			flipperDao.open();
+			nb = flipperDao.getNbFlipperActif();
+			flipperDao.close();
+
+		return nb;
+	}
+
 
 	public Flipper getFlipperById(Context pContext, long idFlipper){
 		Flipper flipperRetour = null;

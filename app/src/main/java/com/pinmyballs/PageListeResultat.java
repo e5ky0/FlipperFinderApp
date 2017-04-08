@@ -121,7 +121,7 @@ public class PageListeResultat extends Activity {
             }
         };
 
-        if (!myLocation.checkLocationPermission(this)) {
+        if (!MyLocation.checkLocationPermission(this)) {
             return;
         }
 

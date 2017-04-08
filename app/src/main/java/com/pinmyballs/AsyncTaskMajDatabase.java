@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
@@ -59,11 +60,12 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 			retourMaj = globalService.majBaseAvecNouveaute(mContext, dateDerniereMajString);
 
 			if (retourMaj != null){
-				// La màj s'est bien passée, on mémorise la date de mise à jour.
+				// La màj s'est bien passée, on mémorise la date de mise à jour dans les Préférences.
 				DateFormat df = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE);
 				Date today = Calendar.getInstance().getTime();
 				String dateDuJour = df.format(today);
 				editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, dateDuJour);
+				editor.putString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
 				editor.commit();
 			}
 		} catch (InterruptedException ie){
@@ -88,7 +90,7 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 		mDialog.dismiss();
 
 		// S'il y a eu une exception, on affiche le message d'erreur et on se casse
-		if (result == false){
+		if (!result){
 			Toast toast = Toast.makeText(mContext, mContext.getResources().getString(R.string.toastMajEchec), Toast.LENGTH_SHORT);
 			toast.show();
 			return;

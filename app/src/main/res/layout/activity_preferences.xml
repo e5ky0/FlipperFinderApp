@@ -4,7 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".PagePreferences" >
+    android:paddingLeft="8dp"
+    tools:context=".PagePreferences">
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,7 +17,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <SeekBar
             android:id="@+id/seekBarRayon"
@@ -46,7 +47,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <SeekBar
             android:id="@+id/seekBarNbMax"
@@ -64,6 +65,83 @@
             android:layout_weight=".35"
             android:text="50"
             android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="70dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pseudotext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Pseudo"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/pseudo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="TextView"
+                android:textColor="@color/appirator_button_end_color"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/datemajtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DateLastMaj"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/datedernieremaj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="TextView"
+                android:textColor="@color/appirator_button_end_color"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/nbflipstext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/NbreFlipsActifs"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/nbflips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="TextView"
+                android:textColor="@color/appirator_button_end_color"
+                android:textSize="16sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
