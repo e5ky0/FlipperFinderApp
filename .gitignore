@@ -1,8 +1,2 @@
 *.swp
 *.class
-
-app/gradlew
-
-app/gradlew.bat
-
-app/gradle/wrapper/gradle-wrapper.jar
