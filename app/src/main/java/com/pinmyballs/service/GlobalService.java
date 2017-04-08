@@ -129,7 +129,7 @@ public class GlobalService {
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("ENSEIGNE2.json"), "UTF-8"));
+			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("ENSEIGNE.json"), "UTF-8"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

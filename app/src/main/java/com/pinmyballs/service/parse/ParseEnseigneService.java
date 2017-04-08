@@ -54,7 +54,7 @@ public class ParseEnseigneService {
 		List<Enseigne> listeEnseigne = new ArrayList<Enseigne>();
 
 		List<ParseObject> listePo = new ArrayList<ParseObject>();
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ENSEIGNE2");
+		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ENSEIGNE");
 		try {
 			query.setLimit(2000);
 			query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.ENSEIGNE_DATMAJ, dateDerniereMaj);

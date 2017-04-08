@@ -45,7 +45,7 @@
     <string name="boutonChangement">Le modèle a changé</string>
     <string name="boutonNavigation">Itinéraire vers ce flipper</string>
     <string name="dateMaj">Date de mise à jour : </string>
-    <string name="dateMajDefault">Flipper non confirmé depuis juin 2013.</string>
+    <string name="dateMajDefault">Flipper non confirmé.</string>
 
 	<string name="SectionPseudo">Votre pseudo</string>
 	<string name="SectionScore">Votre score</string>
@@ -76,8 +76,8 @@
     <string name="pasEncoreCommentaire">Pas encore de commentaire pour ce flipper.</string>
 
     <string name="toastMajEnseigne">%1$d enseigne(s) mise(s) à jour.</string>
-    <string name="toastMajModele">%1$d modèle de flipper mis à jour.</string>
-    <string name="toastMajFlipper">%1$d flipper mis à jour.</string>
+    <string name="toastMajModele">%1$d modèle(s) de flipper mis à jour.</string>
+    <string name="toastMajFlipper">%1$d flipper(s) mis à jour.</string>
     <string name="toastMajCommentaire">%1$d commentaire(s) mis à jour.</string>
     <string name="toastMajPasNecessaire">Votre base de flipper est déjà à jour !</string>
     <string name="toastMajPasPossible">Mise à jour impossible : Vous n\'êtes pas connecté à Internet !</string>

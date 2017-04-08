@@ -77,11 +77,13 @@ LocationListener, LocationSource {
 			int nbJours = LocationUtil.getDaysSinceMajFlip(flipper);
 			if (nbJours == -1){
 				// Date nulle on mal formattée : on laisse l'icone noire
-			}else if (nbJours > 50){
-				// Mis à jour il y a plus de 50 jours, on met en Orange
+			}else if (nbJours > 365){
+			// Mis à jour il y a plus de 365 jours, on laisse en noir
+			}else if (nbJours > 60){
+				// Mis à jour il y a plus de 60 jours, on met en Orange
 				iconeFlipper = R.drawable.ic_flipper_orange;
 			}else{
-				// Mis à jour récemment, on met en vert
+				// Mis à jour récemment (moins de 60jours), on met en vert
 				iconeFlipper = R.drawable.ic_flipper_vert;
 			}
 

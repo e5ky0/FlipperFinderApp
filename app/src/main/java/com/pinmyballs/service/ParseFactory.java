@@ -21,7 +21,7 @@ public class ParseFactory {
     }
 
     public ParseObject getParseObject(Enseigne enseigne){
-        ParseObject parseEnseigne = new ParseObject("ENSEIGNE2");
+        ParseObject parseEnseigne = new ParseObject("ENSEIGNE");
         parseEnseigne.put(FlipperDatabaseHandler.ENSEIGNE_ID, enseigne.getId());
         parseEnseigne.put(FlipperDatabaseHandler.ENSEIGNE_NOM, enseigne.getNom());
         //parseEnseigne.put(FlipperDatabaseHandler.ENSEIGNE_TYPE, enseigne.getType());
