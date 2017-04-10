@@ -66,6 +66,7 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 			TextView adresseTV = (TextView) v.findViewById(R.id.textAdresseFlipper);
 			TextView distanceTV = (TextView) v.findViewById(R.id.distance);
 			TextView dateMajTV = (TextView) v.findViewById(R.id.dateMaj);
+			TextView nomBar = (TextView) v.findViewById(R.id.nomBar);
 
 			if (modeleTV != null) {
 				modeleTV.setText(p.getModele().getNom());
@@ -80,6 +81,9 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 				Float distanceFloat = resultDistance[0];
 				distanceTV.setText(LocationUtil.formatDist(distanceFloat));
 			}
+            if (nomBar != null) {
+                nomBar.setText(p.getEnseigne().getNom());
+            }
 
 			// Affichage de la date de mise à jour
 			int nbJours = LocationUtil.getDaysSinceMajFlip(p);
