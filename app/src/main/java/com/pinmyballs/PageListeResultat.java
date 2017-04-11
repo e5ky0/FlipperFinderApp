@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,11 +51,14 @@ public class PageListeResultat extends Activity {
     ArrayList<Flipper> listeFlipper = new ArrayList<Flipper>();
 
     public final static String INTENT_FLIPPER_LIST_POUR_MAP = "com.pinmyballs.PageListeResultat.INTENT_FLIPPER_LIST_POUR_MAP";
+    public final static String INTENT_LATITUDE = "com.pinmyballs.PageListeResultat.INTENT_LATITUDE";
+    public final static String INTENT_LONGITUDE = "com.pinmyballs.PageListeResultat.INTENT_LONGITUDE";
 
     EditText adresseUtilisateurTV = null;
     ImageButton boutonClearAdresse = null;
     ImageButton boutonClearModeleFlipper = null;
     ImageButton boutonLocalisation = null;
+    ImageButton boutonSearchByMap = null;
     ListView listeFlipperView = null;
     ImageView boutonAfficheCarte = null;
     AutoCompleteTextView champModeleFlipper = null;
@@ -82,13 +86,16 @@ public class PageListeResultat extends Activity {
         boutonClearModeleFlipper = (ImageButton) findViewById(R.id.boutonClearModeleFlipper);
         boutonAfficheCarte = (ImageView) findViewById(R.id.afficherCarteIcon);
         boutonLocalisation = (ImageButton) findViewById(R.id.boutonLocalisation);
+        boutonSearchByMap = (ImageButton) findViewById(R.id.boutonSearchByMap) ;
         champModeleFlipper = (AutoCompleteTextView) findViewById(R.id.autocompletionModeleFlipper);
 
         listeFlipperView = (ListView) findViewById(R.id.listeResultats);
 
         boutonClearAdresse.setOnClickListener(ClearAdresseClickListener);
         boutonLocalisation.setOnClickListener(BoutonLocalisationListener);
+        boutonSearchByMap.setOnClickListener(BoutonSearchByMapListener);
         boutonAfficheCarte.setOnClickListener(AfficherListeListener);
+
 
         boutonClearModeleFlipper.setOnClickListener(ClearModeleFlipperClickListener);
 
@@ -105,7 +112,24 @@ public class PageListeResultat extends Activity {
         champModeleFlipper.setOnEditorActionListener(valideModeleFlipper);
 
         isGPSAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-        localiseTelephone();
+
+
+        Intent intent = getIntent();
+
+        if (intent != null) {
+            Bundle extra = intent.getExtras();
+            if (extra != null) {
+                latitude = Double.parseDouble(intent.getStringExtra(PageCarteSearch.INTENT_LATITUDE));
+                longitude = Double.parseDouble(intent.getStringExtra(PageCarteSearch.INTENT_LONGITUDE));
+                Log.w(PageListeResultat.class.getName(), "FROM MAP SEARCH -> Lat , Long " + latitude + ", " + longitude);
+            }
+
+                else {
+                localiseTelephone();
+                Log.w(PageListeResultat.class.getName(), "Default Start : use GPS");
+            }
+        }
+
         rafraichitListeFlipper();
     }
 
@@ -262,6 +286,23 @@ public class PageListeResultat extends Activity {
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
         }
     };
+
+    private OnClickListener BoutonSearchByMapListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent mapSearch = new Intent(PageListeResultat.this, PageCarteSearch.class);
+            //Si Localisation Telephone a marché, on récupère la position sinon on met des valeurs par défaut
+            Double[] Position ={latitude, longitude};
+            if (longitude == 0) {
+                Position[0] = 48.859274;
+                Position[1] = 2.294438;
+            }
+            mapSearch.putExtra(INTENT_LATITUDE, String.valueOf(Position[0]));
+            mapSearch.putExtra(INTENT_LONGITUDE, String.valueOf(Position[1]));
+            startActivity(mapSearch);
+        }
+    };
+
 
     private OnItemClickListener itemModeleSelectionneListener = new OnItemClickListener() {
         @Override

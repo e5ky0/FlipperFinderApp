@@ -16,6 +16,9 @@
 
     <string name="title_activity_pageCarteFlipper">Localisation des flippers</string>
     <string name="alt_image_localisation">Localisation</string>
+    <string name="alt_image_mapsearch">Localisation par la carte</string>
+    <string name="searchthisareatext">Chercher autour du point"</string>
+
     <string name="hintRechercheAdresse">Taper votre adresse</string>
     <string name="BoutonAfficheListeFlipper">Afficher les flippers sur une carte</string>
     <string name="SectionAdresse">Adresse</string>

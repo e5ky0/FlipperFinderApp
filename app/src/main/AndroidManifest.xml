@@ -42,6 +42,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name="com.pinmyballs.PageCarteFlipper"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name="com.pinmyballs.PageCarteSearch"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name="com.pinmyballs.PageListeResultatTournois"/>
         <activity android:name="com.pinmyballs.PageListeCommentaire"/>
         <activity 	android:name="com.pinmyballs.PageSignalement"
