@@ -2,7 +2,6 @@ package com.pinmyballs;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,7 +25,7 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -45,14 +44,16 @@ public class PageListeResultat extends Activity {
 
     double latitude = 0;
     double longitude = 0;
-    int DISTANCE_MAX = 25; // On cherche les flippers à 10km à la ronde
-    int ENSEIGNE_LIST_MAX_SIZE = 50; // On cherche les flippers à 5km à la ronde
+    int DISTANCE_MAX = 25; // On cherche les flippers à 25km à la ronde
+    int ENSEIGNE_LIST_MAX_SIZE = 50; // On cherche les 50 flippers à la ronde
 
     ArrayList<Flipper> listeFlipper = new ArrayList<Flipper>();
 
     public final static String INTENT_FLIPPER_LIST_POUR_MAP = "com.pinmyballs.PageListeResultat.INTENT_FLIPPER_LIST_POUR_MAP";
     public final static String INTENT_LATITUDE = "com.pinmyballs.PageListeResultat.INTENT_LATITUDE";
     public final static String INTENT_LONGITUDE = "com.pinmyballs.PageListeResultat.INTENT_LONGITUDE";
+    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+
 
     EditText adresseUtilisateurTV = null;
     ImageButton boutonClearAdresse = null;
@@ -63,7 +64,9 @@ public class PageListeResultat extends Activity {
     ImageView boutonAfficheCarte = null;
     AutoCompleteTextView champModeleFlipper = null;
 
-    int isGPSAvailable = 0;
+    //int isGPSAvailable = 0;
+    //Method GooglePlayServicesUtil.isGooglePlayServicesAvailable( deprecated
+    // Replace by checkPlayServices()
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -111,7 +114,15 @@ public class PageListeResultat extends Activity {
         champModeleFlipper.setOnItemClickListener(itemModeleSelectionneListener);
         champModeleFlipper.setOnEditorActionListener(valideModeleFlipper);
 
-        isGPSAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+        //isGPSAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+
+
+
+
+
+
+
+
 
 
         Intent intent = getIntent();
@@ -152,8 +163,8 @@ public class PageListeResultat extends Activity {
         myLocation.getLocation(this, locationResult);
 
         // On commence par récupèrer la dernière location connue du téléphone,
-        // et on remplit le champ
-        // Adresse avec.
+        // et on remplit le champ Adresse avec.
+
         Location locationCourante = LocationUtil.getLastKnownLocation(this);
         adresseUtilisateurTV.setText("");
         if (locationCourante != null) {
@@ -164,22 +175,29 @@ public class PageListeResultat extends Activity {
                 addressText = "Votre lieu actuel";
             }
             adresseUtilisateurTV.setText(addressText);
-        } else {
-            if (isGPSAvailable != ConnectionResult.SUCCESS) {
-                ////EasyTracker.getTracker().sendEvent("ui_error", "GPS_ERROR", "localiseTelephone", 0L);
-                Dialog dialog = GooglePlayServicesUtil.getErrorDialog(isGPSAvailable, this, 0);
-                if (dialog != null) {
-                    dialog.show();
-                }
-            } else {
+        } else if(checkPlayServices()) {
                 new AlertDialog.Builder(PageListeResultat.this)
                     .setTitle("Argh!")
                     .setMessage(
-                            "Votre adresse n'a pas pu être trouvée! Rappuyez sur le bouton de localisation, ou entrez votre adresse manuellement. Si le problème persiste, contactez moi :)")
+                            "Votre localisation n'a pas pu être déterminée par le GPS ou le Wifi ! Rappuyez sur le bouton de localisation, ou entrez votre adresse manuellement. Si le problème persiste, contactez moi :)")
                     .setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
-            }
-        }
+                }
     }
+
+    private boolean checkPlayServices() {
+        GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
+        int result = googleAPI.isGooglePlayServicesAvailable(this);
+        if(result != ConnectionResult.SUCCESS) {
+            if(googleAPI.isUserResolvableError(result)) {
+                googleAPI.getErrorDialog(this, result,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            }
+            return false;
+        }
+        return true;
+    }
+
+
 
     private void rafraichitListeFlipper() {
         if (latitude == 0 && longitude == 0) {
@@ -223,8 +241,10 @@ public class PageListeResultat extends Activity {
             if (event == null || event.getAction() != KeyEvent.ACTION_DOWN) {
                 return false;
             }
+
             LatLng adresseRecherchee = LocationUtil.getAddressFromText(getApplicationContext(), adresseUtilisateurTV
                     .getText().toString(), latitude, longitude);
+
             if (adresseRecherchee != null) {
                 latitude = adresseRecherchee.latitude;
                 longitude = adresseRecherchee.longitude;
@@ -232,24 +252,17 @@ public class PageListeResultat extends Activity {
                 // TODO Trouver une façon propre d'afficher un choix quand il y
                 // a plusieurs adresses trouvées
                 adresseUtilisateurTV.setText(LocationUtil.getAdresseFromCoordGPS(getApplicationContext(), latitude,
-                            longitude));
+                        longitude));
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 rafraichitListeFlipper();
-            } else {
-                if (isGPSAvailable != ConnectionResult.SUCCESS) {
-                    //EasyTracker.getTracker().sendEvent("ui_error", "GPS_ERROR", "ClickNewSearch", 0L);
-                    Dialog dialog = GooglePlayServicesUtil.getErrorDialog(isGPSAvailable, PageListeResultat.this, 0);
-                    if (dialog != null) {
-                        dialog.show();
-                    }
-                } else {
-                    new AlertDialog.Builder(PageListeResultat.this)
+
+            } else if (checkPlayServices()) {
+                //EasyTracker.getTracker().sendEvent("ui_error", "GPS_ERROR", "ClickNewSearch", 0L);
+                new AlertDialog.Builder(PageListeResultat.this)
                         .setTitle("Argh!")
-                        .setMessage(
-                                "Votre adresse n'a pas pu être trouvée! Veuillez activer le GPS et la connexion Wifi sur votre téléphone. Si le problème persiste, contactez moi :)")
+                        .setMessage("L'adresse entrée n'a pas pu être trouvée! Veuillez activer le GPS et la connexion Wifi sur votre téléphone. Si le problème persiste, contactez moi :)")
                         .setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();
-                }
             }
             return false;
         }
