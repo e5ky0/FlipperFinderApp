@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -30,6 +31,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.utils.FontManager;
 import com.pinmyballs.utils.MyLocation;
 import com.pinmyballs.utils.MyLocation.LocationResult;
 import com.pinmyballs.utils.NetworkUtil;
@@ -61,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
 		imageEnveloppe.setOnClickListener(ContactPrincipalListener);
 		imagePreferences = (ImageView) findViewById(R.id.imagePreferences);
 		imagePreferences.setOnClickListener(PreferencesListener);
+		Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
+		FontManager.markAsIconContainer(findViewById(R.id.mainactivitylayout), iconFont);
+
 
         settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
 
