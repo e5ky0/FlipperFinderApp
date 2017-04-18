@@ -17,7 +17,7 @@
     <string name="title_activity_pageCarteFlipper">Localisation des flippers</string>
     <string name="alt_image_localisation">Localisation</string>
     <string name="alt_image_mapsearch">Localisation par la carte</string>
-    <string name="searchthisareatext">Chercher autour du point"</string>
+    <string name="searchthisareatext">Liste des flips dans le cercle"</string>
 
     <string name="hintRechercheAdresse">Taper votre adresse</string>
     <string name="BoutonAfficheListeFlipper">Afficher les flippers sur une carte</string>
@@ -60,6 +60,7 @@
     <string name="hintPseudo">Votre pseudo</string>
     <string name="hintNouveauModele">Le nouveau modèle</string>
     <string name="hintCommentaire">Tapez votre commentaire…</string>
+    <string name="hintCommentaireNew">Commentaire sur ce nouveau flipper…</string>
 
     <string name="boutonValideChangementModele">Valider le nouveau modèle</string>
 
@@ -68,8 +69,10 @@
 
     <string name="headerCommentaire">Derniers commentaires</string>
 
-    <string name="headerPreferences">Réglages</string>
+    <string name="headerPreferences">Préférences</string>
     <string name="headerSignalement">Signaler un flipper</string>
+
+    <string name="headerPageCarteSearch">Recherche par carte</string>
 
     <string name="mailContact">flipper.finder2@gmail.com</string>
 
