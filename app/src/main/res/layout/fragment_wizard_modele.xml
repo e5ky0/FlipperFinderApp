@@ -15,27 +15,36 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <AutoCompleteTextView
-                android:id="@+id/autocompletionModeleFlipper"
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dip"
-                android:layout_marginRight="5dip"
-                android:layout_marginTop="15dip"
-                android:hint="@string/SectionFlipper"
-                android:imeOptions="actionDone"
-                android:singleLine="true" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/champPseudo"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="15dip"
-                android:hint="@string/hintPseudo"
-                android:imeOptions="actionDone"
-                android:inputType="textFilter|textCapCharacters" />
+                <AutoCompleteTextView
+                    android:id="@+id/autocompletionModeleFlipper"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_marginTop="3dip"
+                    android:layout_weight="20"
+                    android:hint="@string/SectionFlipper"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1" />
+
+                <EditText
+                    android:id="@+id/champPseudo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="1dip"
+                    android:layout_weight="50"
+                    android:hint="@string/hintPseudo"
+                    android:imeOptions="actionDone"
+                    android:inputType="textFilter|textCapCharacters" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/texteCommentaire"
@@ -43,13 +52,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="15dip"
+                android:layout_marginTop="3dip"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:hint="@string/hintCommentaire"
+                android:hint="@string/hintCommentaireNew"
                 android:imeOptions="actionDone|normal"
                 android:inputType="textCapSentences|textMultiLine"
-                android:lines="3" />
+                android:lines="1" />
 
             <AutoCompleteTextView
                 android:id="@+id/autocompletionModeleFlipper2"
@@ -57,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
-                android:layout_marginTop="30dip"
+                android:layout_marginTop="5dip"
                 android:hint="@string/SignalementDeuxiemeModele"
                 android:imeOptions="actionDone"
                 android:inputType="textFilter|textNoSuggestions"
@@ -69,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginTop="5dip"
                 android:hint="@string/SignalementTroisiemeModele"
                 android:imeOptions="actionDone"
                 android:inputType="textFilter|textNoSuggestions"

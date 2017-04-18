@@ -177,6 +177,8 @@ public class PageSignalementNew extends AppCompatActivity {
             public void done(ParseException e) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Envoi effectué, Merci pour votre contribution :)", Toast.LENGTH_LONG);
                 toast.show();
+                //Close Activity PageSignalementNew
+                finish();
             }
         });
     }

@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginTop="3dip"
                 android:hint="@string/SectionNomEnseigne"
                 android:inputType="textCapSentences|textAutoCorrect"
                 />
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginTop="3dip"
                 android:inputType="textCapSentences|textAutoCorrect"
                 android:hint="@string/SectionAdresse" />
 
@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
-                    android:layout_marginTop="15dip"
+                    android:layout_marginTop="3dip"
                     android:hint="@string/SectionCodePostal"
                     android:layout_weight="60" />
                 <EditText
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
-                    android:layout_marginTop="15dip"
+                    android:layout_marginTop="3dip"
                     android:hint="@string/SectionVille"
                     android:inputType="textCapSentences|textAutoCorrect"
                     android:layout_weight="40"/>
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginTop="3dip"
                 android:hint="@string/SectionPays"
                 android:inputType="textCapSentences|textAutoCorrect"
                 android:text="France"/>

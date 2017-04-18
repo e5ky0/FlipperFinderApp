@@ -30,6 +30,8 @@ public class FragmentSignalementMap extends SignalementWizardFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+        //Reset Map (needed if one flipper has been added previously in session
+        mMap = null;
         if (rootView != null) {
             ViewGroup parent = (ViewGroup) rootView.getParent();
             if (parent != null){
@@ -51,9 +53,7 @@ public class FragmentSignalementMap extends SignalementWizardFragment {
         if (mMap == null) {
             SupportMapFragment m = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapSignalementFragment));
             mMap = m.getMap();
-            if (mMap != null){
-                setUpMap();
-            }
+                if (mMap != null) setUpMap();
         }
     }
 

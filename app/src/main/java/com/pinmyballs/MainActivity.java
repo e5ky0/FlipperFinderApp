@@ -256,8 +256,8 @@ public class MainActivity extends AppCompatActivity {
 	};
 	private OnClickListener SignalerListener = new OnClickListener() {
 		public void onClick(View v) {
-			//Intent intent = new Intent(MainActivity.this, PageSignalementNew.class);
-			Intent intent = new Intent(MainActivity.this, PageSignalement.class);
+			Intent intent = new Intent(MainActivity.this, PageSignalementNew.class);
+			//Intent intent = new Intent(MainActivity.this, PageSignalement.class);
 			startActivity(intent);
 		}
 	};

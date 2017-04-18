@@ -11,7 +11,7 @@ public class ParseFactory {
 
     public ParseObject getParseObject(Flipper flipper){
         ParseObject parseObject = new ParseObject(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
-        parseObject.put(FlipperDatabaseHandler.FLIPPER_ACTIF, flipper.isActif()?1:0);
+        parseObject.put(FlipperDatabaseHandler.FLIPPER_ACTIF, flipper.isActif());
         parseObject.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, flipper.getDateMaj());
         parseObject.put(FlipperDatabaseHandler.FLIPPER_ENSEIGNE, flipper.getIdEnseigne());
         parseObject.put(FlipperDatabaseHandler.FLIPPER_ID, flipper.getId());
