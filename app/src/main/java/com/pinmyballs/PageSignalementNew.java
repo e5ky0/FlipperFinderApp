@@ -88,6 +88,8 @@ public class PageSignalementNew extends AppCompatActivity {
         // Affichage du header
         mActionbar = getSupportActionBar();
         mActionbar.setTitle(R.string.headerSignalement);
+        mActionbar.setHomeButtonEnabled(true);
+        mActionbar.setDisplayHomeAsUpEnabled(true);
         updateBottomBar();
         localiseTelephone();
     }

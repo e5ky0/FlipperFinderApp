@@ -49,6 +49,8 @@ public class PageSignalement extends AppCompatActivity {
 		// Affichage du header
 		mActionbar = getSupportActionBar();
 		mActionbar.setTitle(R.string.headerSignalement);
+		mActionbar.setHomeButtonEnabled(true);
+		mActionbar.setDisplayHomeAsUpEnabled(true);
 
 		adresseUtilisateurTV = (EditText)findViewById(R.id.champAdresseLocalisation);
 		champNomEnseigne = (EditText)findViewById(R.id.champNomEnseigne);

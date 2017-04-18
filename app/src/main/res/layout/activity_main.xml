@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:id="@+id/mainactivitylayout">
 
     <!--
     <include layout="@layout/header_main"/>
@@ -37,7 +38,7 @@
         android:layout_marginTop="40dp"
         android:minWidth="250dp"
         android:minHeight="50dp"
-        android:text="@string/BoutonAccueilRechercher"
+        android:text="@string/fa_icon_search"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -49,7 +50,7 @@
         android:minHeight="50dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/boutonMenuRechercher"
-        android:text="@string/BoutonAccueilSignaler"/>
+        android:text="@string/fa_icon_new"/>
 
     <Button
         android:id="@+id/boutonMenuTournoi"
@@ -60,7 +61,7 @@
         android:minHeight="50dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/boutonMenuSignaler"
-        android:text="@string/BoutonAccueilTournoi"/>
+        android:text="@string/fa_icon_cup"/>
 
     <TextView
         android:id="@+id/InfoApp"
@@ -76,7 +77,7 @@
         android:text="@string/info"
         android:textStyle="italic" />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/imageEnveloppe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,5 +98,5 @@
         android:layout_marginRight="20dp"
         android:contentDescription="Préférences"
         android:src="@drawable/custom_settings" />
-
+-->
 </RelativeLayout>

@@ -26,6 +26,8 @@ public class PageListeCommentaire extends AppCompatActivity {
 		setContentView(R.layout.activity_liste_commentaire);
 		mActionBar = getSupportActionBar();
 		mActionBar.setTitle(R.string.headerCommentaire);
+		mActionBar.setHomeButtonEnabled(true);
+		mActionBar.setDisplayHomeAsUpEnabled(true);
 
 		listeCommentaireView = (ListView) findViewById(R.id.listeCommentairesRecents);
 

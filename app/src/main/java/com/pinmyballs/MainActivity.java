@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
 	Button boutonRechercherTournoi;
 	SharedPreferences settings;
 
-	ImageView imageEnveloppe;
-	ImageView imagePreferences;
+	//ImageView imageEnveloppe;
+	//ImageView imagePreferences;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -59,12 +59,14 @@ public class MainActivity extends AppCompatActivity {
 		boutonRechercherTournoi.setOnClickListener(RechercherTournoiListener);
 		boutonSignaler = (Button) findViewById(R.id.boutonMenuSignaler);
 		boutonSignaler.setOnClickListener(SignalerListener);
-		imageEnveloppe = (ImageView) findViewById(R.id.imageEnveloppe);
-		imageEnveloppe.setOnClickListener(ContactPrincipalListener);
-		imagePreferences = (ImageView) findViewById(R.id.imagePreferences);
-		imagePreferences.setOnClickListener(PreferencesListener);
 		Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
 		FontManager.markAsIconContainer(findViewById(R.id.mainactivitylayout), iconFont);
+
+		//imageEnveloppe = (ImageView) findViewById(R.id.imageEnveloppe);
+		//imageEnveloppe.setOnClickListener(ContactPrincipalListener);
+		//imagePreferences = (ImageView) findViewById(R.id.imagePreferences);
+		//imagePreferences.setOnClickListener(PreferencesListener);
+
 
 
         settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
@@ -153,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 
-	private OnClickListener ContactPrincipalListener = new OnClickListener() {
+	/*private OnClickListener ContactPrincipalListener = new OnClickListener() {
 		public void onClick(View v) {
 			Resources resources = getResources();
 			String emailsTo = resources.getString(R.string.mailContact);
@@ -168,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
 				new AlertDialog.Builder(MainActivity.this).setTitle("Envoi impossible!").setMessage("Vous n'avez pas de mail configuré sur votre téléphone.").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_tristesse).show();
 			}
 		}
-	};
+	};*/
 
 
 	@Override
@@ -185,14 +187,50 @@ public class MainActivity extends AppCompatActivity {
 		switch (item.getItemId()) {
 			case R.id.action_update:
 				updateDB();
-				return true;
+				break;
 			case R.id.action_viewComment:
 				////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "viewComment", 0L);
-				Intent intent = new Intent(MainActivity.this, PageListeCommentaire.class);
-				startActivity(intent);
+				Intent intent1 = new Intent(MainActivity.this, PageListeCommentaire.class);
+				startActivity(intent1);
+				break;
+			case R.id.action_mail:
+				////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "mail", 0L);
+				Resources resources = getResources();
+				String emailsTo = resources.getString(R.string.mailContact);
+				Intent intent2 = new Intent(Intent.ACTION_SEND);
+				intent2.setType("message/html");
+				intent2.putExtra(Intent.EXTRA_EMAIL, new String[]{emailsTo});
+				intent2.putExtra(Intent.EXTRA_SUBJECT, "Commentaire sur PinMyBalls");
+				try {
+					startActivity(Intent.createChooser(intent2, "Envoi du mail"));
+				} catch (android.content.ActivityNotFoundException ex) {
+					new AlertDialog.Builder(MainActivity.this).setTitle("Envoi impossible!").setMessage("Vous n'avez pas de mail configuré sur votre téléphone.").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_tristesse).show();
+				}
+				break;
+			case R.id.action_bugreport:
+				////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "mail", 0L);
+				Resources resources1 = getResources();
+				String emailsTo1 = resources1.getString(R.string.mailContact);
+				Intent intent3 = new Intent(Intent.ACTION_SEND);
+				intent3.setType("message/html");
+				intent3.putExtra(Intent.EXTRA_EMAIL, new String[]{emailsTo1});
+				intent3.putExtra(Intent.EXTRA_SUBJECT, "Bug signalé dans PinMyBalls");
+				try {
+					startActivity(Intent.createChooser(intent3, "Envoi du mail"));
+				} catch (android.content.ActivityNotFoundException ex) {
+					new AlertDialog.Builder(MainActivity.this).setTitle("Envoi impossible!").setMessage("Vous n'avez pas de mail configuré sur votre téléphone.").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_tristesse).show();
+				}
+				break;
+			case R.id.action_preferences:
+				////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "preferences", 0L);
+				Intent intent4 = new Intent(MainActivity.this, PagePreferences.class);
+				startActivity(intent4);
+				break;
 			default:
-				return super.onOptionsItemSelected(item);
+				Log.i("Erreur action bar","default");
+				break;
 		}
+		return false;
 	}
 
 	public void updateDB(){
@@ -230,12 +268,12 @@ public class MainActivity extends AppCompatActivity {
 		}
 	};
 
-	private OnClickListener PreferencesListener = new OnClickListener() {
+	/*private OnClickListener PreferencesListener = new OnClickListener() {
 		public void onClick(View v) {
 			Intent intent = new Intent(MainActivity.this, PagePreferences.class);
 			startActivity(intent);
 		}
-	};
+	};*/
 
 	@Override
 	public void onStart() {

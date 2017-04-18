@@ -9,11 +9,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-import com.pinmyballs.database.DAOBase;
-import com.pinmyballs.database.dao.FlipperDAO;
 import com.pinmyballs.service.GlobalService;
-import com.pinmyballs.service.base.BaseFlipperService;
-import com.pinmyballs.service.parse.ParseFlipperService;
 
 public class PagePreferences extends AppCompatActivity {
 
@@ -52,6 +48,9 @@ public class PagePreferences extends AppCompatActivity {
 		mActionbar = getSupportActionBar();
 
 		mActionbar.setTitle(R.string.headerPreferences);
+		mActionbar.setHomeButtonEnabled(true);
+		mActionbar.setDisplayHomeAsUpEnabled(true);
+
         settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
 
 		seekBarRayon = (SeekBar) findViewById(R.id.seekBarRayon);
