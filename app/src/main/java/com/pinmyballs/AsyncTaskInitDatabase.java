@@ -3,7 +3,6 @@ package com.pinmyballs;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 
 import com.pinmyballs.database.FlipperDatabaseHandler;

@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,7 +39,7 @@ import com.pinmyballs.service.ParseFactory;
 import com.pinmyballs.utils.MyLocation;
 import com.pinmyballs.utils.MyLocation.LocationResult;
 
-public class PageSignalementNew extends ActionBarActivity {
+public class PageSignalementNew extends AppCompatActivity {
 
     LatLng currentLocation = null;
 

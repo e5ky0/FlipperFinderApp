@@ -7,7 +7,7 @@ import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -25,7 +25,7 @@ import com.pinmyballs.utils.LocationUtil;
 import com.pinmyballs.utils.MyLocation;
 import com.pinmyballs.utils.MyLocation.LocationResult;
 
-public class PageSignalement extends ActionBarActivity {
+public class PageSignalement extends AppCompatActivity {
 
 	MyLocation myLocation = new MyLocation();
 	double latitude = 48.862731; // bar à côté du cirque d'hiver

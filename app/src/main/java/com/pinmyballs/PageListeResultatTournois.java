@@ -5,7 +5,7 @@ import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,7 +28,7 @@ import com.pinmyballs.utils.LocationUtil;
 import com.pinmyballs.utils.MyLocation;
 import com.pinmyballs.utils.MyLocation.LocationResult;
 
-public class PageListeResultatTournois extends ActionBarActivity {
+public class PageListeResultatTournois extends AppCompatActivity {
 
 	MyLocation myLocation = new MyLocation();
 

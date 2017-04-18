@@ -10,7 +10,6 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -44,7 +43,7 @@ public class FragmentActionsFlipper extends Fragment {
 
 	Button boutonChangement;
 	Button boutonDisparition;
-	Button boutonValisation;
+	Button boutonValidation;
 	Button boutonNavigation;
 
 	Button boutonValideChangement;
@@ -77,7 +76,7 @@ public class FragmentActionsFlipper extends Fragment {
 
 		boutonChangement = (Button) rootView.findViewById(R.id.boutonChangement);
 		boutonDisparition = (Button) rootView.findViewById(R.id.boutonDisparition);
-		boutonValisation = (Button) rootView.findViewById(R.id.boutonValidation);
+		boutonValidation = (Button) rootView.findViewById(R.id.boutonValidation);
 		boutonNavigation = (Button) rootView.findViewById(R.id.boutonNavigation);
 		boutonValideChangement = (Button) rootView.findViewById(R.id.boutonValideChangementModele);
 		boutonAnnuleChangement = (Button) rootView.findViewById(R.id.boutonCancelChangeModele);
@@ -88,7 +87,7 @@ public class FragmentActionsFlipper extends Fragment {
 
 		boutonChangement.setOnClickListener(ChangerModeleListener);
 		boutonDisparition.setOnClickListener(DisparitionListener);
-		boutonValisation.setOnClickListener(ValidationListener);
+		boutonValidation.setOnClickListener(ValidationListener);
 		boutonNavigation.setOnClickListener(NavigationListener);
 
 		boutonAnnuleChangement.setOnClickListener(AnnuleChangementModeleListener);
@@ -211,10 +210,10 @@ public class FragmentActionsFlipper extends Fragment {
 				FlipperService flipperService = new FlipperService(new FragmentActionCallback() {
 					@Override
 					public void onTaskDone() {
-						((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
+						((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
 					}
 				});
-				((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
+				((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 				flipperService.valideFlipper(getActivity().getApplicationContext(), flipper);
 			}else{
 				Toast toast = Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.toastValidationPasPossibleReseau), Toast.LENGTH_SHORT);

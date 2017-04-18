@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +71,7 @@ public class FragmentCommentaireFlipper extends Fragment {
 			@Override
 			public void onTaskDone() {
 				rafraichitListeCommentaire();
-				((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
+				((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
 			}
 		});
 
@@ -140,7 +140,7 @@ public class FragmentCommentaireFlipper extends Fragment {
 						new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour),
 						pseudoCommentaire,
 						true);
-				((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
+				((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 				commentaireService.ajouteCommentaire(getActivity(), commentaireToAdd);
 				// Rafraichir la liste des commentaires
 				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);

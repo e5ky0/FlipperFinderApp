@@ -2,7 +2,7 @@ package com.pinmyballs;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import com.pinmyballs.metier.Commentaire;
 import com.pinmyballs.service.GlobalService;
 import com.pinmyballs.utils.ListeCommentaireAdapter;
 
-public class PageListeCommentaire extends ActionBarActivity {
+public class PageListeCommentaire extends AppCompatActivity {
 
 	ArrayList<Commentaire> listeCommentaires = new ArrayList<Commentaire>();
 
