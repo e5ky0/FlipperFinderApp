@@ -211,10 +211,10 @@ public class FragmentActionsFlipper extends Fragment {
 				FlipperService flipperService = new FlipperService(new FragmentActionCallback() {
 					@Override
 					public void onTaskDone() {
-						((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
+						//((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
 					}
 				});
-				((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
+				//((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 				flipperService.valideFlipper(getActivity().getApplicationContext(), flipper);
 			}else{
 				Toast toast = Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.toastValidationPasPossibleReseau), Toast.LENGTH_SHORT);
