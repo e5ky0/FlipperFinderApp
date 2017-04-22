@@ -71,7 +71,7 @@ public class FragmentCommentaireFlipper extends Fragment {
 			@Override
 			public void onTaskDone() {
 				rafraichitListeCommentaire();
-				((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
+				//((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
 			}
 		});
 
@@ -140,7 +140,7 @@ public class FragmentCommentaireFlipper extends Fragment {
 						new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour),
 						pseudoCommentaire,
 						true);
-				((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
+				//((ActionBarActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 				commentaireService.ajouteCommentaire(getActivity(), commentaireToAdd);
 				// Rafraichir la liste des commentaires
 				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
