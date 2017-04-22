@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.android.tools.build:gradle:2.3.1'
     }
 }
 apply plugin: 'com.android.application'
@@ -21,7 +21,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 10
         targetSdkVersion 25
-        versionCode 48
+        versionCode 49
         versionName "2.46"
     }
     buildTypes {
