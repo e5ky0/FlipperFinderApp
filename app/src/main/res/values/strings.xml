@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Flipper Finder</string>
+    <string name="app_name">Pin my Balls</string>
     <string name="BoutonAccueilSignaler">Signaler un flipper</string>
     <string name="BoutonAccueilRechercher">Rechercher un flipper</string>
     <string name="BoutonAccueilTournoi">Rechercher un tournoi LNJF</string>
@@ -45,7 +45,7 @@
     <string name="boutonChangement">Le modèle a changé</string>
     <string name="boutonNavigation">Itinéraire vers ce flipper</string>
     <string name="dateMaj">Date de mise à jour : </string>
-    <string name="dateMajDefault">Flipper non confirmé depuis juin 2013.</string>
+    <string name="dateMajDefault">Flipper non confirmé.</string>
 
 	<string name="SectionPseudo">Votre pseudo</string>
 	<string name="SectionScore">Votre score</string>
@@ -76,8 +76,8 @@
     <string name="pasEncoreCommentaire">Pas encore de commentaire pour ce flipper.</string>
 
     <string name="toastMajEnseigne">%1$d enseigne(s) mise(s) à jour.</string>
-    <string name="toastMajModele">%1$d modèle de flipper mis à jour.</string>
-    <string name="toastMajFlipper">%1$d flipper mis à jour.</string>
+    <string name="toastMajModele">%1$d modèle(s) de flipper mis à jour.</string>
+    <string name="toastMajFlipper">%1$d flipper(s) mis à jour.</string>
     <string name="toastMajCommentaire">%1$d commentaire(s) mis à jour.</string>
     <string name="toastMajPasNecessaire">Votre base de flipper est déjà à jour !</string>
     <string name="toastMajPasPossible">Mise à jour impossible : Vous n\'êtes pas connecté à Internet !</string>
@@ -99,11 +99,17 @@
 
     <string  name="dialogMajDBNeededTitle">Mise à jour recommandée</string>
     <string  name="dialogMajDBNeeded">Votre base de flipper date de plus de %1d jours. Voulez-vous la mettre à jour avec les dernières contributions?</string>
+    <string  name="dialogMajDBNeeded2">Votre base de flipper est obsolète. Voulez-vous la mettre à jour avec les dernières contributions?</string>
     <string  name="dialogMajDBNeededOK">Avec plaisir!</string>
     <string  name="dialogMajDBLater">Plus tard...</string>
     <string  name="dialogMajDBTitle">Mise à jour</string>
     <string  name="dialogMajDBMEssage">Chargement des mises à jour. Merci de patienter :-)</string>
 
+    <string  name="info">Cette app est la reprise de Flipper Finder</string>
+
+    <string  name="NbreFlipsActifs">Nombre de flips actifs dans PinMyBalls</string>
+    <string  name="DateLastMaj">Date de dernière mise à jour</string>
+    <string  name="Pseudo">Pseudo pour commentaires</string>
 
     <string  name="toastChangeModelePasPossibleReseau">Impossible de modifier le modèle. Vous devez être connecté à Internet !</string>
 

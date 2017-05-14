@@ -1,59 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/boutonValidation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="24dp"
             android:minWidth="250dp"
-            android:text="@string/boutonValidation" />
+            android:text="@string/boutonValidation"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="32dp"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.5" />
 
         <Button
             android:id="@+id/boutonChangement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/boutonValidation"
-            android:layout_marginTop="24dp"
             android:minWidth="250dp"
-            android:text="@string/boutonChangement" />
+            android:text="@string/boutonChangement"
+            tools:layout_constraintTop_creator="1"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/boutonValidation"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <Button
             android:id="@+id/boutonDisparition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/boutonChangement"
-            android:layout_marginTop="24dp"
             android:minWidth="250dp"
-            android:text="@string/boutonDisparition" />
+            android:text="@string/boutonDisparition"
+            tools:layout_constraintTop_creator="1"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/boutonChangement"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" />
 
         <Button
             android:id="@+id/boutonNavigation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/boutonDisparition"
-            android:layout_marginTop="24dp"
             android:minWidth="250dp"
-            android:text="@string/boutonNavigation" />
+            android:text="@string/boutonNavigation"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_constraintRight_creator="1"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/boutonDisparition"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" />
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/layoutChangeModele"
-        android:background="#fff3f3f3">
+        android:background="#fff3f3f3"
+        android:layout_marginTop="0dp">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <include layout="@layout/fragment_change_modele_flipper"/>
     </ScrollView>
 
