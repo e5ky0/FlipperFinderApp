@@ -135,8 +135,8 @@ public class FragmentActionsFlipper extends Fragment {
 									getActivity().finish();
 								}
 							});
-							String commentaireString = null;
-							String pseudoCommentaire = null;
+							String commentaireString ="Changement";
+							String pseudoCommentaire = getResources().getString(R.string.pseudoCommentaireAnonyme);
 							if (commentaire.getText().length() > 0){
 								// On sauvegarde le pseudo
 								Editor editor = settings.edit();
@@ -197,7 +197,11 @@ public class FragmentActionsFlipper extends Fragment {
 
 	private OnClickListener DisparitionListener = new OnClickListener() {
 		public void onClick(View v) {
-			String message = "ID : " + flipper.getId() + "\nEnseigne : " + flipper.getEnseigne().getId()
+			String message = "ID : " + flipper.getId()
+					+ "\nModèle : " + flipper.getModele().getNom()
+					+ "\nDu : " + flipper.getEnseigne().getNom()
+					+ "\nA : " + flipper.getEnseigne().getAdresseCompleteSansPays()
+					+ "\nEnseigne : " + flipper.getEnseigne().getId()
 				+ "\nCe flipper n'existe plus!";
 			envoiMail("Retrait du flipper " + flipper.getId(), message);
 		}
