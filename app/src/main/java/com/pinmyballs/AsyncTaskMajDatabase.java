@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;

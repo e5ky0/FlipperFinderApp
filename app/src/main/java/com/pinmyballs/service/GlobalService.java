@@ -42,7 +42,7 @@ public class GlobalService {
 	public GlobalService(){
 	}
 	public ArrayList<Commentaire> getLastCommentaire(Context pContext, int nbMaxCommentaire){
-		ArrayList<Commentaire> listeRetour = null;
+		ArrayList<Commentaire> listeRetour;
 		BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
 		BaseFlipperService baseFlipperService = new BaseFlipperService();
 
@@ -58,7 +58,7 @@ public class GlobalService {
 	}
 
 	public String getNbFlips(Context pContext){
-		String N = "";
+		String N;
 		BaseFlipperService baseFlipperService = new BaseFlipperService();
 		N = baseFlipperService.NombreFlipperActifs(pContext);
 		return N;
@@ -137,7 +137,7 @@ public class GlobalService {
 
 	private void populateEnseigne(SQLiteDatabase db) {
 		BaseEnseigneService baseEnseigneService = new BaseEnseigneService();
-		List<Enseigne> returnList = new ArrayList<Enseigne>();
+		List<Enseigne> returnList;
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
@@ -151,7 +151,7 @@ public class GlobalService {
 
 	private void populateFlipper(SQLiteDatabase db) {
 		BaseFlipperService baseFlipperService= new BaseFlipperService();
-		List<Flipper> returnList = new ArrayList<Flipper>();
+		List<Flipper> returnList;
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
@@ -165,7 +165,7 @@ public class GlobalService {
 
 	private void populateCommentaire(SQLiteDatabase db) {
 		BaseCommentaireService baseCommentaireService= new BaseCommentaireService();
-		List<Commentaire> returnList = new ArrayList<Commentaire>();
+		List<Commentaire> returnList;
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
@@ -179,7 +179,7 @@ public class GlobalService {
 
 	private void populateModele(SQLiteDatabase db) {
 		BaseModeleService baseModeleService= new BaseModeleService();
-		List<ModeleFlipper> returnList = new ArrayList<ModeleFlipper>();
+		List<ModeleFlipper> returnList;
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
@@ -193,7 +193,7 @@ public class GlobalService {
 
 	private void populateTournoi(SQLiteDatabase db) {
 		BaseTournoiService baseTournoiService = new BaseTournoiService();
-		List<Tournoi> returnList = new ArrayList<Tournoi>();
+		List<Tournoi> returnList;
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
@@ -204,10 +204,6 @@ public class GlobalService {
 		returnList = Arrays.asList(gson.fromJson(reader, Tournoi[].class));
 		baseTournoiService.initListeTournoi(returnList, db);
 	}
-
-
-
-
 
 	public void reinitDatabase(SQLiteDatabase db){
 		populateModele(db);

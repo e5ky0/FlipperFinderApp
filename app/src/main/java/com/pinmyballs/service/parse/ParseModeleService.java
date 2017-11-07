@@ -46,7 +46,7 @@ public class ParseModeleService {
 	public List<ModeleFlipper> getMajModeleById(long id){
 		List<ModeleFlipper> listeModele = new ArrayList<ModeleFlipper>();
 
-		List<ParseObject> listePo = new ArrayList<ParseObject>();
+		List<ParseObject> listePo;
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);
 		try {
 			query.setLimit(2000);

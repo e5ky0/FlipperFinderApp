@@ -10,6 +10,7 @@ import android.widget.TextView;
  * Created by juliendpy on 14/04/2017.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class FontManager {
 
     public static final String ROOT = "fonts/",

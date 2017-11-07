@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 
 import com.pinmyballs.database.FlipperDatabaseHandler;
-import com.pinmyballs.service.GlobalService;
 
 public class AsyncTaskInitDatabase extends AsyncTask<Object, Void, Boolean> {
 

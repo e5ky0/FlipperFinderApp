@@ -12,7 +12,7 @@ import com.pinmyballs.metier.ModeleFlipper;
 public class BaseModeleService {
 
 	public ArrayList<ModeleFlipper> getAllModeleFlipper(Context pContext){
-		ArrayList<ModeleFlipper> listeRetour = new ArrayList<ModeleFlipper>();
+		ArrayList<ModeleFlipper> listeRetour;
 		ModeleDAO modeleDao = new ModeleDAO(pContext);
 		modeleDao.open();
 		listeRetour = modeleDao.getAllModeleFlipper();
@@ -41,7 +41,7 @@ public class BaseModeleService {
 	}
 
 	public ModeleFlipper getModeleFlipperByName(Context pContext, String nomModele){
-		ModeleFlipper modeleRetour = null;
+		ModeleFlipper modeleRetour;
 		ModeleDAO modeleDao = new ModeleDAO(pContext);
 		modeleDao.open();
 		modeleRetour = modeleDao.getModeleFlipperByName(nomModele);

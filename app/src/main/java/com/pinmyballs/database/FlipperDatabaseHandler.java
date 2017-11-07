@@ -1,16 +1,10 @@
 package com.pinmyballs.database;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import com.pinmyballs.MainActivity;
-import com.pinmyballs.PagePreferences;
-import com.pinmyballs.metier.Flipper;
-import com.pinmyballs.service.GlobalService;
 
 public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 

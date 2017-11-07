@@ -9,7 +9,6 @@ public class ParseVersionBaseService {
 	 * @return int
 	 */
 	public int getDerniereVersionBase(){
-		int retour = 0;
 		/*
 		   ParseQuery query = new ParseQuery("VersionBase");
 		   try {
@@ -19,6 +18,6 @@ public class ParseVersionBaseService {
 		   e1.printStackTrace();
 		   }
 		   */
-		return retour;
+		return 0;
 	}
 }

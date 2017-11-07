@@ -12,7 +12,7 @@ import com.pinmyballs.metier.Tournoi;
 public class BaseTournoiService {
 
 	public ArrayList<Tournoi> getAllTournoi(Context pContext){
-		ArrayList<Tournoi> listeRetour = new ArrayList<Tournoi>();
+		ArrayList<Tournoi> listeRetour;
 		TournoiDAO tournoiDao = new TournoiDAO(pContext);
 		tournoiDao.open();
 		listeRetour = tournoiDao.getAllTournoi();

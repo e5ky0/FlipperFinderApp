@@ -31,7 +31,7 @@ public class ParseCommentaireService {
 	public List<Commentaire> getMajCommentaireByDate(String dateDerniereMaj){
 		List<Commentaire> listeCommentaire = new ArrayList<Commentaire>();
 
-		List<ParseObject> listePo = new ArrayList<ParseObject>();
+		List<ParseObject> listePo;
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.COMMENTAIRE_TABLE_NAME);
 		try {
 			query.setLimit(2000);

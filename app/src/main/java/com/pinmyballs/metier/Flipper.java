@@ -15,7 +15,7 @@ public class Flipper implements Serializable {
 	private long idModele;
 
 	@SerializedName("FLIP_NB_CREDITS_2E")
-	private Long nbCreditsDeuxEruros;
+	private Long NbCreditsDeuxEuros;
 
 	@SerializedName("FLIP_ENSEIGNE")
 	private long idEnseigne;
@@ -32,11 +32,11 @@ public class Flipper implements Serializable {
 	public Flipper() {
 	}
 
-	public Flipper(long id, long idModele, long nbCreditsDeuxEruros,
+	public Flipper(long id, long idModele, long NbCreditsDeuxEuros,
 			long idEnseigne, boolean actif, String dateMaj) {
 		this.id = id;
 		this.idModele = idModele;
-		this.nbCreditsDeuxEruros = nbCreditsDeuxEruros;
+		this.NbCreditsDeuxEuros = NbCreditsDeuxEuros;
 		this.idEnseigne = idEnseigne;
 		this.actif = actif;
 		this.dateMaj = dateMaj;
@@ -61,12 +61,12 @@ public class Flipper implements Serializable {
 		}
 	}
 
-	public Long getNbCreditsDeuxEruros() {
-		return nbCreditsDeuxEruros;
+	public Long getNbCreditsDeuxEuros() {
+		return NbCreditsDeuxEuros;
 	}
 
-	public void setNbCreditsDeuxEruros(Long nbCreditsDeuxEruros) {
-		this.nbCreditsDeuxEruros = nbCreditsDeuxEruros;
+	public void setNbCreditsDeuxEuros(Long NbCreditsDeuxEuros) {
+		this.NbCreditsDeuxEuros = NbCreditsDeuxEuros;
 	}
 
 	public Enseigne getEnseigne() {

@@ -17,7 +17,6 @@ public class ParseEnseigneService {
 	 * @return int
 	 */
 	public List<Enseigne> getAllEnseigne(){
-		List<Enseigne> listeEnseigne = new ArrayList<Enseigne>();
 		/*
 		   List<ParseObject> listePo = new ArrayList<ParseObject>();
 		   ParseQuery query = new ParseQuery(FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME);
@@ -42,7 +41,7 @@ public class ParseEnseigneService {
 		   listeEnseigne.add(enseigne);
 		   }
 		   */
-		return listeEnseigne;
+		return new ArrayList<Enseigne>();
 	}
 
 	/**
@@ -53,7 +52,7 @@ public class ParseEnseigneService {
 	public List<Enseigne> getMajEnseigneByDate(String dateDerniereMaj){
 		List<Enseigne> listeEnseigne = new ArrayList<Enseigne>();
 
-		List<ParseObject> listePo = new ArrayList<ParseObject>();
+		List<ParseObject> listePo;
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ENSEIGNE");
 		try {
 			query.setLimit(2000);

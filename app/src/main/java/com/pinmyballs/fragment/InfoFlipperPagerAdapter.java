@@ -29,13 +29,11 @@ public class InfoFlipperPagerAdapter extends FragmentPagerAdapter{
 
                 /** tab2 is selected */
             case 1:
-                FragmentActionsFlipper fragment2 = new FragmentActionsFlipper();
-                return fragment2;
+                return new FragmentActionsFlipper();
 
                 /** tab2 is selected */
             case 2:
-                FragmentCommentaireFlipper fragment3 = new FragmentCommentaireFlipper();
-                return fragment3;
+                return new FragmentCommentaireFlipper();
         }
         return null;
     }

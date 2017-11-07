@@ -29,7 +29,6 @@ public abstract class SignalementWizardFragment extends Fragment{
 
     public String getFormattedDate(){
         Date dateDuJour = new Date();
-        String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
-        return dateMaj;
+        return new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
     }
 }

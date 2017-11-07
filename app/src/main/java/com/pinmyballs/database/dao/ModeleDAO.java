@@ -69,8 +69,7 @@ public class ModeleDAO extends DAOBase{
 	}
 
 	private ModeleFlipper convertCursorToModeleFlipper(Cursor c){
-		ModeleFlipper modele = new ModeleFlipper(c.getLong(0), c.getString(2), c.getString(1), c.getLong(3));
-		return modele;
+		return new ModeleFlipper(c.getLong(0), c.getString(2), c.getString(1), c.getLong(3));
 	}
 
 }

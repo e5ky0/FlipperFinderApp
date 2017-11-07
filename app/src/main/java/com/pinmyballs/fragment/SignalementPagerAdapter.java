@@ -18,14 +18,11 @@ public class SignalementPagerAdapter extends FragmentPagerAdapter{
     public Fragment getItem(int arg0) {
         switch(arg0){
             case 0:
-                FragmentSignalementModele fragment1 = new FragmentSignalementModele();
-                return fragment1;
+                return new FragmentSignalementModele();
             case 1:
-                FragmentSignalementAdresse fragment2 = new FragmentSignalementAdresse();
-                return fragment2;
+                return new FragmentSignalementAdresse();
             case 2:
-                FragmentSignalementMap fragment3 = new FragmentSignalementMap();
-                return fragment3;
+                return new FragmentSignalementMap();
         }
         return null;
     }

@@ -35,7 +35,6 @@ public class ParseFlipperService {
 	 * @return List<ModeleFlipper>
 	 */
 	public List<Flipper> getAllFlipper() {
-		List<Flipper> listeFlipper = new ArrayList<Flipper>();
 		/*
 		   List<ParseObject> listePo = new ArrayList<ParseObject>();
 		   ParseQuery query = new ParseQuery(
@@ -54,7 +53,7 @@ public class ParseFlipperService {
 		   listeFlipper.add(flipper);
 		   }
 		   */
-		return listeFlipper;
+		return new ArrayList<Flipper>();
 	}
 
 	/**
@@ -65,7 +64,7 @@ public class ParseFlipperService {
 	public List<Flipper> getMajFlipperByDate(String dateDerniereMaj){
 		List<Flipper> listeFlipper = new ArrayList<Flipper>();
 
-		List<ParseObject> listePo = new ArrayList<ParseObject>();
+		List<ParseObject> listePo;
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
 		try {
 			query.setLimit(3000);

@@ -64,7 +64,7 @@ public class FragmentCarteFlipper extends SupportMapFragment implements Location
 
 			// On parcourt la liste des flippers pour les afficher avec la
 			// magnifique icone
-			Marker marker = null;
+			Marker marker;
 			if (flipperToDisplay != null && flipperToDisplay.getEnseigne() != null){
 				LatLng pos = new LatLng(Double.valueOf(flipperToDisplay.getEnseigne().getLatitude()),
 						Double.valueOf(flipperToDisplay.getEnseigne().getLongitude()));

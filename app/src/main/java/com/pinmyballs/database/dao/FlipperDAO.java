@@ -52,7 +52,7 @@ public class FlipperDAO extends DAOBase {
 	}
 
 	public String getNbFlipperActif(){
-		String NbFlip = "";
+		String NbFlip;
 
 		//Cursor cursor = mDb.rawQuery("SELECT * FROM " + FlipperDatabaseHandler.FLIPPER_TABLE_NAME
 		//							+ " WHERE " + FlipperDatabaseHandler.FLIPPER_ACTIF  + " = " + "1", null);
@@ -172,7 +172,7 @@ public class FlipperDAO extends DAOBase {
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(FlipperDatabaseHandler.FLIPPER_ID, flipper.getId());
 		contentValues.put(FlipperDatabaseHandler.FLIPPER_MODELE, flipper.getIdModele());
-		contentValues.put(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E, flipper.getNbCreditsDeuxEruros());
+		contentValues.put(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E, flipper.getNbCreditsDeuxEuros());
 		contentValues.put(FlipperDatabaseHandler.FLIPPER_ENSEIGNE, flipper.getIdEnseigne());
 		contentValues.put(FlipperDatabaseHandler.FLIPPER_ACTIF, flipper.isActif());
 		contentValues.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, flipper.getDateMaj());
@@ -195,7 +195,7 @@ public class FlipperDAO extends DAOBase {
 		flipper.setId(c.getLong(0));
 		flipper.setModele(modele);
 		flipper.setEnseigne(enseigne);
-		flipper.setNbCreditsDeuxEruros(c.getLong(2));
+		flipper.setNbCreditsDeuxEuros(c.getLong(2));
 		flipper.setDateMaj(c.getString(4));
 		flipper.getDateMaj();
 		flipper.setActif(c.getLong(5));
@@ -209,7 +209,7 @@ public class FlipperDAO extends DAOBase {
 		flipper.setId(c.getLong(0));
 		flipper.setModele(modele);
 		flipper.setEnseigne(enseigne);
-		flipper.setNbCreditsDeuxEruros(c.getLong(2));
+		flipper.setNbCreditsDeuxEuros(c.getLong(2));
 		flipper.setDateMaj(c.getString(4));
 		flipper.getDateMaj();
 		flipper.setActif(c.getLong(5));

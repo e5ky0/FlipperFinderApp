@@ -67,7 +67,6 @@ public class LocationUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		if (addresses != null && addresses.size() > 0) {
 			Address address = addresses.get(0);
 			// Format the first line of address (if available) and city.
@@ -120,9 +119,7 @@ public class LocationUtil {
 		lat = Math.toDegrees(lat);
 		lon = Math.toDegrees(lon);
 
-		PointF newPoint = new PointF((float) lat, (float) lon);
-
-		return newPoint;
+		return new PointF((float) lat, (float) lon);
 	}
 
 
@@ -180,7 +177,7 @@ public class LocationUtil {
 	 * @return
 	 */
 	public static LatLng getAddressFromText(Context context, String adresse, double latitude, double longitude){
-		List<Address> listeAdresseRetour = null;
+		List<Address> listeAdresseRetour;
 		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 		try {
 			listeAdresseRetour = geocoder.getFromLocationName(adresse, 5);
@@ -202,8 +199,7 @@ public class LocationUtil {
 					adresseARetourner = adresseEnCours;
 				}
 			}
-			LatLng locationToReturn = new LatLng(adresseARetourner.getLatitude(), adresseARetourner.getLongitude());
-			return locationToReturn;
+			return new LatLng(adresseARetourner.getLatitude(), adresseARetourner.getLongitude());
 		}
 
 		return null;
@@ -225,7 +221,7 @@ public class LocationUtil {
 	 */
 	public static int getDaysSinceMajFlip(Flipper flipper){
 		if (flipper.getDateMaj() != null && flipper.getDateMaj().length() != 0) {
-			int nbJours = 0;
+			int nbJours;
 			try {
 				Date dateMajFlip = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH).parse(flipper.getDateMaj());
 				nbJours = Days.daysBetween(new DateTime(dateMajFlip), new DateTime(new Date())).getDays();
