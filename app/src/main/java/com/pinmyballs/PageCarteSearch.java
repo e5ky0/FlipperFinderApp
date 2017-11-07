@@ -133,11 +133,37 @@ public class PageCarteSearch extends AppCompatActivity implements OnMapReadyCall
             });
         }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_preferences, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_preferences:
+                ////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "preferences", 0L);
+                Intent intent4 = new Intent(PageCarteSearch.this, PagePreferences.class);
+                startActivity(intent4);
+                break;
+            default:
+                Log.i("Erreur action bar","default");
+                break;
+        }
+        return false;
+    }
 
 	@Override
 	public void onResume() {
 		super.onResume();
+        settings = getSharedPreferences(PREFERENCES_FILENAME, 0);
+        circleradius = settings.getInt(KEY_PREFERENCES_RAYON, 50);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mapView);
+        mapFragment.getMapAsync(this);
+	    super.onResume();
 	}
 
 	@Override
