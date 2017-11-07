@@ -112,4 +112,8 @@ public class Flipper implements Serializable {
 		this.actif = actif == 1;
 	}
 
+	public void setInActif(long actif) {
+		this.actif = actif == 0;
+	}
+
 }

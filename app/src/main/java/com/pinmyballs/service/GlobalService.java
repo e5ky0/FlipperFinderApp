@@ -65,7 +65,12 @@ public class GlobalService {
 
 	}
 
-
+	public Flipper getFlip(Context pContext, long id){
+		Flipper flip;
+		BaseFlipperService baseFlipperService = new BaseFlipperService();
+		flip = baseFlipperService.getFlipperById(pContext, id);
+		return flip;
+	}
 
 
 

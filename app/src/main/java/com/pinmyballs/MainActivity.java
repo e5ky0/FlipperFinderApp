@@ -17,9 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.joda.time.DateTime;
@@ -41,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 	Button boutonRechercher;
 	Button boutonSignaler;
 	Button boutonRechercherTournoi;
+	Button boutonAdmin;
 	SharedPreferences settings;
 
 	//ImageView imageEnveloppe;
@@ -59,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
 		boutonRechercherTournoi.setOnClickListener(RechercherTournoiListener);
 		boutonSignaler = (Button) findViewById(R.id.boutonMenuSignaler);
 		boutonSignaler.setOnClickListener(SignalerListener);
+		boutonAdmin = (Button) findViewById(R.id.boutonMenuAdmin);
+		boutonAdmin.setOnClickListener(AdminListener);
+
 		Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
 		FontManager.markAsIconContainer(findViewById(R.id.mainactivitylayout), iconFont);
 
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         //First we check if PREFERENCES file is set up with values for DATABASE VERSION and DATE_LAST_UPDATE
 		// if not we give it the values from FlipperDataBaseHandler
-        if (settings.getString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION,"0") == "0") {
+        if (settings.getString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, "0").equals("0")) {
             Log.w(MainActivity.class.getName(), "Key Pref Database Version not set => InitDB");
             SharedPreferences.Editor editor = settings.edit();
             editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
 	private void checkIfMajNeeded(){
 		String dateDerniereMajString = settings.getString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
-		int nbJours = 0;
+		int nbJours;
 		try {
 			Date dateDerniereMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH).parse(dateDerniereMajString);
 			nbJours = Days.daysBetween(new DateTime(dateDerniereMaj), new DateTime(new Date())).getDays();
@@ -264,6 +266,13 @@ public class MainActivity extends AppCompatActivity {
 	private OnClickListener RechercherTournoiListener = new OnClickListener() {
 		public void onClick(View v) {
 			Intent intent = new Intent(MainActivity.this, PageListeResultatTournois.class);
+			startActivity(intent);
+		}
+	};
+
+	private OnClickListener AdminListener = new OnClickListener() {
+		public void onClick(View v) {
+			Intent intent = new Intent(MainActivity.this, PageAdmin.class);
 			startActivity(intent);
 		}
 	};

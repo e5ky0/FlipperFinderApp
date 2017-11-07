@@ -118,6 +118,118 @@ public class ParseFlipperService {
 		return true;
 	}
 
+	public boolean supprimeFlipper(final Context pContext, final Flipper ancienflipper){
+		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
+		query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, ancienflipper.getId());
+		query.findInBackground(new FindCallback<ParseObject>() {
+			@Override
+			public void done(List<ParseObject> objects, ParseException e) {
+				if (objects != null && objects.size() > 0){
+					// On vérifie d'abord que le flipper n'était pas déjà désactivé
+					if (!objects.get(0).getBoolean(FlipperDatabaseHandler.FLIPPER_ACTIF)){
+						new AlertDialog.Builder(pContext).setTitle("Déjà supprimé!").setMessage("Le flipper a déjà été retiré par un autre utilisateur. Mettez à jour votre base de flipper pour voir les dernières modifications.").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
+					}else{
+
+						// On passe le flipper inactif et on update la date de màj
+                        objects.get(0).put(FlipperDatabaseHandler.FLIPPER_ACTIF, false);
+                        objects.get(0).put(FlipperDatabaseHandler.FLIPPER_DATMAJ, ancienflipper.getDateMaj());
+
+
+						// On met le tout dans une liste
+						List<ParseObject> listParseToSave = new ArrayList<ParseObject>();
+						listParseToSave.add(objects.get(0));
+
+						// Et on balance in da cloud!
+						ParseObject.saveAllInBackground(listParseToSave, new SaveCallback(){
+							@Override
+							public void done(ParseException e) {
+								if (e == null){
+									// Ca s'est bien passé, on sauvegarde les flippers
+									List<Flipper> listBaseToSave = new ArrayList<Flipper>();
+									listBaseToSave.add(ancienflipper);
+
+									BaseFlipperService baseFlipperService = new BaseFlipperService();
+									baseFlipperService.majListeFlipper(listBaseToSave, pContext);
+
+
+									Toast toast = Toast.makeText(pContext, pContext.getResources().getString(R.string.popupRetraitFlipOK), Toast.LENGTH_SHORT);
+									toast.show();
+									if (mFragmentCallback != null){
+										mFragmentCallback.onTaskDone();
+									}
+								}else{
+									Toast toast = Toast.makeText(pContext, pContext.getResources().getString(R.string.popupRetraitFlipKO), Toast.LENGTH_SHORT);
+									toast.show();
+								}
+							}
+						});
+					}
+				}
+			}
+		});
+
+		return true;
+	}
+
+	public boolean modifieEtatFlipper(final Context pContext, final Flipper ancienflipper){
+		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
+		query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, ancienflipper.getId());
+		query.findInBackground(new FindCallback<ParseObject>() {
+			@Override
+			public void done(List<ParseObject> objects, ParseException e) {
+				if (objects != null && objects.size() > 0){
+					// Si le flip est désactivé, on l'active
+					if (!objects.get(0).getBoolean(FlipperDatabaseHandler.FLIPPER_ACTIF)){
+						// On passe le flipper actif et on update la date de màj
+						objects.get(0).put(FlipperDatabaseHandler.FLIPPER_ACTIF, true);
+						objects.get(0).put(FlipperDatabaseHandler.FLIPPER_DATMAJ, ancienflipper.getDateMaj());
+
+						// Si le flip est actif, on le désactive
+					}else {
+
+						// On passe le flipper inactif et on update la date de màj
+						objects.get(0).put(FlipperDatabaseHandler.FLIPPER_ACTIF, false);
+						objects.get(0).put(FlipperDatabaseHandler.FLIPPER_DATMAJ, ancienflipper.getDateMaj());
+
+					}
+						// On met le tout dans une liste
+						List<ParseObject> listParseToSave = new ArrayList<ParseObject>();
+						listParseToSave.add(objects.get(0));
+
+						// Et on balance in da cloud!
+						ParseObject.saveAllInBackground(listParseToSave, new SaveCallback(){
+							@Override
+							public void done(ParseException e) {
+								if (e == null){
+									// Ca s'est bien passé, on sauvegarde les flippers
+									List<Flipper> listBaseToSave = new ArrayList<Flipper>();
+									listBaseToSave.add(ancienflipper);
+
+									BaseFlipperService baseFlipperService = new BaseFlipperService();
+									baseFlipperService.majListeFlipper(listBaseToSave, pContext);
+
+
+                                    Toast toast = Toast.makeText(pContext, pContext.getResources().getString(R.string.popupChangementFlipOK), Toast.LENGTH_SHORT);
+									toast.show();
+									if (mFragmentCallback != null){
+										mFragmentCallback.onTaskDone();
+									}
+								}else{
+									Toast toast = Toast.makeText(pContext, pContext.getResources().getString(R.string.popupRetraitFlipKO), Toast.LENGTH_SHORT);
+									toast.show();
+								}
+							}
+						});
+
+				}
+			}
+		});
+
+		return true;
+	}
+
+
+
 	public boolean remplaceModeleFlipper(final Context pContext, final Flipper ancienflipper, final Flipper nouveauFlipper, final Commentaire commentaire){
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
 		query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, ancienflipper.getId());

@@ -38,6 +38,19 @@ public class FlipperService {
 		return true;
 	}
 
+
+	//remplace supprimeflip
+	public boolean modifieEtatFlip(Context pContext, Flipper flipper){
+		Date dateDuJour = new Date();
+		String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
+		flipper.setDateMaj(dateMaj);
+		flipper.setActif(flipper.isActif() ? 0 : 1);
+		// Update of MongoDb
+		ParseFlipperService parseFlipperService =new ParseFlipperService(mFragmentCallback);
+		parseFlipperService.modifieEtatFlipper(pContext,flipper);
+		return true;
+	}
+
 	public boolean remplaceFlipper(Context pContext, Flipper flipper, long idNouveauModele, String commentaire, String pseudo){
 		Date dateDuJour = new Date();
 
@@ -55,6 +68,7 @@ public class FlipperService {
 		}
 
 		ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
+
 
 		parseFlipperService.remplaceModeleFlipper(pContext, flipper, nouveauFlipper, commentaireToAdd);
 

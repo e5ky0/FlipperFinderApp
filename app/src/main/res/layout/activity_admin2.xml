@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    tools:context=".PagePreferences">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/searchByNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center_vertical"
+            android:text="@string/searchByNumberTitle"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="3dp"
+            android:layout_weight="5">
+
+
+            <EditText
+                android:id="@+id/searchByNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <ImageButton
+                android:id="@+id/boutonClearNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:background="@null"
+                android:contentDescription="Clear"
+                app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+        </FrameLayout>
+
+
+        <ImageButton
+            android:id="@+id/searchbynumberImagebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="Search"
+
+            app:srcCompat="@drawable/ic_search_black_24dp" />
+
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="48dp">
+
+        <TextView
+            android:id="@+id/searchresults"
+            android:layout_width="387dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="@string/searchByNumberResultTitle"
+            android:textAppearance="@android:style/TextAppearance.Material.Menu"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="100dp"
+            android:layout_height="17dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="FlipID"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchresults" />
+
+        <TextView
+            android:id="@+id/searchbynumberResultFlipID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="@string/searchByNumberResultFlipID"
+            android:textAlignment="viewStart"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView"
+            app:layout_constraintLeft_toRightOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Model"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/searchbynumberResultFlipModeleID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="3"
+            android:text="@string/searchByNumberResultFlipModelID"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+            app:layout_constraintLeft_toRightOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/searchbynumberResultFlipModele"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="@string/searchByNumberResultFlipModel"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/searchbynumberResultFlipModeleID"
+            app:layout_constraintLeft_toRightOf="@+id/searchbynumberResultFlipModeleID" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Enseigne"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/searchbynumberResultFlipEnseigneID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="3"
+            android:text="@string/searchByNumberResultFlipEnseigneID"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
+            app:layout_constraintLeft_toRightOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/searchbynumberResultFlipEnseigne"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="@string/searchByNumberResultFlipEnseigne"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/searchbynumberResultFlipEnseigneID"
+            app:layout_constraintLeft_toRightOf="@+id/searchbynumberResultFlipEnseigneID" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="VIlle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/searchbynumberResultFlipEnseigneVille"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="@string/searchByNumberResultFlipEnseigneVille"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/searchbynumberResultFlipEnseigneCP"
+            app:layout_constraintLeft_toRightOf="@+id/searchbynumberResultFlipEnseigneCP" />
+
+        <TextView
+            android:id="@+id/searchbynumberResultFlipEnseigneCP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="6"
+            android:text="@string/searchByNumberResultFlipEnseigneCP"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
+            app:layout_constraintLeft_toRightOf="@+id/textView4" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/actifToggle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Etat"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/actifState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="4"
+            android:text="etat"
+            app:layout_constraintBaseline_toBaselineOf="@+id/actifToggle"
+            app:layout_constraintLeft_toRightOf="@+id/actifToggle" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/saveButton" />
+
+
+    <!--<fragment
+        android:id="@+id/place_autocomplete_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"/>
+-->
+</LinearLayout>
