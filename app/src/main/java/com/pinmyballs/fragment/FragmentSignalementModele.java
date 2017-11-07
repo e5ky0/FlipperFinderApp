@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import com.pinmyballs.PagePreferences;
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Commentaire;
@@ -32,11 +32,11 @@ import com.pinmyballs.service.base.BaseModeleService;
 
 public class FragmentSignalementModele extends SignalementWizardFragment {
 
-    @InjectView(R.id.champPseudo) EditText champPseudo;
-    @InjectView(R.id.texteCommentaire) EditText champCommentaire;
-    @InjectView(R.id.autocompletionModeleFlipper) AutoCompleteTextView champModeleFlipper;
-    @InjectView(R.id.autocompletionModeleFlipper2) AutoCompleteTextView champModeleDeuxiemeFlipper;
-    @InjectView(R.id.autocompletionModeleFlipper3) AutoCompleteTextView champModeleTroisiemeFlipper;
+    @BindView(R.id.champPseudo) EditText champPseudo;
+    @BindView(R.id.texteCommentaire) EditText champCommentaire;
+    @BindView(R.id.autocompletionModeleFlipper) AutoCompleteTextView champModeleFlipper;
+    @BindView(R.id.autocompletionModeleFlipper2) AutoCompleteTextView champModeleDeuxiemeFlipper;
+    @BindView(R.id.autocompletionModeleFlipper3) AutoCompleteTextView champModeleTroisiemeFlipper;
 
     SharedPreferences settings;
     BaseModeleService modeleFlipperService;
@@ -47,7 +47,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
         View rootView = inflater.inflate(R.layout.fragment_wizard_modele, container, false);
 
         super.onCreate(savedInstanceState);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
         modeleFlipperService = new BaseModeleService();
 
         // Initialisation du champ Pseudo

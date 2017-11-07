@@ -8,23 +8,32 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
+//import butterknife.InjectView;
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Enseigne;
 
 public class FragmentSignalementAdresse extends SignalementWizardFragment {
 
-    @InjectView(R.id.champNomEnseigne) TextView champNomEnseigne;
-    @InjectView(R.id.champAdresse) TextView champAdresse;
-    @InjectView(R.id.champCodePostal) TextView champCodePostal;
-    @InjectView(R.id.champVille) TextView champVille;
-    @InjectView(R.id.champPays) TextView champPays;
+    //@InjectView(R.id.champNomEnseigne) TextView champNomEnseigne;
+    //@InjectView(R.id.champAdresse) TextView champAdresse;
+    //@InjectView(R.id.champCodePostal) TextView champCodePostal;
+    //@InjectView(R.id.champVille) TextView champVille;
+    //@InjectView(R.id.champPays) TextView champPays;
+
+    @BindView(R.id.champNomEnseigne) TextView champNomEnseigne;
+    @BindView(R.id.champAdresse) TextView champAdresse;
+    @BindView(R.id.champCodePostal) TextView champCodePostal;
+    @BindView(R.id.champVille) TextView champVille;
+    @BindView(R.id.champPays) TextView champPays;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_wizard_adresse, container, false);
         super.onCreate(savedInstanceState);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
         return rootView;
     }
 

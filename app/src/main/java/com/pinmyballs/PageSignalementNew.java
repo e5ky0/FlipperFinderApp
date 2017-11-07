@@ -1,6 +1,7 @@
 package com.pinmyballs;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -15,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -27,8 +29,8 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.Date;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import com.pinmyballs.fragment.SignalementPagerAdapter;
 import com.pinmyballs.fragment.SignalementWizardFragment;
@@ -36,7 +38,6 @@ import com.pinmyballs.metier.Commentaire;
 import com.pinmyballs.metier.Enseigne;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.service.ParseFactory;
-import com.pinmyballs.utils.MyLocation;
 import com.pinmyballs.utils.MyLocation.LocationResult;
 
 public class PageSignalementNew extends AppCompatActivity {
@@ -44,9 +45,9 @@ public class PageSignalementNew extends AppCompatActivity {
     LatLng currentLocation = null;
 
     LatLng newLocation = null;
-    @InjectView(R.id.next_button) Button mNextButton;
-    @InjectView(R.id.prev_button) Button mPreviousButton;
-    @InjectView(R.id.signalementPager) ViewPager mPager;
+    @BindView(R.id.next_button) Button mNextButton;
+    @BindView(R.id.prev_button) Button mPreviousButton;
+    @BindView(R.id.signalementPager) ViewPager mPager;
 
     ActionBar mActionbar;
     private SignalementPagerAdapter mPagerAdapter;
@@ -70,7 +71,7 @@ public class PageSignalementNew extends AppCompatActivity {
         setContentView(R.layout.activity_signalement_wizard);
         settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         mNextButton.setOnClickListener(NextClickListener);
 
@@ -149,6 +150,16 @@ public class PageSignalementNew extends AppCompatActivity {
             mNextButton.setText(R.string.SignalementWizardFinish);
             mNextButton.setBackgroundResource(R.drawable.finish_background);
             mNextButton.setTextAppearance(this, R.style.TextAppearanceFinish);
+            //Hide the keyboard on 3rd view (Geolocalisation)
+            //TODO
+            View view = this.getCurrentFocus();
+            if (view != null) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+
+
+
         } else {
             mNextButton.setText(R.string.SignalementWizardNext);
             mNextButton.setBackgroundResource(R.drawable.selectable_item_background);

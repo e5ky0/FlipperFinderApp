@@ -14,8 +14,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import com.pinmyballs.R;
 import com.pinmyballs.utils.LocationUtil;
@@ -24,8 +24,10 @@ public class FragmentSignalementMap extends SignalementWizardFragment {
 
     private static GoogleMap mMap = null;
     private static View rootView;
-    @InjectView(R.id.geolocaliseSignalement) Button boutonGeolocalisation;
+    @BindView(R.id.geolocaliseSignalement) Button boutonGeolocalisation;
     LatLng chosenPosition = null;
+    LatLng eiffel = new LatLng(48.859160, 2.294418);
+    //centré tour eiffel
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +42,7 @@ public class FragmentSignalementMap extends SignalementWizardFragment {
         }
         try {
             rootView = inflater.inflate(R.layout.fragment_wizard_map, container, false);
-            ButterKnife.inject(this, rootView);
+            ButterKnife.bind(this, rootView);
         } catch (InflateException e) {
             /* map is already there, just return view as it is */
         }
@@ -59,6 +61,8 @@ public class FragmentSignalementMap extends SignalementWizardFragment {
 
     private void setUpMap() {
         mMap.setMyLocationEnabled(true);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eiffel,5));
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng point) {
