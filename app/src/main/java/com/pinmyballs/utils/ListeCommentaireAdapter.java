@@ -62,7 +62,7 @@ public class ListeCommentaireAdapter extends ArrayAdapter<Commentaire> {
 
 			if (pseudoTV != null && p.getFlipper() != null){
 				if (p.getPseudo().length()>0){
-					Spanned html = Html.fromHtml(getContext().getResources().getString(R.string.fulltextCommentaire, p.getPseudo(), p.getFlipper().getModele().getNom(), p.getFlipper().getEnseigne().getVille()));
+					Spanned html = Html.fromHtml(getContext().getResources().getString(R.string.fulltextCommentaire2, p.getPseudo(), p.getFlipper().getModele().getNom(), p.getFlipper().getEnseigne().getVille(), p.getFlipper().getEnseigne().getNom()));
 					CharSequence trimmed = trim(html, 0, html.length());
 					pseudoTV.setText(trimmed);
 				}else{
