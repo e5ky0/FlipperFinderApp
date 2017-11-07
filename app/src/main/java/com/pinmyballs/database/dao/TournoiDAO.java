@@ -24,6 +24,9 @@ public class TournoiDAO extends DAOBase{
 	public ArrayList<Tournoi> getAllTournoi(){
 		ArrayList<Tournoi> listeRetour = new ArrayList<Tournoi>();
 
+		//on ordonne par date
+		String strOrder =  FlipperDatabaseHandler.TOUR_DATE + " DESC ";
+
 		Cursor cursor = mDb.query(FlipperDatabaseHandler.TOURNOI_TABLE_NAME,
 				new String[]{FlipperDatabaseHandler.TOUR_ID,
 					FlipperDatabaseHandler.TOUR_NOM,
@@ -36,7 +39,7 @@ public class TournoiDAO extends DAOBase{
 					FlipperDatabaseHandler.TOUR_VILLE,
 					FlipperDatabaseHandler.TOUR_PAYS,
 					FlipperDatabaseHandler.TOUR_URL},
-					null,null, null, null, null);
+					null,null, null, null, strOrder, null);
 
 		while (cursor.moveToNext()) {
 			listeRetour.add(convertCursorToModeleFlipper(cursor));
@@ -47,10 +50,9 @@ public class TournoiDAO extends DAOBase{
 	}
 
 	private Tournoi convertCursorToModeleFlipper(Cursor c){
-		Tournoi tournoi = new Tournoi(c.getLong(0), c.getString(1), c.getString(2), c.getString(3),
+		return new Tournoi(c.getLong(0), c.getString(1), c.getString(2), c.getString(3),
 				c.getString(4), c.getString(5), c.getString(6), c.getString(7),
 				c.getString(8), c.getString(9), c.getString(10));
-		return tournoi;
 	}
 
 	public void save(Tournoi tournoi){
