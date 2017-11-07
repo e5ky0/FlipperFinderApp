@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    		  android:layout_width="fill_parent"
-			  android:layout_height="wrap_content"
-			  android:orientation="horizontal"
-			  android:layout_marginLeft="5dip"
-			  android:layout_marginRight="5dip"
-			  android:layout_marginTop="5dip">
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="horizontal"
+	android:layout_marginLeft="5dip"
+	android:layout_marginRight="5dip"
+	android:layout_marginTop="5dip">
 
     <ImageButton
         android:id="@+id/boutonLocalisation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="6dp"
         android:contentDescription="@string/alt_image_localisation"
-        android:src="@drawable/ic_action_location_2"/>
+        app:srcCompat="@drawable/ic_my_location_black_24dp" />
 
     <ImageButton
         android:id="@+id/boutonSearchByMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="6dp"
         android:contentDescription="@string/alt_image_mapsearch"
-        android:src="@drawable/ic_search_map"/>
+        app:srcCompat="@drawable/ic_map_black_24dp"/>
 
 	<FrameLayout
 	    android:layout_width="fill_parent"
@@ -35,13 +38,14 @@
 	        android:textSize="15sp"
 			android:maxLines="1"/>
 
-	    <ImageButton
-	        android:id="@+id/boutonClearAdresse"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="right|center_vertical"
-	        android:layout_marginRight="7dp"
-	        android:background="@drawable/ic_content_remove" />
+		<ImageButton
+			android:id="@+id/boutonClearAdresse"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right|center_vertical"
+			android:layout_marginRight="7dp"
+			android:background="@color/cardview_light_background"
+			app:srcCompat="@drawable/ic_clear_black_24dp" />
 
 	</FrameLayout>
 

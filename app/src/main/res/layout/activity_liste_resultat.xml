@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical">
 
     <include layout="@layout/localisation" />
 
@@ -18,7 +19,7 @@
             android:id="@+id/afficherCarteIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/custom_affichercarte" />
+            app:srcCompat="@drawable/custom_affichercarte" />
 
 		<FrameLayout
 		    android:layout_width="fill_parent"
@@ -33,16 +34,17 @@
 	            android:hint="@string/hintFiltreModele"
 	            android:imeOptions="actionDone"
 	            android:inputType="textFilter|textNoSuggestions"
-	            android:singleLine="true"
+	            android:maxLines="1"
 	            android:textSize="15sp" />
 
 			<ImageButton
-		        android:id="@+id/boutonClearModeleFlipper"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="right|center_vertical"
-		        android:layout_marginRight="7dp"
-		        android:background="@drawable/ic_content_remove" />
+				android:id="@+id/boutonClearModeleFlipper"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="right|center_vertical"
+				android:layout_marginRight="7dp"
+				android:background="@color/cardview_light_background"
+				app:srcCompat="@drawable/ic_clear_black_24dp" />
 
         </FrameLayout>
     </LinearLayout>

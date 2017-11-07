@@ -15,16 +15,25 @@
         android:layout_height="25dp"
         android:layout_gravity="center"
         android:scaleType="center"
-        android:src="@drawable/ic_centermap" />
+        app:srcCompat="@drawable/ic_centermap" />
 
     <Button
         android:id="@+id/searchThisArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="6dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
         android:text="@string/searchthisareatext" />
 
+    <TextView
+        android:id="@+id/adressetrouvee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="8dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:text="adresse" />
 
 
 </FrameLayout>

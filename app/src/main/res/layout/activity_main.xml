@@ -17,7 +17,7 @@
         android:layout_marginTop="100dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/BoutonAccueilRechercher"
-        android:src="@drawable/rechercher_ombre" />
+        app:srcCompat="@drawable/rechercher_ombre" />
 
     <ImageView
         android:id="@+id/boutonMenuSignaler"
@@ -27,7 +27,7 @@
         android:layout_marginTop="50dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/BoutonAccueilSignaler"
-        android:src="@drawable/signaler_ombre"
+        app:srcCompat="@drawable/signaler_ombre"
         android:layout_below="@id/boutonMenuRechercher"/>
  -->
 
@@ -38,6 +38,7 @@
         android:layout_marginTop="40dp"
         android:minWidth="250dp"
         android:minHeight="50dp"
+        android:elevation="6dp"
         android:text="@string/fa_icon_search"
         android:layout_centerHorizontal="true"/>
 
@@ -48,6 +49,7 @@
         android:layout_marginTop="40dp"
         android:minWidth="250dp"
         android:minHeight="50dp"
+        android:elevation="6dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/boutonMenuRechercher"
         android:text="@string/fa_icon_new"/>
@@ -59,11 +61,12 @@
         android:layout_marginTop="40dp"
         android:minWidth="250dp"
         android:minHeight="50dp"
+        android:elevation="6dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/boutonMenuSignaler"
         android:text="@string/fa_icon_cup"/>
 
-    <TextView
+<!--    <TextView
         android:id="@+id/InfoApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,7 +78,19 @@
         android:minLines="2"
         android:minWidth="250dp"
         android:text="@string/info"
-        android:textStyle="italic" />
+        android:textStyle="italic" />-->
+
+    <Button
+        android:id="@+id/boutonMenuAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:minWidth="100dp"
+        android:minHeight="50dp"
+        android:elevation="6dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/boutonMenuTournoi"
+        android:text="@string/fa_icon_lock"/>
 
     <!--<ImageView
         android:id="@+id/imageEnveloppe"
@@ -86,7 +101,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:contentDescription="Envoyer un mail"
-        android:src="@drawable/custom_enveloppe" />
+        app:srcCompat="@drawable/custom_enveloppe" />
 
     <ImageView
         android:id="@+id/imagePreferences"
@@ -97,6 +112,6 @@
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
         android:contentDescription="Préférences"
-        android:src="@drawable/custom_settings" />
+        app:srcCompat="@drawable/custom_settings" />
 -->
 </RelativeLayout>
