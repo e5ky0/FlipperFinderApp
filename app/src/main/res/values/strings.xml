@@ -1,9 +1,9 @@
 <resources>
 
     <string name="app_name">Pin my Balls</string>
-    <string name="BoutonAccueilSignaler">Signaler un flipper</string>
     <string name="BoutonAccueilRechercher">Rechercher un flipper</string>
-    <string name="BoutonAccueilTournoi">Rechercher un tournoi LNJF</string>
+    <string name="BoutonAccueilSignaler">Signaler un flipper</string>
+    <string name="BoutonAccueilTournoi">Tournois LNJF</string>
     <string name="BoutonAccueilCommentaire">Voir les derniers commentaires</string>
     <string name="editText">Edit</string>
     <string name="menu_settings">Settings</string>
@@ -50,9 +50,9 @@
     <string name="dateMaj">Date de mise à jour : </string>
     <string name="dateMajDefault">Flipper non confirmé.</string>
 
-	<string name="SectionPseudo">Votre pseudo</string>
-	<string name="SectionScore">Votre score</string>
-	<string name="boutonSoumettreScore">Soumettre votre Hi-Score</string>
+    <string name="SectionPseudo">Votre pseudo</string>
+    <string name="SectionScore">Votre score</string>
+    <string name="boutonSoumettreScore">Soumettre votre Hi-Score</string>
 
     <string name="boutonCommentaire">Laisser un commentaire</string>
     <string name="boutonNewCommentaire">Envoyer</string>
@@ -71,14 +71,15 @@
 
     <string name="headerPreferences">Préférences</string>
     <string name="headerSignalement">Signaler un flipper</string>
-
     <string name="headerPageCarteSearch">Recherche par carte</string>
+    <string name="headerAdmin">Admin tools</string>
 
     <string name="mailContact">flipper.finder2@gmail.com</string>
 
     <string name="pseudoCommentaireAnonyme">Anonyme</string>
     <string name="fulltextCommentaireAnonyme"><Data><![CDATA[<b>Anonyme</b> à propos d\'un %2$s à %3$s]]> </Data></string>
     <string name="fulltextCommentaire"><Data><![CDATA[<b>%1$s</b> à propos d\'un %2$s à %3$s]]> </Data></string>
+    <string name="fulltextCommentaire2"><Data><![CDATA[<b>%1$s</b> sur le %2$s du <u>%4$s</u> à %3$s]]> </Data></string>
     <string name="pasEncoreCommentaire">Pas encore de commentaire pour ce flipper.</string>
 
     <string name="toastMajEnseigne">%1$d enseigne(s) mise(s) à jour.</string>
@@ -91,33 +92,57 @@
     <string name="toastMajEchec">La mise à jour a échoué, la base a été réitinialisée.</string>
     <string name="titrePopupRecapMaj">Récap de la mise à jour</string>
 
-    <string  name="toastValidationPasPossibleReseau">Impossible d\'envoyer la validation. Vous devez être connecté à Internet !</string>
-    <string  name="toastValidationCloudOK">La validation a bien été prise en compte. Merci!</string>
-    <string  name="toastValidationCloudKO">La validation a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
+    <string name="toastValidationPasPossibleReseau">Impossible d\'envoyer la validation. Vous devez être connecté à Internet !</string>
+    <string name="toastValidationCloudOK">La validation a bien été prise en compte. Merci!</string>
+    <string name="toastValidationCloudKO">La validation a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
 
-    <string  name="toastAjouteCommentairePasPossibleReseau">Impossible d\'envoyer un commentaire. Vous devez être connecté à Internet !</string>
-    <string  name="toastAjouteCommentaireCloudOK">Votre commentaire a bien été reçu. Merci!</string>
-    <string  name="toastAjouteCommentaireCloudKO">L\'envoi de commentaire a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
+    <string name="toastAjouteCommentairePasPossibleReseau">Impossible d\'envoyer un commentaire. Vous devez être connecté à Internet !</string>
+    <string name="toastAjouteCommentaireCloudOK">Votre commentaire a bien été reçu. Merci!</string>
+    <string name="toastAjouteCommentaireCloudKO">L\'envoi de commentaire a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
 
-    <string  name="popupChangementModeleOK">Le changement de modèle a été pris en compte. Merci!</string>
-    <string  name="popupChangementModeleKO">Le changement de modèle a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
-    <string  name="popupChangementModeleRetour">Retourner à la liste</string>
+    <string name="popupChangementModeleOK">Le changement de modèle a été pris en compte. Merci!</string>
+    <string name="popupChangementModeleKO">Le changement de modèle a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
+    <string name="popupChangementModeleRetour">Retourner à la liste</string>
+    <string name="popupRetraitFlipOK">Le retrait de ce flipper a bien été pris en compte. Merci!</string>
+    <string name="popupRetraitFlipKO">Le retrait du flipper a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
+    <string name="popupChangementFlipOK">Le changement d\'état de ce flipper a bien été pris en compte. Merci!</string>
+    <string name="popupChangementFlipKO">Le changement d\'état de ce flipper a a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
 
-    <string  name="dialogMajDBNeededTitle">Mise à jour recommandée</string>
-    <string  name="dialogMajDBNeeded">Votre base de flipper date de plus de %1d jours. Voulez-vous la mettre à jour avec les dernières contributions?</string>
-    <string  name="dialogMajDBNeeded2">Votre base de flipper est obsolète. Voulez-vous la mettre à jour avec les dernières contributions?</string>
-    <string  name="dialogMajDBNeededOK">Avec plaisir!</string>
-    <string  name="dialogMajDBLater">Plus tard...</string>
-    <string  name="dialogMajDBTitle">Mise à jour</string>
-    <string  name="dialogMajDBMEssage">Chargement des mises à jour. Merci de patienter :-)</string>
+    popupChangementFlipOK
+    <string name="toastFlipAlreadyDeleted">Flip déja inactif</string>
 
-    <string  name="info">Cette app est la reprise de Flipper Finder</string>
 
-    <string  name="NbreFlipsActifs">Nombre de flips actifs dans PinMyBalls</string>
-    <string  name="DateLastMaj">Date de dernière mise à jour</string>
-    <string  name="Pseudo">Pseudo pour commentaires</string>
+    <string name="dialogMajDBNeededTitle">Mise à jour recommandée</string>
+    <string name="dialogMajDBNeeded">Votre base de flipper date de plus de %1d jours. Voulez-vous la mettre à jour avec les dernières contributions?</string>
+    <string name="dialogMajDBNeeded2">Votre base de flipper est obsolète. Voulez-vous la mettre à jour avec les dernières contributions?</string>
+    <string name="dialogMajDBNeededOK">Avec plaisir!</string>
+    <string name="dialogMajDBLater">Plus tard…</string>
+    <string name="dialogMajDBTitle">Mise à jour</string>
+    <string name="dialogMajDBMEssage">Chargement des mises à jour. Merci de patienter :-)</string>
 
-    <string  name="toastChangeModelePasPossibleReseau">Impossible de modifier le modèle. Vous devez être connecté à Internet !</string>
+    <!--<string  name="info">Cette app est la reprise de Flipper Finder</string>-->
+    <string name="admin">Admin tools</string>
+
+    <string name="searchByNumberTitle">Pinball number</string>
+    <string name="searchByNumberButtonTitle">Go</string>
+    <string name="searchByNumberResultTitle">Résultats</string>
+    <string name="searchByNumberResultFlipID">FlipID</string>
+    <string name="searchByNumberResultFlipEnseigneID">FlipEnseigneID</string>
+    <string name="searchByNumberResultFlipEnseigne">FlipEnseigne</string>
+    <string name="searchByNumberResultFlipEnseigneCP">FlipCP</string>
+    <string name="searchByNumberResultFlipEnseigneVille">FlipVille</string>
+    <string name="searchByNumberResultFlipModelID">FlipModeleID</string>
+    <string name="searchByNumberResultFlipModel">FlipModele</string>
+    <string name="saveButton">Save</string>
+
+
+    <string name="NbreFlipsActifs">Nombre de flips actifs dans PinMyBalls</string>
+    <string name="DateLastMaj">Date de dernière mise à jour</string>
+    <string name="Pseudo">Pseudo pour commentaires</string>
+    <string name="DefaultCommentaireChangement">Modèle changé</string>
+
+    <string name="toastChangeModelePasPossibleReseau">Impossible de modifier le modèle. Vous devez être connecté à Internet !</string>
+    <string name="toastPasdeChangement">Pas de changement !</string>
 
     <string name="parseApplicationId">wx8ZJI9628FDGq39REy6rMlZjKdP5ERUMXjZpqjE</string>
     <string name="parseClientKey">8JRUbCxEjJjkSXG00B5csXzAl1E9BWHVIABKvFqy</string>
@@ -125,6 +150,8 @@
 
     <string name="googleMapsApiKey">AIzaSyDAnbAcnQN_Joy9-fzjmfYwNDqIZOdQLNQ</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
