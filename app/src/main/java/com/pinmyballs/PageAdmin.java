@@ -1,8 +1,6 @@
 package com.pinmyballs;
 
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +46,7 @@ public class PageAdmin extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_admin2);
+        setContentView(R.layout.activity_admin);
 
         //Autocomplete
         //PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
