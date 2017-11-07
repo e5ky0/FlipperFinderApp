@@ -7,8 +7,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
+
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -38,7 +43,7 @@ import com.pinmyballs.utils.LocationUtil;
 import com.pinmyballs.utils.MyLocation;
 import com.pinmyballs.utils.MyLocation.LocationResult;
 
-public class PageListeResultat extends Activity {
+public class PageListeResultat extends AppCompatActivity {
 
     MyLocation myLocation = new MyLocation();
 
@@ -115,15 +120,6 @@ public class PageListeResultat extends Activity {
         champModeleFlipper.setOnEditorActionListener(valideModeleFlipper);
 
         //isGPSAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-
-
-
-
-
-
-
-
-
 
         Intent intent = getIntent();
 

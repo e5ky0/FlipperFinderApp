@@ -10,7 +10,6 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -132,7 +131,7 @@ public class FragmentActionsFlipper extends Fragment {
 							FlipperService flipperService = new FlipperService(new FragmentActionCallback() {
 								@Override
 								public void onTaskDone() {
-									((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
+									//((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
 									getActivity().finish();
 								}
 							});
@@ -149,7 +148,7 @@ public class FragmentActionsFlipper extends Fragment {
 								}
 								commentaireString = Html.toHtml(commentaire.getText());
 							}
-							((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
+							//((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 							flipperService.remplaceFlipper(getActivity(), flipper, modeleChoisi.getId(), commentaireString, pseudoCommentaire);
 						}else{
 							Toast toast = Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.toastChangeModelePasPossibleReseau), Toast.LENGTH_SHORT);
@@ -210,10 +209,10 @@ public class FragmentActionsFlipper extends Fragment {
 				FlipperService flipperService = new FlipperService(new FragmentActionCallback() {
 					@Override
 					public void onTaskDone() {
-						((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
+						//((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
 					}
 				});
-				((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
+				//((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 				flipperService.valideFlipper(getActivity().getApplicationContext(), flipper);
 			}else{
 				Toast toast = Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.toastValidationPasPossibleReseau), Toast.LENGTH_SHORT);

@@ -33,32 +33,6 @@ public class LocationUtil {
 	 * @return
 	 */
 	public static String getAdresseFromCoordGPS(Context context, double latitude, double longitude){
-		// On devrait pouvoir utiliser GeoCoder, mais ça ne foncitonne pas avec l'émulateur, donc
-		// j'utilise le service en ligne de google.
-		/*String adresseCourante = "";
-
-		  String url = "http://maps.google.com/maps/geo?q="+latitude+","+longitude+"&output=csv&sensor=false";
-		  HttpUriRequest request = new HttpGet(url);
-		  HttpClient mClient= new DefaultHttpClient();
-		  HttpResponse res;
-		  try {
-		  res = mClient.execute(request);
-		  adresseCourante = EntityUtils.toString(res.getEntity());
-		  } catch (Exception e) {
-		  e.printStackTrace();
-		  }
-		  String[] addressInfo = adresseCourante.split(",");
-		  adresseCourante ="";
-		  for (int i = 2; i < addressInfo.length; i++) {
-		  adresseCourante = adresseCourante + addressInfo[i];
-		  }
-		// On enlève les useless guillemets
-		if (adresseCourante.length() > 1){
-		adresseCourante = adresseCourante.substring(1, adresseCourante.length() - 1);
-		}
-
-		return adresseCourante;*/
-
 		String adresseCourante = "";
 		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 		List<Address> addresses = null;
