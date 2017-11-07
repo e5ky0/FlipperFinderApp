@@ -13,14 +13,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -43,15 +46,14 @@ import com.pinmyballs.utils.MyLocation.LocationResult;
 public class PageSignalementNew extends AppCompatActivity {
 
     LatLng currentLocation = null;
-
     LatLng newLocation = null;
+
     @BindView(R.id.next_button) Button mNextButton;
     @BindView(R.id.prev_button) Button mPreviousButton;
     @BindView(R.id.signalementPager) ViewPager mPager;
 
     ActionBar mActionbar;
     private SignalementPagerAdapter mPagerAdapter;
-    GoogleMap supportMap = null;
 
     ArrayList<Flipper> listeFlipper = null;
     String pseudo = null;
@@ -88,12 +90,37 @@ public class PageSignalementNew extends AppCompatActivity {
 
         // Affichage du header
         mActionbar = getSupportActionBar();
-        mActionbar.setTitle(R.string.headerSignalement);
+        mActionbar.setTitle(R.string.headerSignalementNew);
         mActionbar.setHomeButtonEnabled(true);
         mActionbar.setDisplayHomeAsUpEnabled(true);
         updateBottomBar();
         localiseTelephone();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_signalementnew, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_signalbymail:
+                ////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "preferences", 0L);
+                Intent intent = new Intent(PageSignalementNew.this, PageSignalement.class);
+                startActivity(intent);
+                break;
+            default:
+                Log.i("Erreur action bar","default");
+                break;
+        }
+        return false;
+    }
+
+
+
 
     private void localiseTelephone(){
         LocationResult locationResult = new LocationResult(){
@@ -138,11 +165,6 @@ public class PageSignalementNew extends AppCompatActivity {
         }
     };
 
-    public void updateEnseigneLocalisation(){
-        getEnseigne().setLatitude(String.valueOf(newLocation.latitude));
-        getEnseigne().setLongitude(String.valueOf(newLocation.longitude));
-    }
-
     private void updateBottomBar() {
         int position = mPager.getCurrentItem();
         if (position == SignalementPagerAdapter.PAGE_COUNT - 1) {
@@ -171,11 +193,16 @@ public class PageSignalementNew extends AppCompatActivity {
     }
 
     public void envoyer(){
-        updateEnseigneLocalisation();
+        //update Enseigne localisation
+        getEnseigne().setLatitude(String.valueOf(newLocation.latitude));
+        getEnseigne().setLongitude(String.valueOf(newLocation.longitude));
+        //Begin to send
         Toast toast = Toast.makeText(getApplicationContext(), "Envoi en cours", Toast.LENGTH_SHORT);
         toast.show();
         ParseFactory parseFactory = new ParseFactory();
+        //creation d'une liste d'envoi
         ArrayList<ParseObject> objectsToSend = new ArrayList<ParseObject>();
+        //remplissage de la liste
         objectsToSend.add(parseFactory.getParseObject(getEnseigne()));
         if (getCommentaire() != null){
             objectsToSend.add(parseFactory.getParseObject(getCommentaire()));
@@ -188,7 +215,7 @@ public class PageSignalementNew extends AppCompatActivity {
             public void done(ParseException e) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Envoi effectué, Merci pour votre contribution :)", Toast.LENGTH_LONG);
                 toast.show();
-                //Close Activity PageSignalementNew
+                //close activity PageSignalementNew
                 finish();
             }
         });
@@ -223,7 +250,6 @@ public class PageSignalementNew extends AppCompatActivity {
     public Enseigne getEnseigne(){
         return this.enseigne;
     }
-
     public void setEnseigne(Enseigne newEnseigne){
         this.enseigne = newEnseigne;
     }
@@ -231,17 +257,30 @@ public class PageSignalementNew extends AppCompatActivity {
     public LatLng getCurrentLocation() {
         return this.currentLocation;
     }
-
     public void setCurrentLocation(LatLng currentLocation) {
         this.currentLocation = currentLocation;
     }
 
+    public void setNewLocation(LatLng newLocation) {
+        this.newLocation = newLocation;
+    }
+    public LatLng getNewLocation() {
+        return newLocation;
+    }
+
+
     public long getNewId() {
         return newId;
     }
-
     public void setNewId(long newId) {
         this.newId = newId;
+    }
+
+    public Commentaire getCommentaire() {
+        return commentaire;
+    }
+    public void setCommentaire(Commentaire commentaire) {
+        this.commentaire = commentaire;
     }
 
     @Override
@@ -258,18 +297,4 @@ public class PageSignalementNew extends AppCompatActivity {
         //EasyTracker.getInstance().activityStop(this);
     }
 
-    public LatLng getNewLocation() {
-        return newLocation;
-    }
-
-    public void setNewLocation(LatLng newLocation) {
-        this.newLocation = newLocation;
-    }
-    public Commentaire getCommentaire() {
-        return commentaire;
-    }
-
-    public void setCommentaire(Commentaire commentaire) {
-        this.commentaire = commentaire;
-    }
 }

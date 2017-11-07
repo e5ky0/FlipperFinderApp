@@ -25,6 +25,7 @@ import com.pinmyballs.utils.LocationUtil;
 import com.pinmyballs.utils.MyLocation;
 import com.pinmyballs.utils.MyLocation.LocationResult;
 
+//Signalement par mail
 public class PageSignalement extends AppCompatActivity {
 
 	MyLocation myLocation = new MyLocation();
@@ -163,7 +164,7 @@ public class PageSignalement extends AppCompatActivity {
 		if (locationCourante != null){
 			latitude = locationCourante.getLatitude();
 			longitude = locationCourante.getLongitude();
-			String addressText = LocationUtil.getAdresseFromCoordGPS(getApplicationContext(), latitude, longitude);
+			String addressText = LocationUtil.getAdresseFromCoordGPSwCP(getApplicationContext(), latitude, longitude);
 			if (addressText == null || addressText.length() == 0){
 				new AlertDialog.Builder(PageSignalement.
 						this).setTitle("Argh!").setMessage("Votre adresse n'a pas pu être trouvée! Veuillez activer le GPS ou entrer votre adresse.").setNeutralButton("Fermer", null).setIcon(R.drawable.tete_martiens).show();

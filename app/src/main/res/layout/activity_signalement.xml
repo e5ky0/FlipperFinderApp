@@ -9,7 +9,7 @@ android:layout_height="wrap_content">
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
 
-	    <include layout="@layout/localisation" />
+	    <include layout="@layout/localisationsignalement" />
 
 	    <AutoCompleteTextView
 	        android:id="@+id/autocompletionModeleFlipper"

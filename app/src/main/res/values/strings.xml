@@ -28,7 +28,7 @@
     <string name="SectionVille">Ville</string>
     <string name="SectionPays">Pays</string>
     <string name="BoutonSoumettre">Soumettre</string>
-    <string name="hintSoumettreAdresse">Taper l\'adresse du flipper</string>
+    <string name="hintSoumettreAdresse">Taper l\'adresse complète du flipper. Numéro, rue, code postal, ville</string>
     <string name="BoutonEnvoiInfosFlipper">Envoyer</string>
     <string name="SectionFacultatif">(Facultatif)</string>
 
@@ -70,7 +70,9 @@
     <string name="headerCommentaire">Derniers commentaires</string>
 
     <string name="headerPreferences">Préférences</string>
-    <string name="headerSignalement">Signaler un flipper</string>
+    <string name="headerSignalement">Signaler un flipper par mail</string>
+
+    <string name="headerSignalementNew">Signaler un flipper</string>
     <string name="headerPageCarteSearch">Recherche par carte</string>
     <string name="headerAdmin">Admin tools</string>
 

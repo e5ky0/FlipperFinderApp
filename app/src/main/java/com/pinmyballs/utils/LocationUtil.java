@@ -55,6 +55,32 @@ public class LocationUtil {
 
 	}
 
+	public static String getAdresseFromCoordGPSwCP(Context context, double latitude, double longitude){
+		String adresseCourante = "";
+		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+		List<Address> addresses = null;
+		try {
+			addresses = geocoder.getFromLocation(latitude, longitude, 1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (addresses != null && addresses.size() > 0) {
+			Address address = addresses.get(0);
+			// Format the first line of address (if available), CP and city.
+			adresseCourante = String.format("%s %s %s %s",
+					address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
+					address.getPostalCode(),
+					address.getLocality(),
+					address.getCountryName());
+
+		}
+
+		return adresseCourante;
+
+	}
+
+
+
 	/**
 	 * Calculates the end-point from a given source at a given range (meters)
 	 * and bearing (degrees). This methods uses simple geometry equations to
