@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.text.DateFormat;
@@ -24,6 +25,7 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 	private SharedPreferences mSettings;
 	private String retourMaj = null;
 	ProgressDialog mDialog = null;
+	ProgressBar progressBar;
 
 	public AsyncTaskMajDatabase (AppCompatActivity context, SharedPreferences settings){
 		mContext = context;
@@ -46,6 +48,7 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 		});
 		mDialog.setIndeterminate(true);
 		mDialog.show();
+
 		super.onPreExecute();
 	}
 
@@ -65,7 +68,7 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 				String dateDuJour = df.format(today);
 				editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, dateDuJour);
 				editor.putString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
-				editor.commit();
+				editor.apply();
 			}
 		} catch (InterruptedException ie){
 			String a = "a";
@@ -85,6 +88,7 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 
 	@Override
 	protected void onPostExecute(Boolean result) {
+
 
 		mDialog.dismiss();
 

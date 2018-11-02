@@ -33,7 +33,7 @@ public class AsyncTaskInitDatabase extends AsyncTask<Object, Void, Boolean> {
 		SharedPreferences.Editor editor = mSettings.edit();
 		editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
 		editor.putString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
-		editor.commit();
+		editor.apply();
 		return true;
 	}
 
