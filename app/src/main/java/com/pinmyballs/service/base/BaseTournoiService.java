@@ -20,11 +20,40 @@ public class BaseTournoiService {
 		return listeRetour;
 	}
 
+	public ArrayList<Tournoi> getAllFutureTournoi(Context pContext){
+		ArrayList<Tournoi> listeRetour;
+		TournoiDAO tournoiDao = new TournoiDAO(pContext);
+		tournoiDao.open();
+		listeRetour = tournoiDao.getAllFutureTournoi();
+		tournoiDao.close();
+		return listeRetour;
+	}
+
 	public boolean initListeTournoi(List<Tournoi> listeObjets, SQLiteDatabase db){
 		TournoiDAO tournoiDao = new TournoiDAO(db);
 		for (Tournoi tournoi: listeObjets){
 			tournoiDao.save(tournoi);
 		}
+		return true;
+	}
+
+	public boolean majListeTournoi(List<Tournoi> listeTournoi, Context pContext){
+		return majListeTournoi(listeTournoi, pContext, false);
+	}
+
+	public boolean majListeTournoi(List<Tournoi> listeTournoi, Context pContext, boolean truncate){
+		TournoiDAO tournoiDAO = new TournoiDAO(pContext);
+		SQLiteDatabase db = tournoiDAO.open();
+		db.beginTransaction();
+		if (truncate){
+			tournoiDAO.truncate();
+		}
+		for (Tournoi tournoi : listeTournoi){
+			tournoiDAO.save(tournoi);
+		}
+		db.setTransactionSuccessful();
+		db.endTransaction();
+		tournoiDAO.close();
 		return true;
 	}
 
@@ -36,8 +65,8 @@ public class BaseTournoiService {
 		SQLiteDatabase db = tournoiDao.open();
 		db.beginTransaction();
 		tournoiDao.truncate();
-		for (Tournoi modele : listeTournoi){
-			tournoiDao.save(modele);
+		for (Tournoi tournoi : listeTournoi){
+			tournoiDao.save(tournoi);
 		}
 		db.setTransactionSuccessful();
 		db.endTransaction();

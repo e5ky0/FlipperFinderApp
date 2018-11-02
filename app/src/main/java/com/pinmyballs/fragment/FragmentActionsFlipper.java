@@ -38,12 +38,18 @@ import com.pinmyballs.service.base.BaseModeleService;
 import com.pinmyballs.utils.LocationUtil;
 import com.pinmyballs.utils.NetworkUtil;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class FragmentActionsFlipper extends Fragment {
+
+    Boolean ajoutNouveauFlip = false;
 
 	Button boutonChangement;
 	Button boutonDisparition;
 	Button boutonValidation;
 	Button boutonNavigation;
+	Button boutonNouveauFlip;
 
 	Button boutonValideChangement;
 	Button boutonAnnuleChangement;
@@ -60,6 +66,10 @@ public class FragmentActionsFlipper extends Fragment {
 
 	BaseModeleService modeleFlipperService = null;
 
+	HashMap hashMapModeles;
+	ArrayList<String> listeModelesComplet;
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -72,11 +82,12 @@ public class FragmentActionsFlipper extends Fragment {
 		Intent i = getActivity().getIntent();
 		flipper = (Flipper) i.getSerializableExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO);
 
-
+		boutonValidation = (Button) rootView.findViewById(R.id.boutonValidation);
 		boutonChangement = (Button) rootView.findViewById(R.id.boutonChangement);
 		boutonDisparition = (Button) rootView.findViewById(R.id.boutonDisparition);
-		boutonValidation = (Button) rootView.findViewById(R.id.boutonValidation);
 		boutonNavigation = (Button) rootView.findViewById(R.id.boutonNavigation);
+		boutonNouveauFlip = (Button) rootView.findViewById(R.id.boutonNouveauFlip);
+
 		boutonValideChangement = (Button) rootView.findViewById(R.id.boutonValideChangementModele);
 		boutonAnnuleChangement = (Button) rootView.findViewById(R.id.boutonCancelChangeModele);
 		champNouveauModeleFlipper = (AutoCompleteTextView)rootView.findViewById(R.id.autocompletionNouveauModeleFlipper);
@@ -88,13 +99,30 @@ public class FragmentActionsFlipper extends Fragment {
 		boutonDisparition.setOnClickListener(DisparitionListener);
 		boutonValidation.setOnClickListener(ValidationListener);
 		boutonNavigation.setOnClickListener(NavigationListener);
+		boutonNouveauFlip.setOnClickListener(NouveauFlipListener);
 
 		boutonAnnuleChangement.setOnClickListener(AnnuleChangementModeleListener);
 		boutonValideChangement.setOnClickListener(ValideChangementListener);
 
-		// Prépare la liste d'autocomplétion pour les modèle de flipper
+		//iniatilisation des listes
+		listeModelesComplet = new ArrayList<String>();
+		hashMapModeles = new HashMap();
+
+		// Initialisation du champ Modele
 		modeleFlipperService = new BaseModeleService();
+		ArrayList<ModeleFlipper> listModeleFlipper = new BaseModeleService().getAllModeleFlipper(getActivity());
+
+		for (ModeleFlipper modele : listModeleFlipper) {
+			String NomComplet = modele.getNomComplet();
+			listeModelesComplet.add(NomComplet);
+			hashMapModeles.put(NomComplet, modele.getId());
+		}
+
+		// Prépare la liste d'autocomplétion pour les modèle de flipper
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listeModelesComplet);
+		/*modeleFlipperService = new BaseModeleService();
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, modeleFlipperService.getAllNomModeleFlipper(getActivity().getApplicationContext()));
+*/
 		champNouveauModeleFlipper.setAdapter(adapter);
 		champNouveauModeleFlipper.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
@@ -122,26 +150,27 @@ public class FragmentActionsFlipper extends Fragment {
 
 	private OnClickListener ValideChangementListener = new OnClickListener() {
 		public void onClick(View v) {
+			Context context = getActivity().getApplicationContext();
 
 			if (champNouveauModeleFlipper.getText().length() != 0){
-				ModeleFlipper modeleChoisi = modeleFlipperService.getModeleFlipperByName(getActivity().getApplicationContext(),champNouveauModeleFlipper.getText().toString());
+				//ModeleFlipper modeleChoisi = modeleFlipperService.getModeleFlipperByName(getActivity().getApplicationContext(),champNouveauModeleFlipper.getText().toString());
+				ModeleFlipper modeleChoisi = modeleFlipperService.getModeleById(context,Long.parseLong(String.valueOf(hashMapModeles.get(champNouveauModeleFlipper.getText().toString()))));
 				if (modeleChoisi != null){
 					if (modeleChoisi.getId() != flipper.getModele().getId()){
 						if (NetworkUtil.isConnected(getActivity().getApplicationContext())){
 							FlipperService flipperService = new FlipperService(new FragmentActionCallback() {
 								@Override
 								public void onTaskDone() {
-									//((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
 									getActivity().finish();
 								}
 							});
-							String commentaireString ="Changement";
+							String commentaireString = ajoutNouveauFlip ? "Nouveau" : "Changement";
 							String pseudoCommentaire = getResources().getString(R.string.pseudoCommentaireAnonyme);
 							if (commentaire.getText().length() > 0){
 								// On sauvegarde le pseudo
 								Editor editor = settings.edit();
 								editor.putString(PagePreferences.KEY_PSEUDO_FULL, pseudo.getText().toString());
-								editor.commit();
+								editor.apply();
 								pseudoCommentaire = getResources().getString(R.string.pseudoCommentaireAnonyme);
 								if (pseudo.getText().length() > 0){
 									pseudoCommentaire = pseudo.getText().toString();
@@ -149,7 +178,13 @@ public class FragmentActionsFlipper extends Fragment {
 								commentaireString = Html.toHtml(commentaire.getText());
 							}
 							//((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
-							flipperService.remplaceFlipper(getActivity(), flipper, modeleChoisi.getId(), commentaireString, pseudoCommentaire);
+                            if (ajoutNouveauFlip){
+                                flipperService.rajouterFlipperSurFlipper(getActivity(), flipper, modeleChoisi.getId(), commentaireString, pseudoCommentaire);
+                                boutonAnnuleChangement.performClick();
+                                ajoutNouveauFlip = false;
+                            }else {
+                                flipperService.remplaceFlipper(getActivity(), flipper, modeleChoisi.getId(), commentaireString, pseudoCommentaire);
+                            }
 						}else{
 							Toast toast = Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.toastChangeModelePasPossibleReseau), Toast.LENGTH_SHORT);
 							toast.show();
@@ -184,8 +219,19 @@ public class FragmentActionsFlipper extends Fragment {
 			Animation slide = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.slide_up);
 			changeModeleLayout.setVisibility(View.VISIBLE);
 			changeModeleLayout.startAnimation(slide);
+			commentaire.setText(getString(R.string.changement_default_comment,flipper.getModele().getNom()));
 		}
 	};
+
+    private OnClickListener NouveauFlipListener = new OnClickListener() {
+        public void onClick(View v) {
+            ajoutNouveauFlip = true;
+            commentaire.setText(getString(R.string.ajout_default_comment));
+            Animation slide = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.slide_up);
+            changeModeleLayout.setVisibility(View.VISIBLE);
+            changeModeleLayout.startAnimation(slide);
+        }
+    };
 
 	private OnClickListener AnnuleChangementModeleListener = new OnClickListener() {
 		public void onClick(View v) {
@@ -197,13 +243,27 @@ public class FragmentActionsFlipper extends Fragment {
 
 	private OnClickListener DisparitionListener = new OnClickListener() {
 		public void onClick(View v) {
+		    String message2 = "Le "+ flipper.getModele().getNom()
+                    + "\nID : "+ flipper.getId()
+                    + "\nAu : "+ flipper.getEnseigne().getNom()
+                    + "\nsitué : " + flipper.getEnseigne().getAdresseCompleteSansPays()
+                    + "\n n'existe plus."
+                    + "\n"
+
+                    + "\n----------Commentaire éventuel----------"
+                    + "\n"
+                    + "\n"
+                    + "\n"
+
+                    + "---------------------------------------------------------";
+
 			String message = "ID : " + flipper.getId()
 					+ "\nModèle : " + flipper.getModele().getNom()
 					+ "\nDu : " + flipper.getEnseigne().getNom()
 					+ "\nA : " + flipper.getEnseigne().getAdresseCompleteSansPays()
 					+ "\nEnseigne : " + flipper.getEnseigne().getId()
 				+ "\nCe flipper n'existe plus!";
-			envoiMail("Retrait du flipper " + flipper.getId(), message);
+			envoiMail("Retrait d'un flipper à " + flipper.getEnseigne().getVille(), message2);
 		}
 	};
 	private OnClickListener ValidationListener = new OnClickListener() {

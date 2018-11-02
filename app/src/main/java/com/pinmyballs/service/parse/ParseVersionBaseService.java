@@ -3,7 +3,6 @@ package com.pinmyballs.service.parse;
 
 public class ParseVersionBaseService {
 
-
 	/**
 	 * Retourne la dernière version de la base à partir du cloud.
 	 * @return int

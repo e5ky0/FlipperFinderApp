@@ -7,7 +7,9 @@ import android.graphics.PointF;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.pinmyballs.database.dao.FlipperDAO;
+import com.pinmyballs.metier.Enseigne;
 import com.pinmyballs.metier.Flipper;
 
 public class BaseFlipperService {
@@ -31,6 +33,56 @@ public class BaseFlipperService {
 		return listeRetour;
 	}
 
+	public ArrayList<Flipper> rechercheFlipper(Context pContext, LatLng latLng, int rayon, int maxListeSize, String modele){
+		ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+
+		FlipperDAO flipperDao = new FlipperDAO(pContext);
+
+		flipperDao.open();
+		PointF center = new PointF((float)latLng.latitude, (float)latLng.longitude);
+
+		ArrayList<Flipper> listeFlipper = flipperDao.getFlipperByDistance(center, rayon, modele);
+		flipperDao.close();
+
+		for (int i = 0 ; i < listeFlipper.size() && i < maxListeSize ;i++){
+			listeRetour.add(listeFlipper.get(i));
+		}
+
+		return listeRetour;
+	}
+
+	public ArrayList<Flipper> rechercheFlipper(Context pContext, Enseigne enseigne){
+		ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+
+		FlipperDAO flipperDao = new FlipperDAO(pContext);
+		flipperDao.open();
+		ArrayList<Flipper> listeFlipper = flipperDao.getFlipperByEnseigne(enseigne);
+		flipperDao.close();
+
+		/*for (int i = 0 ; i < listeFlipper.size() ;i++){
+			listeRetour.add(listeFlipper.get(i));
+		}*/
+
+		return listeRetour = new ArrayList<Flipper>(listeFlipper);
+
+	}
+
+	public ArrayList<Flipper> rechercheOtherFlipper(Context pContext, Flipper flipper){
+		ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+
+		FlipperDAO flipperDao = new FlipperDAO(pContext);
+		flipperDao.open();
+		ArrayList<Flipper> listeFlipper = flipperDao.getOtherFlippers(flipper);
+		flipperDao.close();
+
+		/*for (int i = 0 ; i < listeFlipper.size() ;i++){
+			listeRetour.add(listeFlipper.get(i));
+		}*/
+
+		return listeRetour = new ArrayList<Flipper>(listeFlipper);
+
+	}
+
 	public String NombreFlipperActifs(Context pContext){
 		String nb;
 
@@ -41,6 +93,17 @@ public class BaseFlipperService {
 
 		return nb;
 	}
+
+    public String NombreFlipperActifs(Context pContext, Enseigne enseigne){
+        String nb;
+
+        FlipperDAO flipperDao = new FlipperDAO(pContext);
+        flipperDao.open();
+        nb = flipperDao.getNbFlipperActif(enseigne);
+        flipperDao.close();
+
+        return nb;
+    }
 
 
 	public Flipper getFlipperById(Context pContext, long idFlipper){
@@ -55,9 +118,7 @@ public class BaseFlipperService {
 		return flipperRetour;
 	}
 
-	public boolean majListeFlipper(List<Flipper> listeFlipper, Context pContext){
-		return majListeFlipper(listeFlipper, pContext, false);
-	}
+
 
 	public boolean initListeFlipper(List<Flipper> listeObjets, SQLiteDatabase db){
 		FlipperDAO flipperDao = new FlipperDAO(db);
@@ -67,6 +128,17 @@ public class BaseFlipperService {
 		return true;
 	}
 
+	public boolean majListeFlipper(List<Flipper> listeFlipper, Context pContext){
+		return majListeFlipper(listeFlipper, pContext, false);
+	}
+
+	/**
+	 *
+	 * @param listeFlipper
+	 * @param pContext
+	 * @param truncate If true, the table is deleted
+	 * @return
+	 */
 	public boolean majListeFlipper(List<Flipper> listeFlipper, Context pContext, boolean truncate){
 		FlipperDAO flipperDao = new FlipperDAO(pContext);
 		SQLiteDatabase db = flipperDao.open();

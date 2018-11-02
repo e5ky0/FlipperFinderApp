@@ -4,15 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.pinmyballs.PageCarteFlipper;
 import com.pinmyballs.PageInfoFlipperPager;
 import com.pinmyballs.R;
@@ -62,14 +66,16 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 
 		if (p != null) {
 
+			ImageView markerIcone = (ImageView) v.findViewById(R.id.markericon);
 			TextView modeleTV = (TextView) v.findViewById(R.id.textModeleFlipper);
 			TextView adresseTV = (TextView) v.findViewById(R.id.textAdresseFlipper);
 			TextView distanceTV = (TextView) v.findViewById(R.id.distance);
 			TextView dateMajTV = (TextView) v.findViewById(R.id.dateMaj);
 			TextView nomBar = (TextView) v.findViewById(R.id.nomBar);
+			ImageView warningImage =(ImageView) v.findViewById(R.id.warningicon);
 
 			if (modeleTV != null) {
-				modeleTV.setText(p.getModele().getNom());
+				modeleTV.setText(p.getModele().getNomComplet());
 			}
 			if (adresseTV != null) {
 				adresseTV.setText(p.getEnseigne().getAdresse() + " " + p.getEnseigne().getVille());
@@ -87,47 +93,79 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 
 			// Affichage de la date de mise à jour
 			int nbJours = LocationUtil.getDaysSinceMajFlip(p);
-			if (nbJours == -1){
-				// Date nulle on mal formattée : Rouge!
+            dateMajTV.setTextColor(Color.parseColor("#04B404"));
+            warningImage.setVisibility(View.GONE);
+            markerIcone.setImageResource((MarkerChoice(nbJours)));
+
+
+            if (nbJours == -1){
+				// Date nulle ou mal formattée : Rouge!
 				dateMajTV.setTextColor(Color.parseColor("#FE2E2E"));
 				dateMajTV.setText(getContext().getResources().getString(R.string.dateMajDefault));
-			}else if (nbJours > 365){
+                warningImage.setVisibility(View.VISIBLE);
+            }else if (nbJours > 365){
 				// Mis à jour il y a plus de 365 jours, on met en Rouge
 				dateMajTV.setTextColor(Color.parseColor("#FE2E2E"));
-				dateMajTV.setText("Confirmé il y a " + String.valueOf(nbJours) + " jours.");
+				dateMajTV.setText("Vu il y a " + String.valueOf(nbJours) + " jours.");
+				warningImage.setVisibility(View.VISIBLE);
 			}else if (nbJours > 60){
-				// Mis à jour il y a plus de 60 jours, on met en Orange
-				dateMajTV.setTextColor(Color.parseColor("#FFBF00"));
-				dateMajTV.setText("Confirmé il y a " + String.valueOf(nbJours) + " jours.");
+                // Mis à jour il y a plus de 60 jours, on met en Orange
+				dateMajTV.setTextColor(Color.parseColor("#E68A00"));
+				dateMajTV.setText("Vu il y a " + String.valueOf(nbJours) + " jours.");
 			}else if (nbJours == 0){
 				// Mis à jour aujourd'hui
-				dateMajTV.setTextColor(Color.parseColor("#04B404"));
-				dateMajTV.setText("Confirmé aujourd'hui.");
+				//dateMajTV.setTextColor(Color.parseColor("#04B404"));
+				dateMajTV.setText("Vu aujourd'hui.");
 			}else if (nbJours == 1){
 				// Confirmé hier
-				dateMajTV.setTextColor(Color.parseColor("#04B404"));
-				dateMajTV.setText("Confirmé hier.");
+				//dateMajTV.setTextColor(Color.parseColor("#04B404"));
+				dateMajTV.setText("Vu hier.");
 			}else{
 				// Mis à jour récemment, on met en vert
-				dateMajTV.setTextColor(Color.parseColor("#04B404"));
-				dateMajTV.setText("Confirmé il y a " + String.valueOf(nbJours) + " jours.");
+				//dateMajTV.setTextColor(Color.parseColor("#04B404"));
+				dateMajTV.setText("Vu il y a " + String.valueOf(nbJours) + " jours.");
 			}
 		}
 
 		return v;
 	}
 
+	private int MarkerChoice(int nbJours){
+		if (nbJours < 8) {
+			return R.mipmap.ic_flipmarker_new;
+		}
+		if (nbJours < 60) {
+			return R.mipmap.ic_flipmarker_blue;
+		}
+		if (nbJours < 365) {
+			return R.mipmap.ic_flipmarker_lightblue;
+		}
+		if (nbJours > 365) {
+			return R.mipmap.ic_flipmarker_grey;
+		}
+		return R.mipmap.ic_flipmarker_grey;
+	}
+
+
 	private OnClickListener InfoFlipperClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			//EasyTracker.getTracker().sendEvent("ui_action", "button_press", "item_info_flipper", 0L);
+
 			Flipper p = listeFlippers.get((Integer) v.getTag());
 			Intent infoActivite = new Intent(getContext(), PageInfoFlipperPager.class);
 			infoActivite.putExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO, p);
 			// On va sur l'onglet de la carte
 			infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 0);
 			getContext().startActivity(infoActivite);
-		}
+
+			//TODO Supprimer ancienne lien vers interface
+			//Flipper p = listeFlippers.get((Integer) v.getTag());
+			//Intent toflipperpage = new Intent(getContext(), PageFlipper.class);
+			//toflipperpage.putExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO, p);
+
+			//getContext().startActivity(toflipperpage);
+        }
 	};
 
 }

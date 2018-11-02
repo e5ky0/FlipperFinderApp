@@ -86,19 +86,4 @@ public class PageInfoTournoi extends AppCompatActivity {
 	}
 
 
-	@Override
-	public void onStart() {
-		super.onStart();
-		// Google Analytics
-		//EasyTracker.getInstance().activityStart(this);
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-		// Google Analytics
-		//EasyTracker.getInstance().activityStop(this);
-	}
-
-
 }

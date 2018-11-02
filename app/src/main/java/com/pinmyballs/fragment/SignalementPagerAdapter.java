@@ -14,6 +14,7 @@ public class SignalementPagerAdapter extends FragmentPagerAdapter{
     public SignalementPagerAdapter(FragmentManager fm) {
         super(fm);
     }
+
     @Override
     public Fragment getItem(int arg0) {
         switch(arg0){
@@ -26,6 +27,7 @@ public class SignalementPagerAdapter extends FragmentPagerAdapter{
         }
         return null;
     }
+
     @Override
     public int getCount() {
         return PAGE_COUNT;

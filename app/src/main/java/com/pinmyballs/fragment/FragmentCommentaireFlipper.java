@@ -70,7 +70,6 @@ public class FragmentCommentaireFlipper extends Fragment {
 			@Override
 			public void onTaskDone() {
 				rafraichitListeCommentaire();
-				//((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(false);
 			}
 		});
 
@@ -119,7 +118,7 @@ public class FragmentCommentaireFlipper extends Fragment {
 			// On sauvegarde le pseudo
 			Editor editor = settings.edit();
 			editor.putString(PagePreferences.KEY_PSEUDO_FULL, pseudo.getText().toString());
-			editor.commit();
+			editor.apply();
 
 			// Si un commentaire a été écrit, l'envoyer!
 			if (commentaire.getText().length() == 0){
@@ -139,6 +138,7 @@ public class FragmentCommentaireFlipper extends Fragment {
 						new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour),
 						pseudoCommentaire,
 						true);
+				commentaireToAdd.setFlipper(flipper);
 				//((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 				commentaireService.ajouteCommentaire(getActivity(), commentaireToAdd);
 				// Rafraichir la liste des commentaires
@@ -172,18 +172,6 @@ public class FragmentCommentaireFlipper extends Fragment {
 
 	public interface FragmentCallback {
 		void onTaskDone();
-	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
-		//EasyTracker.getInstance().activityStart(getActivity());
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-		//EasyTracker.getInstance().activityStop(getActivity());
 	}
 
 }

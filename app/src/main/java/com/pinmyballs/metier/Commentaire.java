@@ -8,6 +8,9 @@ public class Commentaire  implements Serializable{
 
 	private static final long serialVersionUID = 4904936104977593366L;
 
+	//@SerializedName("objectId")
+	//private String objectId;
+
 	@SerializedName("COMM_ID")
 	private long id;
 
@@ -31,6 +34,15 @@ public class Commentaire  implements Serializable{
 	public Commentaire(){
 	}
 
+	/**
+	 *
+	 * @param id
+	 * @param flipperId
+	 * @param texte
+	 * @param date
+	 * @param pseudo
+	 * @param actif
+	 */
 	public Commentaire(long id, long flipperId, String texte, String date,
                        String pseudo, boolean actif) {
 		this.setId(id);

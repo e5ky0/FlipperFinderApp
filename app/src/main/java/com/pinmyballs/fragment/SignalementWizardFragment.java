@@ -8,15 +8,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import com.pinmyballs.PageSignalementNew;
+import com.pinmyballs.SignalementActivity;
 
 public abstract class SignalementWizardFragment extends Fragment{
 
     public abstract void completeStep();
     public abstract boolean mandatoryFieldsComplete();
 
-    public PageSignalementNew getParentActivity(){
-        return (PageSignalementNew) getActivity();
+    public SignalementActivity getParentActivity(){
+        return (SignalementActivity) getActivity();
     }
 
     public long getNewEnseigneId(){

@@ -7,6 +7,10 @@ import java.io.Serializable;
 public class Enseigne  implements Serializable{
 
 	private static final long serialVersionUID = 4803600387182980034L;
+
+	//@SerializedName("objectId")
+	//private String objectId;
+
 	@SerializedName("ENS_ID")
 	private long id;
 
@@ -43,6 +47,20 @@ public class Enseigne  implements Serializable{
 	public Enseigne(){
 	}
 
+	/**
+	 *
+	 * @param id id
+	 * @param type type
+	 * @param nom nom
+	 * @param horaire horaire
+	 * @param latitude latitude
+	 * @param longitude longitude
+	 * @param adresse adresse
+	 * @param codePostal CP
+	 * @param ville Ville
+	 * @param pays Pays
+	 * @param dateMaj datMaj
+	 */
 	public Enseigne(long id, String type, String nom, String horaire,
 			String latitude, String longitude, String adresse,
 			String codePostal, String ville, String pays, String dateMaj) {

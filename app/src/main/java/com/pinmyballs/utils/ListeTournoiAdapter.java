@@ -56,7 +56,7 @@ public class ListeTournoiAdapter extends ArrayAdapter<Tournoi> {
 		if (v == null) {
 			LayoutInflater vi;
 			vi = LayoutInflater.from(getContext());
-			v = vi.inflate(R.layout.simple_list_item_tournoi, null);
+			v = vi.inflate(R.layout.z_simple_list_item_tournoi, null);
 		}
 
 		// On set les tags pour pouvoir retrouver sur quelle ligne on a cliqué.

@@ -1,6 +1,5 @@
 package com.pinmyballs;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +7,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -31,10 +31,15 @@ import android.widget.TextView.OnEditorActionListener;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.service.base.BaseModeleService;
@@ -44,6 +49,7 @@ import com.pinmyballs.utils.MyLocation;
 import com.pinmyballs.utils.MyLocation.LocationResult;
 
 public class PageListeResultat extends AppCompatActivity {
+    private static final String TAG = PageListeResultat.class.getSimpleName();
 
     MyLocation myLocation = new MyLocation();
 
@@ -73,11 +79,55 @@ public class PageListeResultat extends AppCompatActivity {
     //Method GooglePlayServicesUtil.isGooglePlayServicesAvailable( deprecated
     // Replace by checkPlayServices()
 
+    ActionBar mActionbar;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_liste_resultat);
+        setContentView(R.layout.z_activity_liste_resultat);
+
+        // Affichage du header
+        mActionbar = getSupportActionBar();
+
+        mActionbar.setTitle(R.string.headerRecherche);
+        mActionbar.setHomeButtonEnabled(true);
+        mActionbar.setDisplayHomeAsUpEnabled(true);
+
+        //Autocomplete
+        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        //Limit results to Europe
+        autocompleteFragment.setBoundsBias(new LatLngBounds(
+                new LatLng(36.748837, -11.204687),
+                new LatLng(52.275758, 24.654688)));
+        //Filter on Geocode (no businesses)
+        /*AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+                .setTypeFilter(AutocompleteFilter.TYPE_FILTER_GEOCODE)
+                .build();
+        autocompleteFragment.setFilter(typeFilter);
+        */
+
+        autocompleteFragment.setHint("Ville, lieu, adresse...");
+        ((EditText) autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input)).setTextSize(18.0f);
+
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                searchFlip(place.getLatLng());
+                latitude= place.getLatLng().latitude;
+                longitude = place.getLatLng().longitude;
+                Log.i(TAG, "Searching around : " + place.getName());
+            }
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i(TAG, "An error occurred: " + status);
+            }
+        });
+
 
         SharedPreferences settings;
 
@@ -88,26 +138,24 @@ public class PageListeResultat extends AppCompatActivity {
                 PagePreferences.DEFAULT_VALUE_NB_MAX_LISTE);
 
         adresseUtilisateurTV = (EditText) findViewById(R.id.champAdresseLocalisation);
-        adresseUtilisateurTV.setHint(R.string.hintRechercheAdresse);
-        adresseUtilisateurTV.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
-        boutonClearAdresse = (ImageButton) findViewById(R.id.boutonClearAdresse);
+        //adresseUtilisateurTV.setHint(R.string.hintRechercheAdresse);
+        //adresseUtilisateurTV.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
+        //boutonClearAdresse = (ImageButton) findViewById(R.id.boutonClearAdresse);
         boutonClearModeleFlipper = (ImageButton) findViewById(R.id.boutonClearModeleFlipper);
         boutonAfficheCarte = (ImageView) findViewById(R.id.afficherCarteIcon);
         boutonLocalisation = (ImageButton) findViewById(R.id.boutonLocalisation);
         boutonSearchByMap = (ImageButton) findViewById(R.id.boutonSearchByMap) ;
         champModeleFlipper = (AutoCompleteTextView) findViewById(R.id.autocompletionModeleFlipper);
 
-        listeFlipperView = (ListView) findViewById(R.id.listeResultats);
+        listeFlipperView = (ListView) findViewById(R.id.listViewFlippers);
 
-        boutonClearAdresse.setOnClickListener(ClearAdresseClickListener);
+        //boutonClearAdresse.setOnClickListener(ClearAdresseClickListener);
         boutonLocalisation.setOnClickListener(BoutonLocalisationListener);
         boutonSearchByMap.setOnClickListener(BoutonSearchByMapListener);
         boutonAfficheCarte.setOnClickListener(AfficherListeListener);
-
-
         boutonClearModeleFlipper.setOnClickListener(ClearModeleFlipperClickListener);
 
-        adresseUtilisateurTV.setOnEditorActionListener(ClickNewSearch);
+        //adresseUtilisateurTV.setOnEditorActionListener(ClickNewSearch);
 
         // Initialisation de l'autocomplétion
         BaseModeleService modeleFlipperService = new BaseModeleService();
@@ -126,9 +174,9 @@ public class PageListeResultat extends AppCompatActivity {
         if (intent != null) {
             Bundle extra = intent.getExtras();
             if (extra != null) {
-                latitude = Double.parseDouble(intent.getStringExtra(PageCarteSearch.INTENT_LATITUDE));
-                longitude = Double.parseDouble(intent.getStringExtra(PageCarteSearch.INTENT_LONGITUDE));
-                Log.w(PageListeResultat.class.getName(), "FROM MAP SEARCH -> Lat , Long " + latitude + ", " + longitude);
+                //latitude = Double.parseDouble(intent.getStringExtra(PageCarteSearch.INTENT_LATITUDE));
+                //longitude = Double.parseDouble(intent.getStringExtra(PageCarteSearch.INTENT_LONGITUDE));
+                //Log.w(PageListeResultat.class.getName(), "FROM MAP SEARCH -> Lat , Long " + latitude + ", " + longitude);
             }
 
                 else {
@@ -137,7 +185,7 @@ public class PageListeResultat extends AppCompatActivity {
             }
         }
 
-        rafraichitListeFlipper();
+        //rafraichitListeFlipper();
     }
 
     @Override
@@ -214,7 +262,37 @@ public class PageListeResultat extends AppCompatActivity {
         return true;
     }
 
+    private void searchFlip(LatLng latLng) {
 
+        // Récupère la liste des flippers les plus proches
+        BaseFlipperService rechercheService = new BaseFlipperService();
+
+        listeFlipper = rechercheService.rechercheFlipper(getApplicationContext(), latLng.latitude, latLng.longitude,
+                DISTANCE_MAX * 1000, ENSEIGNE_LIST_MAX_SIZE, champModeleFlipper.getText().toString());
+
+        ListeFlipperAdapter customAdapter = new ListeFlipperAdapter(this, R.layout.simple_list_item_flipper, listeFlipper, latitude, longitude);
+
+        listeFlipperView.setAdapter(customAdapter);
+
+        if (listeFlipper.size() == 0) {
+            if (champModeleFlipper.getText() == null || champModeleFlipper.getText().length() == 0) {
+                new AlertDialog.Builder(this).setTitle("Argh!")
+                        .setMessage("Pas de flippers à " + String.valueOf(DISTANCE_MAX) + "km à la ronde!")
+                        .setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
+            } else {
+                new AlertDialog.Builder(this)
+                        .setTitle("Argh!")
+                        .setMessage(
+                                "Le flipper recherché n'a pas été trouvé à " + String.valueOf(DISTANCE_MAX)
+                                        + "km à la ronde!").setNeutralButton("Fermer", null)
+                        .setIcon(R.drawable.ic_delete).show();
+            }
+            boutonAfficheCarte.setVisibility(View.INVISIBLE);
+        } else {
+            boutonAfficheCarte.setVisibility(View.VISIBLE);
+        }
+
+    }
 
     private void rafraichitListeFlipper() {
         if (latitude == 0 && longitude == 0) {
@@ -266,7 +344,6 @@ public class PageListeResultat extends AppCompatActivity {
                 latitude = adresseRecherchee.latitude;
                 longitude = adresseRecherchee.longitude;
 
-                // TODO Trouver une façon propre d'afficher un choix quand il y
                 // a plusieurs adresses trouvées
                 adresseUtilisateurTV.setText(LocationUtil.getAdresseFromCoordGPS(getApplicationContext(), latitude,
                         longitude));
@@ -320,16 +397,16 @@ public class PageListeResultat extends AppCompatActivity {
     private OnClickListener BoutonSearchByMapListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent mapSearch = new Intent(PageListeResultat.this, PageCarteSearch.class);
+            //Intent mapSearch = new Intent(PageListeResultat.this, PageCarteSearch.class);
             //Si Localisation Telephone a marché, on récupère la position sinon on met des valeurs par défaut
             Double[] Position ={latitude, longitude};
             if (longitude == 0) {
                 Position[0] = 48.859274;
                 Position[1] = 2.294438;
             }
-            mapSearch.putExtra(INTENT_LATITUDE, String.valueOf(Position[0]));
-            mapSearch.putExtra(INTENT_LONGITUDE, String.valueOf(Position[1]));
-            startActivity(mapSearch);
+            //mapSearch.putExtra(INTENT_LATITUDE, String.valueOf(Position[0]));
+            //mapSearch.putExtra(INTENT_LONGITUDE, String.valueOf(Position[1]));
+            //startActivity(mapSearch);
         }
     };
 

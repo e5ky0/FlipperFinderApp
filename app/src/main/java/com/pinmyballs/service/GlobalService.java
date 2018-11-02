@@ -19,16 +19,19 @@ import com.pinmyballs.metier.Commentaire;
 import com.pinmyballs.metier.Enseigne;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.ModeleFlipper;
+import com.pinmyballs.metier.Score;
 import com.pinmyballs.metier.Tournoi;
 import com.pinmyballs.service.base.BaseCommentaireService;
 import com.pinmyballs.service.base.BaseEnseigneService;
 import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.service.base.BaseModeleService;
+import com.pinmyballs.service.base.BaseScoreService;
 import com.pinmyballs.service.base.BaseTournoiService;
 import com.pinmyballs.service.parse.ParseCommentaireService;
 import com.pinmyballs.service.parse.ParseEnseigneService;
 import com.pinmyballs.service.parse.ParseFlipperService;
 import com.pinmyballs.service.parse.ParseModeleService;
+import com.pinmyballs.service.parse.ParseScoreService;
 import com.pinmyballs.service.parse.ParseTournoiService;
 
 public class GlobalService {
@@ -41,6 +44,13 @@ public class GlobalService {
 
 	public GlobalService(){
 	}
+
+	/**
+	 * Returns the X last Commentaires
+	 * @param pContext contexte
+	 * @param nbMaxCommentaire Number of comments to return
+	 * @return
+	 */
 	public ArrayList<Commentaire> getLastCommentaire(Context pContext, int nbMaxCommentaire){
 		ArrayList<Commentaire> listeRetour;
 		BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
@@ -52,34 +62,38 @@ public class GlobalService {
 			Flipper flipper = baseFlipperService.getFlipperById(pContext, commentaire.getFlipperId());
 			commentaire.setFlipper(flipper);
 		}
-
 		return listeRetour;
+	}
 
+	/**
+	 * Returns the list of score for a given flipperId
+	 * @param pContext context
+	 * @param flipperId flipperId
+	 * @return
+	 */
+	public ArrayList<Score> getScorebyFlipper(Context pContext, Long flipperId){
+		ArrayList<Score> listeRetour;
+		BaseScoreService baseScoreService = new BaseScoreService();
+		listeRetour = baseScoreService.getScoresByFlipperId(pContext, flipperId);
+		return listeRetour;
 	}
 
 	public String getNbFlips(Context pContext){
-		String N;
-		BaseFlipperService baseFlipperService = new BaseFlipperService();
-		N = baseFlipperService.NombreFlipperActifs(pContext);
-		return N;
-
+		return new BaseFlipperService().NombreFlipperActifs(pContext);
 	}
 
 	public Flipper getFlip(Context pContext, long id){
-		Flipper flip;
-		BaseFlipperService baseFlipperService = new BaseFlipperService();
-		flip = baseFlipperService.getFlipperById(pContext, id);
-		return flip;
+		return new BaseFlipperService().getFlipperById(pContext, id);
 	}
-
-
 
 	public String majBaseAvecNouveaute(Context pContext, String dateDerniereMaj) throws InterruptedException{
 
 		BaseModeleService baseModeleService = new BaseModeleService();
 		ParseModeleService parseModeleService = new ParseModeleService();
+
 		BaseEnseigneService baseEnseigneService = new BaseEnseigneService();
 		ParseEnseigneService parseEnseigneService = new ParseEnseigneService();
+
 		BaseFlipperService baseFlipperService = new BaseFlipperService();
 		ParseFlipperService parseFlipperService = new ParseFlipperService(null);
 
@@ -89,6 +103,9 @@ public class GlobalService {
 		BaseTournoiService baseTournoiService = new BaseTournoiService();
 		ParseTournoiService parseTournoiService = new ParseTournoiService();
 
+		BaseScoreService baseScoreService = new BaseScoreService();
+		ParseScoreService parseScoreService = new ParseScoreService(null);
+
 		Long idMaxModele = baseModeleService.getIdMaxModele(pContext);
 
 		// On récupère les données du cloud
@@ -97,6 +114,8 @@ public class GlobalService {
 		List<Flipper> nvlleListeFlipper = parseFlipperService.getMajFlipperByDate(dateDerniereMaj);
 		List<Commentaire> nvlleListeCommentaire = parseCommentaireService.getMajCommentaireByDate(dateDerniereMaj);
 		List<Tournoi> nvlleListeTournoi = parseTournoiService.getAllTournoi();
+		List<Score> nvelleListeScore = parseScoreService.getMajScoreByDate(dateDerniereMaj);
+		//List<Score> nvelleListeScore = parseScoreService.getAllScores();
 
 		boolean maj = false;
 		String textPopup = "";
@@ -125,13 +144,19 @@ public class GlobalService {
 		// On met à jour la table des commentaires
 		if (nvlleListeCommentaire != null && nvlleListeCommentaire.size() > 0){
 			maj = true;
-			textPopup += pContext.getResources().getString(R.string.toastMajCommentaire, nvlleListeCommentaire.size());
+			textPopup += pContext.getResources().getString(R.string.toastMajCommentaire, nvlleListeCommentaire.size())+ "\n";
 			baseCommentaireService.majListeCommentaire(nvlleListeCommentaire, pContext);
 		}
 
 		// On met à jour la table des tournois
 		baseTournoiService.remplaceListeTournoi(nvlleListeTournoi, pContext);
 
+        // On met à jour la table des scores
+        if (nvelleListeScore != null && nvelleListeScore.size() > 0){
+            maj = true;
+            textPopup += pContext.getResources().getString(R.string.toastMajScore, nvelleListeScore.size());
+            baseScoreService.majListeScore(nvelleListeScore,pContext);
+        }
 
 		// S'il y a eu une mise à jour, on envoie le récap en sortie.
 		if (maj){
@@ -139,6 +164,11 @@ public class GlobalService {
 		}
 		return null;
 	}
+
+	/*
+	Methods to populate Database from JSON Files
+	Deprecated
+	 */
 
 	private void populateEnseigne(SQLiteDatabase db) {
 		BaseEnseigneService baseEnseigneService = new BaseEnseigneService();

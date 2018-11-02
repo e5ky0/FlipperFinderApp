@@ -1,6 +1,7 @@
 package com.pinmyballs.service.parse;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.parse.ParseException;
@@ -61,6 +62,23 @@ public class ParseCommentaireService {
 		parseCommentaire.put(FlipperDatabaseHandler.COMM_PSEUDO, commentaire.getPseudo());
 		parseCommentaire.put(FlipperDatabaseHandler.COMM_TEXTE, commentaire.getTexte());
 		parseCommentaire.put(FlipperDatabaseHandler.COMM_ACTIF, commentaire.getActif());
+
+		//get the FlipperObjectID by direct query to the Cloud
+		String FlipperObjectID = "";
+		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
+		query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID,commentaire.getFlipperId());
+		try {
+			FlipperObjectID = query.getFirst().getObjectId();
+			Log.d("Flipper ObjectID: ", FlipperObjectID);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//add the pointer
+		if(FlipperObjectID != null && !FlipperObjectID.isEmpty()) {
+			parseCommentaire.put(FlipperDatabaseHandler.COMM_FLIP_POINTER, ParseObject.createWithoutData(FlipperDatabaseHandler.FLIPPER_TABLE_NAME,FlipperObjectID));
+
+		}
+
 		parseCommentaire.saveInBackground(new SaveCallback() {
 			@Override
 			public void done(ParseException e) {

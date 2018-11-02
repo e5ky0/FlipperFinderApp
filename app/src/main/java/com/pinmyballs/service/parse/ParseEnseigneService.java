@@ -80,4 +80,26 @@ public class ParseEnseigneService {
 		return listeEnseigne;
 	}
 
+
+
+
+	/**
+	 * Retourne l'ObjectId d'une enseigne à partie de son ENS_ID.
+	 * @param enseigneID ENS_ID (long)
+	 * @return ObjectID
+	 */
+	public String getEnseigneObjectID(Long enseigneID){
+
+		ParseObject enseignePO;
+		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME);
+		try {
+			query.whereEqualTo(FlipperDatabaseHandler.ENSEIGNE_ID, enseigneID);
+			enseignePO = query.getFirst();
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+			return null;
+		}
+		return enseignePO.getObjectId();
+	}
+
 }

@@ -40,11 +40,34 @@ public class BaseModeleService {
 		return listeRetour;
 	}
 
+	public ArrayList<String> getAllNomModeleFlipperAvecMarque(Context pContext){
+		ArrayList<String> listeRetour = new ArrayList<String>();
+		ArrayList<ModeleFlipper> listeModeleFlipper = getAllModeleFlipper(pContext);
+		for (ModeleFlipper modeleFlipper : listeModeleFlipper){
+			/*String modeleAvecMarque = String.format("%s (%s, %s)",
+					modeleFlipper.getNom(),
+					modeleFlipper.getMarque(),
+					modeleFlipper.getAnneeLancement());*/
+
+			listeRetour.add(modeleFlipper.getNomComplet());
+		}
+		return listeRetour;
+	}
+
 	public ModeleFlipper getModeleFlipperByName(Context pContext, String nomModele){
 		ModeleFlipper modeleRetour;
 		ModeleDAO modeleDao = new ModeleDAO(pContext);
 		modeleDao.open();
 		modeleRetour = modeleDao.getModeleFlipperByName(nomModele);
+		modeleDao.close();
+		return modeleRetour;
+	}
+
+	public ModeleFlipper getModeleFlipperByNameComplet(Context pContext, String nomModele){
+		ModeleFlipper modeleRetour;
+		ModeleDAO modeleDao = new ModeleDAO(pContext);
+		modeleDao.open();
+		modeleRetour = modeleDao.getModeleFlipperByNameComplet(nomModele);
 		modeleDao.close();
 		return modeleRetour;
 	}
@@ -78,5 +101,14 @@ public class BaseModeleService {
 		//db.endTransaction();
 		modeleDao.close();
 		return true;
+	}
+
+	public ModeleFlipper getModeleById(Context pContext, Long modeleId){
+		ModeleFlipper modeleFlipper = new ModeleFlipper();
+		ModeleDAO modeleDao = new ModeleDAO(pContext);
+		modeleDao.open();
+		modeleFlipper = modeleDao.getModeleById(modeleId);
+		modeleDao.close();
+		return modeleFlipper;
 	}
 }

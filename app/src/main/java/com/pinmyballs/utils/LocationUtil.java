@@ -8,6 +8,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -18,12 +20,14 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
 import com.pinmyballs.metier.Flipper;
 
 public class LocationUtil {
+	private static final String TAG = LocationUtil.class.getSimpleName();
 
 	/**
 	 * Méthode utilisée pour renvoyer sous forme de String l'adresse en fonction des
@@ -44,7 +48,7 @@ public class LocationUtil {
 		if (addresses != null && addresses.size() > 0) {
 			Address address = addresses.get(0);
 			// Format the first line of address (if available) and city.
-			adresseCourante = String.format("%s %s",
+			adresseCourante = String.format("%s %s %s",
 					address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
 					address.getLocality(),
 					address.getCountryName());
@@ -52,8 +56,47 @@ public class LocationUtil {
 		}
 
 		return adresseCourante;
-
 	}
+
+	public static String getCityFromLatLng(Context context, LatLng latlng){
+		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+		List<Address> addresses = null;
+		try {
+			addresses = geocoder.getFromLocation(latlng.latitude, latlng.longitude,1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        return (addresses!=null )? addresses.get(0).getLocality()  :  "";
+	}
+
+
+	public static String getAddress(Context context,double latitude, double longitude) {
+
+		Geocoder geocoder;
+		List<Address> addresses;
+		String adresseCourante = "";
+		geocoder = new Geocoder(context, Locale.getDefault());
+
+		try {
+			addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+		String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+		String city = addresses.get(0).getLocality();
+		String state = addresses.get(0).getAdminArea();
+		String country = addresses.get(0).getCountryName();
+		String postalCode = addresses.get(0).getPostalCode();
+		String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+            adresseCourante = address;
+			//adresseCourante = String.format("%s %s %s %s",address,postalCode,city,country);
+
+
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	return adresseCourante;
+	}
+
 
 	public static String getAdresseFromCoordGPSwCP(Context context, double latitude, double longitude){
 		String adresseCourante = "";
@@ -72,14 +115,64 @@ public class LocationUtil {
 					address.getPostalCode(),
 					address.getLocality(),
 					address.getCountryName());
-
 		}
-
 		return adresseCourante;
 
 	}
 
+	public static String getCPfromLatLng(Context context, @NonNull LatLng latlng){
+		String CP=null;
+		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+		List<Address> addresses = null;
+		try {
+			addresses = geocoder.getFromLocation(latlng.latitude,latlng.longitude,1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (addresses != null && addresses.size() > 0) {
+			Address address = addresses.get(0);
+			CP = address.getPostalCode();
+		}
+		return CP;
+	}
 
+	public static HashMap getDetailsfromLatLng(Context context, @NonNull LatLng latlng){
+		HashMap HM = new HashMap(4);
+		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+		List<Address> addresses = null;
+		try {
+			addresses = geocoder.getFromLocation(latlng.latitude,latlng.longitude,1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (addresses != null && addresses.size() > 0) {
+			Address address = addresses.get(0);
+			String addressline = address.getAddressLine(0);
+            String[] addressSplit = addressline.split(", ");
+			HM.put("address", addressSplit[0]);
+			HM.put("postalcode", address.getPostalCode());
+			HM.put("city", address.getLocality());
+			HM.put("country", address.getCountryName());
+			Log.d(TAG, "HM worked: " + HM.get("address"));
+		}
+		return HM;
+	}
+
+	public static String getCPfromCity(Context context, String ville){
+		String CP=null;
+		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+		List<Address> addresses = null;
+		try {
+			addresses = geocoder.getFromLocationName(ville, 1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (addresses != null && addresses.size() > 0) {
+			Address address = addresses.get(0);
+			CP = address.getPostalCode();
+		}
+		return CP;
+	}
 
 	/**
 	 * Calculates the end-point from a given source at a given range (meters)
@@ -151,7 +244,9 @@ public class LocationUtil {
 	 */
 	public static String formatDist(float meters) {
 		if (meters < 1000) {
-			return ((int) meters) + " m";
+		int v = 25;
+		int x = Math.round(meters / v) * v;
+			return x + " m";
 		} else if (meters < 10000) {
 			return formatDec(meters / 1000f, 1) + " km";
 		} else {
@@ -204,6 +299,24 @@ public class LocationUtil {
 
 		return null;
 	}
+
+    public static LatLng getAddressFromText(Context context, String adresse){
+        List<Address> listeAdresseRetour;
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        try {
+            listeAdresseRetour = geocoder.getFromLocationName(adresse, 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        if (listeAdresseRetour != null && !listeAdresseRetour.isEmpty()){
+            return new LatLng(listeAdresseRetour.get(0).getLatitude(), listeAdresseRetour.get(0).getLongitude());
+        } else {
+            return new LatLng(0,0);
+        }
+        }
+
 
 	public static boolean canHandleIntent(Context context, Intent intent){
 		PackageManager packageManager = context.getPackageManager();
