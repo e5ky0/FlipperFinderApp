@@ -1,0 +1,191 @@
+{
+  "data" :[
+{
+	"_id" : "02aEuE5be5",
+	"ENS_ID" : 1439795383503.0,
+	"ENS_LONGITUDE" : -3.4531134366989136,
+	"ENS_PAYS" : "France",
+	"ENS_CODE_POSTAL" : "56270",
+	"ENS_DATMAJ" : "2015/08/17",
+	"ENS_ADRESSE" : "Chemin de kerroch",
+	"ENS_NOM" : "Camping la pointe du Talud",
+	"ENS_LATITUDE" : 47.70048325391914,
+	"ENS_VILLE" : "Ploemeur",
+	"ENS_NBFLIPS" : 1.0,
+	"ENS_GEO" : [
+		-3.4531134366989136,
+		47.70048325391914
+	]
+},
+
+{
+	"_id" : "00w1KWBswy",
+	"ENS_CODE_POSTAL" : "78280",
+	"ENS_LATITUDE" : 48.7851984,
+	"ENS_ADRESSE" : "21 avenue du centre",
+	"ENS_DATMAJ" : "2015/05/05",
+	"ENS_NOM" : "Le zénith",
+	"ENS_ID" : 1430861896246.0,
+	"ENS_PAYS" : "France",
+	"ENS_VILLE" : "Montigny le bretonneux",
+	"ENS_LONGITUDE" : 2.0461827,
+	"ENS_NBFLIPS" : 1.0,
+	"ENS_GEO" : [
+		2.0461827,
+		48.7851984
+	]
+},
+
+{
+	"_id" : "1rHVaWR0HF",
+	"ENS_VILLE" : "Paris",
+	"ENS_DATMAJ" : "2015/08/15",
+	"ENS_NOM" : "Le Split",
+	"ENS_PAYS" : "France",
+	"ENS_LONGITUDE" : 2.3781516,
+	"ENS_LATITUDE" : 48.857029,
+	"ENS_ADRESSE" : "83 rue de la roquette",
+	"ENS_CODE_POSTAL" : "75011",
+	"ENS_ID" : 1439667464507.0,
+	"ENS_NBFLIPS" : 1.0,
+	"ENS_GEO" : [
+		2.3781516,
+		48.857029
+	]
+},
+
+{
+	"_id" : "0kHEtMVDCR",
+	"ENS_ID" : 1453927407323.0,
+	"ENS_ADRESSE" : "Rue des 11 arpents",
+	"ENS_CODE_POSTAL" : "41000",
+	"ENS_LATITUDE" : 47.638819,
+	"ENS_LONGITUDE" : 1.340153,
+	"ENS_DATMAJ" : "2016/01/27",
+	"ENS_PAYS" : "France",
+	"ENS_VILLE" : "Blois",
+	"ENS_NOM" : "Cap Cine",
+	"ENS_TYPE" : "Cinema",
+	"ENS_NBFLIPS" : 0.0,
+	"ENS_GEO" : [
+		1.340153,
+		47.638819
+	]
+},
+
+{
+	"_id" : "1ItKXQnVqB",
+	"ENS_PAYS" : "France",
+	"ENS_DATMAJ" : "2015/11/15",
+	"ENS_ID" : 1447624266077.0,
+	"ENS_NOM" : "Le jean's café",
+	"ENS_LATITUDE" : 44.5229027,
+	"ENS_LONGITUDE" : 5.0656626,
+	"ENS_ADRESSE" : "2 rue des Reymonds",
+	"ENS_VILLE" : "Dieulefit",
+	"ENS_CODE_POSTAL" : "26220",
+	"ENS_NBFLIPS" : 1.0,
+	"ENS_GEO" : [
+		5.0656626,
+		44.5229027
+	]
+},
+
+{
+	"_id" : "05yBm0MzBq",
+	"ENS_ID" : 272,
+	"ENS_TYPE" : "",
+	"ENS_NOM" : "City Park",
+	"ENS_HORAIRE" : null,
+	"ENS_LATITUDE" : 50.3393774,
+	"ENS_LONGITUDE" : 3.5176619,
+	"ENS_ADRESSE" : "2 Rue de Sologne",
+	"ENS_CODE_POSTAL" : "59770",
+	"ENS_VILLE" : "Marly",
+	"ENS_PAYS" : "France",
+	"ENS_DATMAJ" : "2014/01/23",
+	"ENS_NBFLIPS" : 1.0,
+	"ENS_GEO" : [
+		3.5176619,
+		50.3393774
+	]
+},
+
+{
+	"_id" : "08Za6W4m0H",
+	"ENS_ID" : 257,
+	"ENS_TYPE" : "",
+	"ENS_NOM" : "Chez Fabien",
+	"ENS_HORAIRE" : null,
+	"ENS_LATITUDE" : 48.878245,
+	"ENS_LONGITUDE" : 2.369838,
+	"ENS_ADRESSE" : "Place du Colonel Fabien",
+	"ENS_CODE_POSTAL" : "75010",
+	"ENS_VILLE" : "Paris",
+	"ENS_PAYS" : "France",
+	"ENS_DATMAJ" : "2014/01/23",
+	"ENS_NBFLIPS" : 0.0,
+	"ENS_GEO" : [
+		2.369838,
+		48.878245
+	]
+},
+
+{
+	"_id" : "2IPWHJTqdy",
+	"ENS_DATMAJ" : "2016/03/28",
+	"ENS_NOM" : "Le Machin Truk",
+	"ENS_LATITUDE" : 48.1235807,
+	"ENS_CODE_POSTAL" : "35500",
+	"ENS_ID" : 1459178843741.0,
+	"ENS_PAYS" : "France",
+	"ENS_VILLE" : "Vitré",
+	"ENS_ADRESSE" : "25 rue d'embas",
+	"ENS_LONGITUDE" : -1.214427,
+	"ENS_NBFLIPS" : 1.0,
+	"ENS_GEO" : [
+		-1.214427,
+		48.1235807
+	]
+},
+
+{
+	"_id" : "1j7NAjJXTb",
+	"ENS_ADRESSE" : "Rue André Mitton",
+	"ENS_LONGITUDE" : -0.3591822,
+	"ENS_VILLE" : "Pau",
+	"ENS_CODE_POSTAL" : "64000",
+	"ENS_NOM" : "Mega CGR",
+	"ENS_DATMAJ" : "2015/10/14",
+	"ENS_LATITUDE" : 43.3154134,
+	"ENS_PAYS" : "France",
+	"ENS_ID" : 1444847407495.0,
+	"ENS_NBFLIPS" : 1.0,
+	"ENS_GEO" : [
+		-0.3591822,
+		43.3154134
+	]
+},
+
+{
+	"_id" : "0JhxyWC6h9",
+	"ENS_ID" : 1140,
+	"ENS_TYPE" : "Hôtel",
+	"ENS_NOM" : "Sant Gothard Hotel Erts",
+	"ENS_HORAIRE" : null,
+	"ENS_LATITUDE" : 42.507698,
+	"ENS_LONGITUDE" : 1.522655,
+	"ENS_ADRESSE" : "De Arinsal",
+	"ENS_CODE_POSTAL" : "AD400",
+	"ENS_VILLE" : "Andorra la Vella",
+	"ENS_PAYS" : "Andorre",
+	"ENS_DATMAJ" : "2014/03/03",
+	"ENS_NBFLIPS" : 1.0,
+	"ENS_GEO" : [
+		1.522655,
+		42.507698
+	]
+}
+
+]
+}
