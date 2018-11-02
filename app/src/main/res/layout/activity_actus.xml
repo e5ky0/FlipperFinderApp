@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Top toolbar -->
+        <RelativeLayout
+            android:id="@+id/tb_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/snippet_top_actusbar" />
+        </RelativeLayout>
+
+
+        <!-- Middle section -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tb_comments">
+
+            <ListView
+                android:id="@+id/listeCommentairesRecents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/simple_list_item_commentaire"/>
+
+        </RelativeLayout>
+
+        <!-- Bottom navigation bar -->
+        <include layout="@layout/layout_bottom_navigation_view" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
