@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <fragment
-        android:id="@+id/mapView"
+        android:id="@+id/mapViewSearch"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -21,19 +21,9 @@
         android:id="@+id/searchThisArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="6dp"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
         android:text="@string/searchthisareatext" />
-
-    <TextView
-        android:id="@+id/adressetrouvee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="8dp"
-        android:background="@color/cardview_shadow_start_color"
-        android:text="adresse" />
-
 
 </FrameLayout>

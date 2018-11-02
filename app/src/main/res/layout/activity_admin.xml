@@ -6,12 +6,16 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="8dp"
-    tools:context=".PagePreferences">
+    tools:context=".PagePreferences"
+    android:paddingStart="8dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+
+
 
         <TextView
             android:id="@+id/searchByNumberTextView"
@@ -19,9 +23,7 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center_vertical"
-            android:text="@string/searchByNumberTitle"
-            android:textAppearance="@android:style/TextAppearance.Material.Body1" />
-
+            android:text="@string/searchByNumberTitle" />
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,6 +36,7 @@
                 android:id="@+id/searchByNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="FLIP_ID"
                 android:ems="10"
                 android:inputType="number" />
 
@@ -66,30 +69,19 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="48dp">
 
-        <TextView
-            android:id="@+id/searchresults"
-            android:layout_width="387dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:text="@string/searchByNumberResultTitle"
-            android:textAppearance="@android:style/TextAppearance.Material.Menu"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="100dp"
             android:layout_height="17dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="FlipID"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchresults" />
+            app:layout_constraintTop_toBottomOf="@+id/searchresults"
+            android:layout_marginStart="16dp" />
 
         <TextView
             android:id="@+id/searchbynumberResultFlipID"
@@ -99,9 +91,10 @@
             android:layout_weight="1"
             android:text="@string/searchByNumberResultFlipID"
             android:textAlignment="viewStart"
-            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView"
-            app:layout_constraintLeft_toRightOf="@+id/textView" />
+            app:layout_constraintLeft_toRightOf="@+id/textView"
+            android:layout_marginStart="8dp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -110,6 +103,8 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:text="Model"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -121,9 +116,10 @@
             android:layout_marginLeft="8dp"
             android:layout_weight="3"
             android:text="@string/searchByNumberResultFlipModelID"
-            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
-            app:layout_constraintLeft_toRightOf="@+id/textView2" />
+            app:layout_constraintLeft_toRightOf="@+id/textView2"
+            android:layout_marginStart="8dp" />
 
         <TextView
             android:id="@+id/searchbynumberResultFlipModele"
@@ -133,9 +129,10 @@
             android:layout_marginLeft="8dp"
             android:layout_weight="1"
             android:text="@string/searchByNumberResultFlipModel"
-            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintBaseline_toBaselineOf="@+id/searchbynumberResultFlipModeleID"
-            app:layout_constraintLeft_toRightOf="@+id/searchbynumberResultFlipModeleID" />
+            app:layout_constraintLeft_toRightOf="@+id/searchbynumberResultFlipModeleID"
+            android:layout_marginStart="8dp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -144,6 +141,8 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:text="Enseigne"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -155,9 +154,10 @@
             android:layout_marginLeft="8dp"
             android:layout_weight="3"
             android:text="@string/searchByNumberResultFlipEnseigneID"
-            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
-            app:layout_constraintLeft_toRightOf="@+id/textView3" />
+            app:layout_constraintLeft_toRightOf="@+id/textView3"
+            android:layout_marginStart="8dp" />
 
         <TextView
             android:id="@+id/searchbynumberResultFlipEnseigne"
@@ -167,9 +167,10 @@
             android:layout_marginLeft="8dp"
             android:layout_weight="1"
             android:text="@string/searchByNumberResultFlipEnseigne"
-            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintBaseline_toBaselineOf="@+id/searchbynumberResultFlipEnseigneID"
-            app:layout_constraintLeft_toRightOf="@+id/searchbynumberResultFlipEnseigneID" />
+            app:layout_constraintLeft_toRightOf="@+id/searchbynumberResultFlipEnseigneID"
+            android:layout_marginStart="8dp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -178,31 +179,23 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="VIlle"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:text="Adresse"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <TextView
-            android:id="@+id/searchbynumberResultFlipEnseigneVille"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
-            android:text="@string/searchByNumberResultFlipEnseigneVille"
-            android:textAppearance="@android:style/TextAppearance.Material.Body1"
-            app:layout_constraintBaseline_toBaselineOf="@+id/searchbynumberResultFlipEnseigneCP"
-            app:layout_constraintLeft_toRightOf="@+id/searchbynumberResultFlipEnseigneCP" />
-
-        <TextView
-            android:id="@+id/searchbynumberResultFlipEnseigneCP"
+            android:id="@+id/searchbynumberResultFlipEnseigneAdresse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_weight="6"
-            android:text="@string/searchByNumberResultFlipEnseigneCP"
-            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:text="@string/searchByNumberResultFlipEnseigneAdresse"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
-            app:layout_constraintLeft_toRightOf="@+id/textView4" />
+            app:layout_constraintLeft_toRightOf="@+id/textView4"
+            android:layout_marginStart="8dp" />
 
         <android.support.v7.widget.SwitchCompat
             android:id="@+id/actifToggle"
@@ -213,7 +206,8 @@
             android:layout_weight="1"
             android:text="Etat"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            android:layout_marginStart="16dp" />
 
         <TextView
             android:id="@+id/actifState"
@@ -223,7 +217,8 @@
             android:layout_weight="4"
             android:text="etat"
             app:layout_constraintBaseline_toBaselineOf="@+id/actifToggle"
-            app:layout_constraintLeft_toRightOf="@+id/actifToggle" />
+            app:layout_constraintLeft_toRightOf="@+id/actifToggle"
+            android:layout_marginStart="8dp" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -231,13 +226,24 @@
         android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/saveButton" />
 
-
-    <!--<fragment
-        android:id="@+id/place_autocomplete_fragment"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"/>
--->
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/MyAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/warning"
+            android:text="MyAction" />
+
+    </LinearLayout>
+
+
+
+
 </LinearLayout>

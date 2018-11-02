@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainactivitylayout"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:id="@+id/mainactivitylayout">
+    android:layout_height="fill_parent">
 
     <!--
     <include layout="@layout/header_main"/>
@@ -31,42 +31,75 @@
         android:layout_below="@id/boutonMenuRechercher"/>
  -->
 
-     <Button
+    <Button
         android:id="@+id/boutonMenuRechercher"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:minWidth="250dp"
-        android:minHeight="50dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:elevation="6dp"
+        android:minWidth="250dp"
         android:text="@string/fa_icon_search"
-        android:layout_centerHorizontal="true"/>
+        app:layout_constraintBottom_toTopOf="@+id/boutonMenuSignaler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/boutonMenuSignaler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:minWidth="250dp"
-        android:minHeight="50dp"
+        android:layout_marginBottom="8dp"
         android:elevation="6dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/boutonMenuRechercher"
-        android:text="@string/fa_icon_new"/>
+        android:minWidth="250dp"
+        android:text="@string/fa_icon_new"
+        app:layout_constraintBottom_toTopOf="@+id/boutonMenuTournoi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boutonMenuRechercher" />
 
     <Button
         android:id="@+id/boutonMenuTournoi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:minWidth="250dp"
-        android:minHeight="50dp"
+        android:layout_marginBottom="8dp"
         android:elevation="6dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/boutonMenuSignaler"
-        android:text="@string/fa_icon_cup"/>
+        android:text="@string/fa_icon_cup"
+        app:layout_constraintBottom_toTopOf="@+id/boutonMenuAdmin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boutonMenuSignaler" />
 
-<!--    <TextView
+    <Button
+        android:id="@+id/boutonMenuAdmin"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:elevation="6dp"
+        android:text="@string/fa_icon_lock"
+        app:layout_constraintStart_toEndOf="@id/boutonMenuTournoi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toTopOf="@+id/boutonMenuTournoi" />
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/minimap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boutonMenuTournoi" />
+
+    <!--    <TextView
         android:id="@+id/InfoApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,18 +112,6 @@
         android:minWidth="250dp"
         android:text="@string/info"
         android:textStyle="italic" />-->
-
-    <Button
-        android:id="@+id/boutonMenuAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:minWidth="100dp"
-        android:minHeight="50dp"
-        android:elevation="6dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/boutonMenuTournoi"
-        android:text="@string/fa_icon_lock"/>
 
     <!--<ImageView
         android:id="@+id/imageEnveloppe"
@@ -114,4 +135,4 @@
         android:contentDescription="Préférences"
         app:srcCompat="@drawable/custom_settings" />
 -->
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

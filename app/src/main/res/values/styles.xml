@@ -1,33 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="MyAppTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <!-- Any customizations for your app running on pre-3.0 devices here -->
+        <!-- Never used -->
     </style>
 
-	<style name="sectionDivider">
-	    <item name="android:layout_width">match_parent</item>
-	    <item name="android:layout_height">2dp</item>
-	    <item name="android:background">@color/divider_section</item>
-	</style>
+    <style name="sectionDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@color/divider_section</item>
+    </style>
 
-	    <style name="itemDivider">
-	    <item name="android:layout_width">match_parent</item>
-	    <item name="android:layout_height">1dp</item>
-	    <item name="android:background">@color/divider</item>
-	</style>
+    <style name="itemDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/divider</item>
+    </style>
 
-  <style name="Theme.AppCompat.Light.NoActionBar" parent="@style/Theme.AppCompat.Light">
+    <style name="Theme.AppCompat.Light.NoActionBar" parent="@style/Theme.AppCompat.Light">
         <item name="android:windowNoTitle">true</item>
-  </style>
+    </style>
 
-	<style name="TextAppearanceFinish" parent="android:TextAppearance.Holo.Medium">
-		<item name="android:textColor">#fff</item>
-	</style>
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splash</item>
+    </style>
 
-	<style name="WizardPageContainer">
-		<item name="android:layout_width">match_parent</item>
-		<item name="android:layout_height">match_parent</item>
-		<item name="android:orientation">vertical</item>
-	</style>
+    <style name="Theme.AppCompat.Light.NoActionBar2" parent="@style/Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="Theme.AppCompat.Light.Dialog.NoActionBar" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <style name="TextAppearanceFinish" parent="android:TextAppearance.Holo.Medium">
+        <item name="android:textColor">#fff</item>
+    </style>
+
+    <style name="WizardPageContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    
 
 </resources>

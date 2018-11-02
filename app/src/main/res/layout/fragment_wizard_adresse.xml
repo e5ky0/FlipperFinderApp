@@ -2,6 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/WizardPageContainer">
 
+    <LinearLayout
+        android:id="@+id/placeSearchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+    </LinearLayout>
+
+    <View style="@style/itemDivider" />
+
+    <TextView
+        android:id="@+id/place_attribution_wizard"
+        android:autoLink="all"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="0dp" />
+
+
     <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"

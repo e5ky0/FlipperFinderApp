@@ -1,47 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-	<LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" >
+    <android.support.v4.view.ViewPager
+        android:id="@+id/signalementPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-	    <include layout="@layout/localisationsignalement" />
+    <View style="@style/itemDivider" />
 
-	    <AutoCompleteTextView
-	        android:id="@+id/autocompletionModeleFlipper"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="5dip"
-	        android:layout_marginRight="5dip"
-	        android:layout_marginTop="15dip"
-	        android:imeOptions="actionDone"
-	        android:inputType="textFilter|textNoSuggestions"
-	        android:singleLine="true"
-	        android:hint="@string/SectionFlipper"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-	    <EditText
-	        android:id="@+id/champNomEnseigne"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="5dip"
-	        android:layout_marginRight="5dip"
-	        android:layout_marginTop="15dip"
-	        android:inputType="textFilter|textNoSuggestions"
-	        android:hint="@string/SectionNomEnseigne"/>
+        <Button
+            android:background="@drawable/selectable_item_background"
+            android:id="@+id/prev_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/SignalementWizardPrevious" />
 
-	    <Button
-	        android:id="@+id/BoutonEnvoiInfosFlipper"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"
-	        android:layout_marginTop="50dp"
-	        android:minHeight="50dp"
-	        android:minWidth="250dp"
-	        android:text="@string/BoutonEnvoiInfosFlipper" />
+        <Button
+            android:background="@drawable/selectable_item_background"
+            android:id="@+id/next_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/SignalementWizardNext" />
 
-	</LinearLayout>
-</ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

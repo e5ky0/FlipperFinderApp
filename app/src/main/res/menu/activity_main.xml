@@ -2,6 +2,13 @@
       xmlns:pinmyballs="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_newMain"
+        android:icon="@drawable/ic_build_black_24dp"
+        android:title="New Activity"
+        android:titleCondensed="Bug"
+        pinmyballs:showAsAction="always" />
+
+    <item
         android:id="@+id/action_update"
         android:icon="@drawable/ic_sync_black_24dp"
         android:title="Mise à jour"
@@ -35,6 +42,5 @@
         android:title="Signaler un bug"
         android:titleCondensed="Bug"
         pinmyballs:showAsAction="ifRoom" />
-
 
 </menu>

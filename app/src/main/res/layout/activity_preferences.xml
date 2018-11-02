@@ -1,147 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout3"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:paddingLeft="8dp"
-    tools:context=".PagePreferences">
+    tools:context=".PagePreferences"
+    tools:layout_editor_absoluteY="81dp">
+
+
 
     <TextView
+        android:id="@+id/PrefRayonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="50sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/SectionPrefRayonRecherche"
-        android:textSize="24sp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PrefPseudoText" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+
+    <SeekBar
+        android:id="@+id/seekBarRayon"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <SeekBar
-            android:id="@+id/seekBarRayon"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dip"
-            android:layout_weight=".65"
-            android:max="100" />
-
-        <TextView
-            android:id="@+id/TVRayon"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dip"
-            android:layout_weight=".35"
-            android:text="50 km"
-            android:textSize="24sp" />
-    </LinearLayout>
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:max="100"
+        app:layout_constraintEnd_toEndOf="@+id/PrefRayonText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PrefRayonText" />
 
     <TextView
+        android:id="@+id/TVRayon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="40sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="50 km"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/PrefRayonText"
+        app:layout_constraintStart_toEndOf="@+id/PrefRayonText" />
+
+
+    <TextView
+        android:id="@+id/PrefNbFlipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/SectionPrefNbResultatVisible"
-        android:textSize="24sp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarRayon" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/PrefPseudoText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/SectionPseudo"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <SeekBar
-            android:id="@+id/seekBarNbMax"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dip"
-            android:layout_weight=".65"
-            android:max="100" />
-
-        <TextView
-            android:id="@+id/TVMaxResult"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dip"
-            android:layout_weight=".35"
-            android:text="50"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/TVPseudoPref"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="70dp">
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="AAA"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/PrefPseudoText"
+        app:layout_constraintStart_toEndOf="@+id/PrefPseudoText" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/pseudotext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Pseudo"
-                android:textSize="16sp" />
+    <SeekBar
+        android:id="@+id/seekBarNbMax"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:max="100"
+        app:layout_constraintEnd_toEndOf="@+id/PrefNbFlipText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PrefNbFlipText" />
 
-            <TextView
-                android:id="@+id/pseudo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="TextView"
-                android:textColor="@color/appirator_button_end_color"
-                android:textSize="16sp" />
+    <TextView
+        android:id="@+id/TVMaxResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="50"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/PrefNbFlipText"
+        app:layout_constraintStart_toEndOf="@+id/PrefNbFlipText" />
 
-        </LinearLayout>
+<!--
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/pseudotext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/Pseudo"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/datemajtext"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/datemajtext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/DateLastMaj"
-                android:textSize="16sp" />
+    <TextView
+        android:id="@+id/pseudo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textColor="@color/appirator_button_end_color"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/pseudotext"
+        app:layout_constraintStart_toEndOf="@+id/pseudotext" />
 
-            <TextView
-                android:id="@+id/datedernieremaj"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="TextView"
-                android:textColor="@color/appirator_button_end_color"
-                android:textSize="16sp" />
+-->
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/currentlatlngtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/currentlatng_text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/dbchronotext"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/currentlatlng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="(47.345433, 4.876573)"
+        android:textColor="@color/appirator_button_end_color"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/currentlatlngtext"
+        app:layout_constraintStart_toEndOf="@+id/currentlatlngtext"
+        android:visibility="invisible"/>
 
-            <TextView
-                android:id="@+id/nbflipstext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/NbreFlipsActifs"
-                android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/nbflips"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="TextView"
-                android:textColor="@color/appirator_button_end_color"
-                android:textSize="16sp" />
-        </LinearLayout>
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/dbchronotext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/dbchrono_text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/datemajtext"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/dbchrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textColor="@color/appirator_button_end_color"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/dbchronotext"
+        app:layout_constraintStart_toEndOf="@+id/dbchronotext" />
+
+    <TextView
+        android:id="@+id/datemajtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/DateLastMaj"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/nbflipstext"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/datedernieremaj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textColor="@color/appirator_button_end_color"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/datemajtext"
+        app:layout_constraintStart_toEndOf="@+id/datemajtext" />
+
+
+
+    <TextView
+        android:id="@+id/nbflipstext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/NbreFlipsActifs"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/eraseDBbutton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/nbflips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textColor="@color/appirator_button_end_color"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/nbflipstext"
+        app:layout_constraintStart_toEndOf="@+id/nbflipstext" />
+
+    <Button
+        android:id="@+id/eraseDBbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EraseBD_button"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,43 +1,75 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:minHeight="?android:attr/listPreferredItemHeight"
-    android:paddingBottom="2dip"
-    android:paddingTop="2dip" >
+    tools:layout_editor_absoluteY="81dp">
+
+    <ImageView
+        android:id="@+id/markericon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_flipmarker_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:id="@+id/textModeleFlipper"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="6dip"
-        android:layout_marginTop="6dip"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/distance"
+        app:layout_constraintStart_toEndOf="@+id/markericon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@sample/modeles" />
 
     <TextView
         android:id="@+id/textAdresseFlipper"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/textModeleFlipper"
-        android:layout_below="@id/textModeleFlipper"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/dateMaj"
+        app:layout_constraintStart_toEndOf="@+id/markericon"
+        app:layout_constraintTop_toBottomOf="@+id/nomBar"
+        tools:text="@sample/enseignes.json/data/ENS_ADRESSE" />
 
     <TextView
         android:id="@+id/distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/textAdresseFlipper"
-        android:layout_marginRight="7dp"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textModeleFlipper"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@sample/distances" />
 
     <TextView
         android:id="@+id/nomBar"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/textModeleFlipper"
-        android:layout_marginRight="7dp"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/dateMaj"
+        app:layout_constraintStart_toEndOf="@+id/markericon"
+        app:layout_constraintTop_toBottomOf="@+id/textModeleFlipper"
+        tools:text="@sample/enseignes.json/data/ENS_NOM" />
 
     <!-- TextView
         android:id="@+id/dateMaj"
@@ -53,10 +85,25 @@
         android:id="@+id/dateMaj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:layout_below="@id/textAdresseFlipper"
-		android:layout_alignLeft="@id/textModeleFlipper"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#04B404"/>
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textAdresseFlipper"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@sample/confirmations" />
+
+    <ImageView
+        android:id="@+id/warningicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/stat_sys_warning"
+        app:layout_constraintEnd_toStartOf="@id/dateMaj"
+        app:layout_constraintBottom_toBottomOf="@id/dateMaj"
+        android:tint="@color/warning"
+        android:visibility="gone"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"/>
 
 
-</RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_marginLeft="5dip"
     android:layout_marginRight="5dip"
-    android:layout_marginTop="5dip">
+    android:layout_marginTop="5dip"
+    android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <ImageButton
-        android:id="@+id/boutonLocalisation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="6dp"
-        android:contentDescription="@string/alt_image_localisation"
-        app:srcCompat="@drawable/ic_my_location_black_24dp" />
 
-    <ImageButton
-        android:id="@+id/boutonClearAdresse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|center_vertical"
-        android:layout_marginRight="7dp"
-        android:background="@color/cardview_light_background"
-        app:srcCompat="@drawable/ic_clear_black_24dp" />
 
-    </FrameLayout>
+        <ImageButton
+            android:id="@+id/boutonLocalisation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/alt_image_localisation"
+            app:srcCompat="@drawable/ic_my_location_black_24dp" />
 
-    <EditText
+
+        <EditText
             android:id="@+id/champAdresseLocalisation"
             android:layout_width="fill_parent"
-            android:layout_height="89dp"
-        android:inputType="textMultiLine"
-            android:maxLines="2"
-            android:textSize="15sp" />
+            android:layout_height="100dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginStart="50dp"
+            android:hint="@string/hintRechercheAdresse"
+            android:inputType="textMultiLine"
+            android:maxLines="3" />
 
 
+        <ImageButton
+            android:id="@+id/boutonClearAdresse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
+            android:background="@color/cardview_light_background"
+            app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+    </FrameLayout>
 
 
 </LinearLayout>

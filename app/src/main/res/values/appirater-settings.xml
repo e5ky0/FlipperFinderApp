@@ -16,7 +16,7 @@
     <!-- Change to true to show every time, for testing -->
     <bool name="appirator_test_mode">false</bool>
     <!-- Change modify button colors -->
-    <color name="appirator_button_start_color">#ff449def</color>
+    <color name="appirator_button_start_color">#449def</color>
     <color name="appirator_button_end_color">#2f6699</color>
     <color name="appirator_button_text_color">#ffffffff</color>
 </resources>

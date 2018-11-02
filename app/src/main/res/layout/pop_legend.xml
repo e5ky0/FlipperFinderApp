@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/poplegendlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/code_couleur"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:background="@drawable/white_grey_border_bottom">
+
+            <TextView
+                android:id="@+id/code_couleur_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/legend_title"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linlayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/code_couleur"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/img_green"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_flipmarker_new"
+                />
+
+            <TextView
+                android:id="@+id/img_green_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/legend_green"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linlayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linlayout1"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/img_orange"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_flipmarker_blue"
+                />
+
+            <TextView
+                android:id="@+id/img_orange_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/legend_orange"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linlayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linlayout2"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/img_red"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_flipmarker_lightblue"
+                />
+
+            <TextView
+                android:id="@+id/img_red_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/legend_red"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linlayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linlayout3"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/img_grey"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_flipmarker_grey"
+                />
+
+            <TextView
+                android:id="@+id/img_grey_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/legend_grey"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

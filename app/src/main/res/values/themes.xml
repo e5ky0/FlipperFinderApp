@@ -2,7 +2,7 @@
 
     <!-- Style pour les vieux Android -->
     <style name="AppTheme" parent="android:Theme.Light">
-        <item name="android:windowNoTitle">true</item>
+        true
     </style>
 
 </resources>
