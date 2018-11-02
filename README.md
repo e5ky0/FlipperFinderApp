@@ -1,8 +1,5 @@
-# FlipperFinderApp
-Source code of Android app Flipper Finder
-The app database is no longer updated since Parse.com closed in January 2017
-
-The database was last extracted on 27-01-2017, available in the json files in [Database 28-01-2017](Database 28-01-2017).
+#Pin my Balls
+Source code of Android app PinmyBalls
 
 ## Website
 Use bower to install libs:
