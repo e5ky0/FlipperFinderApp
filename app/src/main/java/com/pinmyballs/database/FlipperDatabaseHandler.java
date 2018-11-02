@@ -11,8 +11,8 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 	Context mContext = null;
 	// V41 le 04/10/2015
 
-	public static final int DATABASE_VERSION = 45;
-	public static final String DATABASE_DATE_MAJ = "2011/01/01";
+	public static final int DATABASE_VERSION = 47;
+	public static final String DATABASE_DATE_MAJ = "2011/06/01";
 
 	public static final String FLIPPER_BASE_NAME = "flipper.db";
 
@@ -21,6 +21,7 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 	public static final String MODELE_FLIPPER_NOM = "MOFL_NOM";
 	public static final String MODELE_FLIPPER_MARQUE = "MOFL_MARQUE";
 	public static final String MODELE_FLIPPER_ANNEE_LANCEMENT = "MOFL_ANNEE_LANCEMENT";
+	public static final String MODELE_FLIPPER_OBJ_ID = "MOFL_OBJ_ID";
 
 	public static final String ENSEIGNE_TABLE_NAME = "ENSEIGNE";
 	public static final String ENSEIGNE_ID = "ENS_ID";
@@ -34,6 +35,7 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 	public static final String ENSEIGNE_VILLE = "ENS_VILLE";
 	public static final String ENSEIGNE_PAYS = "ENS_PAYS";
 	public static final String ENSEIGNE_DATMAJ = "ENS_DATMAJ";
+	public static final String ENSEIGNE_GEOPOINT = "ENS_GEO";
 
 	public static final String FLIPPER_TABLE_NAME = "FLIPPER";
 	public static final String FLIPPER_ID = "FLIP_ID";
@@ -42,13 +44,17 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 	public static final String FLIPPER_ENSEIGNE = "FLIP_ENSEIGNE";
 	public static final String FLIPPER_DATMAJ = "FLIP_DATMAJ";
 	public static final String FLIPPER_ACTIF = "FLIP_ACTIF";
+	public static final String FLIPPER_ENS_POINTER = "FLIP_ENSEIGNE_P";
+	public static final String FLIPPER_MODELE_POINTER = "FLIP_MODELE_P";
 
 	public static final String SCORE_TABLE_NAME = "SCORE";
-	public static final String SCORE_ID = "SCORE_ID";
-	public static final String SCORE_FLIPPER_ID = "SCORE_FLIPPER_ID";
-	public static final String SCORE_SCORE = "SCORE_SCORE";
-	public static final String SCORE_PSEUDO = "SCORE_PSEUDO";
-	public static final String SCORE_DATE = "SCORE_DATE";
+	public static final String SCORE_ID = "SCO_ID";
+	public static final String SCORE_OBJECTID = "SCO_OBJECTID";
+	public static final String SCORE_FLIPPER_ID = "SCO_FLIP_ID";
+	public static final String SCORE_FLIPPER_POINTER = "SCO_FLIP_ID_P";
+	public static final String SCORE_SCORE = "SCO_VALUE";
+	public static final String SCORE_PSEUDO = "SCO_PSEUDO";
+	public static final String SCORE_DATE = "SCO_DATE";
 
 	public static final String TOURNOI_TABLE_NAME = "TOURNOI";
 	public static final String TOUR_ID = "TOUR_ID";
@@ -62,6 +68,8 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 	public static final String TOUR_VILLE = "TOUR_VILLE";
 	public static final String TOUR_PAYS = "TOUR_PAYS";
 	public static final String TOUR_URL = "TOUR_URL";
+	public static final String TOUR_ENS = "TOUR_ENS";
+	public static final String TOUR_REALDATE = "TOUR_REALDATE";
 
 	public static final String COMMENTAIRE_TABLE_NAME = "COMMENTAIRE";
 	public static final String COMM_ID = "COMM_ID";
@@ -70,6 +78,7 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 	public static final String COMM_DATE = "COMM_DATE";
 	public static final String COMM_PSEUDO = "COMM_PSEUDO";
 	public static final String COMM_ACTIF = "COMM_ACTIF";
+	public static final String COMM_FLIP_POINTER = "COMM_FLIPPER_ID_P";
 
 	public static final String COMMENTAIRE_TABLE_CREATE =
 		"CREATE TABLE " + COMMENTAIRE_TABLE_NAME + " (" +
@@ -82,12 +91,13 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 
 	public static final String SCORE_TABLE_CREATE =
 		"CREATE TABLE " + SCORE_TABLE_NAME + " (" +
-		SCORE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-		SCORE_FLIPPER_ID + " INTEGER NOT NULL, " +
-		SCORE_SCORE + " INTEGER NOT NULL, " +
-		SCORE_DATE + " TEXT NOT NULL, " +
-		SCORE_PSEUDO + " TEXT NOT NULL);";
-
+				SCORE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+				SCORE_FLIPPER_ID + " INTEGER NOT NULL, " +
+				SCORE_OBJECTID + " TEXT NOT NULL," +
+				SCORE_SCORE + " INTEGER NOT NULL, " +
+				SCORE_DATE + " TEXT NOT NULL, " +
+				SCORE_PSEUDO + " TEXT NOT NULL," +
+				" FOREIGN KEY ("+ SCORE_FLIPPER_ID +") REFERENCES "+FLIPPER_TABLE_NAME+" ("+FLIPPER_ID+"));";
 
 	public static final String TOURNOI_TABLE_CREATE =
 		"CREATE TABLE " + TOURNOI_TABLE_NAME + " (" +
@@ -101,15 +111,16 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 		TOUR_CODE_POSTAL + " TEXT, " +
 		TOUR_VILLE + " TEXT, " +
 		TOUR_PAYS + " TEXT, " +
-		TOUR_URL + " TEXT);";
-
+		TOUR_URL + " TEXT, " +
+        TOUR_ENS +  " TEXT);";
 
 	public static final String MODELE_FLIPPER_TABLE_CREATE =
 		"CREATE TABLE " + MODELE_FLIPPER_TABLE_NAME + " (" +
 		MODELE_FLIPPER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 		MODELE_FLIPPER_NOM + " TEXT NOT NULL, " +
 		MODELE_FLIPPER_MARQUE + " TEXT, " +
-		MODELE_FLIPPER_ANNEE_LANCEMENT + " INTEGER);";
+		MODELE_FLIPPER_ANNEE_LANCEMENT + " INTEGER," +
+		MODELE_FLIPPER_OBJ_ID + " TEXT);";
 
 	public static final String ENSEIGNE_TABLE_CREATE =
 		"CREATE TABLE " + ENSEIGNE_TABLE_NAME + " (" +
@@ -181,4 +192,8 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 
 	}
 
+	public void eraseDB(Context context){
+        context.deleteDatabase(FLIPPER_BASE_NAME)
+        ;
+	}
 }

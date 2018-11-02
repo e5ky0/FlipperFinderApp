@@ -6,11 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 public abstract class DAOBase {
 
 	protected SQLiteDatabase mDb = null;
+
 	protected FlipperDatabaseHandler mHandler = null;
 
 	public DAOBase(SQLiteDatabase pDb) {
 		this.mDb = pDb;
 	}
+
 	public DAOBase(Context pContext) {
 		this.mHandler = new FlipperDatabaseHandler(pContext, null);
 	}

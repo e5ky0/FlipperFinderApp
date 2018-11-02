@@ -5,7 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import com.pinmyballs.database.DAOBase;
 import com.pinmyballs.database.FlipperDatabaseHandler;
@@ -38,8 +41,41 @@ public class TournoiDAO extends DAOBase{
 					FlipperDatabaseHandler.TOUR_CODE_POSTAL,
 					FlipperDatabaseHandler.TOUR_VILLE,
 					FlipperDatabaseHandler.TOUR_PAYS,
-					FlipperDatabaseHandler.TOUR_URL},
+					FlipperDatabaseHandler.TOUR_URL,
+					FlipperDatabaseHandler.TOUR_ENS},
 					null,null, null, null, strOrder, null);
+
+		while (cursor.moveToNext()) {
+			listeRetour.add(convertCursorToModeleFlipper(cursor));
+		}
+		cursor.close();
+
+		return listeRetour;
+	}
+
+	public ArrayList<Tournoi> getAllFutureTournoi(){
+		ArrayList<Tournoi> listeRetour = new ArrayList<Tournoi>();
+
+		//on ordonne par date
+		String strOrder =  FlipperDatabaseHandler.TOUR_DATE + " DESC ";
+
+		String datedujour = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(new Date());
+		String selection = FlipperDatabaseHandler.TOUR_DATE +" >= " +"'"+ datedujour+"'";
+
+		Cursor cursor = mDb.query(FlipperDatabaseHandler.TOURNOI_TABLE_NAME,
+				new String[]{FlipperDatabaseHandler.TOUR_ID,
+						FlipperDatabaseHandler.TOUR_NOM,
+						FlipperDatabaseHandler.TOUR_COMMENTAIRE,
+						FlipperDatabaseHandler.TOUR_DATE,
+						FlipperDatabaseHandler.TOUR_LATITUDE,
+						FlipperDatabaseHandler.TOUR_LONGITUDE,
+						FlipperDatabaseHandler.TOUR_ADRESSE,
+						FlipperDatabaseHandler.TOUR_CODE_POSTAL,
+						FlipperDatabaseHandler.TOUR_VILLE,
+						FlipperDatabaseHandler.TOUR_PAYS,
+						FlipperDatabaseHandler.TOUR_URL,
+						FlipperDatabaseHandler.TOUR_ENS},
+				selection,null, null, null, strOrder, null);
 
 		while (cursor.moveToNext()) {
 			listeRetour.add(convertCursorToModeleFlipper(cursor));
@@ -52,7 +88,7 @@ public class TournoiDAO extends DAOBase{
 	private Tournoi convertCursorToModeleFlipper(Cursor c){
 		return new Tournoi(c.getLong(0), c.getString(1), c.getString(2), c.getString(3),
 				c.getString(4), c.getString(5), c.getString(6), c.getString(7),
-				c.getString(8), c.getString(9), c.getString(10));
+				c.getString(8), c.getString(9), c.getString(10),c.getString(11));
 	}
 
 	public void save(Tournoi tournoi){
@@ -68,6 +104,7 @@ public class TournoiDAO extends DAOBase{
 		contentValues.put(FlipperDatabaseHandler.TOUR_VILLE, tournoi.getVille());
 		contentValues.put(FlipperDatabaseHandler.TOUR_PAYS, tournoi.getPays());
 		contentValues.put(FlipperDatabaseHandler.TOUR_URL, tournoi.getUrl());
+		contentValues.put(FlipperDatabaseHandler.TOUR_ENS, tournoi.getEns());
 
 		mDb.delete(FlipperDatabaseHandler.TOURNOI_TABLE_NAME, FlipperDatabaseHandler.TOUR_ID + "=?", new String[] { String.valueOf(tournoi.getId())});
 		mDb.insert(FlipperDatabaseHandler.TOURNOI_TABLE_NAME, null, contentValues);
