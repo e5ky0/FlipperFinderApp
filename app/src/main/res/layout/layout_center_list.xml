@@ -1,0 +1,102 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/listeparameters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardViewAutocomplete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical">
+
+                <fragment
+                    android:id="@+id/place_autocomplete_fragment_list"
+                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </android.support.v7.widget.CardView>
+
+            <ImageButton
+                android:id="@+id/buttonMyLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/alt_image_localisation"
+                android:elevation="6dp"
+                app:srcCompat="@drawable/ic_my_location_black_24dp" />
+
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:id="@+id/listefilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/listeparameters"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp">
+
+
+            <AutoCompleteTextView
+                android:id="@+id/autocompleteModeleFlipper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:hint="@string/hintFiltreModele"
+                android:imeOptions="actionDone"
+                android:inputType="textFilter|textNoSuggestions"
+                android:maxLines="1"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/buttonClearModeleFlipper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginRight="8dp"
+                android:contentDescription="BoutonAnnuler"
+                android:background="@color/transparent"
+                app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+
+        </FrameLayout>
+
+
+        <ListView
+            android:id="@+id/listViewFlippers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/listefilters"
+            android:background="@drawable/white_grey_border_top"
+
+            tools:list="@tools:sample/cities"
+            tools:listitem="@layout/simple_list_item_flipper">
+
+        </ListView>
+
+
+    </RelativeLayout>
+
+</merge>

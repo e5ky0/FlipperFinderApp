@@ -1,9 +1,9 @@
 <resources>
 
-    <string name="app_name">Flipper Finder</string>
-    <string name="BoutonAccueilSignaler">Signaler un flipper</string>
+    <string name="app_name">Pin my Balls</string>
     <string name="BoutonAccueilRechercher">Rechercher un flipper</string>
-    <string name="BoutonAccueilTournoi">Rechercher un tournoi LNJF</string>
+    <string name="BoutonAccueilSignaler">Signaler un flipper</string>
+    <string name="HeaderTournois">Tournois &amp; Evènements</string>
     <string name="BoutonAccueilCommentaire">Voir les derniers commentaires</string>
     <string name="editText">Edit</string>
     <string name="menu_settings">Settings</string>
@@ -16,27 +16,42 @@
 
     <string name="title_activity_pageCarteFlipper">Localisation des flippers</string>
     <string name="alt_image_localisation">Localisation</string>
-    <string name="hintRechercheAdresse">Taper votre adresse</string>
+    <string name="alt_image_mapsearch">Localisation par la carte</string>
+    <string name="searchthisareatext">Liste des flips dans le cercle"</string>
+
+    <string name="hintRechercheAdresse">Adresse, code postal et ville</string>
     <string name="BoutonAfficheListeFlipper">Afficher les flippers sur une carte</string>
     <string name="SectionAdresse">Adresse</string>
     <string name="SectionFlipper">Modèle du Flipper</string>
-    <string name="SectionNomEnseigne">Nom de l\'enseigne</string>
+    <string name="SectionNomEnseigne">Nom du lieu</string>
+    <string name="SectionTournoi">Nom de l\'évènement</string>
+    <string name="SectionDateTournoi">Date</string>
+    <string name="SectionURLTournoi">Site web de l\'évènement</string>
+
     <string name="SectionCodePostal">Code postal</string>
     <string name="SectionVille">Ville</string>
     <string name="SectionPays">Pays</string>
     <string name="BoutonSoumettre">Soumettre</string>
-    <string name="hintSoumettreAdresse">Taper l\'adresse du flipper</string>
+    <string name="hintSoumettreAdresse">Taper l\'adresse complète du flipper. Numéro, rue, code postal, ville</string>
     <string name="BoutonEnvoiInfosFlipper">Envoyer</string>
+    <string name="BoutonEnvoiInfosFlipperMail">Envoyer par email</string>
+
     <string name="SectionFacultatif">(Facultatif)</string>
 
+    <string name="SectionPref">Pseudo Utilisateur</string>
     <string name="SectionPrefRayonRecherche">Rayon de recherche</string>
-    <string name="SectionPrefNbResultatVisible">Nombre max de flippers affichés</string>
+    <string name="SectionPrefNbResultatVisible">Max flippers affichés</string>
     <string name="BoutonPrefMaj">Mettre à jour la base</string>
 
     <string name="SignalementDeuxiemeModele">Eventuel deuxième flipper</string>
     <string name="SignalementTroisiemeModele">Eventuel troisième flipper</string>
+    <string name="SignalementQuatriemeModele">Eventuel quatrième flipper</string>
+    <string name="SignalementCinquiemeModele">Eventuel cinquième flipper</string>
+
     <string name="SignalementWizardNext">Suivant</string>
     <string name="SignalementWizardPrevious">Précédent</string>
+    <string name="SignalementWizardCancel">Annuler</string>
+
     <string name="SignalementWizardFinish">Envoyer</string>
 
     <string name="SignalementRefreshMap">Géolocaliser l\'adresse</string>
@@ -44,68 +59,120 @@
     <string name="boutonDisparition">Ce flipper a été retiré du bar</string>
     <string name="boutonChangement">Le modèle a changé</string>
     <string name="boutonNavigation">Itinéraire vers ce flipper</string>
-    <string name="dateMaj">Date de mise à jour : </string>
-    <string name="dateMajDefault">Flipper non confirmé depuis juin 2013.</string>
+    <string name="boutonNouveauFlip">Ajouter un flipper dans ce bar</string>
 
-	<string name="SectionPseudo">Votre pseudo</string>
-	<string name="SectionScore">Votre score</string>
-	<string name="boutonSoumettreScore">Soumettre votre Hi-Score</string>
+    <string name="dateMaj">Date de mise à jour : </string>
+    <string name="dateMajDefault">Flipper non confirmé.</string>
+
+    <string name="SectionPseudo">Pseudo</string>
+    <string name="SectionScore">Votre score</string>
+    <string name="boutonSoumettreScore">Soumettre votre Hi-Score</string>
 
     <string name="boutonCommentaire">Laisser un commentaire</string>
     <string name="boutonNewCommentaire">Envoyer</string>
     <string name="boutonCancel">Annuler</string>
-    <string name="hintPseudo">Votre pseudo</string>
+    <string name="hintPseudo">Pseudo</string>
     <string name="hintNouveauModele">Le nouveau modèle</string>
     <string name="hintCommentaire">Tapez votre commentaire…</string>
+    <string name="hintCommentaireNew">Commentaire sur ce nouveau flipper…</string>
 
+    <string name="boutonValideScore">Valider</string>
     <string name="boutonValideChangementModele">Valider le nouveau modèle</string>
+    <string name="dialogtitleNewScore">Entrer un nouveau score</string>
 
+    <string name="headerRecherche">Recherche</string>
 
-    <string name="headerTournoi">Tournois LNJF</string>
+    <string name="headerTournoi">Tournois de flipper </string>
 
     <string name="headerCommentaire">Derniers commentaires</string>
 
-    <string name="headerPreferences">Réglages</string>
-    <string name="headerSignalement">Signaler un flipper</string>
+    <string name="headerPreferences">Préférences</string>
+    <string name="headerSignalement">Signaler un flipper par mail</string>
+
+    <string name="headerSignalementNew">Signaler un flipper</string>
+    <string name="headerPageCarteSearch">Recherche par carte</string>
+    <string name="headerAdmin">Admin tools</string>
 
     <string name="mailContact">flipper.finder2@gmail.com</string>
 
     <string name="pseudoCommentaireAnonyme">Anonyme</string>
     <string name="fulltextCommentaireAnonyme"><Data><![CDATA[<b>Anonyme</b> à propos d\'un %2$s à %3$s]]> </Data></string>
     <string name="fulltextCommentaire"><Data><![CDATA[<b>%1$s</b> à propos d\'un %2$s à %3$s]]> </Data></string>
+    <string name="fulltextCommentaire2"><Data><![CDATA[<b>%1$s</b> sur le %2$s du <u>%4$s</u> à %3$s]]> </Data></string>
+    <string name="fulltextCommentaire3"><Data><![CDATA[<b>%1$s</b> sur le <font color="black">%2$s </font> du <u>%4$s</u> à %3$s]]> </Data></string>
+
     <string name="pasEncoreCommentaire">Pas encore de commentaire pour ce flipper.</string>
 
     <string name="toastMajEnseigne">%1$d enseigne(s) mise(s) à jour.</string>
-    <string name="toastMajModele">%1$d modèle de flipper mis à jour.</string>
-    <string name="toastMajFlipper">%1$d flipper mis à jour.</string>
+    <string name="toastMajModele">%1$d modèle(s) de flipper mis à jour.</string>
+    <string name="toastMajFlipper">%1$d flipper(s) mis à jour.</string>
     <string name="toastMajCommentaire">%1$d commentaire(s) mis à jour.</string>
+    <string name="toastMajScore">%1$d scores(s) ajouté(s).</string>
+
     <string name="toastMajPasNecessaire">Votre base de flipper est déjà à jour !</string>
     <string name="toastMajPasPossible">Mise à jour impossible : Vous n\'êtes pas connecté à Internet !</string>
     <string name="toastMajPasPossibleTropLent">Mise à jour impossible : Vous devez être en minimum en 3G ou en WIFI !</string>
     <string name="toastMajEchec">La mise à jour a échoué, la base a été réitinialisée.</string>
     <string name="titrePopupRecapMaj">Récap de la mise à jour</string>
 
-    <string  name="toastValidationPasPossibleReseau">Impossible d\'envoyer la validation. Vous devez être connecté à Internet !</string>
-    <string  name="toastValidationCloudOK">La validation a bien été prise en compte. Merci!</string>
-    <string  name="toastValidationCloudKO">La validation a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
+    <string name="toastValidationPasPossibleReseau">Impossible d\'envoyer la validation. Vous devez être connecté à Internet !</string>
+    <string name="toastValidationCloudOK">La validation a bien été prise en compte. Merci!</string>
+    <string name="toastValidationCloudKO">La validation a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
 
-    <string  name="toastAjouteCommentairePasPossibleReseau">Impossible d\'envoyer un commentaire. Vous devez être connecté à Internet !</string>
-    <string  name="toastAjouteCommentaireCloudOK">Votre commentaire a bien été reçu. Merci!</string>
-    <string  name="toastAjouteCommentaireCloudKO">L\'envoi de commentaire a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
+    <string name="toastAjouteCommentairePasPossibleReseau">Impossible d\'envoyer un commentaire. Vous devez être connecté à Internet !</string>
+    <string name="toastAjouteCommentaireCloudOK">Votre commentaire a bien été reçu. Merci!</string>
+    <string name="toastAjouteCommentaireCloudKO">L\'envoi de commentaire a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
 
-    <string  name="popupChangementModeleOK">Le changement de modèle a été pris en compte. Merci!</string>
-    <string  name="popupChangementModeleKO">Le changement de modèle a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
-    <string  name="popupChangementModeleRetour">Retourner à la liste</string>
-
-    <string  name="dialogMajDBNeededTitle">Mise à jour recommandée</string>
-    <string  name="dialogMajDBNeeded">Votre base de flipper date de plus de %1d jours. Voulez-vous la mettre à jour avec les dernières contributions?</string>
-    <string  name="dialogMajDBNeededOK">Avec plaisir!</string>
-    <string  name="dialogMajDBLater">Plus tard...</string>
-    <string  name="dialogMajDBTitle">Mise à jour</string>
-    <string  name="dialogMajDBMEssage">Chargement des mises à jour. Merci de patienter :-)</string>
+    <string name="toastAjouteScorePasPossibleReseau">Impossible d\'envoyer un score. Vous devez être connecté à Internet !</string>
+    <string name="toastAjouteScoreCloudOK">Votre score a bien été reçu. Merci!</string>
+    <string name="toastAjouteScoreCloudKO">L\'envoi de score a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
 
 
-    <string  name="toastChangeModelePasPossibleReseau">Impossible de modifier le modèle. Vous devez être connecté à Internet !</string>
+    <string name="popupChangementModeleOK">Le changement de modèle a été pris en compte. Merci!</string>
+    <string name="popupChangementModeleKO">Le changement de modèle a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
+    <string name="popupChangementModeleRetour">Retourner à la liste</string>
+    <string name="popupRetraitFlipOK">Le retrait de ce flipper a bien été pris en compte. Merci!</string>
+    <string name="popupRetraitFlipKO">Le retrait du flipper a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
+    <string name="popupChangementFlipOK">Le changement d\'état de ce flipper a bien été pris en compte. Merci!</string>
+    <string name="popupChangementFlipKO">Le changement d\'état de ce flipper a a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
+
+    popupChangementFlipOK
+    <string name="toastFlipAlreadyDeleted">Flip déja inactif</string>
+
+
+    <string name="dialogMajDBNeededTitle">Mise à jour recommandée</string>
+    <string name="dialogMajDBNeeded">Votre base de flipper date de plus de %1d jours. Voulez-vous la mettre à jour avec les dernières contributions?</string>
+    <string name="dialogMajDBNeeded2">Votre base de flipper est obsolète. Voulez-vous la mettre à jour ?</string>
+    <string name="dialogMajDBNeededOK">Avec plaisir!</string>
+    <string name="dialogMajDBLater">Plus tard…</string>
+    <string name="dialogMajDBTitle">Mise à jour</string>
+    <string name="dialogMajDBMEssage">Chargement des mises à jour. Merci de patienter.</string>
+
+    <string name="admin">Admin</string>
+
+    <string name="searchByNumberTitle">Pinball number</string>
+    <string name="searchByNumberButtonTitle">Go</string>
+    <string name="searchByNumberResultTitle">Résultats</string>
+    <string name="searchByNumberResultFlipID">FlipID</string>
+    <string name="searchByNumberResultFlipEnseigneID">FlipEnseigneID</string>
+    <string name="searchByNumberResultFlipEnseigne">FlipEnseigne</string>
+    <string name="searchByNumberResultFlipEnseigneAdresse">FlipAdresse</string>
+    <string name="searchByNumberResultFlipEnseigneVille">FlipVille</string>
+    <string name="searchByNumberResultFlipModelID">FlipModeleID</string>
+    <string name="searchByNumberResultFlipModel">FlipModele</string>
+    <string name="saveButton">Save</string>
+
+    <string name="currentlatng_text">Coordonnées</string>
+    <string name="dbchrono_text">Version de la database</string>
+    <string name="NbreFlipsActifs">Nombre de flips actifs dans PinMyBalls</string>
+    <string name="DateLastMaj">Date de dernière mise à jour</string>
+    <string name="Pseudo">Pseudo pour commentaires</string>
+    <string name="DefaultCommentaireChangement">Modèle changé</string>
+    <string name="rayonmax">%1$d km</string>
+    <string name="listemax">%1$d flips</string>
+
+    <string name="toastChangeModelePasPossibleReseau">Impossible de modifier le modèle. Vous devez être connecté à Internet !</string>
+    <string name="toastPasdeChangement">Pas de changement !</string>
 
     <string name="parseApplicationId">wx8ZJI9628FDGq39REy6rMlZjKdP5ERUMXjZpqjE</string>
     <string name="parseClientKey">8JRUbCxEjJjkSXG00B5csXzAl1E9BWHVIABKvFqy</string>
@@ -113,6 +180,56 @@
 
     <string name="googleMapsApiKey">AIzaSyDAnbAcnQN_Joy9-fzjmfYwNDqIZOdQLNQ</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="title_activity_maps">Current Place Details</string>
+    <string name="default_info_title">Default Location</string>
+    <string name="default_info_snippet">No places found, because location permission is disabled.</string>
+    <string name="option_get_place">Get place</string>
+    <string name="pick_place">Choose a place</string>
+
+    <string name="title_activity_page_flipper">PageFlipper</string>
+    <string name="tab_text_1">Info</string>
+    <string name="tab_text_2">Actions</string>
+    <string name="tab_text_3">Avis</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="selected_place">Last Selected Place:</string>
+    <string name="place_details">
+    <![CDATA[
+        <b>%1$s</b>
+        <br/>
+        <i>Place Id: %2$s</i>
+        <br/>
+        Address: %3$s
+        <br/>
+        Phone: %4$s
+        <br/>
+        Website: %5$s
+    ]]>
+    </string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="changement_default_comment">Le %1$s a été remplacé</string>
+    <string name="ajout_default_comment">Flip supplémentaire</string>
+
+    <string name="EraseBD_button">Reset données locales</string>
+
+    <string name="homeMenu_action_legend_text">Légende</string>
+    <string name="homeMenu_action_admin_text">Admin tools</string>
+    <string name="homeMenu_action_DBupdate_text">Mise à jour</string>
+    <string name="homeMenu_action_pref_text">Préférences</string>
+    <string name="homeMenu_action_email">Feedback</string>
+    <string name="homeMenu_action_bug_text">Bugs</string>
+
+    <string name="legend_title">Signification des icônes</string>
+    <string name="legend_green">Signalé ou actualisé cette semaine</string>
+    <string name="legend_orange">Actualisé il y a moins d\'1 mois</string>
+    <string name="legend_red">.Actualisé il y a plus de 3 mois</string>
+    <string name="legend_grey">Non actualisé depuis plus d\'1 an</string>
 
 
 </resources>

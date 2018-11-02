@@ -1,35 +1,56 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout3"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:paddingBottom="2dip"
-    android:paddingTop="2dip" >
+    android:paddingTop="2dip"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/accent"
+        android:text="01/01/2013"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textePseudo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="6dip"
-        android:layout_marginTop="6dip"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:paddingTop="2dp"
         android:text="@string/pseudoCommentaireAnonyme"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textDate"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textePseudo"
-        android:layout_alignLeft="@id/textePseudo"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="01/01/2013"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDate" />
 
     <TextView
         android:id="@+id/texteCommentaire"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textDate"
-        android:layout_marginLeft="20dip"
-        android:text="Trop de la bombe ce flip"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Trop de la bombe ce flip, il est vraiment trop trop bien. Et pas cher en plus"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textePseudo" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

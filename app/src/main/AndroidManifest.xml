@@ -1,66 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.fafsapp.flipper.finder"
-    android:versionCode="45"
-    android:versionName="2.45">
+    package="com.pinmyballs">
 
-    <uses-sdk
-        android:minSdkVersion="10"
-        android:targetSdkVersion="19" />
-
-    <!-- Demande de permission pour le GPS -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--<permission
+        android:name="com.pinmyballs.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
 
-    <!-- Demande recommandées par Google maps -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="com.pinmyballs.permission.MAPS_RECEIVE" />-->
 
-
-    <permission android:name="fr.fafsapp.flipper.finder.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature"/>
-    <uses-permission android:name="fr.fafsapp.flipper.finder.permission.MAPS_RECEIVE"/>
-
-    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <application
         android:name=".MyApplication"
-        android:icon="@drawable/ic_launcher_vectorise_v2"
-        android:theme="@style/Theme.AppCompat.Light"
-        android:label="Flipper Finder">
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@mipmap/ic_launcher3_round"
+        android:label="Pin my Balls"
+        android:theme="@style/Theme.AppCompat.Light">
 
         <activity
-            android:name="fr.fafsapp.flipper.finder.MainActivity">
+            android:name=".HomeActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                />
             </intent-filter>
         </activity>
-        <activity android:name="fr.fafsapp.flipper.finder.PageListeResultat"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name="fr.fafsapp.flipper.finder.PageCarteFlipper"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name="fr.fafsapp.flipper.finder.PageListeResultatTournois"/>
-        <activity android:name="fr.fafsapp.flipper.finder.PageListeCommentaire"/>
-        <activity 	android:name="fr.fafsapp.flipper.finder.PageSignalement"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity 	android:name="fr.fafsapp.flipper.finder.PageSignalementNew"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name="fr.fafsapp.flipper.finder.PagePreferences"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity 	android:name="fr.fafsapp.flipper.finder.PageInfoFlipperPager"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name="fr.fafsapp.flipper.finder.PageInfoTournoi"/>
+
+        <activity
+            android:name=".PageFlipper"
+            android:label="@string/title_activity_page_flipper"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".TournoiActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar2" />
+        <activity
+            android:name=".ListeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar2" />
+
+        <activity
+            android:name=".CommentaireActivity"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar2" />
+
+        <activity
+            android:name=".PopScore"
+            android:parentActivityName=".PageInfoFlipperPager"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.NoActionBar" />
+
+        <activity
+            android:name=".PopMap"
+            android:parentActivityName=".z_PageSignalementTournoi"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.NoActionBar" />
+
+        <activity
+            android:name=".PopLegend"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.NoActionBar" />
+
+        <activity
+            android:name=".SignalementMailActivity"
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".SignalementActivity"
+            android:parentActivityName=".HomeActivity" />
+
+        <activity
+            android:name=".PagePreferences"
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".PageAdmin"
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="adjustResize" />
+
+
+        <activity
+            android:name=".PageListeResultat"
+            android:parentActivityName=".z_MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".PageCarteFlipper"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".PageListeResultatTournois"
+            android:parentActivityName=".z_MainActivity" />
+        <activity
+            android:name=".z_PageSignalementTournoi"
+            android:parentActivityName=".PageListeResultatTournois" />
+
+
+        <activity
+            android:name=".PageInfoFlipperPager"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".PageInfoTournoi" />
+
 
         <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/googleMapsApiKey"/>
-
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBWzLO7XJTK0qp3hWkX599YdiUWGc_yFYc" />
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
+            android:value="@integer/google_play_services_version" />
 
     </application>
 

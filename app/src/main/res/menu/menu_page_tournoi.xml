@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pinmyballs="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:title="Mettre à jour"
+        android:titleCondensed="Refresh"
+        pinmyballs:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/action_newtournoibymail"
+        android:icon="@drawable/ic_email_black_24dp"
+        android:title="Signaler par mail"
+        android:titleCondensed="Par mail"
+        pinmyballs:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_newtournoi"
+        android:icon="@drawable/ic_add_black_24dp"
+        android:title="Signaler un nouveau tournoi"
+        android:titleCondensed="Nouveau"
+        pinmyballs:showAsAction="always|withText" />
+
+</menu>

@@ -2,6 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/WizardPageContainer">
 
+    <LinearLayout
+        android:id="@+id/placeSearchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+    </LinearLayout>
+
+    <View style="@style/itemDivider" />
+
+    <TextView
+        android:id="@+id/place_attribution_wizard"
+        android:autoLink="all"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="0dp" />
+
+
     <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -19,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginTop="3dip"
                 android:hint="@string/SectionNomEnseigne"
                 android:inputType="textCapSentences|textAutoCorrect"
                 />
@@ -30,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginTop="3dip"
                 android:inputType="textCapSentences|textAutoCorrect"
                 android:hint="@string/SectionAdresse" />
 
@@ -44,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
-                    android:layout_marginTop="15dip"
+                    android:layout_marginTop="3dip"
                     android:hint="@string/SectionCodePostal"
                     android:layout_weight="60" />
                 <EditText
@@ -53,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
-                    android:layout_marginTop="15dip"
+                    android:layout_marginTop="3dip"
                     android:hint="@string/SectionVille"
                     android:inputType="textCapSentences|textAutoCorrect"
                     android:layout_weight="40"/>
@@ -65,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
-                android:layout_marginTop="15dip"
+                android:layout_marginTop="3dip"
                 android:hint="@string/SectionPays"
                 android:inputType="textCapSentences|textAutoCorrect"
                 android:text="France"/>

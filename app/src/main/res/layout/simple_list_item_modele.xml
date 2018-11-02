@@ -1,0 +1,37 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tint="@color/place_autocomplete_prediction_primary_text_highlight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
+
+
+    <TextView
+        android:id="@+id/itemModeleFlipper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingStart="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="?attr/colorPrimary"
+        tools:text="@sample/modeles" />
+
+</android.support.constraint.ConstraintLayout>

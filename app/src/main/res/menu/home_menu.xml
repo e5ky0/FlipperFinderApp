@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_legend"
+        android:icon="@drawable/ic_info_outline_black_24dp"
+        android:title="@string/homeMenu_action_legend_text"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_admin"
+        android:icon="@drawable/ic_lock_outline_black_24dp"
+        android:title="@string/homeMenu_action_admin_text"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_dbupdate"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:title="@string/homeMenu_action_DBupdate_text"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_pref"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/homeMenu_action_pref_text"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_email"
+        android:icon="@drawable/ic_email_black_24dp"
+        android:title="@string/homeMenu_action_email"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_bug"
+        android:icon="@drawable/ic_bug_report_black_24dp"
+        android:title="@string/homeMenu_action_bug_text"
+        app:showAsAction="ifRoom" />
+</menu>

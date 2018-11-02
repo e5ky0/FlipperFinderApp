@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
+    <TextView
+        android:id="@+id/Tournoititle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="16 juillet 2018"/>
+
+    <TextView
+        android:id="@+id/Tournoisnippet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Le Kryptonic Address"
+        android:gravity="center"/>
+</LinearLayout>
