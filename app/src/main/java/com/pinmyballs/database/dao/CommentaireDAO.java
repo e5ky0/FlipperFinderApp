@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.pinmyballs.database.DAOBase;
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.metier.Commentaire;
+import com.pinmyballs.metier.Flipper;
 
 public class CommentaireDAO extends DAOBase{
 
@@ -24,7 +25,7 @@ public class CommentaireDAO extends DAOBase{
 	public ArrayList<Commentaire> getLastCommentaire(int nbMaxCommentaire){
 		ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
 		String strWhere =  " Where " + FlipperDatabaseHandler.COMM_ACTIF + " = 1 ";
-		String strOrder =  " ORDER BY " + FlipperDatabaseHandler.COMM_DATE + " DESC ";
+		String strOrder =  " ORDER BY " + FlipperDatabaseHandler.COMM_DATE + " DESC, " + FlipperDatabaseHandler.COMM_ID+ " DESC ";
 
 		Cursor cursor = mDb.rawQuery("select " + FlipperDatabaseHandler.COMM_ID +
 				" , " +  FlipperDatabaseHandler.COMM_FLIPPER_ID +
